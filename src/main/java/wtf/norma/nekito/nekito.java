@@ -23,6 +23,8 @@ import wtf.norma.nekito.exploit.impl.other.FaweExploit;
 import wtf.norma.nekito.exploit.impl.other.SpamExploit;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
 import wtf.norma.nekito.util.math.ScaleMath;
 
@@ -34,11 +36,13 @@ public enum nekito {
 
     public ScaleMath scaleMath = new ScaleMath(2);
     private final DiscordRichPresenceManager discordRichPresence;
+    private final ModuleManager moduleManager;
 
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
         discordRichPresence = new DiscordRichPresenceManager();
+
         commandManager = new CommandManager(
                 new ExploitCommand(),
                 new HelpCommand(),
@@ -59,6 +63,8 @@ public enum nekito {
                 new OnePacketExploit()
         );
 
+        moduleManager = new ModuleManager();
+
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
@@ -69,8 +75,7 @@ public enum nekito {
 
     public void setDisplay() throws IOException {
         Display.setTitle("Nekito 1.0");
-        OpenGlHelper
-                .setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
+        OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 
     public void shutDown() {
