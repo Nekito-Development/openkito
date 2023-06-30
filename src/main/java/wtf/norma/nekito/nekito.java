@@ -60,7 +60,7 @@ public enum nekito {
   public void setDisplay() throws IOException {
     Display.setTitle("Nekito 1.0");
     OpenGlHelper
-        .setWindowIcon("https://i.imgur.com/ONORz2g.png", "https://i.imgur.com/xAIIIeb.png");
+        .setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
   }
 
   public void shutDown() {

@@ -50,8 +50,6 @@ public class GuiInGameHook extends GuiIngame {
       }
 
       mc.fontRendererObj
-          .drawStringWithShadow(ChatHelper.fix("&fFPS: &d" + Minecraft.debugFPS), 5, 60, 0);
-      mc.fontRendererObj
           .drawStringWithShadow(ChatHelper.fix(String.format("&fX, Y, Z: &d%s, %s, %s", x, y, z)),
               5, 70, 0);
 

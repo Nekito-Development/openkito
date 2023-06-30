@@ -5,7 +5,7 @@ import net.minecraft.util.ChatComponentText;
 
 public final class ChatHelper {
 
-  private static final String PREFIX = "にこ";
+  private static final String PREFIX = "Nekito";
   private static final Minecraft mc = Minecraft.getMinecraft();
 
   public static String fix(String string) {
