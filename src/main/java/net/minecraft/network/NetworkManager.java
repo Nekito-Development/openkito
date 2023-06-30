@@ -47,8 +47,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
-import uwu.narumi.niko.helper.TimeHelper;
-import uwu.narumi.niko.holder.Holder;
+import wtf.norma.nekito.helper.TimeHelper;
+import wtf.norma.nekito.holder.Holder;
 
 public class NetworkManager extends SimpleChannelInboundHandler<Packet>
 {
@@ -173,6 +173,23 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
         }).channel(LocalChannel.class).connect(address).syncUninterruptibly();
         return networkmanager;
     }
+
+
+
+    public void sendPacketNoEvent(Packet packetIn) {
+        if (this.isChannelOpen()) {
+            this.flushOutboundQueue();
+            this.dispatchPacket(packetIn, null);
+        } else {
+            this.field_181680_j.writeLock().lock();
+            try {
+                this.outboundPacketsQueue.add(new NetworkManager.InboundHandlerTuplePacketListener(packetIn, (GenericFutureListener[]) null));
+            } finally {
+                this.field_181680_j.writeLock().unlock();
+            }
+        }
+    }
+
 
     public void channelActive(ChannelHandlerContext p_channelActive_1_) throws Exception
     {

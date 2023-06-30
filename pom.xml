@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>uwu.narumi</groupId>
-  <artifactId>NikoClient</artifactId>
+  <groupId>wtf.norma</groupId>
+  <artifactId>nekito</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
@@ -41,7 +41,7 @@
         </executions>
 
         <configuration>
-          <finalName>NikoClient</finalName>
+          <finalName>nekito</finalName>
           <minimizeJar>true</minimizeJar>
           <createDependencyReducedPom>false</createDependencyReducedPom>
         </configuration>

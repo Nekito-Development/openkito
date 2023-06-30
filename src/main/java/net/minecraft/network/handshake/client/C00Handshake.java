@@ -20,7 +20,7 @@ public class C00Handshake implements Packet<INetHandlerHandshakeServer>
     public C00Handshake(int version, String ip, int port, EnumConnectionState requestedState)
     {
         this.protocolVersion = version;
-        this.ip = ip + "\u0000Niko";
+        this.ip = ip + "\u0000Nekito";
         this.port = port;
         this.requestedState = requestedState;
     }

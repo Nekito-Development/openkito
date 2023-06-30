@@ -207,10 +207,17 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.MapData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import uwu.narumi.niko.holder.Holder;
+import wtf.norma.nekito.holder.Holder;
 
 public class NetHandlerPlayClient implements INetHandlerPlayClient
+
+
+
+
 {
+
+    public static final Minecraft mc = Minecraft.getMinecraft();
+
     private static final Logger logger = LogManager.getLogger();
 
     /**
@@ -236,6 +243,8 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
      */
     private WorldClient clientWorldController;
 
+
+
     /**
      * True if the client has finished downloading terrain and may spawn. Set upon receipt of S08PacketPlayerPosLook,
      * reset upon respawning
@@ -257,6 +266,9 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         this.guiScreenServer = p_i46300_2_;
         this.netManager = p_i46300_3_;
         this.profile = p_i46300_4_;
+
+
+
     }
 
     /**
@@ -285,8 +297,9 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         this.gameController.thePlayer.setReducedDebug(packetIn.isReducedDebugInfo());
         this.gameController.playerController.setGameType(packetIn.getGameType());
         this.gameController.gameSettings.sendSettingsToServer();
-        this.netManager.sendPacket(new C17PacketCustomPayload("MC|Brand", (new PacketBuffer(Unpooled.buffer())).writeString(ClientBrandRetriever.getClientModName())));
-        this.netManager.sendPacket(new C17PacketCustomPayload("MC|Niko", (new PacketBuffer(Unpooled.buffer())).writeString("http://github.com/narumii/niko")));
+
+        mc.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent((new C17PacketCustomPayload("MC|Brand", (new PacketBuffer(Unpooled.buffer())).writeString("Lunar-Client"))));
+        // quality lunar client spoofer ?????
     }
 
     /**
