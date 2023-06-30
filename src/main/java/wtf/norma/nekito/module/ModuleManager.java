@@ -3,6 +3,7 @@ package wtf.norma.nekito.module;
 import wtf.norma.nekito.module.impl.Cape;
 import wtf.norma.nekito.module.impl.ClickGUI;
 
+import wtf.norma.nekito.module.impl.ItemPhysics;
 import wtf.norma.nekito.module.impl.Sprint;
 
 import java.util.ArrayList;
@@ -15,7 +16,8 @@ public class ModuleManager {
         addAll(
                 new Sprint(),
                 new ClickGUI(),
-                new Cape()
+                new Cape(),
+                new ItemPhysics()
         );
     }
 
@@ -33,6 +35,11 @@ public class ModuleManager {
         }
         return null;
     }
+
+    public <T extends Module> T getModule(Class<T> clas) {
+        return (T) getModules().stream().filter(module -> module.getClass() == clas).findFirst().orElse(null);
+    }
+
 
     public ArrayList<Module> getModules() {
         return modules;
