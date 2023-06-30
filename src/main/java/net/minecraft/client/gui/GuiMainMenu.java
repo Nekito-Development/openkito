@@ -2,6 +2,7 @@ package net.minecraft.client.gui;
 
 import net.minecraft.client.gui.*;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.ui.altmanager.GuiAltManager;
 import wtf.norma.nekito.ui.buttons.GuiMainMenuButton;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
@@ -79,7 +80,7 @@ public class GuiMainMenu extends GuiScreen {
                 this.mc.displayGuiScreen(new GuiMultiplayer(this));
                 break;
             case 2:
-             //   this.mc.displayGuiScreen(new ());
+                this.mc.displayGuiScreen(new GuiAltManager(this));
                 break;
             case 3:
                 this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
