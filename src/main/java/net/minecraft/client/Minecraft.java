@@ -503,6 +503,12 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
         this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
         this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
+
+
+
+
+
+
         AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat()
         {
             public String formatString(String p_74535_1_)
