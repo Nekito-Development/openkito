@@ -47,6 +47,8 @@ import shadersmod.client.Shaders;
 public class GameSettings
 {
     private static final Logger logger = LogManager.getLogger();
+
+    public List<String> incompatibleResourcePacks = Lists.newArrayList();
     private static final Gson gson = new Gson();
     private static final ParameterizedType typeListString = new ParameterizedType()
     {
@@ -168,7 +170,7 @@ public class GameSettings
     public int thirdPersonView;
 
     /** true if debug info should be displayed instead of version */
-    public boolean showDebugInfo;
+    public static boolean showDebugInfo;
     public boolean showDebugProfilerChart;
     public boolean field_181657_aC;
 
@@ -929,6 +931,14 @@ public class GameSettings
                         this.lastServer = s.substring(s.indexOf(58) + 1);
                     }
 
+                    if (astring[0].equals("incompatibleResourcePacks")) {
+                        this.incompatibleResourcePacks = gson.fromJson(s.substring(s.indexOf(58) + 1), typeListString);
+
+                        if (this.incompatibleResourcePacks == null) {
+                            this.incompatibleResourcePacks = Lists.newArrayList();
+                        }
+                    }
+
                     if (astring[0].equals("lang") && astring.length >= 2)
                     {
                         this.language = astring[1];
@@ -1224,7 +1234,7 @@ public class GameSettings
             }
 
             printwriter.println("resourcePacks:" + gson.toJson((Object)this.resourcePacks));
-            printwriter.println("incompatibleResourcePacks:" + gson.toJson((Object)this.field_183018_l));
+            printwriter.println("incompatibleResourcePacks:" + gson.toJson(this.incompatibleResourcePacks));
             printwriter.println("lastServer:" + this.lastServer);
             printwriter.println("lang:" + this.language);
             printwriter.println("chatVisibility:" + this.chatVisibility.getChatVisibility());

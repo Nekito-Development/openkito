@@ -967,46 +967,36 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     /**
      * Sets the argument GuiScreen as the main (topmost visible) screen.
      */
-    public void displayGuiScreen(GuiScreen guiScreenIn)
-    {
-        if (this.currentScreen != null)
-        {
+    public void displayGuiScreen(GuiScreen guiScreenIn) {
+        if (this.currentScreen != null) {
             this.currentScreen.onGuiClosed();
         }
 
-        if (guiScreenIn == null && this.theWorld == null)
-        {
+        if (guiScreenIn == null && this.theWorld == null) {
             guiScreenIn = new GuiMainMenu();
-        }
-        else if (guiScreenIn == null && this.thePlayer.getHealth() <= 0.0F)
-        {
+        } else if (guiScreenIn == null && this.thePlayer.getHealth() <= 0.0F) {
             guiScreenIn = new GuiGameOver();
         }
 
-        if (guiScreenIn instanceof GuiMainMenu)
-        {
-            this.gameSettings.showDebugInfo = false;
+        if (guiScreenIn instanceof GuiMainMenu) {
+            GameSettings.showDebugInfo = false;
             this.ingameGUI.getChatGUI().clearChatMessages();
         }
 
-        this.currentScreen = (GuiScreen)guiScreenIn;
-
-        if (guiScreenIn != null)
-        {
+        this.currentScreen = guiScreenIn;
+        if (guiScreenIn != null) {
             this.setIngameNotInFocus();
             ScaledResolution scaledresolution = new ScaledResolution(this);
             int i = scaledresolution.getScaledWidth();
             int j = scaledresolution.getScaledHeight();
-            ((GuiScreen)guiScreenIn).setWorldAndResolution(this, i, j);
+            guiScreenIn.setWorldAndResolution(this, i, j);
             this.skipRenderWorld = false;
-        }
-        else
-        {
+        } else {
             this.mcSoundHandler.resumeSounds();
             this.setIngameFocus();
         }
-    }
 
+    }
     /**
      * Checks for an OpenGL error. If there is one, prints the error ID and error string.
      */

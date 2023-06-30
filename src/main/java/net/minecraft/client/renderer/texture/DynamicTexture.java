@@ -24,7 +24,6 @@ public class DynamicTexture extends AbstractTexture
         bufferedImage.getRGB(0, 0, bufferedImage.getWidth(), bufferedImage.getHeight(), this.dynamicTextureData, 0, bufferedImage.getWidth());
         this.updateDynamicTexture();
     }
-
     public DynamicTexture(int textureWidth, int textureHeight)
     {
         this.shadersInitialized = false;

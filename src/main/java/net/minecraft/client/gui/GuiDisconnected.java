@@ -2,10 +2,6 @@ package net.minecraft.client.gui;
 
 import java.io.IOException;
 import java.util.List;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.GuiConnecting;
-import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.IChatComponent;
 
@@ -31,11 +27,6 @@ public class GuiDisconnected extends GuiScreen
     protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
     }
-    private GuiButton cwel;
-
-    public static ServerData CZARNYMURZYN;
-
-    private int textHeight;
 
     /**
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
@@ -43,14 +34,10 @@ public class GuiDisconnected extends GuiScreen
      */
     public void initGui()
     {
-
-        this.textHeight = this.multilineMessage.size() * this.fontRendererObj.FONT_HEIGHT;
-
         this.buttonList.clear();
         this.multilineMessage = this.fontRendererObj.listFormattedStringToWidth(this.message.getFormattedText(), this.width - 50);
         this.field_175353_i = this.multilineMessage.size() * this.fontRendererObj.FONT_HEIGHT;
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 2 + this.field_175353_i / 2 + this.fontRendererObj.FONT_HEIGHT, I18n.format("gui.toMenu", new Object[0])));
-        this.buttonList.add(cwel  = new GuiButton(1, width / 2 - 100, this.height / 2 + this.textHeight / 2 + this.fontRendererObj.FONT_HEIGHT, 98, 20, "�cReconnect"));
     }
 
     /**
@@ -61,11 +48,6 @@ public class GuiDisconnected extends GuiScreen
         if (button.id == 0)
         {
             this.mc.displayGuiScreen(this.parentScreen);
-        }
-        if (button.id == 1)
-        {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), mc, CZARNYMURZYN));
-
         }
     }
 
