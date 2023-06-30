@@ -53,14 +53,7 @@ public class GuiInGameHook extends GuiIngame {
           .drawStringWithShadow(ChatHelper.fix(String.format("&fX, Y, Z: &d%s, %s, %s", x, y, z)),
               5, 70, 0);
 
-      mc.fontRendererObj.drawStringWithShadow(ChatHelper.fix(
-          String.format("&fCPU Usage: &d%.2f",
-              SystemHelper.getOsBean().getProcessCpuLoad() * 1000 / 10)
-              + "&d%"), 5, 90, 0);
-      mc.fontRendererObj.drawStringWithShadow(ChatHelper.fix(String
-              .format("&fRAM Usage: &d%s/%s", SystemHelper.humanReadableByteCount(usedMemory, false),
-                  SystemHelper.humanReadableByteCount(Runtime.getRuntime().totalMemory(), false))), 5,
-          100, 0);
+
 
       if (Holder.getTPS() != -1) {
         String tps = String.format((Holder.getTPS() > 15
