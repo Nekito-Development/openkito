@@ -360,7 +360,7 @@ public class ItemRenderer
                         break;
 
                     case 4:
-                        this.transformFirstPersonItem(f, 0.0F);
+                        this.transformFirstPersonItem(f, f1);
                         this.func_178103_d();
                         break;
 
