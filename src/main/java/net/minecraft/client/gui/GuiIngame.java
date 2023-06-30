@@ -43,6 +43,8 @@ import net.minecraft.util.StringUtils;
 import net.minecraft.world.border.WorldBorder;
 import optifine.Config;
 import optifine.CustomColors;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventRender2D;
 
 public class GuiIngame extends Gui
 {
@@ -345,6 +347,8 @@ public class GuiIngame extends Gui
             this.overlayPlayerList.updatePlayerList(true);
             this.overlayPlayerList.renderPlayerlist(i, scoreboard, scoreobjective1);
         }
+
+        Event.dispatch(new EventRender2D(partialTicks));
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
