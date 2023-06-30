@@ -12,6 +12,7 @@ import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
 import wtf.norma.nekito.exploit.impl.flood.AttackExploit;
 import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
+import wtf.norma.nekito.exploit.impl.nbt.CWEL;
 import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
 import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
 import wtf.norma.nekito.exploit.impl.other.ChunkLoadExploit;
@@ -46,6 +47,7 @@ public enum nekito {
         new SpamExploit(),
         new FaweExploit(),
         new ChunkLoadExploit(),
+        new CWEL(),
         new ExploitFixerExploit(),
         new OnePacketExploit()
     );

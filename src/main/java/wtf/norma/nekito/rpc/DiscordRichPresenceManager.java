@@ -17,7 +17,7 @@ public class DiscordRichPresenceManager implements ReadyCallback {
   public DiscordRichPresenceManager() {
     richPresence = new DiscordRichPresence
         .Builder("https://github.com/intexpression/nekito")
-        .setBigImage("animated-niko", "Open Source Crash Client")
+        .setBigImage("cwel", "Open Source Crash Client")
         .setSmallImage("github", "https://github.com/intexpression/nekito")
         .setDetails("Loading nekito...")
         .setStartTimestamps(System.currentTimeMillis())
@@ -39,7 +39,7 @@ public class DiscordRichPresenceManager implements ReadyCallback {
             System.out.printf("Connected to %s#%s (%s)%n", user.username, user.discriminator,
                 user.userId)).build();
 
-    DiscordRPC.discordInitialize("811623009521238067", handlers, true);
+    DiscordRPC.discordInitialize("1120259232038662146", handlers, true);
   }
 
   public void startTask() {
