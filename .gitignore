@@ -15,3 +15,6 @@ work/shaderpacks
 work/screenshots
 work/*.*
 work/ViaMCP
+work/ViaMCP/ViaLoadingBase/config.yml
+work/ViaMCP/ViaLoadingBase/viarewind.yml
+work/ViaMCP/ViaLoadingBase/viaversion.yml
