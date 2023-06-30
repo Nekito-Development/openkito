@@ -3,6 +3,8 @@ package net.minecraft.client.gui;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
 import com.ibm.icu.text.Bidi;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -153,6 +155,8 @@ public class FontRenderer implements IResourceManagerReloadListener
 
         this.readGlyphSizes();
     }
+
+
 
     public void onResourceManagerReload(IResourceManager resourceManager)
     {
