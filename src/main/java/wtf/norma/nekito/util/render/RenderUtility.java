@@ -43,6 +43,15 @@ public class RenderUtility {
         GL11.glTranslated(-width / 2, -height / 2, 0);
     }
 
+
+    public static void drawBorderedRect(double x, double y, double x2, double y2, int borderedColor, int color) {
+        drawRect(x + 1, y + 1, x2 - 1, y2 - 1, color);
+        drawRect(x, y + 1, x2, y, borderedColor);
+        drawRect(x2 - 1, y, x2, y2, borderedColor);
+        drawRect(x, y2, x2, y2 - 1, borderedColor);
+        drawRect(x, y, x + 1, y2, borderedColor);
+    }
+
     public static void drawTriangle() {
         boolean needBlend = !GL11.glIsEnabled(GL11.GL_BLEND);
         if (needBlend)

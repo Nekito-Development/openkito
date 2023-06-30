@@ -15,6 +15,15 @@ public class ColorUtility {
 
         GlStateManager.color(red, green, blue, alpha);
     }
+
+
+    public static Color rainbowEffect(final long offset, final float fade) {
+        final float hue = (System.nanoTime() + offset) / 1.0E10f % 1.0f;
+        final long color = Long.parseLong(Integer.toHexString(Color.HSBtoRGB(hue, 1.0f, 1.0f)), 16);
+        final Color c = new Color((int) color);
+        return new Color(c.getRed() / 255.0f * fade, c.getGreen() / 255.0f * fade, c.getBlue() / 255.0f * fade,
+                c.getAlpha() / 255.0f);
+    }
     public static int rgba(int r, int g, int b, int a) {
         return a << 24 | r << 16 | g << 8 | b;
     }
