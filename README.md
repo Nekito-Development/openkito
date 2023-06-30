@@ -1,32 +1,9 @@
-### Skidders
-- PhecdaClient (Vexio(Naski, Hapix, Ayarume), Out)
-- AvarionCient (Szymeko, Noxerek)
-- Str0ng/StormClient (str0ngsz)
-- SweetClient (BlackCrack, AvarionTeam)
-- Ayakashi (Noxerek, FixMem)
-- Heaven (Noxerek)
-- And probably more
+### Nekito Open Source crash client based on niko by @narumii 
 
-> All of these clients are trash
-
----
 
 > Java version: AdoptJDK 8
----
 
-### Niko is a small crash client base for retarded(german) people who steal other people's code.
 
----
-
-### Features
-- LazyLoading for crashers
-- Simple CommandAPI
-- Simple ExploitAPI
-- Shitty GuiInGameHook
-- Discord RPC
-- Updated Log4J
-
----
 
 ### Running client through intellij idea
 - Main: `Start`
@@ -56,6 +33,7 @@
 ---
 
 ### Credits
+- narumii full base for client
 - MetaClient (mori0) `Json NBT(extra) from MetaClient, sorry but i don't give you other json nbt ¯\_(ツ)_/¯`
 ---
 
