@@ -1,5 +1,7 @@
 package wtf.norma.nekito.module;
 
+import wtf.norma.nekito.module.impl.Sprint;
+
 import java.util.ArrayList;
 
 public class ModuleManager {
@@ -11,7 +13,7 @@ public class ModuleManager {
     }
 
     public void initModules() {
-
+        modules.add(new Sprint());
     }
 
     public Module getModuleByName(String name) {
