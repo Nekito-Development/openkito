@@ -56,7 +56,7 @@ public enum nekito {
 
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
-        
+
         //If you want to use niko from launcher please remove this
         NetHelper.createSession("cwelpolska", null);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
