@@ -73,7 +73,7 @@ public class Module {
     }
 
     public enum Category {
-        MOVEMENT("Movement"), CRASHER("Crasher");
+        MOVEMENT("Movement"), VISUALS("Visuals");
 
         public String name;
 

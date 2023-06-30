@@ -21,6 +21,8 @@ import optifine.CapeUtils;
 import optifine.Config;
 import optifine.PlayerConfigurations;
 import optifine.Reflector;
+import wtf.norma.nekito.module.impl.Cape;
+import wtf.norma.nekito.nekito;
 
 public abstract class AbstractClientPlayer extends EntityPlayer
 {
@@ -90,18 +92,20 @@ public abstract class AbstractClientPlayer extends EntityPlayer
 
     public ResourceLocation getLocationCape()
     {
+        Cape capes = (Cape) nekito.INSTANCE.getModuleManager().getModuleByName("Cape");
+
         if (!Config.isShowCapes())
         {
             return null;
         }
         else if (this.locationOfCape != null)
         {
-            return this.locationOfCape;
+            return capes.isToggled() && capes.canRender(this) ? capes.getCape() : locationOfCape;
         }
         else
         {
             NetworkPlayerInfo networkplayerinfo = this.getPlayerInfo();
-            return networkplayerinfo == null ? null : networkplayerinfo.getLocationCape();
+            return networkplayerinfo == null ? null : capes.isToggled() && capes.canRender(this) ? capes.getCape() : networkplayerinfo.getLocationCape();
         }
     }
 
