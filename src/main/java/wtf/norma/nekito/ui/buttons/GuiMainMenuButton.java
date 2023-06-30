@@ -7,6 +7,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.math.MathUtility;
@@ -59,23 +60,48 @@ public class GuiMainMenuButton extends GuiButton {
         }
     }
 
-
-    public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
-        return (this.enabled && this.visible && mouseX >= width && mouseY >= height && mouseX < width + this.width && mouseY < height + this.height + 10);
+    protected void mouseDragged(Minecraft mc, int mouseX, int mouseY)
+    {
     }
 
-    public boolean isMouseOver() {
+    /**
+     * Fired when the mouse button is released. Equivalent of MouseListener.mouseReleased(MouseEvent e).
+     */
+    public void mouseReleased(int mouseX, int mouseY)
+    {
+    }
+
+    /**
+     * Returns true if the mouse has been pressed on this control. Equivalent of MouseListener.mousePressed(MouseEvent
+     * e).
+     */
+    public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
+    {
+        return this.enabled && this.visible && mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+    }
+
+    public boolean isMouseOver()
+    {
         return this.hovered;
     }
 
+    public void drawButtonForegroundLayer(int mouseX, int mouseY)
+    {
+    }
 
+    public void playPressSound(SoundHandler soundHandlerIn)
+    {
+        soundHandlerIn.playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+    }
 
-
-    public int getButtonWidth() {
+    public int getButtonWidth()
+    {
         return this.width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(int width)
+    {
         this.width = width;
     }
 }
+

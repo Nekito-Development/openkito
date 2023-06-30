@@ -13,8 +13,9 @@ import wtf.norma.nekito.command.impl.OnlineCommand;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
 import wtf.norma.nekito.exploit.impl.flood.AttackExploit;
+import wtf.norma.nekito.exploit.impl.flood.CwelExploit;
+import wtf.norma.nekito.exploit.impl.flood.PedalExploit;
 import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
-import wtf.norma.nekito.exploit.impl.nbt.CWEL;
 import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
 import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
 import wtf.norma.nekito.exploit.impl.other.ChunkLoadExploit;
@@ -23,12 +24,15 @@ import wtf.norma.nekito.exploit.impl.other.SpamExploit;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
+import wtf.norma.nekito.util.math.ScaleMath;
 
 public enum nekito {
     INSTANCE;
 
     private final CommandManager commandManager;
     private final ExploitManager exploitManager;
+
+    public ScaleMath scaleMath = new ScaleMath(2);
     private final DiscordRichPresenceManager discordRichPresence;
 
     nekito() {
@@ -49,7 +53,8 @@ public enum nekito {
                 new SpamExploit(),
                 new FaweExploit(),
                 new ChunkLoadExploit(),
-                new CWEL(),
+                new CwelExploit(),
+                new PedalExploit(),
                 new ExploitFixerExploit(),
                 new OnePacketExploit()
         );

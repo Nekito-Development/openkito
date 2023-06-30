@@ -4,6 +4,8 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.List;
+
+import de.florianmichael.viamcp.gui.GuiProtocolSelector;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.ServerList;
@@ -98,6 +100,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
         this.buttonList.add(new GuiButton(3, this.width / 2 + 4 + 50, this.height - 52, 100, 20, I18n.format("selectServer.add", new Object[0])));
         this.buttonList.add(new GuiButton(8, this.width / 2 + 4, this.height - 28, 70, 20, I18n.format("selectServer.refresh", new Object[0])));
         this.buttonList.add(new GuiButton(0, this.width / 2 + 4 + 76, this.height - 28, 75, 20, I18n.format("gui.cancel", new Object[0])));
+        this.buttonList.add(new GuiButton(69, 5, 5, 90, 20, "Version"));
         this.selectServer(this.serverListSelector.func_148193_k());
     }
 
@@ -167,6 +170,11 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
                 this.directConnect = true;
                 this.mc.displayGuiScreen(new GuiScreenServerList(this, this.selectedServer = new ServerData(I18n.format("selectServer.defaultName", new Object[0]), "", false)));
             }
+           else if (button.id == 69)
+            {
+                this.mc.displayGuiScreen(new GuiProtocolSelector(this));
+            }
+
             else if (button.id == 3)
             {
                 this.addingServer = true;
