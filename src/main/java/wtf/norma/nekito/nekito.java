@@ -22,6 +22,7 @@ import wtf.norma.nekito.exploit.impl.other.FaweExploit;
 import wtf.norma.nekito.exploit.impl.other.SpamExploit;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
+import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
 
 public enum nekito {
@@ -30,6 +31,7 @@ public enum nekito {
     private final CommandManager commandManager;
     private final ExploitManager exploitManager;
     private final DiscordRichPresenceManager discordRichPresence;
+    private final ModuleManager moduleManager;
 
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
@@ -53,6 +55,8 @@ public enum nekito {
                 new ExploitFixerExploit(),
                 new OnePacketExploit()
         );
+
+        moduleManager = new ModuleManager();
 
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
