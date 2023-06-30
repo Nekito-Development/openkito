@@ -15,6 +15,8 @@ import net.minecraft.client.resources.I18n;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
+import wtf.norma.nekito.ui.botting.Botter;
+import wtf.norma.nekito.ui.botting.BotterUI;
 
 public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
 {
@@ -101,6 +103,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
         this.buttonList.add(new GuiButton(8, this.width / 2 + 4, this.height - 28, 70, 20, I18n.format("selectServer.refresh", new Object[0])));
         this.buttonList.add(new GuiButton(0, this.width / 2 + 4 + 76, this.height - 28, 75, 20, I18n.format("gui.cancel", new Object[0])));
         this.buttonList.add(new GuiButton(69, 5, 5, 90, 20, "Version"));
+        this.buttonList.add(new GuiButton(14, 5, 30, 90, 20, "BOTS "));
         this.selectServer(this.serverListSelector.func_148193_k());
     }
 
@@ -173,6 +176,10 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
            else if (button.id == 69)
             {
                 this.mc.displayGuiScreen(new GuiProtocolSelector(this));
+            }
+            else if (button.id == 14)
+            {
+                this.mc.displayGuiScreen(new BotterUI(this));
             }
 
             else if (button.id == 3)

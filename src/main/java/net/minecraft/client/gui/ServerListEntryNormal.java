@@ -25,25 +25,49 @@ import org.apache.logging.log4j.Logger;
 public class ServerListEntryNormal implements GuiListExtended.IGuiListEntry
 {
     private static final Logger logger = LogManager.getLogger();
+    private final GuiMultiplayer owner;
     private static final ThreadPoolExecutor field_148302_b = new ScheduledThreadPoolExecutor(5, (new ThreadFactoryBuilder()).setNameFormat("Server Pinger #%d").setDaemon(true).build());
     private static final ResourceLocation UNKNOWN_SERVER = new ResourceLocation("textures/misc/unknown_server.png");
     private static final ResourceLocation SERVER_SELECTION_BUTTONS = new ResourceLocation("textures/gui/server_selection.png");
     private final GuiMultiplayer field_148303_c;
     private final Minecraft mc;
-    private final ServerData field_148301_e;
+    private ServerData field_148301_e;
     private final ResourceLocation field_148306_i;
     private String field_148299_g;
     private DynamicTexture field_148305_h;
     private long field_148298_f;
 
     protected ServerListEntryNormal(GuiMultiplayer p_i45048_1_, ServerData p_i45048_2_)
+
     {
+        this.owner = p_i45048_1_;
         this.field_148303_c = p_i45048_1_;
         this.field_148301_e = p_i45048_2_;
         this.mc = Minecraft.getMinecraft();
         this.field_148306_i = new ResourceLocation("servers/" + p_i45048_2_.serverIP + "/icon");
         this.field_148305_h = (DynamicTexture)this.mc.getTextureManager().getTexture(this.field_148306_i);
     }
+
+    public void ping() {
+        this.field_148301_e.field_78841_f = true;
+        this.field_148301_e.pingToServer = -2L;
+        this.field_148301_e.serverMOTD = "";
+        this.field_148301_e.populationInfo = "";
+        field_148302_b.submit(() -> {
+            try {
+                this.owner.getOldServerPinger().ping(this.field_148301_e);
+            } catch (UnknownHostException var2) {
+                this.field_148301_e.pingToServer = -1L;
+                this.field_148301_e.serverMOTD = EnumChatFormatting.DARK_RED + "Can't resolve hostname";
+            } catch (Exception var3) {
+                this.field_148301_e.pingToServer = -1L;
+                this.field_148301_e.serverMOTD = EnumChatFormatting.DARK_RED + "Can't connect to server.";
+            }
+
+        });
+    }
+
+
 
     public void drawEntry(int slotIndex, int x, int y, int listWidth, int slotHeight, int mouseX, int mouseY, boolean isSelected)
     {
@@ -339,5 +363,8 @@ public class ServerListEntryNormal implements GuiListExtended.IGuiListEntry
     public ServerData getServerData()
     {
         return this.field_148301_e;
+    }
+    public void setServerData(ServerData serverData) {
+        this.field_148301_e = serverData;
     }
 }
