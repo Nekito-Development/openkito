@@ -1,6 +1,8 @@
 package wtf.norma.nekito;
 
 import java.io.IOException;
+
+import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.command.CommandManager;
@@ -23,59 +25,62 @@ import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
 
 public enum nekito {
-  INSTANCE;
+    INSTANCE;
 
-  private final CommandManager commandManager;
-  private final ExploitManager exploitManager;
-  private final DiscordRichPresenceManager discordRichPresence;
+    private final CommandManager commandManager;
+    private final ExploitManager exploitManager;
+    private final DiscordRichPresenceManager discordRichPresence;
 
-  nekito() {
-    System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
+    nekito() {
+        System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
-    discordRichPresence = new DiscordRichPresenceManager();
-    commandManager = new CommandManager(
-        new ExploitCommand(),
-        new HelpCommand(),
-        new OnlineCommand(),
-        new FakeGamemodeCommand()
-    );
+        discordRichPresence = new DiscordRichPresenceManager();
+        commandManager = new CommandManager(
+                new ExploitCommand(),
+                new HelpCommand(),
+                new OnlineCommand(),
+                new FakeGamemodeCommand()
+        );
 
-    exploitManager = new ExploitManager(
-        new AnvilExploit(),
-        new AttackExploit(),
-        new BookExploit(),
-        new SpamExploit(),
-        new FaweExploit(),
-        new ChunkLoadExploit(),
-        new CWEL(),
-        new ExploitFixerExploit(),
-        new OnePacketExploit()
-    );
+        exploitManager = new ExploitManager(
+                new AnvilExploit(),
+                new AttackExploit(),
+                new BookExploit(),
+                new SpamExploit(),
+                new FaweExploit(),
+                new ChunkLoadExploit(),
+                new CWEL(),
+                new ExploitFixerExploit(),
+                new OnePacketExploit()
+        );
 
-    //If you want to use niko from launcher please remove this
-    NetHelper.createSession("cwelpolska", null);
-    Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
-  }
+        ViaMCP.create();
+        ViaMCP.INSTANCE.initAsyncSlider();
+        
+        //If you want to use niko from launcher please remove this
+        NetHelper.createSession("cwelpolska", null);
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
+    }
 
-  public void setDisplay() throws IOException {
-    Display.setTitle("Nekito 1.0");
-    OpenGlHelper
-        .setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
-  }
+    public void setDisplay() throws IOException {
+        Display.setTitle("Nekito 1.0");
+        OpenGlHelper
+                .setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
+    }
 
-  public void shutDown() {
-    DiscordRPC.discordShutdown();
-  }
+    public void shutDown() {
+        DiscordRPC.discordShutdown();
+    }
 
-  public CommandManager getCommandManager() {
-    return commandManager;
-  }
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
 
-  public ExploitManager getExploitManager() {
-    return exploitManager;
-  }
+    public ExploitManager getExploitManager() {
+        return exploitManager;
+    }
 
-  public DiscordRichPresenceManager getDiscordRichPresence() {
-    return discordRichPresence;
-  }
+    public DiscordRichPresenceManager getDiscordRichPresence() {
+        return discordRichPresence;
+    }
 }
