@@ -29,7 +29,7 @@ public class RenderEnv
     private boolean[] borderFlags = null;
     private static ThreadLocal threadLocalInstance = new ThreadLocal();
 
-    private RenderEnv(IBlockAccess p_i94_1_, IBlockState p_i94_2_, BlockPos p_i94_3_)
+    public RenderEnv(IBlockAccess p_i94_1_, IBlockState p_i94_2_, BlockPos p_i94_3_)
     {
         this.blockAccess = p_i94_1_;
         this.blockState = p_i94_2_;
@@ -100,6 +100,9 @@ public class RenderEnv
 
         return this.metadata;
     }
+
+
+
 
     public float[] getQuadBounds()
     {

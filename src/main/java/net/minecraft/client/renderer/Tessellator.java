@@ -3,6 +3,8 @@ package net.minecraft.client.renderer;
 public class Tessellator
 {
     private WorldRenderer worldRenderer;
+
+
     private WorldVertexBufferUploader vboUploader = new WorldVertexBufferUploader();
 
     /** The static instance of the Tessellator. */
@@ -25,6 +27,11 @@ public class Tessellator
     {
         this.worldRenderer.finishDrawing();
         this.vboUploader.func_181679_a(this.worldRenderer);
+    }
+
+    public WorldRenderer getBuffer()
+    {
+        return this.worldRenderer;
     }
 
     public WorldRenderer getWorldRenderer()

@@ -81,6 +81,19 @@ public class VertexFormat
         }
     }
 
+
+    public int getOffset(int index)
+    {
+        return ((Integer)this.offsets.get(index)).intValue();
+    }
+
+
+
+    public int getIntegerSize()
+    {
+        return this.getNextOffset() / 4;
+    }
+
     public boolean hasNormal()
     {
         return this.normalElementOffset >= 0;

@@ -73,6 +73,73 @@ public class MathHelper
         return value < (float)i ? i - 1 : i;
     }
 
+
+    public static int clamp(int num, int min, int max)
+    {
+        if (num < min)
+        {
+            return min;
+        }
+        else
+        {
+            return num > max ? max : num;
+        }
+    }
+
+    /**
+     * Returns the value of the first parameter, clamped to be within the lower and upper limits given by the second and
+     * third parameters
+     */
+    public static float clamp(float num, float min, float max)
+    {
+        if (num < min)
+        {
+            return min;
+        }
+        else
+        {
+            return num > max ? max : num;
+        }
+    }
+
+    public static double clamp(double num, double min, double max)
+    {
+        if (num < min)
+        {
+            return min;
+        }
+        else
+        {
+            return num > max ? max : num;
+        }
+    }
+
+
+
+    public static int roundUp(int number, int interval)
+    {
+        if (interval == 0)
+        {
+            return 0;
+        }
+        else if (number == 0)
+        {
+            return interval;
+        }
+        else
+        {
+            if (number < 0)
+            {
+                interval *= -1;
+            }
+
+            int i = number % interval;
+            return i == 0 ? number : number + interval - i;
+        }
+    }
+
+
+
     /**
      * returns par0 cast as an int, and no greater than Integer.MAX_VALUE-1024
      */
