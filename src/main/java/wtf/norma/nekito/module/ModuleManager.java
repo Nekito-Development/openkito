@@ -1,5 +1,6 @@
 package wtf.norma.nekito.module;
 
+import wtf.norma.nekito.module.impl.ClickGUI;
 import wtf.norma.nekito.module.impl.Sprint;
 
 import java.util.ArrayList;
@@ -9,11 +10,16 @@ public class ModuleManager {
     public ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
-        initModules();
+        addAll(
+                new Sprint(),
+                new ClickGUI()
+        );
     }
 
-    public void initModules() {
-        modules.add(new Sprint());
+    public void addAll(Module... modules) {
+        for (Module m : modules) {
+            this.modules.add(m);
+        }
     }
 
     public Module getModuleByName(String name) {

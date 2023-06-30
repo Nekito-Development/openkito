@@ -51,6 +51,9 @@ import net.minecraft.util.MovementInput;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.EventType;
+import wtf.norma.nekito.event.impl.EventUpdate;
 
 public class EntityPlayerSP extends AbstractClientPlayer
 {
@@ -165,6 +168,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
     /**
      * Called to update the entity's position/logic.
      */
+    EventUpdate eventUpdate = new EventUpdate();
+
     public void onUpdate()
     {
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
@@ -179,6 +184,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
             else
             {
                 this.onUpdateWalkingPlayer();
+                eventUpdate.setType(EventType.POST);
+                Event.dispatch(eventUpdate);
             }
         }
     }
@@ -189,6 +196,9 @@ public class EntityPlayerSP extends AbstractClientPlayer
     public void onUpdateWalkingPlayer()
     {
         boolean flag = this.isSprinting();
+
+        eventUpdate.setType(EventType.PRE);
+        Event.dispatch(eventUpdate);
 
         if (flag != this.serverSprintState)
         {

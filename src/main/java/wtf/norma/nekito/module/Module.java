@@ -1,6 +1,7 @@
 package wtf.norma.nekito.module;
 
 import net.minecraft.client.Minecraft;
+import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.nekito;
 
 public class Module {
@@ -55,6 +56,20 @@ public class Module {
 
     public void onDisable() {
 
+    }
+
+    public void onEvent(Event e) {
+
+    }
+
+    public void toggle() {
+        toggled = !toggled;
+
+        if (toggled) {
+            onEnable();
+        } else {
+            onDisable();
+        }
     }
 
     public enum Category {

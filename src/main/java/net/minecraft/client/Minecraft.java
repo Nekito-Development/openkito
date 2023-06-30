@@ -1924,6 +1924,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
+                        nekito.INSTANCE.onKey(k);
+
                         if (k == 1)
                         {
                             this.displayInGameMenu();

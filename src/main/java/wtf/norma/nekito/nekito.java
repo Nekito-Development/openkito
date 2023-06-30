@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.Session;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.command.CommandManager;
 import wtf.norma.nekito.command.impl.ExploitCommand;
@@ -82,6 +85,18 @@ public enum nekito {
 
     public void shutDown() {
         DiscordRPC.discordShutdown();
+    }
+
+    public void onKey(int key) {
+        for (Module module : moduleManager.modules) {
+            if (module.getKeybind() != 0 && key == module.getKeybind()) {
+                module.toggle();
+            }
+        }
+    }
+
+    public ModuleManager getModuleManager() {
+        return moduleManager;
     }
 
     public CommandManager getCommandManager() {
