@@ -3,6 +3,7 @@ package wtf.norma.nekito.module.impl;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.nekito;
 
 public class ClickGUI extends Module {
 
@@ -13,7 +14,7 @@ public class ClickGUI extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        mc.displayGuiScreen(new ClickGuiMain());
+        mc.displayGuiScreen(nekito.INSTANCE.getClickGui());
         toggle();
     }
 

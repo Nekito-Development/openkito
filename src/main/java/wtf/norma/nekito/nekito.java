@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
+import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
 import wtf.norma.nekito.command.impl.ExploitCommand;
 import wtf.norma.nekito.command.impl.FakeGamemodeCommand;
@@ -40,6 +41,8 @@ public enum nekito {
     private final DiscordRichPresenceManager discordRichPresence;
     private final ModuleManager moduleManager;
 
+    private final ClickGuiMain clickGuiMain;
+
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
@@ -69,6 +72,7 @@ public enum nekito {
         );
 
         moduleManager = new ModuleManager();
+        clickGuiMain = new ClickGuiMain();
 
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
@@ -109,5 +113,9 @@ public enum nekito {
 
     public DiscordRichPresenceManager getDiscordRichPresence() {
         return discordRichPresence;
+    }
+
+    public ClickGuiMain getClickGui() {
+        return clickGuiMain;
     }
 }
