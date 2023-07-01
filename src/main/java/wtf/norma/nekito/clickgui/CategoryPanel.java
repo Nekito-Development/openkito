@@ -4,7 +4,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.render.RenderUtility;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,14 @@ public class CategoryPanel {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        Gui.drawRect(x, y, x + width, y + height, 0xFF2B71F3);
+        if (this.open) {
+            int offset = height;
+            for (ModuleButton moduleButton : this.moduleButtons) {
+                offset += moduleButton.drawScreen(mouseX, mouseY, partialTicks, offset);
+            }
+        }
+
+        RenderUtility.drawRound(x - 1, y, width + 2, height, 4, new Color(43, 92, 255));
         mc.fontRendererObj.drawStringWithShadow(category.name,
                 x + width / 2f - mc.fontRendererObj.getStringWidth(category.name()) / 2f,
                 y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f,
@@ -42,12 +51,6 @@ public class CategoryPanel {
 
         mc.fontRendererObj.drawStringWithShadow(open ? "-" : "+", x + 90, y + 3, -1);
 
-        if (this.open) {
-            int offset = height;
-            for (ModuleButton moduleButton : this.moduleButtons) {
-                offset += moduleButton.drawScreen(mouseX, mouseY, partialTicks, offset);
-            }
-        }
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
