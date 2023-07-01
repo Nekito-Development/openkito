@@ -53,6 +53,10 @@ public class ModuleButton {
         Gui.drawRect(x, y, x + width, y + height, 0x80000000);
         mc.fontRendererObj.drawStringWithShadow(module.getName(), x + 3, y + (height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f), this.module.isToggled() ? 0xFF2B71F3 : -1);
 
+        if (module.settings.size() > 1) {
+            mc.fontRendererObj.drawStringWithShadow(open ? "-" : "+", x + 90, y + 3, -1);
+        }
+
         int offsets = height;
         if (open) {
             for (Item<?> item : items) {

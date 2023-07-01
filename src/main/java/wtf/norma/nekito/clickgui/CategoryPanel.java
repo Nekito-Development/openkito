@@ -35,10 +35,12 @@ public class CategoryPanel {
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         Gui.drawRect(x, y, x + width, y + height, 0xFF2B71F3);
-        mc.fontRendererObj.drawStringWithShadow(category.name(),
+        mc.fontRendererObj.drawStringWithShadow(category.name,
                 x + width / 2f - mc.fontRendererObj.getStringWidth(category.name()) / 2f,
                 y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f,
                 -1);
+
+        mc.fontRendererObj.drawStringWithShadow(open ? "-" : "+", x + 90, y + 3, -1);
 
         if (this.open) {
             int offset = height;
