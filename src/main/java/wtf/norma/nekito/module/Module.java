@@ -3,6 +3,10 @@ package wtf.norma.nekito.module;
 import net.minecraft.client.Minecraft;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.settings.Setting;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Module {
     public String name;
@@ -11,7 +15,7 @@ public class Module {
     public Category category;
 
     public final static Minecraft mc = Minecraft.getMinecraft();
-
+    public ArrayList<Setting> settings = new ArrayList<Setting>();
     public Module(String name, Category category, int keybind) {
         this.name = name;
         this.category = category;
@@ -70,6 +74,10 @@ public class Module {
         } else {
             onDisable();
         }
+    }
+
+    public void addSettings(Setting... settings) {
+        this.settings.addAll(Arrays.asList(settings));
     }
 
     public enum Category {

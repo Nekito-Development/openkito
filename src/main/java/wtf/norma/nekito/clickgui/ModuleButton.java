@@ -3,7 +3,15 @@ package wtf.norma.nekito.clickgui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import wtf.norma.nekito.clickgui.item.Item;
+import wtf.norma.nekito.clickgui.item.impl.ItemBoolean;
+import wtf.norma.nekito.clickgui.item.impl.ItemKeyBind;
+import wtf.norma.nekito.clickgui.item.impl.ItemMode;
+import wtf.norma.nekito.clickgui.item.impl.ItemSlider;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.settings.Setting;
+import wtf.norma.nekito.settings.impl.BooleanSetting;
+import wtf.norma.nekito.settings.impl.ModeSetting;
+import wtf.norma.nekito.settings.impl.NumberSetting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +34,17 @@ public class ModuleButton {
         this.width = width;
         this.height = height;
         this.mc = mc;
+
+        for (Setting setting : module.settings) {
+            if (setting instanceof BooleanSetting)
+                items.add(new ItemBoolean((BooleanSetting) setting, x, y, width, height));
+            else if (setting instanceof ModeSetting)
+                items.add(new ItemMode((ModeSetting) setting, x, y, width, height));
+            else if (setting instanceof NumberSetting)
+                items.add(new ItemSlider((NumberSetting) setting, x, y, width, height));
+        }
+
+        items.add(new ItemKeyBind(module, x, y, width, height));
     }
 
     public int drawScreen(int mouseX, int mouseY, float partialTicks, int offset) {
@@ -45,7 +64,7 @@ public class ModuleButton {
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        if (bounding(mouseX, mouseY)){
+        if (bounding(mouseX, mouseY)) {
             if (mouseButton == 0) {
                 this.module.toggle();
             } else if (mouseButton == 1) {

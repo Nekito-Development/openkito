@@ -1,10 +1,6 @@
 package wtf.norma.nekito.module;
 
-import wtf.norma.nekito.module.impl.Cape;
-import wtf.norma.nekito.module.impl.ClickGUI;
-
-import wtf.norma.nekito.module.impl.ItemPhysics;
-import wtf.norma.nekito.module.impl.Sprint;
+import wtf.norma.nekito.module.impl.*;
 
 import java.util.ArrayList;
 
@@ -17,7 +13,8 @@ public class ModuleManager {
                 new Sprint(),
                 new ClickGUI(),
                 new Cape(),
-                new ItemPhysics()
+                new ItemPhysics(),
+                new Fly()
         );
     }
 

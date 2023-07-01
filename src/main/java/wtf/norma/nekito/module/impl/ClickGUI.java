@@ -7,7 +7,7 @@ import wtf.norma.nekito.module.Module;
 public class ClickGUI extends Module {
 
     public ClickGUI() {
-        super("ClickGUI", Category.MOVEMENT, Keyboard.KEY_RSHIFT);
+        super("ClickGUI", Category.VISUALS, Keyboard.KEY_RSHIFT);
     }
 
     @Override
