@@ -165,6 +165,7 @@ public class GuiIngame extends Gui
         }
 
         if (!joinedFirst) {
+
             (new Thread(() -> {
                 try {
                     TimeUnit.SECONDS.sleep(5L);
