@@ -16,7 +16,7 @@ public class ClickGuiMain extends GuiScreen {
         if (this.panels.isEmpty()) {
             int x = 10;
             for (Module.Category category : Module.Category.values()) {
-                panels.add(new CategoryPanel(category, x, 10, 100, 15, Minecraft.getMinecraft()));
+                panels.add(new CategoryPanel(category, x, 10, 100, 16, Minecraft.getMinecraft()));
                 x += 110;
             }
         }

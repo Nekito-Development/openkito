@@ -3,6 +3,7 @@ package wtf.norma.nekito.clickgui.item.impl;
 import net.minecraft.client.gui.Gui;
 import wtf.norma.nekito.clickgui.item.Item;
 import wtf.norma.nekito.settings.impl.ModeSetting;
+import wtf.norma.nekito.util.font.Fonts;
 
 public class ItemMode extends Item<ModeSetting> {
     public ItemMode(ModeSetting modeSetting, int x, int y, int width, int height) {
@@ -15,7 +16,7 @@ public class ItemMode extends Item<ModeSetting> {
         float y = this.y + offset;
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
-        mc.fontRendererObj.drawStringWithShadow(getObject().getName() + ": " + getObject().getMode(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f, -1);
+        Fonts.SEMI_BOLD_18.drawString(getObject().getName() + ": " + getObject().getMode(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, -1);
 
         return height;
     }
