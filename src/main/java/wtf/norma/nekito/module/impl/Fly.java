@@ -16,7 +16,6 @@ public class Fly extends Module {
 
     public Fly() {
         super("Fly", Category.MOVEMENT, Keyboard.KEY_F);
-        toggle();
         this.addSettings(mode, speed, stopOnDisable);
     }
 

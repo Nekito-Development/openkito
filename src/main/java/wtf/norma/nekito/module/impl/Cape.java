@@ -10,7 +10,6 @@ public class Cape extends Module {
 
     public Cape() {
         super("Cape", Category.VISUALS, Keyboard.KEY_NONE);
-        toggle();
     }
 
     @Override
