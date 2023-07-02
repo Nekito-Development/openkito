@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: lwjgl_util-2.9.3.jar commons-io-2.8.0.jar commons-logging-1.
+ 2.jar jsr305-2.0.1.jar authlib-1.5.25.jar discord-rpc-1.6.2.jar jna-5.6
+ .0.jar vecmath-1.5.2.jar asm-9.0.jar pngdecoder-1.0.jar netty-all-4.0.2
+ 5.Final.jar commons-compress-1.20.jar httpclient-4.5.13.jar jna-platfor
+ m-5.6.0.jar slf4j-api-1.7.30.jar snakeyaml-2.0.jar ViaBackwards-4.7.0-1
+ .20-pre1-SNAPSHOT.jar ViaRewind-2.0.4-SNAPSHOT.jar ViaVersion-4.7.0-1.2
+ 0-pre2-SNAPSHOT.jar commons-codec-1.15.jar gson-2.8.6.jar oshi-core-5.5
+ .0.jar lwjgl-platform-2.9.3-natives-windows.jar log4j-core-2.17.1.jar g
+ uava-17.0.jar lwjgl-2.9.3.jar icu4j-68.2.jar jutils-1.0.0.jar lwjgl-pla
+ tform-2.9.3-natives-osx.jar httpcore-4.4.14.jar lwjgl-platform-2.9.3-na
+ tives-linux.jar paulscode-soundsystem-2013.04.17-unofficial.jar asm-tre
+ e-9.0.jar commons-lang3-3.11.jar log4j-api-2.17.1.jar jinput-2.0.9.jar 
+ jopt-simple-5.0.4.jar
+

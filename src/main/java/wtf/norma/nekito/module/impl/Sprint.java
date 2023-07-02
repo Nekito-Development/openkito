@@ -9,7 +9,6 @@ public class Sprint extends Module {
 
     public Sprint() {
         super("Sprint", Category.MOVEMENT, Keyboard.KEY_F);
-        toggle();
     }
 
     @Override
