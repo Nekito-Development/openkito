@@ -15,7 +15,8 @@ public class ModuleManager {
                 new Cape(),
                 new ItemPhysics(),
                 new Fly(),
-                new FullBright()
+                new FullBright(),
+                new CustomButtons()
         );
     }
 

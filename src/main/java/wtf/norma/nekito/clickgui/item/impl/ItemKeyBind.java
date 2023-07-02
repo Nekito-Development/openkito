@@ -4,6 +4,7 @@ import net.minecraft.client.gui.Gui;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.clickgui.item.Item;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.util.font.Fonts;
 
 public class ItemKeyBind extends Item<Module> {
     private boolean pendingKey;
@@ -18,9 +19,9 @@ public class ItemKeyBind extends Item<Module> {
         float y = this.y + offset;
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
-        mc.fontRendererObj.drawStringWithShadow(pendingKey ? "..." : "Bind [" + Keyboard.getKeyName(getObject().keybind) + "]",
+        Fonts.SEMI_BOLD_18.drawString(pendingKey ? "..." : "Bind [" + Keyboard.getKeyName(getObject().keybind) + "]",
                 x + 5,
-                y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f,
+                y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1,
                 -1);
 
         return height;
