@@ -16,7 +16,9 @@ public class ModuleManager {
                 new ItemPhysics(),
                 new Fly(),
                 new FullBright(),
-                new CustomButtons()
+                new CustomButtons(),
+                new ServerInfo(),
+                new Watermark()
         );
     }
 
