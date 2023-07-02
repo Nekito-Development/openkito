@@ -78,7 +78,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet> {
     /**
      * The active channel
      */
-    private Channel channel;
+    public Channel channel;
 
     /**
      * The address of the remote party

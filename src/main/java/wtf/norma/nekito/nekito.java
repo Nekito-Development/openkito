@@ -20,10 +20,7 @@ import wtf.norma.nekito.exploit.impl.flood.*;
 import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
 import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
 import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
-import wtf.norma.nekito.exploit.impl.other.MVCExploit;
-import wtf.norma.nekito.exploit.impl.other.ChunkLoadExploit;
-import wtf.norma.nekito.exploit.impl.other.FaweExploit;
-import wtf.norma.nekito.exploit.impl.other.SpamExploit;
+import wtf.norma.nekito.exploit.impl.other.*;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.Module;
@@ -46,6 +43,7 @@ public enum nekito {
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
+
        /// discordRichPresence = new DiscordRichPresenceManager();
 
         commandManager = new CommandManager(
@@ -62,6 +60,7 @@ public enum nekito {
                 new SpamExploit(),
                 new FaweExploit(),
                 new CIPA(),
+                new SkriptCrasher(),
                 new ChunkLoadExploit(),
                 new MVCExploit(),
                 new CwelExploit(),
