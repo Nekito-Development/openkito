@@ -131,6 +131,9 @@ public abstract class GuiSlot
 
     protected abstract void drawSlot(int entryID, int p_180791_2_, int p_180791_3_, int p_180791_4_, int mouseXIn, int mouseYIn);
 
+
+
+
     /**
      * Handles drawing a list's header row.
      */

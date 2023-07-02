@@ -6,6 +6,8 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -45,6 +47,7 @@ import optifine.Config;
 import optifine.CustomColors;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
+import wtf.norma.nekito.nekito;
 
 public class GuiIngame extends Gui
 {
@@ -52,6 +55,8 @@ public class GuiIngame extends Gui
     private static final ResourceLocation widgetsTexPath = new ResourceLocation("textures/gui/widgets.png");
     private static final ResourceLocation pumpkinBlurTexPath = new ResourceLocation("textures/misc/pumpkinblur.png");
     private final Random rand = new Random();
+
+    public static boolean joinedFirst = false;
     private final Minecraft mc;
     private final RenderItem itemRenderer;
 
@@ -157,6 +162,19 @@ public class GuiIngame extends Gui
         else
         {
             this.renderTooltip(scaledresolution, partialTicks);
+        }
+
+        if (!joinedFirst) {
+            (new Thread(() -> {
+                try {
+                    TimeUnit.SECONDS.sleep(5L);
+                } catch (InterruptedException var3) {
+                    throw new RuntimeException(var3);
+                }
+                nekito.INSTANCE.onWelcomeUI();
+            })).start();
+
+            joinedFirst = true;
         }
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

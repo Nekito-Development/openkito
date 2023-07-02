@@ -1,6 +1,8 @@
 # nekito
 Open-Source Crash client based on Niko by @narumii
 
+# Discord
+Join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
 
 # Discord
 You can join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
