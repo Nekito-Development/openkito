@@ -62,7 +62,10 @@ public class GuiMainMenu extends GuiScreen {
 
         RenderUtility.drawRect(0, 0, mc.displayWidth, mc.displayHeight, new Color(17, 17, 17).getRGB());
 
-            Fonts.MONTSERRAT45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
+
+
+
+        Fonts.MONTSERRAT45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
         Fonts.MONTSERRAT45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
 
 

@@ -38,7 +38,7 @@ public enum nekito {
     private final ExploitManager exploitManager;
 
     public ScaleMath scaleMath = new ScaleMath(2);
-    private final DiscordRichPresenceManager discordRichPresence;
+   // private final DiscordRichPresenceManager discordRichPresence;
     private final ModuleManager moduleManager;
 
     private final ClickGuiMain clickGuiMain;
@@ -46,7 +46,7 @@ public enum nekito {
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
-        discordRichPresence = new DiscordRichPresenceManager();
+       /// discordRichPresence = new DiscordRichPresenceManager();
 
         commandManager = new CommandManager(
                 new ExploitCommand(),
@@ -111,9 +111,9 @@ public enum nekito {
         return exploitManager;
     }
 
-    public DiscordRichPresenceManager getDiscordRichPresence() {
-        return discordRichPresence;
-    }
+   // public DiscordRichPresenceManager getDiscordRichPresence() {
+   //     return discordRichPresence;
+ //   }
 
     public ClickGuiMain getClickGui() {
         return clickGuiMain;

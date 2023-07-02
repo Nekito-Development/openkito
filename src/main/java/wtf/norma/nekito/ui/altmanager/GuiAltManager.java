@@ -24,7 +24,7 @@ public final class GuiAltManager extends GuiScreen {
 
 
 
-    // 30% of this is from sleek
+    // 30% of this is from sleek cuz im lazy af
 
     public GuiAltManager(GuiScreen previousScreen) {
         this.previousScreen = previousScreen;

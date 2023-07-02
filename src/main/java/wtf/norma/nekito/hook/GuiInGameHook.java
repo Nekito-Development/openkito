@@ -25,6 +25,7 @@ public class GuiInGameHook extends GuiIngame {
     @Override
     public void renderGameOverlay(float partialTicks) {
         super.renderGameOverlay(partialTicks);
+        // bardzo dziwno watermarko !
         String text = "N" + EnumChatFormatting.WHITE + "ekito" + EnumChatFormatting.DARK_GRAY + " [" + EnumChatFormatting.WHITE + Minecraft.getDebugFPS() + " FPS" + EnumChatFormatting.DARK_GRAY + "]";
         RenderUtility.drawRound(3, 4, mc.fontRendererObj.getStringWidth(text) + 4, 10, 3, new Color(0, 0, 0, 100));
         mc.fontRendererObj.drawStringWithShadow(text, 5, 5, OpenGlHelper.rainbowColor(3000, 1));
