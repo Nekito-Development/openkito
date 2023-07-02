@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL20;
 
@@ -11,10 +12,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static net.minecraft.client.renderer.OpenGlHelper.glGetUniformLocation;
-import static net.minecraft.client.renderer.OpenGlHelper.glUseProgram;
+import static net.minecraft.client.renderer.OpenGlHelper.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.glCreateProgram;
+import static org.lwjgl.opengl.GL20.glUniform2i;
 
 public class ShaderUtility {
 
@@ -34,11 +35,28 @@ public class ShaderUtility {
     }
 
 
+
+    public void setUniformi(String name, int... args) {
+        int loc = glGetUniformLocation(programID, name);
+        if (args.length > 1) glUniform2i(loc, args[0], args[1]);
+        else glUniform1i(loc, args[0]);
+    }
     private final int programID;
 
 
     public ShaderUtility(String fragmentShaderLoc) {
         this(fragmentShaderLoc, "client/shaders/vertex.vsh");
+    }
+
+
+    public static Framebuffer createFrameBuffer(Framebuffer framebuffer) {
+        if (framebuffer == null || framebuffer.framebufferWidth != mc.displayWidth || framebuffer.framebufferHeight != mc.displayHeight) {
+            if (framebuffer != null) {
+                framebuffer.deleteFramebuffer();
+            }
+            return new Framebuffer(mc.displayWidth, mc.displayHeight, true);
+        }
+        return framebuffer;
     }
 
 

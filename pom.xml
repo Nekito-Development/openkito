@@ -20,6 +20,10 @@
       <url>https://jitpack.io</url>
     </repository>
     <repository>
+      <id>mvnrepository</id>
+      <url>https://repo1.maven.org/maven2//</url>
+    </repository>
+    <repository>
       <id>minecraft</id>
       <url>https://libraries.minecraft.net/</url>
     </repository>
@@ -39,6 +43,16 @@
       <artifactId>pngdecoder</artifactId>
       <version>1.0</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.json/json -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20230618</version>
+    </dependency>
+
+
+
 
     <dependency>
       <artifactId>authlib</artifactId>

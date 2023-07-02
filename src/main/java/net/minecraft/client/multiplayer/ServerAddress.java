@@ -27,6 +27,52 @@ public class ServerAddress
         return this.serverPort;
     }
 
+
+
+    private static int getInt(String value, int defaultValue)
+    {
+        try
+        {
+            return Integer.parseInt(value.trim());
+        }
+        catch (Exception var3)
+        {
+            return defaultValue;
+        }
+    }
+
+
+    public static ServerAddress resolveAddress(String serverIP) {
+        int i;
+        int j;
+        if (serverIP == null) {
+            return null;
+        }
+        String[] astring = serverIP.split(":");
+        if (serverIP.startsWith("[") && (i = serverIP.indexOf("]")) > 0) {
+            String s = serverIP.substring(1, i);
+            String s1 = serverIP.substring(i + 1).trim();
+            if (s1.startsWith(":") && s1.length() > 0) {
+                s1 = s1.substring(1);
+                astring = new String[]{s, s1};
+            } else {
+                astring = new String[]{s};
+            }
+        }
+        if (astring.length > 2) {
+            astring = new String[]{serverIP};
+        }
+        String s2 = astring[0];
+        int n = j = astring.length > 1 ? ServerAddress.getInt(astring[1], 25565) : 25565;
+        if (j == 25565) {
+            String[] astring1 = ServerAddress.getServerAddress(s2);
+            s2 = astring1[0];
+            j = ServerAddress.getInt(astring1[1], 25565);
+        }
+        return new ServerAddress(s2, j);
+    }
+
+
     public static ServerAddress func_78860_a(String p_78860_0_)
     {
         if (p_78860_0_ == null)

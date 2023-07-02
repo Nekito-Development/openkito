@@ -6,6 +6,7 @@ import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
+import org.apache.logging.log4j.core.tools.picocli.CommandLine;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
@@ -21,11 +22,14 @@ import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
 import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
 import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
 import wtf.norma.nekito.exploit.impl.other.*;
+import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
+
+import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.util.math.ScaleMath;
 
 public enum nekito {
@@ -35,7 +39,7 @@ public enum nekito {
     private final ExploitManager exploitManager;
 
     public ScaleMath scaleMath = new ScaleMath(2);
-   // private final DiscordRichPresenceManager discordRichPresence;
+    private final DiscordRichPresenceManager discordRichPresence;
     private final ModuleManager moduleManager;
 
     private final ClickGuiMain clickGuiMain;
@@ -44,7 +48,7 @@ public enum nekito {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
 
-       /// discordRichPresence = new DiscordRichPresenceManager();
+        discordRichPresence = new DiscordRichPresenceManager();
 
         commandManager = new CommandManager(
                 new ExploitCommand(),
@@ -88,6 +92,14 @@ public enum nekito {
         Display.setTitle("Nekito 1.0");
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
+    Minecraft mc = Minecraft.getMinecraft();
+    public void onWelcomeUI() {
+        mc.displayGuiScreen(new WelcomeGUI());
+        nekito.INSTANCE.getCommandManager().getCommands().stream()
+                .filter(command -> !(command instanceof HelpCommand))
+                .forEach(command -> ChatHelper.printMessage(
+                        String.format("&5%s &f- &d%s", command.getAlias(), command.getDescription())));
+    }
 
     public void shutDown() {
         DiscordRPC.discordShutdown();
@@ -113,9 +125,9 @@ public enum nekito {
         return exploitManager;
     }
 
-   // public DiscordRichPresenceManager getDiscordRichPresence() {
-   //     return discordRichPresence;
- //   }
+    public DiscordRichPresenceManager getDiscordRichPresence() {
+        return discordRichPresence;
+   }
 
     public ClickGuiMain getClickGui() {
         return clickGuiMain;
