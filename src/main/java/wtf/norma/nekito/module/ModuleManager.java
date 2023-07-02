@@ -14,7 +14,8 @@ public class ModuleManager {
                 new ClickGUI(),
                 new Cape(),
                 new ItemPhysics(),
-                new Fly()
+                new Fly(),
+                new FullBright()
         );
     }
 
