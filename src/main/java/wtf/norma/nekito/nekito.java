@@ -5,16 +5,14 @@ import java.io.IOException;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.Session;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine;
-import org.lwjgl.input.Keyboard;
+import net.minecraft.util.ChatComponentText;
+
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IChatComponent;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
-import wtf.norma.nekito.command.impl.ExploitCommand;
-import wtf.norma.nekito.command.impl.FakeGamemodeCommand;
-import wtf.norma.nekito.command.impl.HelpCommand;
-import wtf.norma.nekito.command.impl.OnlineCommand;
+import wtf.norma.nekito.command.impl.*;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
 import wtf.norma.nekito.exploit.impl.flood.*;
@@ -41,7 +39,6 @@ public enum nekito {
     public ScaleMath scaleMath = new ScaleMath(2);
     private final DiscordRichPresenceManager discordRichPresence;
     private final ModuleManager moduleManager;
-
     private final ClickGuiMain clickGuiMain;
 
     nekito() {
@@ -54,7 +51,8 @@ public enum nekito {
                 new ExploitCommand(),
                 new HelpCommand(),
                 new OnlineCommand(),
-                new FakeGamemodeCommand()
+                new FakeGamemodeCommand(),
+                new BindCommand()
         );
 
         exploitManager = new ExploitManager(
@@ -131,5 +129,10 @@ public enum nekito {
 
     public ClickGuiMain getClickGui() {
         return clickGuiMain;
+    }
+
+    public static void ChatMessage(final String msg)
+    {
+        Minecraft.getMinecraft().thePlayer.addChatMessage((IChatComponent)new ChatComponentText(EnumChatFormatting.DARK_PURPLE + "Nekito" + EnumChatFormatting.DARK_GRAY + " » " + EnumChatFormatting.GRAY + msg));
     }
 }

@@ -10,11 +10,14 @@ import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.ui.checkhost.results.CheckHostHttpResult;
 import wtf.norma.nekito.ui.checkhost.results.CheckHostTcpResult;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.other.GeoUtils;
 import wtf.norma.nekito.util.other.ProtocolVersionUtils;
+import wtf.norma.nekito.util.shader.GLSL;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -32,6 +35,7 @@ public class GuiCheckHost extends GuiScreen {
     // EDITED CLIENT GUI MODS BRAND
     String lastAddress = "Pinging...";
     private volatile String addressPort;
+    public long init;
     // EDITED CLIENT GUI MODS GEO
 
     // EDITED CLIENT GUI MODS GEO
@@ -60,6 +64,7 @@ public class GuiCheckHost extends GuiScreen {
 
     @Override
     public void initGui() {
+        init = System.currentTimeMillis();
         Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(1, this.width - 70, this.height - 30, 60, 20, "Back"));
@@ -112,7 +117,7 @@ public class GuiCheckHost extends GuiScreen {
 
     @Override
     public void drawScreen(final int par1, final int par2, final float par3) {
-        this.drawDefaultBackground();
+        drawBackground();
 
         Gui.drawRect(8, 29, 400, 30, ColorUtility.rainbowEffect(0L, 1.0f).getRGB());
         Gui.drawRect(8, 291, 400, 290, ColorUtility.rainbowEffect(0L, 1.0f).getRGB());
@@ -554,5 +559,25 @@ public class GuiCheckHost extends GuiScreen {
 
         this.mc.fontRendererObj.drawString("Server IP", this.width - 100, 20, -1);
         super.drawScreen(par1, par2, par3);
+    }
+
+    public void drawBackground() {
+        GL11.glPushMatrix();
+        {
+            GL11.glDisable(GL11.GL_CULL_FACE);
+            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+
+
+            GL11.glBegin(GL11.GL_QUADS);
+            {
+                GL11.glVertex2f(0,0);
+                GL11.glVertex2f(0,height);
+                GL11.glVertex2f(width,height);
+                GL11.glVertex2f(width,0);
+                GL11.glEnd();
+            }
+            GL20.glUseProgram(0);
+        }
+        GL11.glPopMatrix();
     }
 }
