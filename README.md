@@ -1,5 +1,6 @@
 # nekito
-Open-Source Crash client based on Niko by @narumii
+Open-Source Crash client Made by eleczka, lekoz , groszus and tecness.
+Special thanks to narumii for the base
 
 
 # Website
