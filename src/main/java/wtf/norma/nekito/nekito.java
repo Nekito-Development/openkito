@@ -107,6 +107,7 @@ public enum nekito {
 
     public void postInit() {
         RenderUtil.Instance = new RenderUtil(true);
+        draggableManager.Init();
     }
 
     public void shutDown() {

@@ -343,6 +343,8 @@ public class GuiIngame extends Gui
         if (scoreobjective1 != null)
         {
             this.renderScoreboard(scoreobjective1, scaledresolution);
+        } else {
+            //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").AllowRender = false;
         }
 
         GlStateManager.enableBlend();
@@ -568,6 +570,10 @@ public class GuiIngame extends Gui
 
     private void renderScoreboard(ScoreObjective p_180475_1_, ScaledResolution p_180475_2_)
     {
+        //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").p_180475_1_ = p_180475_1_;
+        //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").p_180475_2_ = p_180475_2_;
+        //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").AllowRender = true;
+
         Scoreboard scoreboard = p_180475_1_.getScoreboard();
         Collection collection = scoreboard.getSortedScores(p_180475_1_);
         ArrayList arraylist = Lists.newArrayList(Iterables.filter(collection, new Predicate()

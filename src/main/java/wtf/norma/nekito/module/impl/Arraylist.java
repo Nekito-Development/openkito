@@ -28,21 +28,7 @@ public class Arraylist extends Module {
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventRender2D) {
-            ScaledResolution sr = new ScaledResolution(mc);
-            ArrayList<Module> enabledMods = new ArrayList<Module>();
-            for(Module m : nekito.INSTANCE.getModuleManager().getModules())
-                if(m.isToggled())
-                    enabledMods.add(m);
 
-            enabledMods.sort((m1,m2) -> Fonts.SEMI_BOLD_16.getStringWidth(m2.getName()) - Fonts.SEMI_BOLD_16.getStringWidth(m1.getName()));
-
-            int y = 5;
-            int x = 5;
-            for(Module m : enabledMods)
-            {
-                Fonts.SEMI_BOLD_18.drawString(m.getName(), sr.getScaledWidth() - Fonts.SEMI_BOLD_18.getStringWidth(m.getName()) - x, y, OpenGlHelper.rainbowColor(3000, 1 + y * 22));
-                y+=10;
-            }
         }
     }
 }
