@@ -5,8 +5,14 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
 
+/*
+author @intexpression
+ */
+
+
 
 public class Cape extends Module {
+
 
     public Cape() {
         super("Cape", Category.VISUALS, Keyboard.KEY_NONE);
