@@ -19,7 +19,8 @@ public class ModuleManager {
                 new CustomButtons(),
                 new ServerInfo(),
                 new Watermark(),
-                new Arraylist()
+                new Arraylist(),
+                new CustomHotbar()
         );
     }
 

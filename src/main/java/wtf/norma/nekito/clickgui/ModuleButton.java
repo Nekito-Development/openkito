@@ -54,7 +54,7 @@ public class ModuleButton {
         Gui.drawRect(x, y, x + width, y + height, 0x80000000);
         Fonts.SEMI_BOLD_18.drawString(module.getName(), x + 3, y + (height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f) + 1, this.module.isToggled() ? 0xFF2B71F3 : -1);
 
-        if (module.settings.size() > 1) {
+        if (module.settings.size() > 0) {
             Fonts.SEMI_BOLD_18.drawString(open ? "-" : "+", x + 90, y + 4, -1);
         }
 

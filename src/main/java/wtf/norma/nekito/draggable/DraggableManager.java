@@ -2,10 +2,7 @@ package wtf.norma.nekito.draggable;
 
 import net.minecraft.client.gui.Gui;
 import org.lwjgl.util.vector.Vector2f;
-import wtf.norma.nekito.draggable.impl.Arraylist;
-import wtf.norma.nekito.draggable.impl.Scoreboard;
-import wtf.norma.nekito.draggable.impl.ServerInfo;
-import wtf.norma.nekito.draggable.impl.Watermark;
+import wtf.norma.nekito.draggable.impl.*;
 
 import java.util.LinkedList;
 
@@ -22,6 +19,7 @@ public class DraggableManager {
         Add(new Watermark());
         Add(new Arraylist());
         Add(new ServerInfo());
+        Add(new Hotbar());
 
         for(AbstractDraggable draggable : DraggableList) {
             draggable.Init();
