@@ -18,7 +18,6 @@ public class ModuleManager {
                 new FullBright(),
                 new CustomButtons(),
                 new ServerInfo(),
-                new Hotbar(),
                 new Watermark(),
                 new Arraylist()
         );
