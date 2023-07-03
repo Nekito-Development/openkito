@@ -9,6 +9,7 @@ uniform float time;
 
 /*
 * @author Hazsi (kinda)
+* Redacted by ConeTin
 */
 mat2 m(float a) {
 	float c=cos(a), s=sin(a);
@@ -26,14 +27,14 @@ void main() {
 	vec3 cl = vec3(0.0);
 	float d = 2.5;
 
-	for (int i = 0; i <= 5; i++) {
+	for (int i = 0; i <= 4; i++) {
 		vec3 p = vec3(0, 0, 4.0) + normalize(vec3(a, -1.0)) * d;
 		float rz = map(p);
 		float f =  clamp((rz - map(p + 0.1)) * 0.5, -0.1, 1.0);
-		vec3 l = vec3(0.1, 0.3, 0.4) + vec3(5.0, 2.5, 3.0) * f;
+		vec3 l = vec3(0.0, 0.4, 0.4) + vec3(5.0, 2.5, 3.0) * f;
 		cl = cl * l + smoothstep(2.5, 0.0, rz) * 0.6 * l;
 		d += min(rz, 1.0);
 	}
 
-	gl_FragColor = vec4(cl, 1.0);
+	gl_FragColor = vec4(cl, d);
 }

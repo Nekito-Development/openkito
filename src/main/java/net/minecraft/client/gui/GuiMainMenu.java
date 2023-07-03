@@ -95,7 +95,6 @@ public class GuiMainMenu extends GuiScreen {
     }
 
     public void drawbackground() {
-        width = width*2;
         GL11.glPushMatrix();
         {
             GL11.glDisable(GL11.GL_CULL_FACE);
@@ -106,8 +105,8 @@ public class GuiMainMenu extends GuiScreen {
             {
                 GL11.glVertex2f(0,0);
                 GL11.glVertex2f(0,height);
-                GL11.glVertex2f(width,height);
-                GL11.glVertex2f(width,0);
+                GL11.glVertex2f(width*2,height);
+                GL11.glVertex2f(width*2,0);
                 GL11.glEnd();
             }
             GL20.glUseProgram(0);
