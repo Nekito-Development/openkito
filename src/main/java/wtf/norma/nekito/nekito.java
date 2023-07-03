@@ -14,10 +14,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
-import wtf.norma.nekito.command.impl.ExploitCommand;
-import wtf.norma.nekito.command.impl.FakeGamemodeCommand;
-import wtf.norma.nekito.command.impl.HelpCommand;
-import wtf.norma.nekito.command.impl.OnlineCommand;
+import wtf.norma.nekito.command.impl.*;
 import wtf.norma.nekito.draggable.DraggableManager;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
@@ -57,7 +54,8 @@ public enum nekito {
                 new ExploitCommand(),
                 new HelpCommand(),
                 new OnlineCommand(),
-                new FakeGamemodeCommand()
+                new FakeGamemodeCommand(),
+                new BindCommand()
         );
 
         exploitManager = new ExploitManager(
@@ -110,6 +108,7 @@ public enum nekito {
 
     public void postInit() {
         RenderUtil.Instance = new RenderUtil(true);
+        draggableManager.Init();
     }
 
     public void shutDown() {
