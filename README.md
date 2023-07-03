@@ -10,8 +10,6 @@ You can check our website by clicking [here](https://astal.store)
 # Discord
 Join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
 
-# Discord
-You can join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
 
 # Issues
 Found a bug or have an idea for a new feature? You can let us know by clicking [here](https://github.com/intexpression/nekito/issues) to open an issue.
