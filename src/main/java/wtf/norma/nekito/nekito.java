@@ -1,5 +1,6 @@
 package wtf.norma.nekito;
 
+import java.awt.print.Book;
 import java.io.IOException;
 
 import de.florianmichael.viamcp.ViaMCP;
@@ -24,10 +25,7 @@ import wtf.norma.nekito.exploit.impl.flood.*;
 import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
 import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
 import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
-import wtf.norma.nekito.exploit.impl.other.MVCExploit;
-import wtf.norma.nekito.exploit.impl.other.ChunkLoadExploit;
-import wtf.norma.nekito.exploit.impl.other.FaweExploit;
-import wtf.norma.nekito.exploit.impl.other.SpamExploit;
+import wtf.norma.nekito.exploit.impl.other.*;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
@@ -63,19 +61,24 @@ public enum nekito {
         );
 
         exploitManager = new ExploitManager(
-                new AnvilExploit(),
-                new AttackExploit(),
-                new BookExploit(),
-                new SpamExploit(),
-                new FaweExploit(),
-                new CIPA(),
-                new ChunkLoadExploit(),
-                new MVCExploit(),
-                new CwelExploit(),
-                new KuszkoExploit(),
-                new PedalExploit(),
-                new ExploitFixerExploit(),
-                new OnePacketExploit()
+        new AnvilExploit(),
+        new AttackExploit(),
+        new CIPA(),
+        new CwelExploit(),
+        new KuszkoExploit(),
+        new KuszkoExploit(),
+        new PedalExploit(),
+        new BookExploit(),
+        new ExploitFixerExploit(),
+        new OnePacketExploit(),
+        new ChunkLoadExploit(),
+        new FaweExploit(),
+        new MVCExploit(),
+        new MVCEXPLOIT2(),
+        new NcpCrasher(),
+        new SkriptCrasher(),
+        new SpamExploit(),
+        new WorldEditCrasher1()
         );
 
         draggableManager = new DraggableManager();
