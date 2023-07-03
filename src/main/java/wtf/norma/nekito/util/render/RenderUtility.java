@@ -7,6 +7,8 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.shader.Framebuffer;
+import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;

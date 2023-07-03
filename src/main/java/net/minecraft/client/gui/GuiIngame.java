@@ -367,6 +367,7 @@ public class GuiIngame extends Gui
         }
 
         Event.dispatch(new EventRender2D(partialTicks));
+        nekito.INSTANCE.getDraggableManager().Render();
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
