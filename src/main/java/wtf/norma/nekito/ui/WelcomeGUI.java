@@ -21,7 +21,7 @@ public class WelcomeGUI extends GuiScreen {
 
             Fonts.SEMI_BOLD_18.drawCenteredStringWithShadow("Welcome in Nekito!", sr.getScaledWidth() / 2, sr.getScaledHeight() / 2, -1);
             Fonts.SEMI_BOLD_14.drawCenteredStringWithShadow("Join our Discord:https://discord.gg/PXUm6zydUv ", sr.getScaledWidth() / 2, sr.getScaledHeight() / 2 + 14, -1);
-            Fonts.SEMI_BOLD_12.drawCenteredStringWithShadow("Client made by: Intexpression, groszus, lekoz, besterror and tecness ", sr.getScaledWidth() / 2, sr.getScaledHeight() / 2 + 24, -1);
+            Fonts.SEMI_BOLD_12.drawCenteredStringWithShadow("Client made by: Intexpression, groszus, lekoz and tecness ", sr.getScaledWidth() / 2, sr.getScaledHeight() / 2 + 24, -1);
             Fonts.SEMI_BOLD_12.drawCenteredStringWithShadow("Have Fun Crashing Servers!", sr.getScaledWidth() / 2, sr.getScaledHeight() / 2 + 44, -1);
 
             Fonts.SEMI_BOLD_12.drawCenteredStringWithShadow("To leave this screen click 'ESC'", sr.getScaledWidth() / 2, sr.getScaledHeight() - 10, -1);
