@@ -36,10 +36,11 @@ public class Arraylist extends Module {
 
             enabledMods.sort((m1,m2) -> Fonts.SEMI_BOLD_16.getStringWidth(m2.getName()) - Fonts.SEMI_BOLD_16.getStringWidth(m1.getName()));
 
-            int y = 2;
+            int y = 5;
+            int x = 5;
             for(Module m : enabledMods)
             {
-                Fonts.SEMI_BOLD_16.drawString(m.getName(), sr.getScaledWidth() - Fonts.SEMI_BOLD_16.getStringWidth(m.getName()) - 2, y, OpenGlHelper.rainbowColor(3000, 1));
+                Fonts.SEMI_BOLD_18.drawString(m.getName(), sr.getScaledWidth() - Fonts.SEMI_BOLD_18.getStringWidth(m.getName()) - x, y, OpenGlHelper.rainbowColor(3000, 1 + y * 22));
                 y+=10;
             }
         }
