@@ -1,6 +1,12 @@
 # nekito
 Open-Source Crash client based on Niko by @narumii
 
+
+# Website
+You can check our website by clicking [here](https://astal.store)
+
+
+
 # Discord
 Join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
 
