@@ -133,9 +133,9 @@ public class RenderManager
 
     /** Reference to the GameSettings object. */
     public GameSettings options;
-    public double viewerPosX;
-    public double viewerPosY;
-    public double viewerPosZ;
+    public static double viewerPosX;
+    public static double viewerPosY;
+    public static double viewerPosZ;
     private boolean renderOutlines = false;
     private boolean renderShadow = true;
 

@@ -14,6 +14,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import wtf.norma.nekito.draggable.AbstractDraggable;
+import wtf.norma.nekito.nekito;
 
 public class GuiChat extends GuiScreen
 {
@@ -166,11 +168,28 @@ public class GuiChat extends GuiScreen
         }
     }
 
+    public AbstractDraggable Current = null;
+    public float OffsetX = 0;
+    public float OffsetY = 0;
+
+    @Override
+    protected void mouseReleased(int mouseX, int mouseY, int state) {
+        super.mouseReleased(mouseX, mouseY, state);
+        Current = null;
+    }
+
     /**
      * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton
      */
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
+        for(AbstractDraggable draggable : nekito.INSTANCE.getDraggableManager().DraggableList) {
+            if(mouseX >= draggable.X && mouseY >= draggable.Y && mouseX <= draggable.X+draggable.Size.x && mouseY <= draggable.Y+draggable.Size.y) {
+                Current = draggable;
+                OffsetX = mouseX-draggable.X;
+                OffsetY = mouseY-draggable.Y;
+            }
+        }
         if (mouseButton == 0)
         {
             IChatComponent ichatcomponent = this.mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
@@ -300,6 +319,12 @@ public class GuiChat extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+        if(Current != null) {
+            Current.X = (int) (mouseX-OffsetX);
+            Current.Y = (int) (mouseY-OffsetY);
+
+
+        }
         drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
         this.inputField.drawTextBox();
         IChatComponent ichatcomponent = this.mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());

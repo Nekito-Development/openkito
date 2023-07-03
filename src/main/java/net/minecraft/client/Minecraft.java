@@ -595,6 +595,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.gameSettings.saveOptions();
         }
 
+
+        //Post-Init hook by tecness
+        nekito.INSTANCE.postInit();
+
         this.renderGlobal.makeEntityOutlineShader();
     }
 
