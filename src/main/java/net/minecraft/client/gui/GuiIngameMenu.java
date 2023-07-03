@@ -6,6 +6,7 @@ import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.realms.RealmsBridge;
+import wtf.norma.nekito.ui.Tools.UiTools;
 
 public class GuiIngameMenu extends GuiScreen
 {
@@ -33,8 +34,14 @@ public class GuiIngameMenu extends GuiScreen
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + i, 98, 20, I18n.format("menu.options", new Object[0])));
         GuiButton guibutton;
         this.buttonList.add(guibutton = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + i, 98, 20, I18n.format("menu.shareToLan", new Object[0])));
+
         this.buttonList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 48 + i, 98, 20, I18n.format("gui.achievements", new Object[0])));
         this.buttonList.add(new GuiButton(6, this.width / 2 + 2, this.height / 4 + 48 + i, 98, 20, I18n.format("gui.stats", new Object[0])));
+
+
+        this.buttonList.add(new GuiButton(8, this.width / 2 + 2, this.height / 4 + 72 + i, 98, 20, I18n.format("Tools")));
+
+        this.buttonList.add(new GuiButton(69, this.width / 2 - 100, this.height / 4 + 72 + i, 98, 20, I18n.format("Server list")));
         guibutton.enabled = this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic();
     }
 
@@ -79,6 +86,10 @@ public class GuiIngameMenu extends GuiScreen
                 this.mc.displayGuiScreen((GuiScreen)null);
                 this.mc.setIngameFocus();
                 break;
+            case 69:
+                this.mc.displayGuiScreen(new GuiMultiplayer(this));
+                // this.mc.setIngameFocus();
+                break;
 
             case 5:
                 this.mc.displayGuiScreen(new GuiAchievements(this, this.mc.thePlayer.getStatFileWriter()));
@@ -90,6 +101,12 @@ public class GuiIngameMenu extends GuiScreen
 
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
+
+            case 8:
+                this.mc.displayGuiScreen(new UiTools(   this));
+                // this.mc.setIngameFocus();
+                break;
+
         }
     }
 

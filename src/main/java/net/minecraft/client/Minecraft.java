@@ -3273,4 +3273,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     {
         this.field_181541_X = p_181537_1_;
     }
+
+
+    public boolean login(String username) {
+        Minecraft.getMinecraft().session.username = username;
+        Minecraft.getMinecraft().session.token = "0";
+        return true;
+    }
 }

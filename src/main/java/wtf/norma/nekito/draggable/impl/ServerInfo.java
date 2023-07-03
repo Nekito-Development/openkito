@@ -47,7 +47,9 @@ public class ServerInfo extends AbstractDraggable {
         }
 
         info.add(ChatHelper.fix("&fSession: &d" + mc.session.getUsername()));
-        info.add(ChatHelper.fix("&fServer: &d" + mc.getCurrentServerData().serverIP));
+        if (!mc.isSingleplayer()) {
+            info.add(ChatHelper.fix("&fServer: &d" + mc.getCurrentServerData().serverIP));
+        }
 
         if (mc.thePlayer.getClientBrand() != null) {
             String brand = mc.thePlayer.getClientBrand().contains("<- ") ?
