@@ -4,37 +4,43 @@ precision mediump float;
 
 #extension GL_OES_standard_derivatives : enable
 
-uniform vec2 resolution;
-uniform float time;
+uniform vec2      resolution;
+uniform float     time;
 
-/*
-* @author Hazsi (kinda)
-* Redacted by ConeTin
-*/
-mat2 m(float a) {
-	float c=cos(a), s=sin(a);
-	return mat2(c,-s,s,c);
+
+float rand(vec2 n) {
+	return fract(cos(dot(n, vec2(16.9898, 10.1414))) * 9758.5453);
 }
 
-float map(vec3 p) {
-	p.xz *= m(time * 0.4);p.xy*= m(time * 0.1);
-	vec3 q = p * 2.0 + time;
-	return length(p+vec3(sin(time * 0.7))) * log(length(p) + 1.0) + sin(q.x + sin(q.z + sin(q.y))) * 0.5 - 1.0;
+float noise(vec2 n) {
+	const vec2 d = vec2(0, 1);
+	vec2 b = floor(n), f = smoothstep(vec2(0.0), vec2(1.0), fract(n));
+	return mix(mix(rand(b), rand(b + d.yx), f.x), mix(rand(b + d.xy), rand(b + d.yy), f.x), f.y);
+}
+
+float fbm(vec2 n) {
+	float total = -0.1, amplitude = 1.3;
+	for (int i = 0; i < 10; i++) {
+		total += noise(n) * amplitude;
+		n += n;
+		amplitude *= 0.1;
+	}
+	return total;
 }
 
 void main() {
-	vec2 a = gl_FragCoord.xy / resolution.y - vec2(0.9, 0.5);
-	vec3 cl = vec3(0.0);
-	float d = 2.5;
+	const vec3 c1 = vec3(100.0/255.0, 50.0/255.0, 197.0/255.0);
+	const vec3 c2 = vec3(-11.0/255.0, 50.0/255.0, 111.4/255.0);
+	const vec3 c3 = vec3(0.2 + .19, 0.19, 0.19);
+	const vec3 c4 = vec3(6./255.0, 150.0/255.0, 260./255.0);
+	const vec3 c5 = vec3(0.6);
+	const vec3 c6 = vec3(.3);
 
-	for (int i = 0; i <= 4; i++) {
-		vec3 p = vec3(0, 0, 4.0) + normalize(vec3(a, -1.0)) * d;
-		float rz = map(p);
-		float f =  clamp((rz - map(p + 0.1)) * 0.5, -0.1, 1.0);
-		vec3 l = vec3(0.0, 0.4, 0.4) + vec3(5.0, 2.5, 3.0) * f;
-		cl = cl * l + smoothstep(2.5, 0.0, rz) * 0.6 * l;
-		d += min(rz, 1.0);
-	}
+	vec2 p = gl_FragCoord.xy * 7.0 / resolution.xx;
+	float q = fbm(p - time * 0.2);
+	vec2 r = vec2(fbm(p + q + time * 0.0 - p.x - p.y), fbm(p + q - time * 1.0));
+	vec3 c = mix(c1, c2, fbm(p + r)) + mix(c3, c4, r.x) - mix(c5, c6, r.y);
+	gl_FragColor = vec4(c * cos(0.0 * gl_FragCoord.y / resolution.y), 1.0);
+	gl_FragColor.w = 0.5;
 
-	gl_FragColor = vec4(cl, d);
 }

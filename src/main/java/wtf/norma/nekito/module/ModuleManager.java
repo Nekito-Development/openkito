@@ -18,7 +18,8 @@ public class ModuleManager {
                 new FullBright(),
                 new CustomButtons(),
                 new ServerInfo(),
-                new Watermark()
+                new Watermark(),
+                new Arraylist()
         );
     }
 
