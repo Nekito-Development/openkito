@@ -3,6 +3,8 @@ package net.minecraft.client.gui;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
@@ -48,6 +50,7 @@ import optifine.CustomColors;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.render.RenderUtility;
 
 public class GuiIngame extends Gui
 {
@@ -378,21 +381,27 @@ public class GuiIngame extends Gui
         if (this.mc.getRenderViewEntity() instanceof EntityPlayer)
         {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.mc.getTextureManager().bindTexture(widgetsTexPath);
-            EntityPlayer entityplayer = (EntityPlayer)this.mc.getRenderViewEntity();
+            EntityPlayer entityplayer = (EntityPlayer) this.mc.getRenderViewEntity();
             int i = sr.getScaledWidth() / 2;
             float f = this.zLevel;
             this.zLevel = -90.0F;
-            this.drawTexturedModalRect(i - 91, sr.getScaledHeight() - 22, 0, 0, 182, 22);
-            this.drawTexturedModalRect(i - 91 - 1 + entityplayer.inventory.currentItem * 20, sr.getScaledHeight() - 22 - 1, 0, 22, 24, 22);
+            RenderUtility.drawRect(0, sr.getScaledHeight() - 21, sr.getScaledWidth(), 21, new Color(0, 0, 0, 200).getRGB());
+            RenderUtility.drawRect(i - 90, sr.getScaledHeight() - 22, 9 * 20, 2, new Color(174, 190, 210).getRGB());
+
+            int layers = 5;
+
+            for (int layer = 1; layer <= layers; layer++) {
+                RenderUtility.drawRect(i - 90 + entityplayer.inventory.currentItem * 20, sr.getScaledHeight() - 22 + layer, 20, 1, new Color(255, 255, 255, 200 - (30 * layer)).getRGB());
+            }
+//            RenderUtility.drawRect(i - 90 + entityplayer.inventory.currentItem * 20, sr.getScaledHeight() - 22 + layers + 1, 20, 20 - layers, new Color(255, 255, 255, 30).getRGB());
+
             this.zLevel = f;
             GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             RenderHelper.enableGUIStandardItemLighting();
 
-            for (int j = 0; j < 9; ++j)
-            {
+            for (int j = 0; j < 9; ++j) {
                 int k = sr.getScaledWidth() / 2 - 90 + j * 20 + 2;
                 int l = sr.getScaledHeight() - 16 - 3;
                 this.renderHotbarItem(j, k, l, partialTicks, entityplayer);
