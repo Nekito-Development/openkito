@@ -178,7 +178,6 @@ import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
 import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.hook.GuiInGameHook;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -563,9 +562,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         /**
          * @Niko: GuiInGame hook
+         * spierdalaj nie ma zadnego huka
          */
-        //this.ingameGUI = new GuiIngame(this);
-        this.ingameGUI = new GuiInGameHook(this);
+
+        this.ingameGUI = new GuiIngame(this);
 
         if (this.serverName != null)
         {

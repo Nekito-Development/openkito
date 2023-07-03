@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
@@ -43,14 +44,9 @@ public class CategoryPanel {
             }
         }
 
-        RenderUtility.drawRound(x - 1, y, width + 2, height, 4, new Color(43, 92, 255));
-        mc.fontRendererObj.drawStringWithShadow(category.name,
-                x + width / 2f - mc.fontRendererObj.getStringWidth(category.name()) / 2f,
-                y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f,
-                -1);
-
-        mc.fontRendererObj.drawStringWithShadow(open ? "-" : "+", x + 90, y + 3, -1);
-
+        RenderUtility.drawRound(x - 1, y, width + 2, height - 1, 4, new Color(43, 92, 255));
+        Fonts.SEMI_BOLD_18.drawString(category.name, x + 5, y + 5, -1);
+        Fonts.SEMI_BOLD_18.drawString(open ? "-" : "+", x + 90, y + 5, -1);
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {

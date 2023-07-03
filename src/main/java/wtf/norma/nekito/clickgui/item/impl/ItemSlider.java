@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.clickgui.item.Item;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.NumberSetting;
+import wtf.norma.nekito.util.font.Fonts;
 
 import java.awt.*;
 import java.math.BigDecimal;
@@ -41,7 +42,7 @@ public class ItemSlider extends Item<NumberSetting> {
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
         Gui.drawRect(x, (int) (y), (int) (x + renderWidth), (int) (y + height), 0xFF2B71F3);
-        mc.fontRendererObj.drawStringWithShadow(getObject().getName() + ": " + getObject().getValue(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f, -1);
+        Fonts.SEMI_BOLD_18.drawString(getObject().getName() + ": " + getObject().getValue(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, -1);
         return height;
     }
 

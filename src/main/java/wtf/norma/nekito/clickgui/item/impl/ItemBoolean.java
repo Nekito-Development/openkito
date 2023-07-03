@@ -3,6 +3,7 @@ package wtf.norma.nekito.clickgui.item.impl;
 import net.minecraft.client.gui.Gui;
 import wtf.norma.nekito.clickgui.item.Item;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
+import wtf.norma.nekito.util.font.Fonts;
 
 public class ItemBoolean extends Item<BooleanSetting> {
     public ItemBoolean(BooleanSetting boolSetting, int x, int y, int width, int height) {
@@ -15,7 +16,7 @@ public class ItemBoolean extends Item<BooleanSetting> {
         float y = this.y + offset;
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
-        mc.fontRendererObj.drawStringWithShadow(getObject().getName(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f, getObject().isEnabled() ? 0xFF2B71F3 : -1);
+        Fonts.SEMI_BOLD_18.drawString(getObject().getName(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, getObject().isEnabled() ? 0xFF2B71F3 : -1);
 
         return height;
     }
