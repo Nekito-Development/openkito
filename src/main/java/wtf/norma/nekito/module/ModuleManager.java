@@ -20,7 +20,8 @@ public class ModuleManager {
                 new ServerInfo(),
                 new Watermark(),
                 new Arraylist(),
-                new NoWeather()
+                new NoWeather(),
+                new CustomHotbar() //lekoz debil
         );
     }
 
