@@ -89,12 +89,12 @@ public class GuiIngame extends Gui {
     /**
      * Remaining ticks the item highlight should be visible
      */
-    private int remainingHighlightTicks;
+    public int remainingHighlightTicks;
 
     /**
      * The ItemStack that is currently being highlighted
      */
-    private ItemStack highlightingItemStack;
+    public ItemStack highlightingItemStack;
     private final GuiOverlayDebug overlayDebug;
 
     /**
@@ -455,6 +455,8 @@ public class GuiIngame extends Gui {
     }
 
     public void func_181551_a(ScaledResolution p_181551_1_) {
+        if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) return;
+
         this.mc.mcProfiler.startSection("selectedItemName");
 
         if (this.remainingHighlightTicks > 0 && this.highlightingItemStack != null) {
