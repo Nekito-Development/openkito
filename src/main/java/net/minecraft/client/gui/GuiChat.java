@@ -15,7 +15,10 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.draggable.AbstractDraggable;
+import wtf.norma.nekito.draggable.impl.Arraylist;
 import wtf.norma.nekito.nekito;
+
+
 
 public class GuiChat extends GuiScreen
 {
@@ -183,12 +186,26 @@ public class GuiChat extends GuiScreen
      */
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
+        ScaledResolution sr = new ScaledResolution(mc);
         for(AbstractDraggable draggable : nekito.INSTANCE.getDraggableManager().DraggableList) {
-            if(mouseX >= draggable.X && mouseY >= draggable.Y && mouseX <= draggable.X+draggable.Size.x && mouseY <= draggable.Y+draggable.Size.y) {
-                Current = draggable;
-                OffsetX = mouseX-draggable.X;
-                OffsetY = mouseY-draggable.Y;
+
+            if(draggable.X > sr.getScaledWidth()/2.0f && draggable.getClass().getSimpleName().equalsIgnoreCase("Arraylist")) {
+                int tempX = 0;
+                tempX = draggable.X-((Arraylist)draggable).longest;
+
+                if(mouseX >= tempX && mouseY >= draggable.Y && mouseX <= tempX+draggable.Size.x && mouseY <= draggable.Y+draggable.Size.y) {
+                    Current = draggable;
+                    OffsetX = mouseX-draggable.X;
+                    OffsetY = mouseY-draggable.Y;
+                }
+            } else {
+                if(mouseX >= draggable.X && mouseY >= draggable.Y && mouseX <= draggable.X+draggable.Size.x && mouseY <= draggable.Y+draggable.Size.y) {
+                    Current = draggable;
+                    OffsetX = mouseX-draggable.X;
+                    OffsetY = mouseY-draggable.Y;
+                }
             }
+
         }
         if (mouseButton == 0)
         {

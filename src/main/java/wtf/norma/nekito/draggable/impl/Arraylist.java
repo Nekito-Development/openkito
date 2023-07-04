@@ -27,6 +27,7 @@ public class Arraylist extends AbstractDraggable {
 
     @Override
     public Vector2f Render() {
+        longest = 0;
         ScaledResolution sr = new ScaledResolution(mc);
         ArrayList<Module> enabledMods = new ArrayList<Module>();
         for(Module m : nekito.INSTANCE.getModuleManager().getModules())
@@ -38,7 +39,6 @@ public class Arraylist extends AbstractDraggable {
 
 
         int offset = Y;
-        int longest = 0;
         if(X < sr.getScaledWidth()/2.0f) {
             for(Module m : enabledMods) {
                 if(Fonts.SEMI_BOLD_16.getStringWidth(m.getName()) > longest) {
