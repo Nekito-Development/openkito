@@ -20,7 +20,7 @@ public class ModuleManager {
                 new ServerInfo(),
                 new Watermark(),
                 new Arraylist(),
-                new CustomHotbar()
+                new NoWeather()
         );
     }
 
