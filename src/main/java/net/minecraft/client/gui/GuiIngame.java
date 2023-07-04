@@ -57,7 +57,7 @@ public class GuiIngame extends Gui {
     private static final ResourceLocation vignetteTexPath = new ResourceLocation("textures/misc/vignette.png");
     private static final ResourceLocation widgetsTexPath = new ResourceLocation("textures/gui/widgets.png");
     private static final ResourceLocation pumpkinBlurTexPath = new ResourceLocation("textures/misc/pumpkinblur.png");
-    private final Random rand = new Random();
+    public final Random rand = new Random();
 
     public static boolean joinedFirst = false;
     private final Minecraft mc;
@@ -68,7 +68,7 @@ public class GuiIngame extends Gui {
      */
     private final GuiNewChat persistantChatGUI;
     //private final GuiStreamIndicator streamIndicator;
-    private int updateCounter;
+    public int updateCounter;
 
     /**
      * The string specifying which record music is playing
@@ -108,18 +108,18 @@ public class GuiIngame extends Gui {
     private int field_175199_z;
     private int field_175192_A;
     private int field_175193_B;
-    private int playerHealth = 0;
-    private int lastPlayerHealth = 0;
+    public int playerHealth = 0;
+    public int lastPlayerHealth = 0;
 
     /**
      * The last recorded system time
      */
-    private long lastSystemTime = 0L;
+    public long lastSystemTime = 0L;
 
     /**
      * Used with updateCounter to make the heart bar flash
      */
-    private long healthUpdateCounter = 0L;
+    public long healthUpdateCounter = 0L;
     private static final String __OBFID = "CL_00000661";
 
     public GuiIngame(Minecraft mcIn) {
@@ -414,6 +414,8 @@ public class GuiIngame extends Gui {
     }
 
     public void renderExpBar(ScaledResolution p_175176_1_, int p_175176_2_) {
+        if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) return;
+
         this.mc.mcProfiler.startSection("expBar");
         this.mc.getTextureManager().bindTexture(Gui.icons);
         int i = this.mc.thePlayer.xpBarCap();
@@ -590,6 +592,9 @@ public class GuiIngame extends Gui {
     }
 
     private void renderPlayerStats(ScaledResolution p_180477_1_) {
+        //BEST $ CODE $ FIRE
+        if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) return;
+
         if (this.mc.getRenderViewEntity() instanceof EntityPlayer) {
             EntityPlayer entityplayer = (EntityPlayer) this.mc.getRenderViewEntity();
             int i = MathHelper.ceiling_float_int(entityplayer.getHealth());
