@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
@@ -90,7 +91,7 @@ public enum nekito {
     }
 
     public void setDisplay() throws IOException {
-        Display.setTitle("Nekito 1.0");
+        Display.setTitle(String.format("Nekito 1.0 LWJGL " + Sys.getVersion()));
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 
