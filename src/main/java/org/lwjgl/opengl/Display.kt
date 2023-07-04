@@ -269,7 +269,7 @@ object Display {
 
     @JvmStatic
     fun setVSyncEnabled(enabled: Boolean) {
-        GLFW.glfwSwapInterval(if (enabled) 1 else 0)
+            GLFW.glfwSwapInterval(if (enabled) 1 else 0)
     }
 
     @JvmStatic
