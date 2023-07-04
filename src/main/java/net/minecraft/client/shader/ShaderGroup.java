@@ -51,6 +51,8 @@ public class ShaderGroup
         this.parseGroup(p_i1050_1_, p_i1050_4_);
     }
 
+
+
     public void parseGroup(TextureManager p_152765_1_, ResourceLocation p_152765_2_) throws JsonException, IOException, JsonSyntaxException
     {
         JsonParser jsonparser = new JsonParser();
@@ -370,6 +372,10 @@ public class ShaderGroup
         {
             framebuffer.createBindFramebuffer(width, height);
         }
+    }
+
+    public List<Shader> getShaders() {
+        return this.listShaders;
     }
 
     public void loadShaderGroup(float partialTicks)

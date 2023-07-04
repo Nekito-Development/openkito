@@ -10,7 +10,10 @@ import java.util.ArrayList;
 
 public class Wings extends Module {
 
+
+
     public static NumberSetting selectedWing = new NumberSetting("wing type", 0, 0, 1, 1);
+    // NAH BRO TF IS THIS  XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 
     public Wings() {
         super("Wings", Category.VISUALS, Keyboard.KEY_NONE);
         this.addSettings(selectedWing);

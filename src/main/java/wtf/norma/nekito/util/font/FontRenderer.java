@@ -47,6 +47,15 @@ public class FontRenderer
 
     }
 
+
+    public void drawCenteredStringWithOutline(String text, float x, float y, int color) {
+        drawCenteredString(text, x - 0.5F, y, Color.BLACK.getRGB());
+        drawCenteredString(text, x + 0.5F, y, Color.BLACK.getRGB());
+        drawCenteredString(text, x, y - 0.5F, Color.BLACK.getRGB());
+        drawCenteredString(text, x, y + 0.5F, Color.BLACK.getRGB());
+        drawCenteredString(text, x, y, color);
+    }
+
     public String trimStringToWidth(String text, int width, boolean reverse) {
         StringBuilder stringbuilder = new StringBuilder();
         float f = 0.0F;

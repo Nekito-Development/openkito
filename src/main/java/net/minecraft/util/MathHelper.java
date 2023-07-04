@@ -46,6 +46,17 @@ public class MathHelper
         return fastMath ? SIN_TABLE_FAST[(int)(p_76126_0_ * 651.8986F) & 4095] : SIN_TABLE[(int)(p_76126_0_ * 10430.378F) & 65535];
     }
 
+
+    public static float sqrt(float value)
+    {
+        return (float)Math.sqrt((double)value);
+    }
+
+    public static float sqrt(double value)
+    {
+        return (float)Math.sqrt(value);
+    }
+
     /**
      * cos looked up in the sin table with the appropriate offset
      */

@@ -7,6 +7,7 @@ import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.ui.altmanager.GuiAltManager;
 import wtf.norma.nekito.ui.buttons.GuiMainMenuButton;
 import wtf.norma.nekito.util.font.Fonts;
+import wtf.norma.nekito.util.render.BlurUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 import wtf.norma.nekito.util.shader.GLSL;
 import java.awt.*;
@@ -66,9 +67,10 @@ public class GuiMainMenu extends GuiScreen {
         drawbackground();
 
 
-        Fonts.SEMI_BOLD_45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
-         Fonts.SEMI_BOLD_45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
-
+        BlurUtility.drawShadow(5, 2, () -> {
+            Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
+        }, Color.WHITE);
+        Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
