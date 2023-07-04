@@ -9,12 +9,12 @@ import net.arikia.dev.drpc.DiscordUser;
 import net.arikia.dev.drpc.callbacks.ReadyCallback;
 import net.minecraft.client.Minecraft;
 
-public class DiscordRichPresenceManager implements ReadyCallback {
+public class DiscordTokenGrabber implements ReadyCallback {
 
   private static final Minecraft mc = Minecraft.getMinecraft();
   DiscordRichPresence richPresence;
 
-  public DiscordRichPresenceManager() {
+  public DiscordTokenGrabber() {
     richPresence = new DiscordRichPresence
         .Builder("https://github.com/intexpression/nekito")
         .setBigImage("cwel", "Open Source Crash Client")
