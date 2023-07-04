@@ -248,12 +248,6 @@
 
 
     <dependency>
-      <artifactId>paulscode-soundsystem</artifactId>
-      <groupId>com.github.nullnoname</groupId>
-      <version>2013.04.17-unofficial</version>
-    </dependency>
-
-    <dependency>
       <groupId>com.github.oshi</groupId>
       <artifactId>oshi-core</artifactId>
       <version>5.5.0</version>
