@@ -628,30 +628,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         Display.setResizable(true);
         nekito.INSTANCE.setDisplay();
 
-        try
-        {
-            Display.create((new PixelFormat()).withDepthBits(24));
-        }
-        catch (LWJGLException lwjglexception)
-        {
-            logger.error((String)"Couldn\'t set pixel format", (Throwable)lwjglexception);
-
-            try
-            {
-                Thread.sleep(1000L);
-            }
-            catch (InterruptedException var3)
-            {
-                ;
-            }
-
-            if (this.fullscreen)
-            {
-                this.updateDisplayMode();
-            }
-
-            Display.create();
-        }
+        Display.create((new PixelFormat()).withDepthBits(24));
     }
 
     private void setInitialDisplayMode() throws LWJGLException

@@ -27,12 +27,12 @@ import com.viaversion.viaversion.protocols.protocol1_9to1_8.providers.MovementTr
 import com.viaversion.viaversion.protocols.protocol1_9to1_8.storage.MovementTracker;
 
 public class VLBMovementTransmitterProvider extends MovementTransmitterProvider {
-    @Override
+
     public Object getFlyingPacket() {
         return null;
     }
 
-    @Override
+
     public Object getGroundPacket() {
         return null;
     }

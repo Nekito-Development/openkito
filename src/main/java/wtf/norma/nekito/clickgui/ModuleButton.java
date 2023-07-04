@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ModuleButton {
     private final Module module;
-    private final int x;
+    private final int x;//
     private final int y;
     private final int width;
     private final int height;

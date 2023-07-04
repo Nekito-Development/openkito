@@ -14,7 +14,7 @@ import java.util.List;
 public class ClickGuiMain extends GuiScreen {
     public List<CategoryPanel> panels = new ArrayList<>();
 
-    @Override
+    @Override//
     public void initGui() {
         if (this.panels.isEmpty()) {
             int x = 10;
