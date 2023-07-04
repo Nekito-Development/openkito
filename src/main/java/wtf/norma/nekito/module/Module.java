@@ -14,6 +14,8 @@ public class Module {
     public boolean toggled;
     public Category category;
 
+
+
     public final static Minecraft mc = Minecraft.getMinecraft();
     public ArrayList<Setting> settings = new ArrayList<Setting>();
     public Module(String name, Category category, int keybind) {

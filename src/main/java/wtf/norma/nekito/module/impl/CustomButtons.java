@@ -17,5 +17,6 @@ public class CustomButtons extends Module {
     public void onEnable() {
         super.onEnable();
         toggle();
+
     }
 }
