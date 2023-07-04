@@ -21,7 +21,7 @@ public class ModuleManager {
                 new Watermark(),
                 new Arraylist(),
                 new NoWeather(),
-                new CustomHotbar() //lekoz debil
+                new CustomHotbar()
         );
     }
 
