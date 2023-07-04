@@ -54,7 +54,6 @@ public class Hotbar extends AbstractDraggable {
 
         int offset = 7; //height offset for health, food, armor
 
-
         if (this.mc.playerController.shouldDrawHUD()) {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.mc.getTextureManager().bindTexture(Gui.icons);
@@ -337,9 +336,14 @@ public class Hotbar extends AbstractDraggable {
                 }
 
                 int k = (int) ((float) mc.ingameGUI.remainingHighlightTicks * 256.0F / 10.0F);
+                int k2 = (int) ((float) mc.ingameGUI.remainingHighlightTicks * 256.0F / 10.0F);
 
-                if (k > 255) {
-                    k = 255;
+                if (k2 > 255) {
+                    k2 = 255;
+                }
+
+                if (k > 125) {
+                    k = 125;
                 }
 
                 if (k > 0) {
@@ -347,11 +351,8 @@ public class Hotbar extends AbstractDraggable {
                     GlStateManager.enableBlend();
                     GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 
-                    Fonts.SEMI_BOLD_18.drawCenteredString(s, (float) 90, (float) -50, 16777215 + (k << 24));
-
-                    GlStateManager.scale(1.1, 1.1, 1.1);
-                    mc.ingameGUI.renderHotbarItem(mc.thePlayer.inventory.currentItem, 73, -65, mc.timer.renderPartialTicks, mc.thePlayer);
-                    GlStateManager.scale(1, 1, 1);
+                    RenderUtility.drawGradientRound(87 - Fonts.SEMI_BOLD_18.getStringWidth(s) / 2, -52, Fonts.SEMI_BOLD_18.getStringWidth(s) + 5, 12, 4, new Color(1, 111, 255, k), new Color(0, 225, 255, k), new Color(112, 114, 255, k), new Color(128, 32, 231, k));
+                    Fonts.SEMI_BOLD_18.drawCenteredString(s, (float) 90, (float) -50, 16777215 + (k2 << 24));
 
                     GlStateManager.disableBlend();
                     GlStateManager.popMatrix();
