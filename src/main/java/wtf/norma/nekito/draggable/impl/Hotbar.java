@@ -95,7 +95,7 @@ public class Hotbar extends AbstractDraggable {
                 float f1 = entityplayer.getAbsorptionAmount();
                 int l1 = MathHelper.ceiling_float_int((f + f1) / 2.0F / 10.0F);
                 int i2 = Math.max(10 - (l1 - 2), 3);
-                int j2 = (l1 - 1) * i2 - 25 - offset;
+                int j2 = (l1 - 1) * i2 + 25 + offset;
                 float f2 = f1;
                 int k2 = entityplayer.getTotalArmorValue();
                 int l2 = -1;
@@ -111,15 +111,15 @@ public class Hotbar extends AbstractDraggable {
                         int j3 = i3 * 8;
 
                         if (i3 * 2 + 1 < k2) {
-                            mc.ingameGUI.drawTexturedModalRect(j3, j2, 34, 9, 9, 9);
+                            mc.ingameGUI.drawTexturedModalRect(j3, -j2, 34, 9, 9, 9);
                         }
 
                         if (i3 * 2 + 1 == k2) {
-                            mc.ingameGUI.drawTexturedModalRect(j3, j2, 25, 9, 9, 9);
+                            mc.ingameGUI.drawTexturedModalRect(j3, -j2, 25, 9, 9, 9);
                         }
 
                         if (i3 * 2 + 1 > k2) {
-                            mc.ingameGUI.drawTexturedModalRect(j3, j2, 16, 9, 9, 9);
+                            mc.ingameGUI.drawTexturedModalRect(j3, -j2, 16, 9, 9, 9);
                         }
                     }
                 }
@@ -141,9 +141,10 @@ public class Hotbar extends AbstractDraggable {
                         b0 = 1;
                     }
 
+                    int k1 = 39;
                     int k3 = MathHelper.ceiling_float_int((float) (j5 + 1) / 10.0F) - 1;
                     int l3 = j5 % 10 * 8;
-                    int i4 = k3 * i2 - 14 - offset;
+                    int i4 = k1 - k3 * i2 - offset - 53;
 
                     if (i <= 4) {
                         i4 += mc.ingameGUI.rand.nextInt(2);
