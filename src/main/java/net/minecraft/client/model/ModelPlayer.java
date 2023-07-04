@@ -1,7 +1,11 @@
 package net.minecraft.client.model;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import wtf.norma.nekito.cosmetics.model.WingsModel;
+import wtf.norma.nekito.module.impl.Wings;
+import wtf.norma.nekito.nekito;
 
 public class ModelPlayer extends ModelBiped
 {
@@ -14,7 +18,7 @@ public class ModelPlayer extends ModelBiped
     private ModelRenderer bipedDeadmau5Head;
     private boolean smallArms;
     private static final String __OBFID = "CL_00002626";
-
+    WingsModel wingsModel;
     public ModelPlayer(float p_i46304_1_, boolean p_i46304_2_)
     {
         super(p_i46304_1_, 0.0F, 64, 64);
@@ -65,6 +69,7 @@ public class ModelPlayer extends ModelBiped
         this.bipedBodyWear = new ModelRenderer(this, 16, 32);
         this.bipedBodyWear.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, p_i46304_1_ + 0.25F);
         this.bipedBodyWear.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.wingsModel = new WingsModel();
     }
 
     /**
@@ -99,7 +104,8 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.render(scale);
             this.bipedBodyWear.render(scale);
         }
-
+        if (entityIn.getName().equals((Minecraft.getMinecraft()).thePlayer.getName()) && nekito.INSTANCE.getModuleManager().getModule(Wings.class).enabled)
+            this.wingsModel.RenderWings((Minecraft.getMinecraft()).thePlayer, entityIn.isSneaking(), entityIn.isAirBorne, entityIn.onGround, entityIn.isSprinting());
         GlStateManager.popMatrix();
     }
 

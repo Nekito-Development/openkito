@@ -21,7 +21,9 @@ public class ModuleManager {
                 new Watermark(),
                 new Arraylist(),
                 new NoWeather(),
-                new CustomHotbar()
+                new CustomHotbar(),
+                new Wings(),
+                new Ears()
         );
     }
 
