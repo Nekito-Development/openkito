@@ -8,7 +8,7 @@ import wtf.norma.nekito.module.Module;
 public class Sprint extends Module {
 
     public Sprint() {
-        super("Sprint", Category.MOVEMENT, Keyboard.KEY_F);
+        super("Sprint", Category.MOVEMENT, Keyboard.KEY_NONE);
     }
 
     @Override

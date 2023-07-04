@@ -9,11 +9,8 @@ import wtf.norma.nekito.settings.impl.NumberSetting;
 import java.util.ArrayList;
 
 public class Wings extends Module {
+    public static ModeSetting selectedWing = new ModeSetting("Wing type", "Wing1", "Wing1", "Wing2");
 
-
-
-    public static NumberSetting selectedWing = new NumberSetting("wing type", 0, 0, 1, 1);
-    // NAH BRO TF IS THIS  XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 
     public Wings() {
         super("Wings", Category.VISUALS, Keyboard.KEY_NONE);
         this.addSettings(selectedWing);

@@ -118,11 +118,11 @@ public class WingsModel  extends ModelBase {
             GL11.glRotatef(24.0F + (float) Math.sin(this.airTicks / 4.0D) * 20.0F, 0.0F, 0.0F, 1.0F);
         }
         GL11.glTranslatef(-0.125F, 0.125F, 0.18F);
-        switch ((int) Wings.selectedWing.getValue()) {
-            case 0:
+        switch (Wings.selectedWing.getMode()) {
+            case "Wing1":
                 Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings0.png"));
                 break;
-            case 1:
+            case "Wing2":
                 Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings1.png"));
         }
         GL11.glRotatef(100.0F, 0.0F, 1.0F, 0.0F);
@@ -135,11 +135,11 @@ public class WingsModel  extends ModelBase {
             GL11.glRotatef(-24.0F - (float) Math.sin(this.airTicks / 4.0D) * 20.0F, 0.0F, 0.0F, 1.0F);
         }
         GL11.glTranslatef(0.0F, 0.125F, 0.18F);
-        switch ((int) Wings.selectedWing.getValue()) {
-            case 0:
+        switch (Wings.selectedWing.getMode()) {
+            case "Wing1":
                 Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings0.png"));
                 break;
-            case 1:
+            case "Wing2":
                 Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings1.png"));
         }
         GL11.glRotatef(80.0F, 0.0F, 1.0F, 0.0F);

@@ -1,14 +1,10 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.client.gui.*;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.ui.altmanager.GuiAltManager;
-import wtf.norma.nekito.ui.buttons.GuiMainMenuButton;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.BlurUtility;
-import wtf.norma.nekito.util.render.RenderUtility;
 import wtf.norma.nekito.util.shader.GLSL;
 import java.awt.*;
 import java.io.IOException;
@@ -34,12 +30,11 @@ public class GuiMainMenu extends GuiScreen {
         this.width = sr.getScaledWidth();
         this.height = sr.getScaledHeight();
 
-
-        this.buttonList.add(new GuiMainMenuButton(0, (this.width / 2) - 45, (int) (this.height / 2 + 4 / 1.5 - offset), 90, 15, "SinglePlayer"));
-        this.buttonList.add(new GuiMainMenuButton(1, this.width / 2 - 45, (int) (this.height / 2 + 32 / 1.5 - offset), 90, 15, "MultiPlayer"));
-        this.buttonList.add(new GuiMainMenuButton(2, this.width / 2 - 45, (int) (this.height / 2 + 60 / 1.5 - offset), 90, 15, "AltManager"));
-        this.buttonList.add(new GuiMainMenuButton(3, this.width / 2 - 45, (int) (this.height / 2 + 88 / 1.5 - offset), 90, 15, "Settings"));
-        this.buttonList.add(new GuiMainMenuButton(4, this.width / 2 - 45, (int) (this.height / 2 + 116 / 1.5 - offset), 90, 15, "Quit"));
+        this.buttonList.add(new GuiButton(0, (this.width / 2) - 45, (int) (this.height / 2 + 4 / 1.4 - offset), 90, 18, "SinglePlayer"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 45, (int) (this.height / 2 + 32 / 1.4 - offset), 90, 18, "MultiPlayer"));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 45, (int) (this.height / 2 + 60 / 1.4 - offset), 90, 18, "AltManager"));
+        this.buttonList.add(new GuiButton(3, this.width / 2 - 45, (int) (this.height / 2 + 88 / 1.4 - offset), 90, 18, "Settings"));
+        this.buttonList.add(new GuiButton(4, this.width / 2 - 45, (int) (this.height / 2 + 116 / 1.4 - offset), 90, 18, "Quit"));
         init = System.currentTimeMillis();
     }
 

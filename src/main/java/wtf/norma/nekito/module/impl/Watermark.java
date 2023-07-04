@@ -17,6 +17,7 @@ import java.awt.*;
 public class Watermark extends Module {
     public Watermark() {
         super("Watermark", Category.VISUALS, Keyboard.KEY_NONE);
+        toggle();
     }
 
 
