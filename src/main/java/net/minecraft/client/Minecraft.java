@@ -178,6 +178,7 @@ import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.ui.MainMenuLoadingScreen;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -484,7 +485,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.refreshResources();
         this.renderEngine = new TextureManager(this.mcResourceManager);
         this.mcResourceManager.registerReloadListener(this.renderEngine);
-        this.drawSplashScreen(this.renderEngine);
+//        this.drawSplashScreen(this.renderEngine);
+        MainMenuLoadingScreen.drawSplash(getTextureManager());
         this.initStream();
         this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
         this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
