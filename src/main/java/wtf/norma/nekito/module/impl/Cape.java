@@ -4,6 +4,7 @@ import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.settings.impl.ModeSetting;
 
 /*
 author @intexpression
@@ -13,9 +14,11 @@ author @intexpression
 
 public class Cape extends Module {
 
+    public static ModeSetting selectedCape = new ModeSetting("Wing type", "Black", "Black", "Pink");
 
     public Cape() {
         super("Cape", Category.VISUALS, Keyboard.KEY_NONE);
+        this.addSettings(selectedCape);
     }
 
     @Override
@@ -30,9 +33,14 @@ public class Cape extends Module {
 
 
     public ResourceLocation getCape() {
-
-
-        return new ResourceLocation("images/cape/cape.png");
+        switch (selectedCape.getMode()) {
+            case "Black":
+                return new ResourceLocation("images/cape/black.png");
+            case "Pink":
+                return new ResourceLocation("images/cape/pink.png");
+            default:
+                return new ResourceLocation("images/cape/black.png");
+        }
     }
 
 

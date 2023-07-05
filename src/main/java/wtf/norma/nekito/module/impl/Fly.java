@@ -1,5 +1,6 @@
 package wtf.norma.nekito.module.impl;
 
+import net.minecraft.network.play.client.C03PacketPlayer;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
