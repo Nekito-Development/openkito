@@ -25,8 +25,8 @@ public class GlStateManager
     private static GlStateManager.ClearState clearState = new GlStateManager.ClearState((GlStateManager.GlStateManager$1)null);
     private static GlStateManager.StencilState stencilState = new GlStateManager.StencilState((GlStateManager.GlStateManager$1)null);
     private static GlStateManager.BooleanState normalizeState = new GlStateManager.BooleanState(2977);
-    private static int activeTextureUnit = 0;
-    private static GlStateManager.TextureState[] textureState = new GlStateManager.TextureState[32];
+    public static int activeTextureUnit = 0;
+    public static GlStateManager.TextureState[] textureState = new GlStateManager.TextureState[32];
     private static int activeShadeModel = 7425;
     private static GlStateManager.BooleanState rescaleNormalState = new GlStateManager.BooleanState(32826);
     private static GlStateManager.ColorMask colorMaskState = new GlStateManager.ColorMask((GlStateManager.GlStateManager$1)null);
@@ -358,7 +358,7 @@ public class GlStateManager
 
     public static void func_179105_a(GlStateManager.TexGen p_179105_0_, int pname, FloatBuffer params)
     {
-        GL11.glTexGen(texGenCoord(p_179105_0_).field_179065_b, pname, params);
+        GL11.glTexGenfv(texGenCoord(p_179105_0_).field_179065_b, pname, params);
     }
 
     private static GlStateManager.TexGenCoord texGenCoord(GlStateManager.TexGen p_179125_0_)
@@ -533,7 +533,7 @@ public class GlStateManager
 
     public static void getFloat(int pname, FloatBuffer params)
     {
-        GL11.glGetFloat(pname, params);
+        GL11.glGetFloatv(pname, params);
     }
 
     public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar)
@@ -568,7 +568,7 @@ public class GlStateManager
 
     public static void multMatrix(FloatBuffer matrix)
     {
-        GL11.glMultMatrix(matrix);
+        GL11.glMultMatrixf(matrix);
     }
 
     public static void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha)
@@ -1061,7 +1061,7 @@ public class GlStateManager
         }
     }
 
-    static class TextureState
+    public static class TextureState
     {
         public GlStateManager.BooleanState texture2DState;
         public int textureName;

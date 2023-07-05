@@ -7,6 +7,8 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.shader.Framebuffer;
+import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
@@ -164,9 +166,9 @@ public class RenderUtility {
         FloatBuffer modelview = GLAllocation.createDirectFloatBuffer(16);
         FloatBuffer projection = GLAllocation.createDirectFloatBuffer(16);
         FloatBuffer vector = GLAllocation.createDirectFloatBuffer(4);
-        GL11.glGetFloat(GL11.GL_MODELVIEW_MATRIX, modelview);
-        GL11.glGetFloat(GL11.GL_PROJECTION_MATRIX, projection);
-        GL11.glGetInteger(GL11.GL_VIEWPORT, viewport);
+        GL11.glGetFloat(GL11.GL_MODELVIEW_MATRIX);
+        GL11.glGetFloat(GL11.GL_PROJECTION_MATRIX);
+        GL11.glGetInteger(GL11.GL_VIEWPORT);
         if (GLU.gluProject(xPos, yPos, zPos, modelview, projection, viewport, vector))
             return new Vector3d((vector.get(0) / scaleFactor), ((Display.getHeight() - vector.get(1)) / scaleFactor),
                     vector.get(2));

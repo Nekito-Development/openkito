@@ -22,6 +22,8 @@ import optifine.Config;
 
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
+import wtf.norma.nekito.module.impl.Ears;
+import wtf.norma.nekito.nekito;
 
 public abstract class Render<T extends Entity>
 {
@@ -363,7 +365,7 @@ public abstract class Render<T extends Entity>
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
             byte b0 = 0;
 
-            if (str.equals("deadmau5"))
+            if (nekito.INSTANCE.getModuleManager().getModule(Ears.class).enabled)
             {
                 b0 = -10;
             }

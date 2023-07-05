@@ -1,7 +1,9 @@
 package wtf.norma.nekito.module;
 
+import de.gerrygames.viarewind.utils.ChatUtil;
 import net.minecraft.client.Minecraft;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.settings.Setting;
 
@@ -12,7 +14,10 @@ public class Module {
     public String name;
     public int keybind;
     public boolean toggled;
+    public boolean enabled;
     public Category category;
+
+
 
     public final static Minecraft mc = Minecraft.getMinecraft();
     public ArrayList<Setting> settings = new ArrayList<Setting>();
@@ -55,11 +60,9 @@ public class Module {
     }
 
     public void onEnable() {
-
     }
 
     public void onDisable() {
-
     }
 
     public void onEvent(Event e) {
@@ -68,10 +71,11 @@ public class Module {
 
     public void toggle() {
         toggled = !toggled;
-
         if (toggled) {
+            enabled = true;
             onEnable();
         } else {
+            enabled = false;
             onDisable();
         }
     }

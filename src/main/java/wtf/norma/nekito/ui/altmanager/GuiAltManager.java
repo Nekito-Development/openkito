@@ -7,7 +7,10 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.util.player.NameUtil;
+import wtf.norma.nekito.util.shader.GLSL;
 
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -21,6 +24,7 @@ public final class GuiAltManager extends GuiScreen {
     private AltLoginThread thread;
 
     private String crackedStatus;
+    public long init;
 
 
 
@@ -78,7 +82,7 @@ public final class GuiAltManager extends GuiScreen {
         ScaledResolution scaledResolution = new ScaledResolution(mc);
 
 
-        drawDefaultBackground();
+        drawBackground();
         username.drawTextBox();
 
         this.drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
@@ -102,6 +106,7 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, "Generate Cracked Account"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         username.setFocused(true);
+        init = System.currentTimeMillis();
         Keyboard.enableRepeatEvents(true);
     }
 
@@ -146,5 +151,25 @@ public final class GuiAltManager extends GuiScreen {
     public void updateScreen() {
         username.updateCursorCounter();
 
+    }
+
+    public void drawBackground() {
+        GL11.glPushMatrix();
+        {
+            GL11.glDisable(GL11.GL_CULL_FACE);
+            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+
+
+            GL11.glBegin(GL11.GL_QUADS);
+            {
+                GL11.glVertex2f(0,0);
+                GL11.glVertex2f(0,height);
+                GL11.glVertex2f(width,height);
+                GL11.glVertex2f(width,0);
+                GL11.glEnd();
+            }
+            GL20.glUseProgram(0);
+        }
+        GL11.glPopMatrix();
     }
 }

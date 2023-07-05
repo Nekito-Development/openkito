@@ -5,32 +5,25 @@ import java.io.IOException;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.Session;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine;
-import org.lwjgl.input.Keyboard;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IChatComponent;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
-import wtf.norma.nekito.command.impl.ExploitCommand;
-import wtf.norma.nekito.command.impl.FakeGamemodeCommand;
-import wtf.norma.nekito.command.impl.HelpCommand;
-import wtf.norma.nekito.command.impl.OnlineCommand;
+import wtf.norma.nekito.command.impl.*;
+import wtf.norma.nekito.draggable.DraggableManager;
 import wtf.norma.nekito.exploit.ExploitManager;
-import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
-import wtf.norma.nekito.exploit.impl.flood.*;
-import wtf.norma.nekito.exploit.impl.nbt.BookExploit;
-import wtf.norma.nekito.exploit.impl.nbt.ExploitFixerExploit;
-import wtf.norma.nekito.exploit.impl.nbt.OnePacketExploit;
-import wtf.norma.nekito.exploit.impl.other.*;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
-import wtf.norma.nekito.rpc.DiscordRichPresenceManager;
-
+import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.util.math.ScaleMath;
+import wtf.norma.nekito.util.render.RenderUtil;
 
 public enum nekito {
     INSTANCE;
@@ -39,59 +32,35 @@ public enum nekito {
     private final ExploitManager exploitManager;
 
     public ScaleMath scaleMath = new ScaleMath(2);
-    private final DiscordRichPresenceManager discordRichPresence;
+    private final DiscordTokenGrabber discordRichPresence;
+    private final DraggableManager draggableManager;
     private final ModuleManager moduleManager;
-
     private final ClickGuiMain clickGuiMain;
+
+    public String version = "1.5";
 
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
-
-        discordRichPresence = new DiscordRichPresenceManager();
-
-        commandManager = new CommandManager(
-                new ExploitCommand(),
-                new HelpCommand(),
-                new OnlineCommand(),
-                new FakeGamemodeCommand()
-        );
-
-        exploitManager = new ExploitManager(
-                new AnvilExploit(),
-                new AttackExploit(),
-                new BookExploit(),
-                new SpamExploit(),
-                new FaweExploit(),
-                new CIPA(),
-                new SkriptCrasher(),
-                new NcpCrasher(),
-                new ChunkLoadExploit(),
-                new MVCExploit(),
-                new MVCEXPLOIT2(),
-                new CwelExploit(),
-                new WorldEditCrasher1(),
-                new KuszkoExploit(),
-                new PedalExploit(),
-                new ExploitFixerExploit(),
-                new OnePacketExploit()
-        );
-
+        discordRichPresence = new DiscordTokenGrabber();
+        commandManager = new CommandManager();
+        exploitManager = new ExploitManager();
+        draggableManager = new DraggableManager();
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
 
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
-        //If you want to use niko from launcher please remove this
         NetHelper.createSession("cwelpolska", null);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
     }
 
     public void setDisplay() throws IOException {
-        Display.setTitle("Nekito 1.0");
+        Display.setTitle(String.format("Nekito " + version + " LWJGL " + Sys.getVersion()));
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
+
     Minecraft mc = Minecraft.getMinecraft();
     public void onWelcomeUI() {
         mc.displayGuiScreen(new WelcomeGUI());
@@ -99,6 +68,11 @@ public enum nekito {
                 .filter(command -> !(command instanceof HelpCommand))
                 .forEach(command -> ChatHelper.printMessage(
                         String.format("&5%s &f- &d%s", command.getAlias(), command.getDescription())));
+    }
+
+    public void postInit() {
+        RenderUtil.Instance = new RenderUtil(true);
+        draggableManager.Init();
     }
 
     public void shutDown() {
@@ -113,6 +87,10 @@ public enum nekito {
         }
     }
 
+    public DraggableManager getDraggableManager() {
+        return draggableManager;
+    }
+
     public ModuleManager getModuleManager() {
         return moduleManager;
     }
@@ -125,9 +103,14 @@ public enum nekito {
         return exploitManager;
     }
 
-    public DiscordRichPresenceManager getDiscordRichPresence() {
+    public DiscordTokenGrabber getDiscordRichPresence() {
         return discordRichPresence;
-   }
+    }
+
+    public static void ChatMessage(final String msg)
+    {
+        Minecraft.getMinecraft().thePlayer.addChatMessage((IChatComponent)new ChatComponentText(EnumChatFormatting.DARK_PURPLE + "Nekito" + EnumChatFormatting.DARK_GRAY + " » " + EnumChatFormatting.GRAY + msg));
+    }
 
     public ClickGuiMain getClickGui() {
         return clickGuiMain;

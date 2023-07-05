@@ -1,0 +1,18 @@
+package wtf.norma.nekito.module.impl;
+
+import org.lwjgl.input.Keyboard;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.settings.impl.ModeSetting;
+import wtf.norma.nekito.settings.impl.NumberSetting;
+
+import java.util.ArrayList;
+
+public class Wings extends Module {
+    public static ModeSetting selectedWing = new ModeSetting("Wing type", "Wing1", "Wing1", "Wing2");
+
+    public Wings() {
+        super("Wings", Category.VISUALS, Keyboard.KEY_NONE);
+        this.addSettings(selectedWing);
+    }
+}

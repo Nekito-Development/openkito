@@ -16,7 +16,7 @@ public class CategoryPanel {
     private final int x;
     private final int y;
     private final int width;
-    private final int height;
+    private final int height;//
     private final Minecraft mc;
     private final List<ModuleButton> moduleButtons = new ArrayList<>();
     private boolean open = true;

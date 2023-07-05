@@ -26,10 +26,10 @@ import org.lwjgl.util.vector.Matrix4f;
 
 public class ShaderGroup
 {
-    private Framebuffer mainFramebuffer;
+    public Framebuffer mainFramebuffer;
     private IResourceManager resourceManager;
     private String shaderGroupName;
-    private final List<Shader> listShaders = Lists.<Shader>newArrayList();
+    public final List<Shader> listShaders = Lists.<Shader>newArrayList();
     private final Map<String, Framebuffer> mapFramebuffers = Maps.<String, Framebuffer>newHashMap();
     private final List<Framebuffer> listFramebuffers = Lists.<Framebuffer>newArrayList();
     private Matrix4f projectionMatrix;
@@ -50,6 +50,8 @@ public class ShaderGroup
         this.resetProjectionMatrix();
         this.parseGroup(p_i1050_1_, p_i1050_4_);
     }
+
+
 
     public void parseGroup(TextureManager p_152765_1_, ResourceLocation p_152765_2_) throws JsonException, IOException, JsonSyntaxException
     {
@@ -370,6 +372,10 @@ public class ShaderGroup
         {
             framebuffer.createBindFramebuffer(width, height);
         }
+    }
+
+    public List<Shader> getShaders() {
+        return this.listShaders;
     }
 
     public void loadShaderGroup(float partialTicks)

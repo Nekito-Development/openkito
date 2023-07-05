@@ -3,7 +3,10 @@ package wtf.norma.nekito.clickgui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.util.render.RenderUtil;
+import wtf.norma.nekito.util.render.RenderUtility;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
 public class ClickGuiMain extends GuiScreen {
     public List<CategoryPanel> panels = new ArrayList<>();
 
-    @Override
+    @Override//
     public void initGui() {
         if (this.panels.isEmpty()) {
             int x = 10;

@@ -178,6 +178,7 @@ import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.ui.MainMenuLoadingScreen;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -484,7 +485,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.refreshResources();
         this.renderEngine = new TextureManager(this.mcResourceManager);
         this.mcResourceManager.registerReloadListener(this.renderEngine);
-        this.drawSplashScreen(this.renderEngine);
+//        this.drawSplashScreen(this.renderEngine);
+        MainMenuLoadingScreen.drawSplash(getTextureManager());
         this.initStream();
         this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
         this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
@@ -595,6 +597,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.gameSettings.saveOptions();
         }
 
+
+        //Post-Init hook by tecness
+        nekito.INSTANCE.postInit();
+
         this.renderGlobal.makeEntityOutlineShader();
     }
 
@@ -624,30 +630,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         Display.setResizable(true);
         nekito.INSTANCE.setDisplay();
 
-        try
-        {
-            Display.create((new PixelFormat()).withDepthBits(24));
-        }
-        catch (LWJGLException lwjglexception)
-        {
-            logger.error((String)"Couldn\'t set pixel format", (Throwable)lwjglexception);
-
-            try
-            {
-                Thread.sleep(1000L);
-            }
-            catch (InterruptedException var3)
-            {
-                ;
-            }
-
-            if (this.fullscreen)
-            {
-                this.updateDisplayMode();
-            }
-
-            Display.create();
-        }
+        Display.create((new PixelFormat()).withDepthBits(24));
     }
 
     private void setInitialDisplayMode() throws LWJGLException
@@ -3268,5 +3251,12 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     public void func_181537_a(boolean p_181537_1_)
     {
         this.field_181541_X = p_181537_1_;
+    }
+
+
+    public boolean login(String username) {
+        Minecraft.getMinecraft().session.username = username;
+        Minecraft.getMinecraft().session.token = "0";
+        return true;
     }
 }

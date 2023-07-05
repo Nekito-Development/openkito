@@ -3,6 +3,8 @@ package net.minecraft.client.renderer.entity.layers;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
+import wtf.norma.nekito.module.impl.Ears;
+import wtf.norma.nekito.nekito;
 
 public class LayerDeadmau5Head implements LayerRenderer<AbstractClientPlayer>
 {
@@ -15,7 +17,7 @@ public class LayerDeadmau5Head implements LayerRenderer<AbstractClientPlayer>
 
     public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale)
     {
-        if (entitylivingbaseIn.getName().equals("deadmau5") && entitylivingbaseIn.hasSkin() && !entitylivingbaseIn.isInvisible())
+        if (nekito.INSTANCE.getModuleManager().getModule(Ears.class).enabled && !entitylivingbaseIn.isInvisible())
         {
             this.playerRenderer.bindTexture(entitylivingbaseIn.getLocationSkin());
 

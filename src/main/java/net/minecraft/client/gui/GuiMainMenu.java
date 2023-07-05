@@ -1,12 +1,11 @@
 package net.minecraft.client.gui;
 
-import net.minecraft.client.gui.*;
-import wtf.norma.nekito.nekito;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.ui.altmanager.GuiAltManager;
-import wtf.norma.nekito.ui.buttons.GuiMainMenuButton;
 import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.RenderUtility;
-
+import wtf.norma.nekito.util.render.BlurUtility;
+import wtf.norma.nekito.util.shader.GLSL;
 import java.awt.*;
 import java.io.IOException;
 
@@ -15,6 +14,7 @@ public class GuiMainMenu extends GuiScreen {
     private int width;
     public float scale = 2;
     private int height;
+    public long init;
     private final long initTime = System.currentTimeMillis();
     private double scrollOffset;
 
@@ -30,13 +30,12 @@ public class GuiMainMenu extends GuiScreen {
         this.width = sr.getScaledWidth();
         this.height = sr.getScaledHeight();
 
-
-        this.buttonList.add(new GuiMainMenuButton(0, (this.width / 2) - 45, (int) (this.height / 2 + 4 / 1.5 - offset), 90, 15, "SinglePlayer"));
-        this.buttonList.add(new GuiMainMenuButton(1, this.width / 2 - 45, (int) (this.height / 2 + 32 / 1.5 - offset), 90, 15, "MultiPlayer"));
-        this.buttonList.add(new GuiMainMenuButton(2, this.width / 2 - 45, (int) (this.height / 2 + 60 / 1.5 - offset), 90, 15, "AltManager"));
-        this.buttonList.add(new GuiMainMenuButton(3, this.width / 2 - 45, (int) (this.height / 2 + 88 / 1.5 - offset), 90, 15, "Settings"));
-        this.buttonList.add(new GuiMainMenuButton(4, this.width / 2 - 45, (int) (this.height / 2 + 116 / 1.5 - offset), 90, 15, "Quit"));
-
+        this.buttonList.add(new GuiButton(0, (this.width / 2) - 45, (int) (this.height / 2 + 4 / 1.4 - offset), 90, 18, "SinglePlayer"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 45, (int) (this.height / 2 + 32 / 1.4 - offset), 90, 18, "MultiPlayer"));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 45, (int) (this.height / 2 + 60 / 1.4 - offset), 90, 18, "AltManager"));
+        this.buttonList.add(new GuiButton(3, this.width / 2 - 45, (int) (this.height / 2 + 88 / 1.4 - offset), 90, 18, "Settings"));
+        this.buttonList.add(new GuiButton(4, this.width / 2 - 45, (int) (this.height / 2 + 116 / 1.4 - offset), 90, 18, "Quit"));
+        init = System.currentTimeMillis();
     }
 
 
@@ -60,11 +59,13 @@ public class GuiMainMenu extends GuiScreen {
         int x = sr.getScaledWidth() / 2 - widthRound / 2;
         int y = sr.getScaledHeight() / 2 - 100;
 
-        RenderUtility.drawRect(0, 0, mc.displayWidth, mc.displayHeight, new Color(17, 17, 17).getRGB());
+        drawbackground();
 
-        Fonts.MONTSERRAT45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
-        Fonts.MONTSERRAT45.drawCenteredString("nekito", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
 
+        BlurUtility.drawShadow(5, 2, () -> {
+            Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
+        }, Color.WHITE);
+        Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
@@ -88,5 +89,25 @@ public class GuiMainMenu extends GuiScreen {
         }
 
         super.actionPerformed(button);
+    }
+
+    public void drawbackground() {
+        GL11.glPushMatrix();
+        {
+            GL11.glDisable(GL11.GL_CULL_FACE);
+            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+
+
+            GL11.glBegin(GL11.GL_QUADS);
+            {
+                GL11.glVertex2f(0,0);
+                GL11.glVertex2f(0,height);
+                GL11.glVertex2f(width,height);
+                GL11.glVertex2f(width,0);
+                GL11.glEnd();
+            }
+            GL20.glUseProgram(0);
+        }
+        GL11.glPopMatrix();
     }
 }
