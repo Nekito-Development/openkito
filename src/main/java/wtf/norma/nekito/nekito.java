@@ -49,6 +49,7 @@ public enum nekito {
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
 
+
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
@@ -105,11 +106,6 @@ public enum nekito {
 
     public DiscordTokenGrabber getDiscordRichPresence() {
         return discordRichPresence;
-    }
-
-    public static void ChatMessage(final String msg)
-    {
-        Minecraft.getMinecraft().thePlayer.addChatMessage((IChatComponent)new ChatComponentText(EnumChatFormatting.DARK_PURPLE + "Nekito" + EnumChatFormatting.DARK_GRAY + " » " + EnumChatFormatting.GRAY + msg));
     }
 
     public ClickGuiMain getClickGui() {

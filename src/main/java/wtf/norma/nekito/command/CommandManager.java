@@ -19,7 +19,9 @@ public class CommandManager {
                 new HelpCommand(),
                 new OnlineCommand(),
                 new FakeGamemodeCommand(),
-                new BindCommand());
+                new BindCommand(),
+                new HclipCommand(),
+                new VclipCommand());
     }
 
     public void addAll(Command... commands) {
