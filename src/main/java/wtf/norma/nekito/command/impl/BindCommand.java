@@ -28,11 +28,11 @@ public class BindCommand extends Command  {
                 if (args[0].equalsIgnoreCase(module.getName())) {
 
                     module.setKeybind(Keyboard.getKeyIndex(args[1].toUpperCase(Locale.ROOT)));
-                    nekito.ChatMessage("Bound " + module.getName()  + " to " + args[1].toUpperCase());
+                    ChatHelper.printMessage("Bound " + module.getName()  + " to " + args[1].toUpperCase());
                 }
             });
         } else {
-            nekito.ChatMessage("Wrong arguments!");
+            ChatHelper.printMessage("Wrong arguments!");
         }
     }
 }
