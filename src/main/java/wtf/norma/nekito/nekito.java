@@ -52,7 +52,7 @@ public enum nekito {
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
-        NetHelper.createSession("cwelpolska", null);
+       // NetHelper.createSession("cwelpolska", null);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
     }
 
