@@ -200,43 +200,25 @@
     </dependency>
 
 
-    <dependency>
-      <groupId>org.lwjgl</groupId>
-      <artifactId>lwjgl-jemalloc</artifactId>
-      <version>3.3.1</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.lwjgl</groupId>
-      <artifactId>lwjgl-tinyfd</artifactId>
-      <version>3.3.1</version>
-    </dependency>
 
 
 
-
-    <dependency>
-      <groupId>org.lwjgl</groupId>
-      <artifactId>lwjgl-stb</artifactId>
-      <version>3.3.1</version>
-    </dependency>
 
       <dependency>
         <groupId>org.lwjgl</groupId>
         <artifactId>lwjgl</artifactId>
-        <version>3.3.1</version>
+        <version>3.3.2</version>
       </dependency>
       <dependency>
         <groupId>org.lwjgl</groupId>
         <artifactId>lwjgl-glfw</artifactId>
-        <version>3.3.1</version>
+        <version>3.3.2</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/org.lwjgl/lwjgl-opengl -->
       <dependency>
         <groupId>org.lwjgl</groupId>
         <artifactId>lwjgl-opengl</artifactId>
-        <version>3.3.1</version>
+        <version>3.3.2</version>
       </dependency>
       <dependency>
         <groupId>java3d</groupId>
