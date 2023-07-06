@@ -14,7 +14,7 @@ author @intexpression
 
 public class Cape extends Module {
 
-    public static ModeSetting selectedCape = new ModeSetting("Wing type", "Black", "Black", "Pink");
+    public static ModeSetting selectedCape = new ModeSetting("Wing type", "Black", "Black", "Pink","Blue");
 
     public Cape() {
         super("Cape", Category.VISUALS, Keyboard.KEY_NONE);
@@ -38,6 +38,8 @@ public class Cape extends Module {
                 return new ResourceLocation("images/cape/black.png");
             case "Pink":
                 return new ResourceLocation("images/cape/pink.png");
+            case "Blue":
+                return new ResourceLocation("images/cape/blue.png");
             default:
                 return new ResourceLocation("images/cape/black.png");
         }
