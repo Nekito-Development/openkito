@@ -2,6 +2,8 @@ package wtf.norma.nekito.clickgui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import wtf.norma.nekito.exploit.Exploit;
+import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.font.Fonts;
@@ -10,15 +12,18 @@ import wtf.norma.nekito.util.render.RenderUtility;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CategoryPanel {
     private final Module.Category category;
     private final int x;
     private final int y;
     private final int width;
-    private final int height;//
+    private final int height;
     private final Minecraft mc;
     private final List<ModuleButton> moduleButtons = new ArrayList<>();
+
+    private final List<ExploitButton> exploitButtons = new ArrayList<>();
     private boolean open = true;
 
     public CategoryPanel(Module.Category category, int x, int y, int width, int height, Minecraft mc) {
@@ -29,9 +34,16 @@ public class CategoryPanel {
         this.height = height;
         this.mc = mc;
 
-        for (Module module : nekito.INSTANCE.getModuleManager().getModules()) {
-            if (module.category == this.category) {
-                moduleButtons.add(new ModuleButton(module, x, y, width, height, mc));
+        if (category == Module.Category.CRASHERS) {
+            ExploitManager exploitManager = nekito.INSTANCE.getExploitManager();
+            for (Exploit<?> exploit : exploitManager.getExploits()) {
+                exploitButtons.add(new ExploitButton(exploit, x, y, width, height, mc));
+            }
+        } else {
+            for (Module module : nekito.INSTANCE.getModuleManager().getModules()) {
+                if (module.category == this.category) {
+                    moduleButtons.add(new ModuleButton(module, x, y, width, height, mc));
+                }
             }
         }
     }
@@ -39,8 +51,15 @@ public class CategoryPanel {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         if (this.open) {
             int offset = height;
-            for (ModuleButton moduleButton : this.moduleButtons) {
-                offset += moduleButton.drawScreen(mouseX, mouseY, partialTicks, offset);
+            //very hard codded
+            if (category == Module.Category.CRASHERS) {
+                for (ExploitButton exploitButton : this.exploitButtons) {
+                    offset += exploitButton.drawScreen(mouseX, mouseY, partialTicks, offset);
+                }
+            } else {
+                for (ModuleButton moduleButton : this.moduleButtons) {
+                    offset += moduleButton.drawScreen(mouseX, mouseY, partialTicks, offset);
+                }
             }
         }
 
