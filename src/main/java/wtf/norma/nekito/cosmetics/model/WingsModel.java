@@ -124,6 +124,13 @@ public class WingsModel  extends ModelBase {
                 break;
             case "Wing2":
                 Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings1.png"));
+                break;
+            case "Wing3":
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings3.png"));
+                break;
+            case "Wing4":
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings4.png"));
+                break;
         }
         GL11.glRotatef(100.0F, 0.0F, 1.0F, 0.0F);
         renderWingsIn3D(tessellator.getWorldRenderer());
@@ -141,6 +148,14 @@ public class WingsModel  extends ModelBase {
                 break;
             case "Wing2":
                 Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings1.png"));
+                break;
+            case"Wing3":
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings3.png"));
+                break;
+            case"Wing4":
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("nekito/wings/wings4.png"));
+                break;
+
         }
         GL11.glRotatef(80.0F, 0.0F, 1.0F, 0.0F);
         renderWingsIn3D(tessellator.getWorldRenderer());

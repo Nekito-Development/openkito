@@ -9,7 +9,7 @@ import wtf.norma.nekito.settings.impl.NumberSetting;
 import java.util.ArrayList;
 
 public class Wings extends Module {
-    public static ModeSetting selectedWing = new ModeSetting("Wing type", "Wing1", "Wing1", "Wing2");
+    public static ModeSetting selectedWing = new ModeSetting("Wing type", "Wing1", "Wing1", "Wing2","Wing3","Wing4");
 
     public Wings() {
         super("Wings", Category.VISUALS, Keyboard.KEY_NONE);
