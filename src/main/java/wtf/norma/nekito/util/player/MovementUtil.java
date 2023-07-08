@@ -1,9 +1,16 @@
 package wtf.norma.nekito.util.player;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.MovementInput;
 
 public class MovementUtil {
     public final static Minecraft mc = Minecraft.getMinecraft();
+
+
+
+
+
+
 
     public double direction() {
         float rotationYaw = mc.thePlayer.rotationYaw;

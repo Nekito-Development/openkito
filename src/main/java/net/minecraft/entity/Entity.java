@@ -102,6 +102,9 @@ public abstract class Entity implements ICommandSender
     /** Axis aligned bounding box. */
     private AxisAlignedBB boundingBox;
     public boolean onGround;
+    public double lastPosX;
+    public double lastPosY;
+    public double lastPosZ;
 
     /**
      * True if after a move this entity has collided with something on X- or Z-axis

@@ -824,6 +824,13 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
 
     public void addToSendQueue(Packet p_147297_1_)
     {
+        if(p_147297_1_ instanceof C03PacketPlayer && Minecraft.getMinecraft() != null) {
+            Minecraft mc = Minecraft.getMinecraft();
+            C03PacketPlayer c03 = (C03PacketPlayer) p_147297_1_;
+            mc.thePlayer.lastPosX = c03.getPositionX();
+            mc.thePlayer.lastPosY = c03.getPositionY();
+            mc.thePlayer.lastPosZ = c03.getPositionZ();
+        }
         this.netManager.sendPacket(p_147297_1_);
     }
 
