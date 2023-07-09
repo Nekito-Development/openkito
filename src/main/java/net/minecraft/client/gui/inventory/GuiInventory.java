@@ -1,5 +1,6 @@
 package net.minecraft.client.gui.inventory;
 
+import java.awt.*;
 import java.io.IOException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -13,6 +14,10 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerPlayer;
+import net.minecraft.util.ResourceLocation;
+import wtf.norma.nekito.util.color.ColorUtility;
+import wtf.norma.nekito.util.render.RenderUtility;
 
 public class GuiInventory extends InventoryEffectRenderer
 {
@@ -28,7 +33,14 @@ public class GuiInventory extends InventoryEffectRenderer
         this.allowUserInput = true;
     }
 
+
+
+    // CWEL.PL TU DODAC TE ANIME BABA POLSKA PL SPOKO OK OK OK OK OK OK OK?
+
     /**
+     *
+     *
+     *
      * Called from the main game loop to update the screen.
      */
     public void updateScreen()
@@ -45,6 +57,8 @@ public class GuiInventory extends InventoryEffectRenderer
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
      * window resizes, the buttonList is cleared beforehand.
      */
+
+
     public void initGui()
     {
         this.buttonList.clear();
@@ -56,8 +70,22 @@ public class GuiInventory extends InventoryEffectRenderer
         else
         {
             super.initGui();
+
         }
+
+
+
+     //   cos typu  RenderUtility.drawImage(577, 130, 422, 591, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
+
+
+
+        // https://a.mg-renders.net/ anime renders nie wnikaj spoko okok?
+
+
     }
+
+
+
 
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items). Args : mouseX, mouseY

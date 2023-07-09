@@ -336,6 +336,19 @@ public class RenderUtility {
         GlStateManager.disableBlend();
     }
 
+    public static void drawImage(final double x, final double y, final double width, final double height, final ResourceLocation image) {
+        GL11.glDisable(2929);
+        GL11.glEnable(3042);
+        GL11.glDepthMask(false);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        mc.getTextureManager().bindTexture(image);
+        Gui.drawModalRectWithCustomSizedTexture(x, y, 0.0f, 0.0f, width, height, (float) width, (float) height);
+        GL11.glDepthMask(true);
+        GL11.glDisable(3042);
+        GL11.glEnable(2929);
+    }
+
+
     public static void drawImage(ResourceLocation resourceLocation, float x, float y, float width, float height, Color color) {
         GL11.glPushMatrix();
         GL11.glEnable(GL11.GL_BLEND);

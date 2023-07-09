@@ -3243,6 +3243,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         return map;
     }
 
+    public float getRenderPartialTicks() {
+        return this.timer.renderPartialTicks;
+    }
+
     public boolean func_181540_al()
     {
         return this.field_181541_X;

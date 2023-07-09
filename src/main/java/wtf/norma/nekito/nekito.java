@@ -28,6 +28,8 @@ import wtf.norma.nekito.util.render.RenderUtil;
 public enum nekito {
     INSTANCE;
 
+    public double animationSpeed = 0.20;
+
     private final CommandManager commandManager;
     private final ExploitManager exploitManager;
 
@@ -86,6 +88,17 @@ public enum nekito {
                 module.toggle();
             }
         }
+    }
+
+
+    public double createAnimation(double value) {
+        return Math.sqrt(1 - Math.pow(value - 1, 2));
+    }
+
+    public double dropAnimation(double value) {
+        double c1 = 1.70158;
+        double c3 = c1 + 1;
+        return 1 + c3 * Math.pow(value - 1, 3) + c1 * Math.pow(value - 1, 2);
     }
 
     public DraggableManager getDraggableManager() {
