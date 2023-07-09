@@ -103,6 +103,8 @@ public class GuiInventory extends InventoryEffectRenderer
         super.drawScreen(mouseX, mouseY, partialTicks);
         this.oldMouseX = (float)mouseX;
         this.oldMouseY = (float)mouseY;
+
+        RenderUtility.drawImage(75, 90, 176, 176, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
     }
 
     /**

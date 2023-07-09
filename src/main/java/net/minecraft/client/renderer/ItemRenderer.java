@@ -349,22 +349,26 @@ public class ItemRenderer
 
                 switch (ItemRenderer.ItemRenderer$1.field_178094_a[enumaction.ordinal()])
                 {
-                    case 1:
+                    case 1://none
                         this.transformFirstPersonItem(f, 0.0F);
                         break;
 
-                    case 2:
-                    case 3:
+                    case 2://eat
+                    case 3://drink
                         this.func_178104_a(entityplayersp, partialTicks);
                         this.transformFirstPersonItem(f, 0.0F);
                         break;
 
-                    case 4:
-                        this.transformFirstPersonItem(f, f1);
-                        this.func_178103_d();
+                    case 4://block
+                                    float f6 = MathHelper.sin((float)(MathHelper.sqrt_float(f1) * 3.1D));
+                                    GlStateManager.rotate(-f6 * 55.0F / 2.0F, -8.0F, -0.0F, 9.0F);
+                                    GlStateManager.rotate(-f6 * 45.0F, 1.0F, f6 / 2.0F, -0.0F);
+                                    GL11.glTranslated(1.2D, 0.3D, 0.5D);
+                                    GL11.glTranslatef(-1.0F, -0.1F, 0.2F);
+                                    GlStateManager.scale(1.5D, 1.5D, 1.5D);
                         break;
 
-                    case 5:
+                    case 5://bow
                         this.transformFirstPersonItem(f, 0.0F);
                         this.func_178098_a(partialTicks, entityplayersp);
                 }
