@@ -18,6 +18,7 @@ public class ModuleManager {
                 new FullBright(),
                 new CustomButtons(),
                 new ServerInfo(),
+                new WorldColor(),
                 new Watermark(),
                 new Arraylist(),
                 new NoWeather(),

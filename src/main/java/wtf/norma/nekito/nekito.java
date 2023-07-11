@@ -39,7 +39,7 @@ public enum nekito {
     private final ModuleManager moduleManager;
     private final ClickGuiMain clickGuiMain;
 
-    public String version = "1.5";
+    public static String version = "1.5";
 
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");

@@ -7,6 +7,8 @@ target
 
 # Client work dir
 work/assets/skins
+out/*.*
+out/artifacts/nekito_jar
 work/crash-reports
 work/resourcepacks
 work/saves
