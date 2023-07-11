@@ -31,6 +31,9 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
 
+import wtf.norma.nekito.module.impl.CustomModel;
+import wtf.norma.nekito.nekito;
+
 public abstract class RendererLivingEntity<T extends EntityLivingBase> extends Render<T>
 {
     private static final Logger logger = LogManager.getLogger();
@@ -91,6 +94,8 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
     {
     }
 
+    private boolean renderModelPushMatrix;
+
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
      * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
@@ -112,6 +117,9 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
             }
 
             this.mainModel.isChild = entity.isChild();
+
+
+
 
             try
             {
@@ -143,6 +151,8 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                         f += f3 * 0.2F;
                     }
                 }
+
+
 
                 float f8 = entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks;
                 this.renderLivingAt(entity, x, y, z);
@@ -183,18 +193,45 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                 else
                 {
                     boolean flag = this.setDoRenderBrightness(entity, partialTicks);
-                    this.renderModel(entity, f6, f5, f7, f2, f8, 0.0625F);
+                    if (this.renderModelPushMatrix)
+                    {
+                        GlStateManager.pushMatrix();
+                    }
+                    if (entity instanceof EntityPlayerSP) {
+
+                        if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
+                            this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+                    }
+                    else
+                        this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+
+                    if (this.renderModelPushMatrix)
+                    {
+                        GlStateManager.popMatrix();
+                    }
 
                     if (flag)
+
                     {
-                        this.unsetBrightness();
+                        if (entity instanceof EntityPlayerSP) {
+                            if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
+                                this.unsetBrightness();
+                        }
+                        else
+                            this.unsetBrightness();
                     }
 
                     GlStateManager.depthMask(true);
 
                     if (!(entity instanceof EntityPlayer) || !((EntityPlayer)entity).isSpectator())
                     {
-                        this.renderLayers(entity, f6, f5, partialTicks, f7, f2, f8, 0.0625F);
+                        if (entity instanceof EntityPlayerSP) {
+                            if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
+                                this.renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
+                        }
+                        else
+                            this.renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
+
                     }
                 }
 

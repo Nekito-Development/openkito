@@ -2,6 +2,8 @@ package net.minecraft.client.renderer;
 
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
+
+import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.FloatBuffer;
@@ -90,6 +92,9 @@ import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender3D;
+import wtf.norma.nekito.module.impl.WorldColor;
+import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.color.ColorUtility;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {
@@ -1232,7 +1237,12 @@ public class EntityRenderer implements IResourceManagerReloadListener
                     int j = (int)(f8 * 255.0F);
                     int k = (int)(f9 * 255.0F);
                     int l = (int)(f10 * 255.0F);
-                    this.lightmapColors[i] = short1 << 24 | j << 16 | k << 8 | l;
+                    WorldColor RAT = (WorldColor) nekito.INSTANCE.getModuleManager().getModuleByName("WorldColor");
+                    if (RAT.isToggled()) {
+                            this.lightmapColors[i] = new Color(ColorUtility.getColor(3000,1)).getRGB();
+                    } else {
+                        this.lightmapColors[i] = short1 << 24 | j << 16 | k << 8 | l;
+                    }
                 }
 
                 this.lightmapTexture.updateDynamicTexture();

@@ -17,6 +17,7 @@ public class ModuleManager {
                 new Fly(),
                 new FullBright(),
                 new CustomButtons(),
+                new CustomModel(),
                 new ServerInfo(),
                 new WorldColor(),
                 new Watermark(),

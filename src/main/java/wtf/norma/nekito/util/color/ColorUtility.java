@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
+import wtf.norma.nekito.module.impl.Watermark;
 
 import java.awt.*;
 
@@ -15,6 +16,8 @@ public class ColorUtility {
 
         GlStateManager.color(red, green, blue, alpha);
     }
+
+
 
 
     public static Color rainbowEffect(final long offset, final float fade) {
@@ -29,6 +32,25 @@ public class ColorUtility {
     }
     public static int rgba(double r, double g, double b, double a) {
         return rgba((int) r, (int) g, (int) b, (int) a);
+    }
+
+    public static int getRainbow(int speed, int offset) {
+        float hue = (System.currentTimeMillis() + offset) % speed;
+        hue /= speed;
+        return Color.getHSBColor(hue, 0.55f, 1f).getRGB();
+    }
+    public static int getColor(int offset, int i) {
+        //convertingcolors.com fajno strona
+        switch (Watermark.colorMode.getMode()) {
+            case "Purple":
+                return 0xff9000c4;
+            case"Pink":
+                return  0xFFFFC0CB;
+            case "Rainbow":
+                return getRainbow(4000, offset * 5);
+
+        }
+        return 0xFFFFC0CB;
     }
 
     public static int getColor(int red, int green, int blue, int alpha) {
