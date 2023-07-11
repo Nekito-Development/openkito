@@ -9,6 +9,9 @@ public final class ChatHelper {
     private static final String PREFIX = "Nekito";
     private static final Minecraft mc = Minecraft.getMinecraft();
 
+    private ChatHelper() {
+    }
+
     public static String fix(String string) {
         return string.replace('&', '§').replace(">>", "»");
     }

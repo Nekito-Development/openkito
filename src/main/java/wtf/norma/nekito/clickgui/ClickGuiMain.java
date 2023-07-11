@@ -9,16 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClickGuiMain extends GuiScreen {
-    public List<CategoryPanel> panels = new ArrayList<>();
+    private final List<CategoryPanel> panels = new ArrayList<>();
 
-    @Override//
+    @Override
     public void initGui() {
-        if (this.panels.isEmpty()) {
-            int x = 10;
-            for (ModuleCategory category : ModuleCategory.values()) {
-                panels.add(new CategoryPanel(category, x, 10, 100, 16, Minecraft.getMinecraft()));
-                x += 110;
-            }
+        if (!this.panels.isEmpty())
+            return;
+
+        int x = 10;
+        for (ModuleCategory category : ModuleCategory.values()) {
+            panels.add(new CategoryPanel(category, x, 10, 100, 16, Minecraft.getMinecraft()));
+            x += 110;
         }
     }
 
@@ -38,12 +39,9 @@ public class ClickGuiMain extends GuiScreen {
     }
 
     @Override
-    public void keyTyped(char typedChar, int keyCode) {
+    public void keyTyped(char typedChar, int keyCode) throws IOException {
         this.panels.forEach(panel -> panel.keyTyped(typedChar, keyCode));
-        try {
-            super.keyTyped(typedChar, keyCode);
-        } catch (IOException ignored) {
-        }
+        super.keyTyped(typedChar, keyCode);
     }
 
     @Override

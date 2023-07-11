@@ -1,6 +1,6 @@
 package wtf.norma.nekito.holder;
 
-import wtf.norma.nekito.helper.TimeHelper;
+import wtf.norma.nekito.helper.math.TimeHelper;
 
 import java.util.ArrayList;
 import java.util.List;

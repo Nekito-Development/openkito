@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.helper.TimeHelper;
+import wtf.norma.nekito.helper.math.TimeHelper;
 import wtf.norma.nekito.module.impl.visuals.WingsModule;
 
 public class WingsModel extends ModelBase {

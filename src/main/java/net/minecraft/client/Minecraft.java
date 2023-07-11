@@ -179,7 +179,7 @@ import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.event.impl.KeyEvent;
-import wtf.norma.nekito.ui.MainMenuLoadingScreen;
+import wtf.norma.nekito.ui.screen.GarbageMainMenuLoadingScreen;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -487,7 +487,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.renderEngine = new TextureManager(this.mcResourceManager);
         this.mcResourceManager.registerReloadListener(this.renderEngine);
 //        this.drawSplashScreen(this.renderEngine);
-        MainMenuLoadingScreen.drawSplash(getTextureManager());
+        GarbageMainMenuLoadingScreen.drawSplash(getTextureManager());
         this.initStream();
         this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
         this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
@@ -597,10 +597,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.gameSettings.enableVsync = false;
             this.gameSettings.saveOptions();
         }
-
-
-        //Post-Init hook by tecness
-        Nekito.INSTANCE.postInit();
 
         this.renderGlobal.makeEntityOutlineShader();
     }

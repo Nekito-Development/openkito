@@ -48,7 +48,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
-import wtf.norma.nekito.helper.TimeHelper;
+import wtf.norma.nekito.helper.math.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
 
 public class NetworkManager extends SimpleChannelInboundHandler<Packet> {

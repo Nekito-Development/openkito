@@ -6,11 +6,9 @@ import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.impl.visuals.CustomButtonsModule;
-import wtf.norma.nekito.module.impl.visuals.EarsModule;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.RenderUtility;
+import wtf.norma.nekito.helper.font.FontHelper;
+import wtf.norma.nekito.helper.render.RenderHelper;
 
 import java.awt.*;
 
@@ -105,7 +103,7 @@ public class GuiButton extends Gui {
 
             switch (module.rect.get()) {
                 case "Rounded":
-                    RenderUtility.drawRoundOutline(this.xPosition, this.yPosition, this.width, this.height, 5, 0.2f, new Color(0, 0, 0, 100), new Color(100, 100, 100, 90));
+                    RenderHelper.drawRoundOutline(this.xPosition, this.yPosition, this.width, this.height, 5, 0.2f, new Color(0, 0, 0, 100), new Color(100, 100, 100, 90));
                     break;
                 case "Texture":
                     this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + i * 20, this.width / 2, this.height);
@@ -124,7 +122,7 @@ public class GuiButton extends Gui {
 
             switch (module.font.get()) {
                 case "Custom":
-                    Fonts.SEMI_BOLD_18.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
+                    FontHelper.SEMI_BOLD_18.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
                     break;
                 case "Minecraft":
                     this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);

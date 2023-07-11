@@ -20,11 +20,11 @@ import org.lwjgl.util.vector.Vector2f;
 import rip.hippo.lwjeb.annotation.Handler;
 import wtf.norma.nekito.draggable.Draggable;
 import wtf.norma.nekito.event.impl.EventRender2D;
+import wtf.norma.nekito.helper.font.FontHelper;
+import wtf.norma.nekito.helper.render.RenderHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleCategory;
 import wtf.norma.nekito.module.ModuleInfo;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
 
@@ -51,8 +51,8 @@ public class CustomHotBarModule extends Module implements Draggable {
         GlStateManager.pushMatrix();
         GlStateManager.translate(getDraggableX(), getDraggableY(), 1);
 
-        RenderUtility.drawGradientRound(1, 0, 180, 20, 5, new Color(1, 111, 255, 130), new Color(0, 225, 255, 130), new Color(112, 114, 255, 130), new Color(128, 32, 231, 130));
-        RenderUtility.drawRound(mc.thePlayer.inventory.currentItem * 20, 0, 20, 20, 5, new Color(255, 255, 255, 100));
+        RenderHelper.drawGradientRound(1, 0, 180, 20, 5, new Color(1, 111, 255, 130), new Color(0, 225, 255, 130), new Color(112, 114, 255, 130), new Color(128, 32, 231, 130));
+        RenderHelper.drawRound(mc.thePlayer.inventory.currentItem * 20, 0, 20, 20, 5, new Color(255, 255, 255, 100));
 
         int offset = 7; //height offset for health, food, armor
 
@@ -330,7 +330,7 @@ public class CustomHotBarModule extends Module implements Draggable {
             }
 
             String s = String.valueOf(mc.thePlayer.experienceLevel);
-            Fonts.SEMI_BOLD_18.drawCenteredString(s, 90, -16, -1);
+            FontHelper.SEMI_BOLD_18.drawCenteredString(s, 90, -16, -1);
             mc.mcProfiler.endSection();
         }
 
@@ -359,8 +359,8 @@ public class CustomHotBarModule extends Module implements Draggable {
                 GlStateManager.enableBlend();
                 GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 
-                RenderUtility.drawGradientRound(87 - Fonts.SEMI_BOLD_18.getStringWidth(s) / 2, -52, Fonts.SEMI_BOLD_18.getStringWidth(s) + 5, 12, 4, new Color(1, 111, 255, k), new Color(0, 225, 255, k), new Color(112, 114, 255, k), new Color(128, 32, 231, k));
-                Fonts.SEMI_BOLD_18.drawCenteredString(s, (float) 90, mc.playerController.shouldDrawHUD() ? (float) -50 : -23, 16777215 + (k2 << 24));
+                RenderHelper.drawGradientRound(87 - FontHelper.SEMI_BOLD_18.getStringWidth(s) / 2, -52, FontHelper.SEMI_BOLD_18.getStringWidth(s) + 5, 12, 4, new Color(1, 111, 255, k), new Color(0, 225, 255, k), new Color(112, 114, 255, k), new Color(128, 32, 231, k));
+                FontHelper.SEMI_BOLD_18.drawCenteredString(s, (float) 90, mc.playerController.shouldDrawHUD() ? (float) -50 : -23, 16777215 + (k2 << 24));
 
                 GlStateManager.disableBlend();
                 GlStateManager.popMatrix();

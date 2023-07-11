@@ -7,11 +7,11 @@ public abstract class Item<T> {
     protected static final Minecraft mc = Minecraft.getMinecraft();
 
     protected final int x, y, width, height;
-    private final T object;
+    private final T item;
     protected int offset;
 
-    public Item(T object, int x, int y, int width, int height) {
-        this.object = object;
+    public Item(T item, int x, int y, int width, int height) {
+        this.item = item;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -38,7 +38,7 @@ public abstract class Item<T> {
         return mouseY <= this.y + this.offset + this.height;
     }
 
-    public T getObject() {
-        return object;
+    public T getItem() {
+        return item;
     }
 }

@@ -1,6 +1,5 @@
 package net.minecraft.client.gui.inventory;
 
-import java.awt.*;
 import java.io.IOException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -9,15 +8,12 @@ import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.InventoryEffectRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.util.ResourceLocation;
-import wtf.norma.nekito.util.color.ColorUtility;
-import wtf.norma.nekito.util.render.RenderUtility;
+import wtf.norma.nekito.helper.render.RenderHelper;
 
 public class GuiInventory extends InventoryEffectRenderer
 {
@@ -75,7 +71,7 @@ public class GuiInventory extends InventoryEffectRenderer
 
 
 
-     //   cos typu  RenderUtility.drawImage(577, 130, 422, 591, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
+     //   cos typu  RenderHelper.drawImage(577, 130, 422, 591, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
 
 
 
@@ -104,7 +100,7 @@ public class GuiInventory extends InventoryEffectRenderer
         this.oldMouseX = (float)mouseX;
         this.oldMouseY = (float)mouseY;
 
-        RenderUtility.drawImage(75, 90, 176, 176, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
+        RenderHelper.drawImage(75, 90, 176, 176, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
     }
 
     /**
@@ -136,7 +132,7 @@ public class GuiInventory extends InventoryEffectRenderer
         float f3 = ent.prevRotationYawHead;
         float f4 = ent.rotationYawHead;
         GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
-        RenderHelper.enableStandardItemLighting();
+        net.minecraft.client.renderer.RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(-((float)Math.atan((double)(mouseY / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
         ent.renderYawOffset = (float)Math.atan((double)(mouseX / 40.0F)) * 20.0F;
@@ -156,7 +152,7 @@ public class GuiInventory extends InventoryEffectRenderer
         ent.prevRotationYawHead = f3;
         ent.rotationYawHead = f4;
         GlStateManager.popMatrix();
-        RenderHelper.disableStandardItemLighting();
+        net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
         GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
         GlStateManager.disableTexture2D();

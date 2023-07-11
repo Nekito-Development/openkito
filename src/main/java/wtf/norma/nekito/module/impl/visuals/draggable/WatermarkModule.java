@@ -7,11 +7,11 @@ import org.lwjgl.util.vector.Vector2f;
 import rip.hippo.lwjeb.annotation.Handler;
 import wtf.norma.nekito.draggable.Draggable;
 import wtf.norma.nekito.event.impl.EventRender2D;
-import wtf.norma.nekito.helper.OpenGlHelper;
+import wtf.norma.nekito.helper.render.ColorHelper;
+import wtf.norma.nekito.helper.render.RenderHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleCategory;
 import wtf.norma.nekito.module.ModuleInfo;
-import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
 
@@ -40,8 +40,8 @@ public class WatermarkModule extends Module implements Draggable {
         GlStateManager.translate(getDraggableX(), getDraggableY(), 1);
 
         String text = String.format(TEXT, Minecraft.getDebugFPS());
-        RenderUtility.drawRound(3, 4, mc.fontRendererObj.getStringWidth(text) + 4, 10, 3, COLOR);
-        mc.fontRendererObj.drawStringWithShadow(text, 5, 5, OpenGlHelper.rainbowColor(3000, 1));
+        RenderHelper.drawRound(3, 4, mc.fontRendererObj.getStringWidth(text) + 4, 10, 3, COLOR);
+        mc.fontRendererObj.drawStringWithShadow(text, 5, 5, ColorHelper.rainbowColor(3000, 1));
 
         //Returning size
         GlStateManager.popMatrix();

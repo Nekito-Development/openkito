@@ -25,6 +25,6 @@ public class HclipCommand extends Command {
 
 //        mc.thePlayer.setPosition(mc.thePlayer.posX - x, mc.thePlayer.posY, mc.thePlayer.posZ + z);
         //Nie wiem czy to dobrze zrobilem, nie jestem cheat developerem jeszcze
-        mc.thePlayer.setEntityBoundingBox(mc.thePlayer.getEntityBoundingBox().offset(-x, dist, z));
+        mc.thePlayer.setEntityBoundingBox(mc.thePlayer.getEntityBoundingBox().offset(-x, 0, z));
     }
 }

@@ -3,8 +3,8 @@ package wtf.norma.nekito.clickgui.item.impl;
 import net.minecraft.client.gui.Gui;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.clickgui.item.Item;
+import wtf.norma.nekito.helper.font.FontHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.util.font.Fonts;
 
 public class ItemKeyBind extends Item<Module> {
     private boolean pendingKey;
@@ -19,7 +19,7 @@ public class ItemKeyBind extends Item<Module> {
         float y = this.y + offset;
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
-        Fonts.SEMI_BOLD_18.drawString(pendingKey ? "..." : "Bind [" + Keyboard.getKeyName(getObject().getKey()) + "]",
+        FontHelper.SEMI_BOLD_18.drawString(pendingKey ? "..." : "Bind [" + Keyboard.getKeyName(getItem().getKey()) + "]",
                 x + 5,
                 y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1,
                 -1);
@@ -30,20 +30,20 @@ public class ItemKeyBind extends Item<Module> {
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         if (bounding(mouseX, mouseY)) {
-            if (mouseButton == 0)
+            if (mouseButton == 0) {
                 pendingKey = !pendingKey;
-        } else
+            }
+        } else {
             pendingKey = false;
+        }
     }
 
     @Override
     public void keyTyped(char typedChar, int keyCode) {
-        if (pendingKey) {
-            if (keyCode == Keyboard.KEY_DELETE)
-                getObject().setKey(Keyboard.KEY_NONE);
-            else
-                getObject().setKey(keyCode);
-            pendingKey = false;
-        }
+        if (!pendingKey)
+            return;
+
+        getItem().setKey(keyCode == Keyboard.KEY_DELETE ? Keyboard.KEY_NONE : keyCode);
+        pendingKey = false;
     }
 }

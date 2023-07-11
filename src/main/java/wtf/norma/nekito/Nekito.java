@@ -2,7 +2,6 @@ package wtf.norma.nekito;
 
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
-import net.minecraft.client.Minecraft;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import rip.hippo.lwjeb.annotation.Handler;
@@ -19,8 +18,8 @@ import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
 import wtf.norma.nekito.exploit.impl.flood.AttackExploit;
 import wtf.norma.nekito.exploit.impl.nbt.*;
 import wtf.norma.nekito.exploit.impl.other.*;
-import wtf.norma.nekito.helper.NetHelper;
-import wtf.norma.nekito.helper.OpenGlHelper;
+import wtf.norma.nekito.helper.network.NetHelper;
+import wtf.norma.nekito.helper.render.OpenGlHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.module.impl.movement.FlyModule;
@@ -28,7 +27,6 @@ import wtf.norma.nekito.module.impl.movement.SprintModule;
 import wtf.norma.nekito.module.impl.visuals.*;
 import wtf.norma.nekito.module.impl.visuals.draggable.*;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
-import wtf.norma.nekito.util.render.RenderUtil;
 
 import java.io.IOException;
 
@@ -44,7 +42,6 @@ public enum Nekito {
     private final DraggableManager draggableManager;
     private final ModuleManager moduleManager;
     private final ClickGuiMain clickGuiMain;
-    Minecraft mc = Minecraft.getMinecraft();
 
     Nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
@@ -133,10 +130,6 @@ public enum Nekito {
 //                        String.format("&5%s &f- &d%s", command.getAlias(), command.getDescription())));
 //    }
 
-    public void postInit() {
-        RenderUtil.Instance = new RenderUtil(true);
-    }
-
     public void shutDown() {
         DiscordRPC.discordShutdown();
     }
@@ -148,16 +141,6 @@ public enum Nekito {
                 module.toggle();
             }
         }
-    }
-
-    public double createAnimation(double value) {
-        return Math.sqrt(1 - Math.pow(value - 1, 2));
-    }
-
-    public double dropAnimation(double value) {
-        double c1 = 1.70158;
-        double c3 = c1 + 1;
-        return 1 + c3 * Math.pow(value - 1, 3) + c1 * Math.pow(value - 1, 2);
     }
 
     public DraggableManager getDraggableManager() {

@@ -17,9 +17,6 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import wtf.norma.nekito.util.color.ColorUtility;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.RenderUtility;
 
 public class GuiConnecting extends GuiScreen {
 

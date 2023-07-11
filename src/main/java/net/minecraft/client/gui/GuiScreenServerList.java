@@ -7,8 +7,8 @@ import net.minecraft.client.multiplayer.ServerAddress;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.helper.TickHelper;
-import wtf.norma.nekito.util.color.ColorUtility;
+import wtf.norma.nekito.helper.math.TickHelper;
+import wtf.norma.nekito.helper.render.ColorHelper;
 
 public class GuiScreenServerList extends GuiScreen
 {
@@ -138,7 +138,7 @@ public class GuiScreenServerList extends GuiScreen
         int w = 275;
         int y = 85;
         int h = 1;
-        drawRect(x, y, x + (int) ((double) this.tickTimer.get() / (double) max * (double) w), y + h, ColorUtility.getColor((int) this.tickTimer.get()));
+        drawRect(x, y, x + (int) ((double) this.tickTimer.get() / (double) max * (double) w), y + h, ColorHelper.getColor((int) this.tickTimer.get()));
         if (this.tickTimer.hasTimePassed(max)) {
             this.entry.setServerData(this.field_146301_f);
             this.entry.ping();

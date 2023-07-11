@@ -6,7 +6,7 @@ import rip.hippo.lwjeb.annotation.Handler;
 import wtf.norma.nekito.draggable.Draggable;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.helper.TimeHelper;
+import wtf.norma.nekito.helper.math.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleCategory;

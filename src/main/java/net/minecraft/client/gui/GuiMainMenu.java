@@ -2,10 +2,10 @@ package net.minecraft.client.gui;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.ui.altmanager.GuiAltManager;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.BlurUtility;
-import wtf.norma.nekito.util.shader.GLSL;
+import wtf.norma.nekito.ui.gui.GuiAltManager;
+import wtf.norma.nekito.helper.font.FontHelper;
+import wtf.norma.nekito.helper.render.BlurHelper;
+import wtf.norma.nekito.helper.shader.GLSL;
 import java.awt.*;
 import java.io.IOException;
 
@@ -62,10 +62,10 @@ public class GuiMainMenu extends GuiScreen {
         drawbackground();
 
 
-        BlurUtility.drawShadow(5, 2, () -> {
-            Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
+        BlurHelper.drawShadow(5, 2, () -> {
+            FontHelper.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
         }, Color.WHITE);
-        Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
+        FontHelper.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
@@ -95,7 +95,7 @@ public class GuiMainMenu extends GuiScreen {
         GL11.glPushMatrix();
         {
             GL11.glDisable(GL11.GL_CULL_FACE);
-            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+            GLSL.MAIN_MENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
 
 
             GL11.glBegin(GL11.GL_QUADS);

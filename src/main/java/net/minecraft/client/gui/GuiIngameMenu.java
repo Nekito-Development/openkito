@@ -6,7 +6,7 @@ import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.realms.RealmsBridge;
-import wtf.norma.nekito.ui.Tools.UiTools;
+import wtf.norma.nekito.ui.gui.GuiTools;
 
 public class GuiIngameMenu extends GuiScreen
 {
@@ -103,7 +103,7 @@ public class GuiIngameMenu extends GuiScreen
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
 
             case 8:
-                this.mc.displayGuiScreen(new UiTools(   this));
+                this.mc.displayGuiScreen(new GuiTools(   this));
                 // this.mc.setIngameFocus();
                 break;
 
