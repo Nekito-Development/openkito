@@ -1,6 +1,5 @@
 package net.minecraft.client.renderer.entity;
 
-import java.util.Random;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -11,24 +10,26 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import wtf.norma.nekito.module.impl.ItemPhysics;
-import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.util.Time.Timer;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.helper.TimeHelper;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.impl.visuals.ItemPhysicsModule;
 
-public class RenderEntityItem extends Render<EntityItem>
-{
+import java.util.Random;
+
+public class RenderEntityItem extends Render<EntityItem> {
     private final RenderItem itemRenderer;
     private Random field_177079_e = new Random();
 
-    public RenderEntityItem(RenderManager renderManagerIn, RenderItem p_i46167_2_)
-    {
+    private final TimeHelper timeHelper = new TimeHelper();
+
+    public RenderEntityItem(RenderManager renderManagerIn, RenderItem p_i46167_2_) {
         super(renderManagerIn);
         this.itemRenderer = p_i46167_2_;
         this.shadowSize = 0.15F;
         this.shadowOpaque = 0.75F;
     }
 
-    Timer timer = new Timer();
     private int func_177077_a(EntityItem itemIn, double p_177077_2_, double p_177077_4_, double p_177077_6_,
                               float p_177077_8_, IBakedModel p_177077_9_) {
         ItemStack itemstack = itemIn.getEntityItem();
@@ -37,7 +38,7 @@ public class RenderEntityItem extends Render<EntityItem>
         if (item == null) {
             return 0;
         } else {
-            if (nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).isToggled()) {
+            if (Nekito.INSTANCE.getModuleManager().findModule(ItemPhysicsModule.class).map(Module::isEnabled).orElse(false)) {
 
                 boolean var12 = p_177077_9_.isAmbientOcclusion();
                 int var13 = this.func_177078_a(itemstack);
@@ -50,8 +51,8 @@ public class RenderEntityItem extends Render<EntityItem>
 
                 float pitch = itemIn.onGround ? 90 : itemIn.rotationPitch;
 
-                if (Timer.hasReached(5)) {
-                    timer.reset();
+                if (timeHelper.passed(5)) {
+                    timeHelper.reset();
                     itemIn.rotationPitch += 1;
                 }
 
@@ -97,24 +98,17 @@ public class RenderEntityItem extends Render<EntityItem>
 
         }
     }
-    private int func_177078_a(ItemStack stack)
-    {
+
+    private int func_177078_a(ItemStack stack) {
         int i = 1;
 
-        if (stack.stackSize > 48)
-        {
+        if (stack.stackSize > 48) {
             i = 5;
-        }
-        else if (stack.stackSize > 32)
-        {
+        } else if (stack.stackSize > 32) {
             i = 4;
-        }
-        else if (stack.stackSize > 16)
-        {
+        } else if (stack.stackSize > 16) {
             i = 3;
-        }
-        else if (stack.stackSize > 1)
-        {
+        } else if (stack.stackSize > 1) {
             i = 2;
         }
 
@@ -127,14 +121,12 @@ public class RenderEntityItem extends Render<EntityItem>
      * (Render<T extends Entity>) and this method has signature public void doRender(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doe
      */
-    public void doRender(EntityItem entity, double x, double y, double z, float entityYaw, float partialTicks)
-    {
+    public void doRender(EntityItem entity, double x, double y, double z, float entityYaw, float partialTicks) {
         ItemStack itemstack = entity.getEntityItem();
         this.field_177079_e.setSeed(187L);
         boolean flag = false;
 
-        if (this.bindEntityTexture(entity))
-        {
+        if (this.bindEntityTexture(entity)) {
             this.renderManager.renderEngine.getTexture(this.getEntityTexture(entity)).setBlurMipmap(false, false);
             flag = true;
         }
@@ -147,14 +139,11 @@ public class RenderEntityItem extends Render<EntityItem>
         IBakedModel ibakedmodel = this.itemRenderer.getItemModelMesher().getItemModel(itemstack);
         int i = this.func_177077_a(entity, x, y, z, partialTicks, ibakedmodel);
 
-        for (int j = 0; j < i; ++j)
-        {
-            if (ibakedmodel.isGui3d())
-            {
+        for (int j = 0; j < i; ++j) {
+            if (ibakedmodel.isGui3d()) {
                 GlStateManager.pushMatrix();
 
-                if (j > 0)
-                {
+                if (j > 0) {
                     float f = (this.field_177079_e.nextFloat() * 2.0F - 1.0F) * 0.15F;
                     float f1 = (this.field_177079_e.nextFloat() * 2.0F - 1.0F) * 0.15F;
                     float f2 = (this.field_177079_e.nextFloat() * 2.0F - 1.0F) * 0.15F;
@@ -165,9 +154,7 @@ public class RenderEntityItem extends Render<EntityItem>
                 ibakedmodel.getItemCameraTransforms().applyTransform(ItemCameraTransforms.TransformType.GROUND);
                 this.itemRenderer.renderItem(itemstack, ibakedmodel);
                 GlStateManager.popMatrix();
-            }
-            else
-            {
+            } else {
                 GlStateManager.pushMatrix();
                 ibakedmodel.getItemCameraTransforms().applyTransform(ItemCameraTransforms.TransformType.GROUND);
                 this.itemRenderer.renderItem(itemstack, ibakedmodel);
@@ -184,8 +171,7 @@ public class RenderEntityItem extends Render<EntityItem>
         GlStateManager.disableBlend();
         this.bindEntityTexture(entity);
 
-        if (flag)
-        {
+        if (flag) {
             this.renderManager.renderEngine.getTexture(this.getEntityTexture(entity)).restoreLastBlurMipmap();
         }
 
@@ -195,8 +181,7 @@ public class RenderEntityItem extends Render<EntityItem>
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityItem entity)
-    {
+    protected ResourceLocation getEntityTexture(EntityItem entity) {
         return TextureMap.locationBlocksTexture;
     }
 }

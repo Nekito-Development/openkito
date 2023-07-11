@@ -43,16 +43,16 @@ public class ProtocolVersionUtils {
         if (protocolVersion == 755 || protocolVersion > 756) {
             return "1.17.X";
         }
-        if (protocolVersion == 757 || protocolVersion > 757 && protocolVersion < 758 ) {
+        if (protocolVersion == 757 || protocolVersion > 757 && protocolVersion < 758) {
             return "1.18.X";
         }
-        if (protocolVersion == 759 || protocolVersion > 760 && protocolVersion < 761  ) {
+        if (protocolVersion == 759 || protocolVersion > 760 && protocolVersion < 761) {
             return "1.19.X";
         }
-        if (protocolVersion == 762 ) {
+        if (protocolVersion == 762) {
             return "1.19.4";
         }
-        if (protocolVersion == 763 ) {
+        if (protocolVersion == 763) {
             return "1.20";
         }
         return "Wrong Protocol";

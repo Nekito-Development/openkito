@@ -1,7 +1,5 @@
 package wtf.norma.nekito.ui;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -9,26 +7,25 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.util.ResourceLocation;
-
-import java.awt.*;
+import org.lwjgl.opengl.GL11;
 
 public class MainMenuLoadingScreen {
 
     // Max amount of progress updates
     private static final int DEFAULT_MAX = 14;
+    // Currently displayed progress text
+    private static final String CURRENT = "";
+    static int test = 0;
     // Font renderer
     // Current progress
     private static int PROGRESS;
-    // Currently displayed progress text
-    private static String CURRENT = "";
     // Background texture
     // Texture manager
     private static TextureManager ctm;
-    static int test = 0;
     private static ResourceLocation splash;
 
     public static void update() {
-        if(Minecraft.getMinecraft() == null || Minecraft.getMinecraft().getLanguageManager() == null) {
+        if (Minecraft.getMinecraft() == null || Minecraft.getMinecraft().getLanguageManager() == null) {
             return;
         }
         drawSplash(Minecraft.getMinecraft().getTextureManager());

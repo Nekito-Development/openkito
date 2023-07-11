@@ -21,8 +21,10 @@ import optifine.CapeUtils;
 import optifine.Config;
 import optifine.PlayerConfigurations;
 import optifine.Reflector;
-import wtf.norma.nekito.module.impl.Cape;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.impl.visuals.CapeModule;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.impl.visuals.WingsModule;
 
 public abstract class AbstractClientPlayer extends EntityPlayer
 {
@@ -92,7 +94,7 @@ public abstract class AbstractClientPlayer extends EntityPlayer
 
     public ResourceLocation getLocationCape()
     {
-        Cape capes = (Cape) nekito.INSTANCE.getModuleManager().getModuleByName("Cape");
+       CapeModule module = Nekito.INSTANCE.getModuleManager().findModule(CapeModule.class).map(CapeModule.class::cast).orElseThrow(NullPointerException::new);
 
         if (!Config.isShowCapes())
         {
@@ -100,12 +102,12 @@ public abstract class AbstractClientPlayer extends EntityPlayer
         }
         else if (this.locationOfCape != null)
         {
-            return capes.isToggled() && capes.canRender(this) ? capes.getCape() : locationOfCape;
+            return module.isEnabled() && module.canRender(this) ? module.getCape() : locationOfCape;
         }
         else
         {
             NetworkPlayerInfo networkplayerinfo = this.getPlayerInfo();
-            return networkplayerinfo == null ? null : capes.isToggled() && capes.canRender(this) ? capes.getCape() : networkplayerinfo.getLocationCape();
+            return networkplayerinfo == null ? null : module.isEnabled() && module.canRender(this) ? module.getCape() : networkplayerinfo.getLocationCape();
         }
     }
 

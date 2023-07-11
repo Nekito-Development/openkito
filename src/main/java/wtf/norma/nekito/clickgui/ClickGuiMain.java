@@ -2,11 +2,8 @@ package wtf.norma.nekito.clickgui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.util.render.RenderUtil;
-import wtf.norma.nekito.util.render.RenderUtility;
+import wtf.norma.nekito.module.ModuleCategory;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +15,7 @@ public class ClickGuiMain extends GuiScreen {
     public void initGui() {
         if (this.panels.isEmpty()) {
             int x = 10;
-            for (Module.Category category : Module.Category.values()) {
+            for (ModuleCategory category : ModuleCategory.values()) {
                 panels.add(new CategoryPanel(category, x, 10, 100, 16, Minecraft.getMinecraft()));
                 x += 110;
             }
@@ -43,7 +40,10 @@ public class ClickGuiMain extends GuiScreen {
     @Override
     public void keyTyped(char typedChar, int keyCode) {
         this.panels.forEach(panel -> panel.keyTyped(typedChar, keyCode));
-        try { super.keyTyped(typedChar, keyCode); } catch (IOException ignored) { }
+        try {
+            super.keyTyped(typedChar, keyCode);
+        } catch (IOException ignored) {
+        }
     }
 
     @Override

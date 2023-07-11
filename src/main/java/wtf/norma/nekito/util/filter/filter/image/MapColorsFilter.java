@@ -22,31 +22,32 @@ package wtf.norma.nekito.util.filter.filter.image;
  */
 public class MapColorsFilter extends PointFilter {
 
-	private int oldColor;
-	private int newColor;
-	
-	/**
+    private final int oldColor;
+    private final int newColor;
+
+    /**
      * Construct a MapColorsFilter.
      */
     public MapColorsFilter() {
-		this( 0xffffffff, 0xff000000 );
-	}
-	
-	/**
+        this(0xffffffff, 0xff000000);
+    }
+
+    /**
      * Construct a MapColorsFilter.
+     *
      * @param oldColor the color to replace
      * @param newColor the color to replace it with
      */
-	public MapColorsFilter(int oldColor, int newColor) {
-		canFilterIndexColorModel = true;
-		this.oldColor = oldColor;
-		this.newColor = newColor;
-	}
+    public MapColorsFilter(int oldColor, int newColor) {
+        canFilterIndexColorModel = true;
+        this.oldColor = oldColor;
+        this.newColor = newColor;
+    }
 
-	public int filterRGB(int x, int y, int rgb) {
-		if (rgb == oldColor)
-			return newColor;
-		return rgb;
-	}
+    public int filterRGB(int x, int y, int rgb) {
+        if (rgb == oldColor)
+            return newColor;
+        return rgb;
+    }
 }
 

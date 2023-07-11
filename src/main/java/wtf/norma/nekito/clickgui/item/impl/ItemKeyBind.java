@@ -19,7 +19,7 @@ public class ItemKeyBind extends Item<Module> {
         float y = this.y + offset;
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
-        Fonts.SEMI_BOLD_18.drawString(pendingKey ? "..." : "Bind [" + Keyboard.getKeyName(getObject().keybind) + "]",
+        Fonts.SEMI_BOLD_18.drawString(pendingKey ? "..." : "Bind [" + Keyboard.getKeyName(getObject().getKey()) + "]",
                 x + 5,
                 y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1,
                 -1);
@@ -40,9 +40,9 @@ public class ItemKeyBind extends Item<Module> {
     public void keyTyped(char typedChar, int keyCode) {
         if (pendingKey) {
             if (keyCode == Keyboard.KEY_DELETE)
-                getObject().keybind = Keyboard.KEY_NONE;
+                getObject().setKey(Keyboard.KEY_NONE);
             else
-                getObject().keybind = keyCode;
+                getObject().setKey(keyCode);
             pendingKey = false;
         }
     }

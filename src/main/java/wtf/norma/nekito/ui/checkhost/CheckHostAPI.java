@@ -44,7 +44,7 @@ public final class CheckHostAPI {
     }
 
     private static JsonObject performGetRequest(String url) throws IOException {
-        HttpURLConnection con = (HttpURLConnection)new URL(url).openConnection();
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
         con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0");
         con.setRequestProperty("Accept", "application/json");
         BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -67,16 +67,16 @@ public final class CheckHostAPI {
         final ArrayList<CheckHostServer> servers = new ArrayList<CheckHostServer>();
         JsonObject nodes = main.get("nodes").getAsJsonObject();
         for (Map.Entry entry : nodes.entrySet()) {
-            JsonArray list = ((JsonElement)entry.getValue()).getAsJsonArray();
+            JsonArray list = ((JsonElement) entry.getValue()).getAsJsonArray();
             ArrayList<String> infos = new ArrayList<String>();
             if (list.size() > 3) {
                 for (int i = 3; i < list.size(); ++i) {
                     infos.add(list.get(i).getAsString());
                 }
             }
-            servers.add(new CheckHostServer((String)entry.getKey(), list.get(1).getAsString(), list.get(0).getAsString(), list.get(2).getAsString(), infos));
+            servers.add(new CheckHostServer((String) entry.getKey(), list.get(1).getAsString(), list.get(0).getAsString(), list.get(2).getAsString(), infos));
         }
-        return new Map.Entry<String, List<CheckHostServer>>(){
+        return new Map.Entry<String, List<CheckHostServer>>() {
 
             @Override
             public String getKey() {
@@ -139,7 +139,8 @@ public final class CheckHostAPI {
         for (int i = 0; i < servers.size(); ++i) {
             CheckHostServer server = servers.get(i);
             JsonArray ja = null;
-            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1) continue;
+            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1)
+                continue;
             JsonObject obj = ja.get(0).getAsJsonObject();
             String error = null;
             if (obj.has("error")) {
@@ -167,7 +168,8 @@ public final class CheckHostAPI {
         for (int i = 0; i < servers.size(); ++i) {
             CheckHostServer server = servers.get(i);
             JsonArray ja = null;
-            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1) continue;
+            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1)
+                continue;
             JsonObject obj = ja.get(0).getAsJsonObject();
             String error = null;
             if (obj.has("error")) {
@@ -200,7 +202,8 @@ public final class CheckHostAPI {
             int error;
             CheckHostServer server = servers.get(i);
             JsonArray ja = null;
-            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1) continue;
+            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1)
+                continue;
             ja = ja.get(0).getAsJsonArray();
             double ping = ja.get(1).getAsDouble();
             String status = ja.get(2).getAsString();
@@ -221,18 +224,20 @@ public final class CheckHostAPI {
         for (int i = 0; i < servers.size(); ++i) {
             CheckHostServer server = servers.get(i);
             JsonArray ja = null;
-            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1) continue;
+            if (!main.has(server.getName()) || main.get(server.getName()).isJsonNull() || (ja = main.get(server.getName()).getAsJsonArray()).size() != 1)
+                continue;
             JsonObject obj = ja.get(0).getAsJsonObject();
             HashMap<String, String[]> domainInfos = new HashMap<String, String[]>();
             for (Map.Entry entry : obj.entrySet()) {
-                if (((String)entry.getKey()).equals("TTL") || !((JsonElement)entry.getValue()).isJsonArray()) continue;
-                JsonArray ja2 = ((JsonElement)entry.getValue()).getAsJsonArray();
+                if (entry.getKey().equals("TTL") || !((JsonElement) entry.getValue()).isJsonArray())
+                    continue;
+                JsonArray ja2 = ((JsonElement) entry.getValue()).getAsJsonArray();
                 String[] values = new String[ja2.size()];
                 for (int k = 0; k < ja2.size(); ++k) {
                     if (!ja2.get(k).isJsonPrimitive()) continue;
                     values[k] = ja2.get(k).getAsString();
                 }
-                domainInfos.put((String)entry.getKey(), values);
+                domainInfos.put((String) entry.getKey(), values);
             }
             CheckHostDnsResult res = new CheckHostDnsResult(obj.has("TTL") && obj.get("TTL").isJsonPrimitive() ? obj.get("TTL").getAsInt() : -1, domainInfos);
             result.put(server, res);

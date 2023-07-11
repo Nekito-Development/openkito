@@ -1,38 +1,33 @@
 package wtf.norma.nekito.event;
 
-import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
-public class Event {
+public abstract class Event {
 
-    public EventType type;
-    public boolean cancelled;
+    private final EventState state;
+    private boolean cancelled;
 
-    public static void dispatch(Event e) {
-        nekito.INSTANCE.getModuleManager().getModules().stream().filter(Module::isToggled).forEach(m -> m.onEvent(e));
+    public Event(EventState state) {
+        this.state = state;
     }
 
-    public boolean isPre() {
-        return type != null && type == EventType.PRE;
+    public Event() {
+        this(EventState.NONE);
     }
 
-    public boolean isPost() {
-        return type != null && type == EventType.POST;
+    public void post() {
+        Nekito.INSTANCE.getEventBus().post(this).dispatch();
     }
 
-    public EventType getType() {
-        return type;
+    public void cancel() {
+        cancelled = true;
     }
 
-    public void setType(EventType type) {
-        this.type = type;
+    public EventState getState() {
+        return state;
     }
 
     public boolean isCancelled() {
         return cancelled;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
     }
 }

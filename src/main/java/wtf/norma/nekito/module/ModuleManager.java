@@ -1,53 +1,65 @@
 package wtf.norma.nekito.module;
 
-import wtf.norma.nekito.module.impl.*;
+import wtf.norma.nekito.module.value.Value;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public class ModuleManager {
 
-    public ArrayList<Module> modules = new ArrayList<>();
+    private final List<Module> modules = new ArrayList<>();
 
-    public ModuleManager() {
-        addAll(
-                new Sprint(),
-                new ClickGUI(),
-                new Cape(),
-                new ItemPhysics(),
-                new Fly(),
-                new FullBright(),
-                new CustomButtons(),
-                new ServerInfo(),
-                new Watermark(),
-                new Arraylist(),
-                new NoWeather(),
-                new CustomHotbar(),
-                new Wings(),
-                new Ears()
-        );
+    public ModuleManager(Module... modules) {
+        register(modules);
     }
 
-    public void addAll(Module... modules) {
-        for (Module m : modules) {
-            this.modules.add(m);
-        }
+    public void register(Module... modules) {
+        this.modules.addAll(Arrays.asList(modules));
     }
 
-    public Module getModuleByName(String name) {
-        for (Module m : modules) {
-            if (m.getName().equalsIgnoreCase(name)) {
-                return m;
+    public Optional<Module> findModule(String moduleName) {
+        return modules.stream()
+                .filter(module -> module.getName().equalsIgnoreCase(moduleName))
+                .findFirst();
+    }
+
+    public Optional<Module> findModule(Class<? extends Module> clazz) {
+        return modules.stream()
+                .filter(module -> module.getClass().equals(clazz))
+                .findFirst();
+    }
+
+    public void registerValues() {
+        modules.forEach(this::registerValues);
+    }
+
+    public void registerValues(Module module) {
+        for (Field field : module.getClass().getDeclaredFields()) {
+            if (!Value.class.isAssignableFrom(field.getType()))
+                continue;
+
+            try {
+                Value<?> value = (Value<?>) field.get(module);
+                if (value == null)
+                    continue;
+
+                module.getValues().put(value.getName(), value);
+            } catch (Exception ignored) {
             }
         }
-        return null;
     }
 
-    public <T extends Module> T getModule(Class<T> clas) {
-        return (T) getModules().stream().filter(module -> module.getClass() == clas).findFirst().orElse(null);
+    public Optional<Value<?>> findValue(Module module, String name) {
+        if (module.getValues().containsKey(name))
+            return Optional.ofNullable(module.getValues().get(name));
+
+        return module.getValues().values().stream().filter(value -> value.getName().equalsIgnoreCase(name)).findFirst();
     }
 
-
-    public ArrayList<Module> getModules() {
+    public List<Module> getModules() {
         return modules;
     }
 }

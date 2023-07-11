@@ -24,9 +24,11 @@ public class ColorUtility {
         return new Color(c.getRed() / 255.0f * fade, c.getGreen() / 255.0f * fade, c.getBlue() / 255.0f * fade,
                 c.getAlpha() / 255.0f);
     }
+
     public static int rgba(int r, int g, int b, int a) {
         return a << 24 | r << 16 | g << 8 | b;
     }
+
     public static int rgba(double r, double g, double b, double a) {
         return rgba((int) r, (int) g, (int) b, (int) a);
     }
@@ -38,6 +40,7 @@ public class ColorUtility {
         color |= green << 8;
         return color |= blue;
     }
+
     public static int HSBtoRGB(float hue, float saturation, float brightness) {
         int r = 0, g = 0, b = 0;
         if (saturation == 0) {
@@ -83,9 +86,11 @@ public class ColorUtility {
         }
         return 0xff000000 | (r << 16) | (g << 8) | (b);
     }
+
     public static int getColor(int bright) {
         return getColor(bright, bright, bright, 255);
     }
+
     public static String getHealthStr(EntityLivingBase entity) {
         String str = "";
         int health = (int) entity.getHealth();
@@ -100,9 +105,11 @@ public class ColorUtility {
         }
         return str;
     }
+
     public static void setColor(double red, double green, double blue, double alpha) {
         GL11.glColor4d(red, green, blue, alpha);
     }
+
     public static int setAlpha(int color, int alpha) {
         Color c = new Color(color);
         return new Color(c.getRed(), c.getGreen(), c.getBlue(), alpha).getRGB();
@@ -117,6 +124,7 @@ public class ColorUtility {
 
         return new Color(colorHSB.getRed(), colorHSB.getGreen(), colorHSB.getBlue(), Math.max(0, Math.min(255, (int) (alpha * 255))));
     }
+
     public static Color TwoColorEffect(Color cl1, Color cl2, double speed) {
         double thing = speed / 4.0 % 1.0;
         float val = MathHelper.clamp((float) Math.sin(Math.PI * 6 * thing) / 2.0f + 0.5f, 0.0f, 1.0f);
@@ -124,12 +132,14 @@ public class ColorUtility {
                 lerp((float) cl1.getGreen() / 255.0f, (float) cl2.getGreen() / 255.0f, val),
                 lerp((float) cl1.getBlue() / 255.0f, (float) cl2.getBlue() / 255.0f, val));
     }
+
     public static Color rainbow(int speed, int index, float saturation, float brightness, float opacity) {
         int angle = (int) ((System.currentTimeMillis() / speed + index) % 360);
         float hue = angle / 360f;
         Color color = new Color(Color.HSBtoRGB(hue, saturation, brightness));
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), Math.max(0, Math.min(255, (int) (opacity * 255))));
     }
+
     public static float lerp(float a, float b, float f) {
         return a + f * (b - a);
     }
@@ -150,6 +160,7 @@ public class ColorUtility {
         float b = (float) (color & 255) / 255.0F;
         GlStateManager.color(r, g, b, alpha);
     }
+
     public static Color applyOpacity(Color color, int alpha) {
         alpha = MathHelper.clamp(alpha, 0, 255);
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
@@ -159,8 +170,6 @@ public class ColorUtility {
         opacity = Math.min(1, Math.max(0, opacity));
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (color.getAlpha() * opacity));
     }
-
-
 
 
 }

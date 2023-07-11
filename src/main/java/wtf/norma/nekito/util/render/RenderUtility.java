@@ -7,8 +7,6 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.shader.Framebuffer;
-import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
@@ -28,17 +26,19 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class RenderUtility {
 
+    private static final ShaderUtility roundedGradientShader = new ShaderUtility("roundedRectGradient");
     public static Minecraft mc = Minecraft.getMinecraft();
     public static ShaderUtility roundedShader = new ShaderUtility("roundedRect");
-    private static final ShaderUtility roundedGradientShader = new ShaderUtility("roundedRectGradient");
     public static ShaderUtility roundedOutlineShader = new ShaderUtility("roundRectOutline");
     public static ShaderUtility roundedTexturedShader = new ShaderUtility("roundedTexturedShader");
     public static Frustum frustum = new Frustum();
+
     public static void scissorRect(float x, float y, float width, double height) {
         ScaledResolution sr = new ScaledResolution(mc);
         int factor = sr.getScaleFactor();
         GL11.glScissor((int) (x * (float) factor), (int) (((float) sr.getScaledHeight() - height) * (float) factor), (int) ((width - x) * (float) factor), (int) ((height - y) * (float) factor));
     }
+
     public static void sizeAnimation(double width, double height, double animation) {
         GL11.glTranslated(width / 2, height / 2, 0);
         GL11.glScaled(animation, animation, 1);
@@ -73,12 +73,12 @@ public class RenderUtility {
         GL11.glColor4f(red_1 / 255f, green_1 / 255f, blue_1 / 255f, alpha / 255f);
         glVertex2d(0, 0 - height);
         glVertex2d(0 - width, 0);
-        glVertex2d(0, 0 - 3);
+        glVertex2d(0, -3);
         GL11.glEnd();
         GL11.glBegin(GL11.GL_POLYGON);
         GL11.glColor4f(red_2 / 255f, green_2 / 255f, blue_2 / 255f, alpha / 255f);
         glVertex2d(0, 0 - height);
-        glVertex2d(0, 0 - 3);
+        glVertex2d(0, -3);
         glVertex2d(0 + width, 0);
         GL11.glEnd();
         GL11.glShadeModel(GL11.GL_FLAT);
@@ -155,7 +155,6 @@ public class RenderUtility {
         GlStateManager.resetColor();
         GL11.glPopMatrix();
     }
-
 
 
     public static javax.vecmath.Vector3d vectorTo2D(int scaleFactor, double x, double y, double z) {
@@ -240,7 +239,6 @@ public class RenderUtility {
     }
 
 
-
     private static boolean isInViewFrustum(AxisAlignedBB bb) {
         Entity current = mc.getRenderViewEntity();
         if (current != null) {
@@ -301,15 +299,13 @@ public class RenderUtility {
     }
 
     public static void drawRectNotWH(double left, double top, double right, double bottom, int color) {
-        if (left < right)
-        {
+        if (left < right) {
             double i = left;
             left = right;
             right = i;
         }
 
-        if (top < bottom)
-        {
+        if (top < bottom) {
             double j = top;
             top = bottom;
             bottom = j;
@@ -414,11 +410,13 @@ public class RenderUtility {
     }
 
     public static void drawRoundCircleC(float x, float y, float radius, Color color) {
-        drawRoundOutline(x - (radius / 2), y - (radius / 2), radius, radius, (radius / 2) - 0.5f,0.5f, new Color(0,0,0,0), color);
+        drawRoundOutline(x - (radius / 2), y - (radius / 2), radius, radius, (radius / 2) - 0.5f, 0.5f, new Color(0, 0, 0, 0), color);
     }
+
     public static void drawRoundCircleC2(float x, float y, float radius, Color color) {
-        drawRoundOutline(x - (radius / 2), y - (radius / 2), radius, radius, (radius / 2) - 0.5f,0.1f, new Color(0,0,0,0), color);
+        drawRoundOutline(x - (radius / 2), y - (radius / 2), radius, radius, (radius / 2) - 0.5f, 0.1f, new Color(0, 0, 0, 0), color);
     }
+
     public static void drawRound(float x, float y, float width, float height, float radius, Color color) {
         GlStateManager.resetColor();
         GlStateManager.enableBlend();
@@ -451,7 +449,6 @@ public class RenderUtility {
         roundedGradientShader.unload();
         GlStateManager.disableBlend();
     }
-
 
 
     public static void drawRoundOutline(float x, float y, float width, float height, float radius, float outlineThickness, Color color, Color outlineColor) {

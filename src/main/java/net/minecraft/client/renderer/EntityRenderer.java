@@ -89,6 +89,7 @@ import org.lwjgl.util.glu.Project;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.event.impl.EventRender3D;
 
 public class EntityRenderer implements IResourceManagerReloadListener
@@ -1878,7 +1879,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
             Reflector.callVoid(Reflector.ForgeHooksClient_dispatchRenderLast, new Object[] {renderglobal, Float.valueOf(partialTicks)});
         }
 
-        Event.dispatch(new EventRender3D(partialTicks));
+        final EventRender3D eventRender3D = new EventRender3D(partialTicks);
+        eventRender3D.post();
 
         this.mc.mcProfiler.endStartSection("hand");
         boolean flag2 = ReflectorForge.renderFirstPersonHand(this.mc.renderGlobal, partialTicks, pass);

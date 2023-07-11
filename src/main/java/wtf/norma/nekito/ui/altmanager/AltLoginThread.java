@@ -12,9 +12,9 @@ import java.net.Proxy;
 public class AltLoginThread extends Thread {
 
     private final String password;
-    private String status;
     private final String username;
     private final Minecraft mc = Minecraft.getMinecraft();
+    private String status;
 
     public AltLoginThread(String username, String password) {
         super("Alt Login Thread");
@@ -41,6 +41,10 @@ public class AltLoginThread extends Thread {
         return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public void run() {
         if (password.equals("")) {
@@ -56,10 +60,6 @@ public class AltLoginThread extends Thread {
             status = EnumChatFormatting.GREEN + "Logged into " + auth.getUsername();
             mc.session = auth;
         }
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
 }

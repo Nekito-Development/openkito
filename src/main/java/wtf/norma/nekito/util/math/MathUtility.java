@@ -15,12 +15,15 @@ public class MathUtility {
     public static float map(float value, float istart, float istop, float ostart, float ostop) {
         return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
     }
+
     public static int intRandom(int max, int min) {
         return (int) (Math.random() * (double) (max - min)) + min;
     }
+
     public static float interpolate(float current, float old, float scale) {
         return current + (old - current) * clamp(scale, 0, 1);
     }
+
     //    lerp
     public static float lerp(float current, float old, float scale) {
         return current + (old - current) * clamp(scale, 0, 1);
@@ -44,11 +47,11 @@ public class MathUtility {
     }
 
     public static float interpolate(float current, float old, double scale) {
-        return (float) interpolate((double) current, (double) old, scale);
+        return (float) interpolate(current, (double) old, scale);
     }
 
     public static int interpolate(int current, int old, double scale) {
-        return (int) interpolate((double) current, (double) old, scale);
+        return (int) interpolate(current, (double) old, scale);
     }
 
     public static int getCenter(int width, int rectWidth) {
@@ -71,6 +74,7 @@ public class MathUtility {
         }
         return val;
     }
+
     public static double clamp(double val, double min, double max) {
         if (val <= min) {
             val = min;

@@ -8,10 +8,10 @@ import wtf.norma.nekito.clickgui.item.impl.ItemKeyBind;
 import wtf.norma.nekito.clickgui.item.impl.ItemMode;
 import wtf.norma.nekito.clickgui.item.impl.ItemSlider;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.Setting;
-import wtf.norma.nekito.settings.impl.BooleanSetting;
-import wtf.norma.nekito.settings.impl.ModeSetting;
-import wtf.norma.nekito.settings.impl.NumberSetting;
+import wtf.norma.nekito.module.value.Value;
+import wtf.norma.nekito.module.value.impl.BooleanValue;
+import wtf.norma.nekito.module.value.impl.ModeValue;
+import wtf.norma.nekito.module.value.impl.RangeNumberValue;
 import wtf.norma.nekito.util.font.Fonts;
 
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ public class ModuleButton {
     private final int width;
     private final int height;
     private final Minecraft mc;
+    private final List<Item<?>> items = new ArrayList<>();
     private int offset;
     private boolean open;
-    private final List<Item<?>> items = new ArrayList<>();
 
     public ModuleButton(Module module, int x, int y, int width, int height, Minecraft mc) {
         this.module = module;
@@ -36,13 +36,13 @@ public class ModuleButton {
         this.height = height;
         this.mc = mc;
 
-        for (Setting setting : module.settings) {
-            if (setting instanceof BooleanSetting)
-                items.add(new ItemBoolean((BooleanSetting) setting, x, y, width, height));
-            else if (setting instanceof ModeSetting)
-                items.add(new ItemMode((ModeSetting) setting, x, y, width, height));
-            else if (setting instanceof NumberSetting)
-                items.add(new ItemSlider((NumberSetting) setting, x, y, width, height));
+        for (Value<?> setting : module.getValues().values()) {
+            if (setting instanceof BooleanValue)
+                items.add(new ItemBoolean((BooleanValue) setting, x, y, width, height));
+            else if (setting instanceof ModeValue)
+                items.add(new ItemMode((ModeValue) setting, x, y, width, height));
+            else if (setting instanceof RangeNumberValue)
+                items.add(new ItemSlider((RangeNumberValue) setting, x, y, width, height));
         }
 
         items.add(new ItemKeyBind(module, x, y, width, height));
@@ -52,9 +52,9 @@ public class ModuleButton {
         this.offset = offset;
         int y = this.y + offset;
         Gui.drawRect(x, y, x + width, y + height, 0x80000000);
-        Fonts.SEMI_BOLD_18.drawString(module.getName(), x + 3, y + (height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f) + 1, this.module.isToggled() ? 0xFF2B71F3 : -1);
+        Fonts.SEMI_BOLD_18.drawString(module.getName(), x + 3, y + (height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f) + 1, this.module.isEnabled() ? 0xFF2B71F3 : -1);
 
-        if (module.settings.size() > 0) {
+        if (module.getValues().size() > 0) {
             Fonts.SEMI_BOLD_18.drawString(open ? "-" : "+", x + 90, y + 4, -1);
         }
 

@@ -68,6 +68,7 @@ public class Cartesian
             this.iterables = iterables;
         }
 
+        @SuppressWarnings("unchecked")
         public Iterator<T[]> iterator()
         {
             return (Iterator<T[]>)(this.iterables.length <= 0 ? Collections.singletonList((Object[])Cartesian.createArray(this.clazz, 0)).iterator() : new Cartesian.Product.ProductIterator(this.clazz, this.iterables));

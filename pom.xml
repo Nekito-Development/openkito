@@ -38,6 +38,20 @@
 
   <dependencies>
     <dependency>
+      <groupId>kurwa</groupId>
+      <artifactId>chuj</artifactId>
+      <version>cipa</version>
+      <systemPath>${basedir}/libs/Paulscode-SoundSystem-2013.04.17.jar</systemPath>
+      <scope>system</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.Hippah</groupId>
+      <artifactId>LWJEB</artifactId>
+      <version>5.3.0</version>
+    </dependency>
+
+    <dependency>
       <artifactId>discord-rpc</artifactId>
       <groupId>com.github.Vatuu</groupId>
       <version>1.6.2</version>

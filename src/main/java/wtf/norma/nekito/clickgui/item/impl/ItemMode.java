@@ -2,11 +2,11 @@ package wtf.norma.nekito.clickgui.item.impl;
 
 import net.minecraft.client.gui.Gui;
 import wtf.norma.nekito.clickgui.item.Item;
-import wtf.norma.nekito.settings.impl.ModeSetting;
+import wtf.norma.nekito.module.value.impl.ModeValue;
 import wtf.norma.nekito.util.font.Fonts;
 
-public class ItemMode extends Item<ModeSetting> {
-    public ItemMode(ModeSetting modeSetting, int x, int y, int width, int height) {
+public class ItemMode extends Item<ModeValue> {
+    public ItemMode(ModeValue modeSetting, int x, int y, int width, int height) {
         super(modeSetting, x, y, width, height);
     }
 
@@ -16,7 +16,7 @@ public class ItemMode extends Item<ModeSetting> {
         float y = this.y + offset;
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
-        Fonts.SEMI_BOLD_18.drawString(getObject().getName() + ": " + getObject().getMode(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, -1);
+        Fonts.SEMI_BOLD_18.drawString(getObject().getName() + ": " + getObject().get(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, -1);
 
         return height;
     }
@@ -25,7 +25,7 @@ public class ItemMode extends Item<ModeSetting> {
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         if (bounding(mouseX, mouseY)) {
             if (mouseButton == 0)
-                getObject().cycle();
+                getObject().next();
         }
     }
 }

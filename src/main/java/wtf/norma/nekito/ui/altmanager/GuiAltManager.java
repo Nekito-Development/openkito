@@ -1,7 +1,5 @@
 package wtf.norma.nekito.ui.altmanager;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
@@ -12,20 +10,15 @@ import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.util.player.NameUtil;
 import wtf.norma.nekito.util.shader.GLSL;
 
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
-import java.net.URI;
 
 public final class GuiAltManager extends GuiScreen {
-    private GuiTextField password;
     private final GuiScreen previousScreen;
+    public long init;
+    private GuiTextField password;
     private GuiTextField username;
     private AltLoginThread thread;
-
     private String crackedStatus;
-    public long init;
-
 
 
     // 30% of this is from sleek cuz im lazy af
@@ -46,7 +39,6 @@ public final class GuiAltManager extends GuiScreen {
                     thread = new AltLoginThread(username.getText(), "");
                     thread.start();
                     break;
-
 
 
                 case 3:
@@ -85,8 +77,8 @@ public final class GuiAltManager extends GuiScreen {
         drawBackground();
         username.drawTextBox();
 
-        this.drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
-        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(),
+        drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
+        drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(),
                 (int) (width / 2f),
                 29,
                 -1);
@@ -157,15 +149,15 @@ public final class GuiAltManager extends GuiScreen {
         GL11.glPushMatrix();
         {
             GL11.glDisable(GL11.GL_CULL_FACE);
-            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+            GLSL.MAINMENU.useShader(width, height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
 
 
             GL11.glBegin(GL11.GL_QUADS);
             {
-                GL11.glVertex2f(0,0);
-                GL11.glVertex2f(0,height);
-                GL11.glVertex2f(width,height);
-                GL11.glVertex2f(width,0);
+                GL11.glVertex2f(0, 0);
+                GL11.glVertex2f(0, height);
+                GL11.glVertex2f(width, height);
+                GL11.glVertex2f(width, 0);
                 GL11.glEnd();
             }
             GL20.glUseProgram(0);

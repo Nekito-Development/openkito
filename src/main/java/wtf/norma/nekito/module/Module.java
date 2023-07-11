@@ -1,96 +1,89 @@
 package wtf.norma.nekito.module;
 
-import de.gerrygames.viarewind.utils.ChatUtil;
 import net.minecraft.client.Minecraft;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.settings.Setting;
+import org.apache.commons.lang3.Validate;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.value.Value;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Module {
-    public String name;
-    public int keybind;
-    public boolean toggled;
-    public boolean enabled;
-    public Category category;
+public abstract class Module {
 
+    protected final static Minecraft mc = Minecraft.getMinecraft();
+    private final Map<String, Value<?>> values = new HashMap<>();
 
+    private final String name;
+    private final String description;
+    private final ModuleCategory category;
+    private int key;
+    private boolean enabled;
 
-    public final static Minecraft mc = Minecraft.getMinecraft();
-    public ArrayList<Setting> settings = new ArrayList<Setting>();
-    public Module(String name, Category category, int keybind) {
-        this.name = name;
-        this.category = category;
-        this.keybind = keybind;
+    public Module() {
+        ModuleInfo moduleInfo = this.getClass().getAnnotation(ModuleInfo.class);
+        Validate.notNull(moduleInfo, "CONFUSED ANNOTATION EXCEPTION");
+
+        this.name = moduleInfo.name();
+        this.description = moduleInfo.description();
+        this.category = moduleInfo.moduleCategory();
+        this.key = moduleInfo.key();
+    }
+
+    public void onEnable() {
+
+    }
+
+    public void onDisable() {
+
+    }
+
+    public void setState(boolean state) {
+        enabled = state;
+        if (state) {
+            onEnable();
+            Nekito.INSTANCE.getEventBus().subscribe(this);
+        } else {
+            onDisable();
+            Nekito.INSTANCE.getEventBus().unsubscribe(this);
+        }
+    }
+
+    public final void toggle() {
+        enabled = !enabled;
+        if (enabled) {
+            onEnable();
+            Nekito.INSTANCE.getEventBus().subscribe(this);
+        } else {
+            onDisable();
+            Nekito.INSTANCE.getEventBus().unsubscribe(this);
+        }
+    }
+
+    public Map<String, Value<?>> getValues() {
+        return values;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getDescription() {
+        return description;
     }
 
-    public Category getCategory() {
+    public ModuleCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public int getKey() {
+        return key;
     }
 
-    public int getKeybind() {
-        return keybind;
+    public void setKey(int key) {
+        this.key = key;
     }
 
-    public void setKeybind(int keybind) {
-        this.keybind = keybind;
-    }
-
-    public boolean isToggled() {
-        return toggled;
-    }
-
-    public void setToggled(boolean toggled) {
-        this.toggled = toggled;
-    }
-
-    public void onEnable() {
-    }
-
-    public void onDisable() {
-    }
-
-    public void onEvent(Event e) {
-
-    }
-
-    public void toggle() {
-        toggled = !toggled;
-        if (toggled) {
-            enabled = true;
-            onEnable();
-        } else {
-            enabled = false;
-            onDisable();
-        }
-    }
-
-    public void addSettings(Setting... settings) {
-        this.settings.addAll(Arrays.asList(settings));
-    }
-
-    public enum Category {
-        MOVEMENT("Movement"), VISUALS("Visuals"),CRASHERS("Crashers");
-
-        public String name;
-
-        Category(String name) {
-            this.name = name;
-        }
+    public boolean isEnabled() {
+        return enabled;
     }
 }

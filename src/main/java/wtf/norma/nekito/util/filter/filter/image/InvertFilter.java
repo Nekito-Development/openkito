@@ -21,17 +21,17 @@ package wtf.norma.nekito.util.filter.filter.image;
  */
 public class InvertFilter extends PointFilter {
 
-	public InvertFilter() {
-		canFilterIndexColorModel = true;
-	}
+    public InvertFilter() {
+        canFilterIndexColorModel = true;
+    }
 
-	public int filterRGB(int x, int y, int rgb) {
-		int a = rgb & 0xff000000;
-		return a | (~rgb & 0x00ffffff);
-	}
+    public int filterRGB(int x, int y, int rgb) {
+        int a = rgb & 0xff000000;
+        return a | (~rgb & 0x00ffffff);
+    }
 
-	public String toString() {
-		return "Colors/Invert";
-	}
+    public String toString() {
+        return "Colors/Invert";
+    }
 }
 

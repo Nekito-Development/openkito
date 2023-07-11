@@ -18,8 +18,8 @@ package wtf.norma.nekito.util.filter.filter.math;
 
 public class RidgedFBM implements Function2D {
 
-	public float evaluate(float x, float y) {
-		return 1-Math.abs(Noise.noise2(x, y));
-	}
+    public float evaluate(float x, float y) {
+        return 1 - Math.abs(Noise.noise2(x, y));
+    }
 
 }

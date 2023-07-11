@@ -1,23 +1,15 @@
 package wtf.norma.nekito.util.other;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.json.JSONObject;
-
 //author bettercraft
-
 
 
 public class GeoUtils {
@@ -30,14 +22,6 @@ public class GeoUtils {
     public String server = "";
 
 
-
-    public static GeoUtils getInstance() {
-        return instance;
-    }
-
-
-
-
     public GeoUtils(String ip) {
         instance = this;
         this.server = "http://ip-api.com/json/" + ip
@@ -45,11 +29,9 @@ public class GeoUtils {
         this.object = new JsonParser().parse(this.websitedata(this.server)).getAsJsonObject();
     }
 
-
-
-
-
-
+    public static GeoUtils getInstance() {
+        return instance;
+    }
 
     public String getAS() {
         return this.getObjectString("as");
@@ -112,11 +94,6 @@ public class GeoUtils {
     }
 
 
-
-
-
-
-
     public boolean isSuccess() {
         return this.getObjectString("status").equals("success");
     }
@@ -124,9 +101,6 @@ public class GeoUtils {
     public boolean isRight(String obj) {
         return !obj.isEmpty() && !obj.contains("Unknown");
     }
-
-
-
 
 
     public String getObjectString(String obj) {

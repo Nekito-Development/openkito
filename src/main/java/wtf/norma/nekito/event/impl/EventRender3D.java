@@ -3,9 +3,13 @@ package wtf.norma.nekito.event.impl;
 import wtf.norma.nekito.event.Event;
 
 public class EventRender3D extends Event {
-    public float partialblabla;
+    private final float partialTicks;
 
-    public EventRender3D(float partialticks) {
-        this.partialblabla = partialticks;
+    public EventRender3D(float partialTicks) {
+        this.partialTicks = partialTicks;
+    }
+
+    public float getPartialTicks() {
+        return partialTicks;
     }
 }

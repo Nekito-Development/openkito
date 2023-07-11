@@ -49,22 +49,22 @@ public class StencilUtil {
     }
 
     public static void erase(boolean invert) {
-        GL11.glStencilFunc(invert ? GL11.GL_EQUAL : GL11.GL_NOTEQUAL, (int)1, (int)65535);
+        GL11.glStencilFunc(invert ? GL11.GL_EQUAL : GL11.GL_NOTEQUAL, 1, 65535);
         GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_REPLACE);
         GlStateManager.colorMask(true, true, true, true);
         GlStateManager.enableAlpha();
         GlStateManager.enableBlend();
-        GL11.glAlphaFunc( GL11.GL_GREATER, 0.0f );
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.0f);
     }
 
     public static void write(boolean renderClipLayer) {
         checkSetupFBO(mc.getFramebuffer());
-        GL11.glClearStencil((int)0);
+        GL11.glClearStencil(0);
         GL11.glClear(GL11.GL_STENCIL_BUFFER_BIT);
         GL11.glEnable(GL11.GL_STENCIL_TEST);
-        GL11.glStencilFunc(GL11.GL_ALWAYS, (int)1, (int)65535);
+        GL11.glStencilFunc(GL11.GL_ALWAYS, 1, 65535);
         GL11.glStencilOp(GL11.GL_KEEP, GL11.GL_KEEP, GL11.GL_REPLACE);
-        if(!renderClipLayer){
+        if (!renderClipLayer) {
             GlStateManager.colorMask(false, false, false, false);
         }
     }

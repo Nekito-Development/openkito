@@ -1,38 +1,30 @@
 package wtf.norma.nekito.command.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.command.Command;
 import wtf.norma.nekito.command.CommandInfo;
 import wtf.norma.nekito.exception.CommandException;
-import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.helper.PlayerHelper;
-import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.module.ModuleManager;
-import wtf.norma.nekito.nekito;
-
-import java.util.Locale;
 
 @CommandInfo(
         alias = "hclip",
         description = ":D",
-        usage = ".hclip [key]",
+        usage = ".hclip <value>",
         aliases = {"h"}
 )
-public class HclipCommand extends Command  {
+public class HclipCommand extends Command {
 
     @Override
     public void execute(String[] args) throws CommandException {
-        if (args.length > 0) {
-            final double dist = Double.parseDouble(args[0]);
-            final String direction = dist > 0 ? "forward" : "back";
+        if (args.length <= 0)
+            throw new CommandException("Usage: &d" + getUsage());
 
-            final double rotation = Math.toRadians(mc.thePlayer.rotationYaw);
+        final double dist = Double.parseDouble(args[0]);
+        final double rotation = Math.toRadians(mc.thePlayer.rotationYaw);
 
-            final double x = Math.sin(rotation) * dist;
-            final double z = Math.cos(rotation) * dist;
+        final double x = Math.sin(rotation) * dist;
+        final double z = Math.cos(rotation) * dist;
 
-            mc.thePlayer.setPosition(mc.thePlayer.posX - x, mc.thePlayer.posY, mc.thePlayer.posZ + z);
-        }
+//        mc.thePlayer.setPosition(mc.thePlayer.posX - x, mc.thePlayer.posY, mc.thePlayer.posZ + z);
+        //Nie wiem czy to dobrze zrobilem, nie jestem cheat developerem jeszcze
+        mc.thePlayer.setEntityBoundingBox(mc.thePlayer.getEntityBoundingBox().offset(-x, dist, z));
     }
 }

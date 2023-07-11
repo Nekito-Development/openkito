@@ -24,160 +24,172 @@ import wtf.norma.nekito.util.filter.filter.math.Noise;
  */
 public class SwimFilter extends TransformFilter {
 
-	private float scale = 32;
-	private float stretch = 1.0f;
-	private float angle = 0.0f;
-	private float amount = 1.0f;
-	private float turbulence = 1.0f;
-	private float time = 0.0f;
-	private float m00 = 1.0f;
-	private float m01 = 0.0f;
-	private float m10 = 0.0f;
-	private float m11 = 1.0f;
+    private float scale = 32;
+    private float stretch = 1.0f;
+    private float angle = 0.0f;
+    private float amount = 1.0f;
+    private float turbulence = 1.0f;
+    private float time = 0.0f;
+    private float m00 = 1.0f;
+    private float m01 = 0.0f;
+    private float m10 = 0.0f;
+    private float m11 = 1.0f;
 
-	public SwimFilter() {
-	}
-	
-	/**
-	 * Set the amount of swim.
-	 * @param amount the amount of swim
+    public SwimFilter() {
+    }
+
+    /**
+     * Get the amount of swim.
+     *
+     * @return the amount swim
+     * @see #setAmount
+     */
+    public float getAmount() {
+        return amount;
+    }
+
+    /**
+     * Set the amount of swim.
+     *
+     * @param amount the amount of swim
      * @min-value 0
      * @max-value 100+
      * @see #getAmount
-	 */
-	public void setAmount(float amount) {
-		this.amount = amount;
-	}
-	
-	/**
-	 * Get the amount of swim.
-	 * @return the amount swim
-     * @see #setAmount
-	 */
-	public float getAmount() {
-		return amount;
-	}
-	
-	/**
+     */
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * Returns the scale of the distortion.
+     *
+     * @return the scale of the distortion.
+     * @see #setScale
+     */
+    public float getScale() {
+        return scale;
+    }
+
+    /**
      * Specifies the scale of the distortion.
+     *
      * @param scale the scale of the distortion.
      * @min-value 1
      * @max-value 300+
      * @see #getScale
      */
-	public void setScale(float scale) {
-		this.scale = scale;
-	}
+    public void setScale(float scale) {
+        this.scale = scale;
+    }
 
-	/**
-     * Returns the scale of the distortion.
-     * @return the scale of the distortion.
-     * @see #setScale
+    /**
+     * Returns the stretch factor of the distortion.
+     *
+     * @return the stretch factor of the distortion.
+     * @see #setStretch
      */
-	public float getScale() {
-		return scale;
-	}
+    public float getStretch() {
+        return stretch;
+    }
 
-	/**
+    /**
      * Specifies the stretch factor of the distortion.
+     *
      * @param stretch the stretch factor of the distortion.
      * @min-value 1
      * @max-value 50+
      * @see #getStretch
      */
-	public void setStretch(float stretch) {
-		this.stretch = stretch;
-	}
+    public void setStretch(float stretch) {
+        this.stretch = stretch;
+    }
 
-	/**
-     * Returns the stretch factor of the distortion.
-     * @return the stretch factor of the distortion.
-     * @see #setStretch
+    /**
+     * Returns the angle of the effect.
+     *
+     * @return the angle of the effect.
+     * @see #setAngle
      */
-	public float getStretch() {
-		return stretch;
-	}
+    public float getAngle() {
+        return angle;
+    }
 
-	/**
+    /**
      * Specifies the angle of the effect.
+     *
      * @param angle the angle of the effect.
      * @angle
      * @see #getAngle
      */
-	public void setAngle(float angle) {
-		this.angle = angle;
-		float cos = (float)Math.cos(angle);
-		float sin = (float)Math.sin(angle);
-		m00 = cos;
-		m01 = sin;
-		m10 = -sin;
-		m11 = cos;
-	}
+    public void setAngle(float angle) {
+        this.angle = angle;
+        float cos = (float) Math.cos(angle);
+        float sin = (float) Math.sin(angle);
+        m00 = cos;
+        m01 = sin;
+        m10 = -sin;
+        m11 = cos;
+    }
 
-	/**
-     * Returns the angle of the effect.
-     * @return the angle of the effect.
-     * @see #setAngle
+    /**
+     * Returns the turbulence of the effect.
+     *
+     * @return the turbulence of the effect.
+     * @see #setTurbulence
      */
-	public float getAngle() {
-		return angle;
-	}
+    public float getTurbulence() {
+        return turbulence;
+    }
 
-	/**
+    /**
      * Specifies the turbulence of the texture.
+     *
      * @param turbulence the turbulence of the texture.
      * @min-value 0
      * @max-value 1
      * @see #getTurbulence
      */
-	public void setTurbulence(float turbulence) {
-		this.turbulence = turbulence;
-	}
+    public void setTurbulence(float turbulence) {
+        this.turbulence = turbulence;
+    }
 
-	/**
-     * Returns the turbulence of the effect.
-     * @return the turbulence of the effect.
-     * @see #setTurbulence
+    /**
+     * Returns the time.
+     *
+     * @return the time.
+     * @see #setTime
      */
-	public float getTurbulence() {
-		return turbulence;
-	}
+    public float getTime() {
+        return time;
+    }
 
-	/**
+    /**
      * Specifies the time. Use this to animate the effect.
+     *
      * @param time the time.
      * @angle
      * @see #getTime
      */
-	public void setTime(float time) {
-		this.time = time;
-	}
+    public void setTime(float time) {
+        this.time = time;
+    }
 
-	/**
-     * Returns the time.
-     * @return the time.
-     * @see #setTime
-     */
-	public float getTime() {
-		return time;
-	}
+    protected void transformInverse(int x, int y, float[] out) {
+        float nx = m00 * x + m01 * y;
+        float ny = m10 * x + m11 * y;
+        nx /= scale;
+        ny /= scale * stretch;
 
-	protected void transformInverse(int x, int y, float[] out) {
-		float nx = m00*x + m01*y;
-		float ny = m10*x + m11*y;
-		nx /= scale;
-		ny /= scale * stretch;
+        if (turbulence == 1.0f) {
+            out[0] = x + amount * Noise.noise3(nx + 0.5f, ny, time);
+            out[1] = y + amount * Noise.noise3(nx, ny + 0.5f, time);
+        } else {
+            out[0] = x + amount * Noise.turbulence3(nx + 0.5f, ny, turbulence, time);
+            out[1] = y + amount * Noise.turbulence3(nx, ny + 0.5f, turbulence, time);
+        }
+    }
 
-		if ( turbulence == 1.0f ) {
-			out[0] = x + amount * Noise.noise3(nx+0.5f, ny, time);
-			out[1] = y + amount * Noise.noise3(nx, ny+0.5f, time);
-		} else {
-			out[0] = x + amount * Noise.turbulence3(nx+0.5f, ny, turbulence, time);
-			out[1] = y + amount * Noise.turbulence3(nx, ny+0.5f, turbulence, time);
-		}
-	}
-
-	public String toString() {
-		return "Distort/Swim...";
-	}
+    public String toString() {
+        return "Distort/Swim...";
+    }
 }

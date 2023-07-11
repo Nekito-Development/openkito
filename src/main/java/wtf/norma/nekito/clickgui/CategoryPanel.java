@@ -1,21 +1,20 @@
 package wtf.norma.nekito.clickgui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.exploit.Exploit;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.ModuleCategory;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class CategoryPanel {
-    private final Module.Category category;
+    private final ModuleCategory category;
     private final int x;
     private final int y;
     private final int width;
@@ -26,7 +25,7 @@ public class CategoryPanel {
     private final List<ExploitButton> exploitButtons = new ArrayList<>();
     private boolean open = true;
 
-    public CategoryPanel(Module.Category category, int x, int y, int width, int height, Minecraft mc) {
+    public CategoryPanel(ModuleCategory category, int x, int y, int width, int height, Minecraft mc) {
         this.category = category;
         this.x = x;
         this.y = y;
@@ -34,14 +33,14 @@ public class CategoryPanel {
         this.height = height;
         this.mc = mc;
 
-        if (category == Module.Category.CRASHERS) {
-            ExploitManager exploitManager = nekito.INSTANCE.getExploitManager();
+        if (category == ModuleCategory.CRASHERS) {
+            ExploitManager exploitManager = Nekito.INSTANCE.getExploitManager();
             for (Exploit<?> exploit : exploitManager.getExploits()) {
                 exploitButtons.add(new ExploitButton(exploit, x, y, width, height, mc));
             }
         } else {
-            for (Module module : nekito.INSTANCE.getModuleManager().getModules()) {
-                if (module.category == this.category) {
+            for (Module module : Nekito.INSTANCE.getModuleManager().getModules()) {
+                if (module.getCategory() == this.category) {
                     moduleButtons.add(new ModuleButton(module, x, y, width, height, mc));
                 }
             }
@@ -52,7 +51,7 @@ public class CategoryPanel {
         if (this.open) {
             int offset = height;
             //very hard codded
-            if (category == Module.Category.CRASHERS) {
+            if (category == ModuleCategory.CRASHERS) {
                 for (ExploitButton exploitButton : this.exploitButtons) {
                     offset += exploitButton.drawScreen(mouseX, mouseY, partialTicks, offset);
                 }
@@ -64,7 +63,7 @@ public class CategoryPanel {
         }
 
         RenderUtility.drawRound(x - 1, y, width + 2, height - 1, 4, new Color(43, 92, 255));
-        Fonts.SEMI_BOLD_18.drawString(category.name, x + 5, y + 5, -1);
+        Fonts.SEMI_BOLD_18.drawString(category.getName(), x + 5, y + 5, -1);
         Fonts.SEMI_BOLD_18.drawString(open ? "-" : "+", x + 90, y + 5, -1);
     }
 

@@ -36,8 +36,6 @@ public class GaussianBlur implements Util {
     }
 
 
-
-
     public static void renderBlur(float radius) {
         GlStateManager.enableBlend();
         GlStateManager.color(1, 1, 1, 1);

@@ -15,7 +15,7 @@ import wtf.norma.nekito.util.shader.ShaderUtility;
 import java.awt.*;
 import java.nio.FloatBuffer;
 
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_GREATER;
 
 //expensiv
 

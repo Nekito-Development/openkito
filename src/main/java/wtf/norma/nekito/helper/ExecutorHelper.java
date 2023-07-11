@@ -5,9 +5,9 @@ import java.util.concurrent.Executors;
 
 public class ExecutorHelper {
 
-  private static final ExecutorService EXECUTOR_SERVICE = Executors.newCachedThreadPool();
+    private static final ExecutorService EXECUTOR_SERVICE = Executors.newCachedThreadPool();
 
-  public static void submit(Runnable runnable) {
-    EXECUTOR_SERVICE.submit(runnable);
-  }
+    public static void submit(Runnable runnable) {
+        EXECUTOR_SERVICE.submit(runnable);
+    }
 }

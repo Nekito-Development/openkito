@@ -23,25 +23,26 @@ import java.awt.image.BufferedImageOp;
  * A BufferedImageOp which iterates another BufferedImageOp.
  */
 public class IteratedFilter extends AbstractBufferedImageOp {
-	private BufferedImageOp filter;
-	private int iterations;
-	
+    private final BufferedImageOp filter;
+    private final int iterations;
+
     /**
      * Construct an IteratedFilter.
-     * @param filter the filetr to iterate
+     *
+     * @param filter     the filetr to iterate
      * @param iterations the number of iterations
      */
-	public IteratedFilter( BufferedImageOp filter, int iterations ) {
-		this.filter = filter;
-		this.iterations = iterations;
-	}
-	
-	public BufferedImage filter( BufferedImage src, BufferedImage dst ) {
-		BufferedImage image = src;
+    public IteratedFilter(BufferedImageOp filter, int iterations) {
+        this.filter = filter;
+        this.iterations = iterations;
+    }
 
-		for ( int i = 0; i < iterations; i++ )
-			image = filter.filter( image, dst );
-		
-		return image;
-	}
+    public BufferedImage filter(BufferedImage src, BufferedImage dst) {
+        BufferedImage image = src;
+
+        for (int i = 0; i < iterations; i++)
+            image = filter.filter(image, dst);
+
+        return image;
+    }
 }

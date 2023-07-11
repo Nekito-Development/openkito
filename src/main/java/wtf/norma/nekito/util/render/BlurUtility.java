@@ -14,12 +14,12 @@ import java.awt.*;
 
 //expensiv
 public class BlurUtility implements Util {
-    public static Framebuffer bloomFramebuffer =  ShaderUtility.createFrameBuffer(new Framebuffer(new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth(), new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight(), true));
-    private static int lastScale, lastScaleWidth,lastScaleHeight;
-    private static Framebuffer buffer;
     private static final ResourceLocation shader = new ResourceLocation("shaders/post/blur.json");
-
+    public static Framebuffer bloomFramebuffer = ShaderUtility.createFrameBuffer(new Framebuffer(new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth(), new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight(), true));
+    private static int lastScale, lastScaleWidth, lastScaleHeight;
+    private static Framebuffer buffer;
     private static ShaderGroup blurShader;
+
     public static void drawBlur(float radius, Runnable data) {
         StencilUtil.initStencilToWrite();
         data.run();
@@ -27,6 +27,7 @@ public class BlurUtility implements Util {
         GaussianBlur.renderBlur(radius);
         StencilUtil.uninitStencilBuffer();
     }
+
     public static void blurAreaBoarder(int x, int y, int width, int height, float intensity) {
         ScaledResolution scale = new ScaledResolution(mc);
         int factor = scale.getScaleFactor();
@@ -46,12 +47,14 @@ public class BlurUtility implements Util {
         mc.getFramebuffer().bindFramebuffer(true);
         GL11.glDisable(3089);
     }
+
     private static void shaderConfigFix(float intensity, float blurWidth, float blurHeight) {
         blurShader.getShaders().get(0).getShaderManager().getShaderUniform("Radius").set(intensity);
         blurShader.getShaders().get(1).getShaderManager().getShaderUniform("Radius").set(intensity);
         blurShader.getShaders().get(0).getShaderManager().getShaderUniform("BlurDir").set(blurWidth, blurHeight);
         blurShader.getShaders().get(1).getShaderManager().getShaderUniform("BlurDir").set(blurHeight, blurWidth);
     }
+
     public static void inShaderFBO() {
         try {
             blurShader = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), shader);
@@ -61,6 +64,7 @@ public class BlurUtility implements Util {
             e.printStackTrace();
         }
     }
+
     public static void renderBlur(int x, int y, int width, int height, int blurRadius) {
         GL11.glEnable(3042);
         GL11.glDisable(3553);
@@ -73,12 +77,13 @@ public class BlurUtility implements Util {
         GL11.glEnable(3553);
         GL11.glEnable(3042);
     }
+
     public static void drawShadow(float radius, float des, Runnable data, Color c) {
         bloomFramebuffer.framebufferClear();
         bloomFramebuffer.bindFramebuffer(true);
         data.run();
         bloomFramebuffer.unbindFramebuffer();
-        BloomUtil.renderBlur(bloomFramebuffer.framebufferTexture, (int) radius, (int) 1, c, des, true);
+        BloomUtil.renderBlur(bloomFramebuffer.framebufferTexture, (int) radius, 1, c, des, true);
 
     }
 }

@@ -3,9 +3,11 @@ package net.minecraft.client.model;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
-import wtf.norma.nekito.cosmetics.model.WingsModel;
-import wtf.norma.nekito.module.impl.Wings;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.cosmetics.WingsModel;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.impl.visuals.EarsModule;
+import wtf.norma.nekito.module.impl.visuals.WingsModule;
+import wtf.norma.nekito.Nekito;
 
 public class ModelPlayer extends ModelBiped
 {
@@ -104,8 +106,8 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.render(scale);
             this.bipedBodyWear.render(scale);
         }
-        if (entityIn.getName().equals((Minecraft.getMinecraft()).thePlayer.getName()) && nekito.INSTANCE.getModuleManager().getModule(Wings.class).enabled)
-            this.wingsModel.RenderWings((Minecraft.getMinecraft()).thePlayer, entityIn.isSneaking(), entityIn.isAirBorne, entityIn.onGround, entityIn.isSprinting());
+        if (entityIn.getName().equals((Minecraft.getMinecraft()).thePlayer.getName()) && Nekito.INSTANCE.getModuleManager().findModule(WingsModule.class).map(Module::isEnabled).orElse(false))
+            this.wingsModel.renderWings((Minecraft.getMinecraft()).thePlayer, entityIn.isSneaking(), entityIn.isAirBorne, entityIn.onGround, entityIn.isSprinting());
         GlStateManager.popMatrix();
     }
 

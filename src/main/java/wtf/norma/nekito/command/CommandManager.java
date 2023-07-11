@@ -1,31 +1,21 @@
 package wtf.norma.nekito.command;
 
+import wtf.norma.nekito.exception.CommandException;
+import wtf.norma.nekito.helper.ChatHelper;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
-import wtf.norma.nekito.command.impl.*;
-import wtf.norma.nekito.exception.CommandException;
-import wtf.norma.nekito.helper.ChatHelper;
 
 public class CommandManager {
 
     private static final String PREFIX = ".";
 
-    private List<Command> commands;
+    private final List<Command> commands = new ArrayList<>();
 
     public CommandManager(Command... commands) {
-        addAll(new ExploitCommand(),
-                new HelpCommand(),
-                new OnlineCommand(),
-                new FakeGamemodeCommand(),
-                new BindCommand(),
-                new HclipCommand(),
-                new VclipCommand());
-    }
-
-    public void addAll(Command... commands) {
-        this.commands = Arrays.asList(commands);
+        register(commands);
     }
 
     public static String getPrefix() {
@@ -39,7 +29,7 @@ public class CommandManager {
 
         String[] args = message.substring(1).split(" ");
         try {
-            getCommand(args[0])
+            findCommand(args[0])
                     .orElseThrow(() -> new CommandException(String
                             .format("Command \"%s\" not found. Use \".help\" to see command list.", args[0])))
                     .execute(Arrays.copyOfRange(args, 1, args.length));
@@ -59,23 +49,15 @@ public class CommandManager {
         return true;
     }
 
-    public void registerCommand(Command command) {
-        this.commands.add(command);
-    }
-
-    public void registerCommands(Command... commands) {
+    public void register(Command... commands) {
         this.commands.addAll(Arrays.asList(commands));
     }
 
-    public void unregisterCommand(Command command) {
-        this.commands.remove(command);
-    }
-
-    public void unregisterCommands(Command... commands) {
+    public void unregister(Command... commands) {
         this.commands.removeAll(Arrays.asList(commands));
     }
 
-    public Optional<Command> getCommand(String alias) {
+    public Optional<Command> findCommand(String alias) {
         return commands.stream().filter(command -> command.is(alias)).findFirst();
     }
 

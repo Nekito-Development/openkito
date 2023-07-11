@@ -11,8 +11,7 @@ public class FontUtility {
         try {
             output = Font.createFont(fontType, Minecraft.getMinecraft().getResourceManager().getResource(fontLocation).getInputStream());
             output = output.deriveFont(fontSize);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return output;

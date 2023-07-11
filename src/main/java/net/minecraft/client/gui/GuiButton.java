@@ -5,7 +5,10 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import wtf.norma.nekito.module.impl.CustomButtons;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.impl.visuals.CustomButtonsModule;
+import wtf.norma.nekito.module.impl.visuals.EarsModule;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -98,11 +101,13 @@ public class GuiButton extends Gui {
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
 
-            switch (CustomButtons.rect.getMode().toUpperCase()) {
-                case "ROUNDED":
+            CustomButtonsModule module = Nekito.INSTANCE.getModuleManager().findModule(CustomButtonsModule.class).map(CustomButtonsModule.class::cast).orElseThrow(NullPointerException::new);
+
+            switch (module.rect.get()) {
+                case "Rounded":
                     RenderUtility.drawRoundOutline(this.xPosition, this.yPosition, this.width, this.height, 5, 0.2f, new Color(0, 0, 0, 100), new Color(100, 100, 100, 90));
                     break;
-                case "TEXTURE":
+                case "Texture":
                     this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + i * 20, this.width / 2, this.height);
                     this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
                     break;
@@ -117,11 +122,11 @@ public class GuiButton extends Gui {
                 j = 16777120;
             }
 
-            switch (CustomButtons.font.getMode().toUpperCase()) {
-                case "CUSTOM":
+            switch (module.font.get()) {
+                case "Custom":
                     Fonts.SEMI_BOLD_18.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
                     break;
-                case "MINECRAFT":
+                case "Minecraft":
                     this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
                     break;
             }

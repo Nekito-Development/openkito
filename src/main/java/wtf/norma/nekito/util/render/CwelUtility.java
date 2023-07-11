@@ -9,14 +9,12 @@ import wtf.norma.nekito.util.shader.ShaderUtility;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class CwelUtility  {
+public class CwelUtility {
 
+    public static ShaderUtility blurShader = new ShaderUtility("shaders/white.frag");
+    public static Framebuffer framebuffer = new Framebuffer(1, 1, false);
     Minecraft mc = Minecraft.getMinecraft();
     ScaledResolution sr = new ScaledResolution(mc);
-    public static ShaderUtility blurShader = new ShaderUtility("shaders/white.frag");
-
-    public static Framebuffer framebuffer = new Framebuffer(1, 1, false);
-
 
     public static void setupUniforms() {
         blurShader.setUniformi("textureIn", 0);

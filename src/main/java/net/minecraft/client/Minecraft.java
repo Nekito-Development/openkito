@@ -177,7 +177,8 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.event.impl.KeyEvent;
 import wtf.norma.nekito.ui.MainMenuLoadingScreen;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
@@ -599,7 +600,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
 
         //Post-Init hook by tecness
-        nekito.INSTANCE.postInit();
+        Nekito.INSTANCE.postInit();
 
         this.renderGlobal.makeEntityOutlineShader();
     }
@@ -628,7 +629,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
     private void createDisplay() throws LWJGLException, IOException {
         Display.setResizable(true);
-        nekito.INSTANCE.setDisplay();
+        Nekito.INSTANCE.setDisplay();
 
         Display.create((new PixelFormat()).withDepthBits(24));
     }
@@ -1897,7 +1898,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
-                        nekito.INSTANCE.onKey(k);
+                        final KeyEvent keyEvent = new KeyEvent(k);
+                        keyEvent.post();
 
                         if (k == 1)
                         {

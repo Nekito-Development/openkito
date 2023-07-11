@@ -7,7 +7,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.multiplayer.ServerAddress;
 import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -28,25 +27,22 @@ import java.util.Map;
 
 public class GuiCheckHost extends GuiScreen {
 
-    // EDITED CLIENT GUI MODS SERVERPINGER
-    private ServerData serverData;
-    // EDITED CLIENT GUI MODS SERVERPINGER
-
-    // EDITED CLIENT GUI MODS BRAND
-    String lastAddress = "Pinging...";
-    private volatile String addressPort;
     public long init;
-    // EDITED CLIENT GUI MODS GEO
-
-    // EDITED CLIENT GUI MODS GEO
-
+    // EDITED CLIENT GUI MODS SERVERPINGER
     public GuiTextField inputIp;
     public String mode;
     public CheckResult<Map<CheckHostServer, CheckHostHttpResult>> httpResult;
+    // EDITED CLIENT GUI MODS GEO
+
+    // EDITED CLIENT GUI MODS GEO
     public CheckResult<Map<CheckHostServer, CheckHostTcpResult>> tcpResult;
     public int time;
-
     public GuiScreen before;
+    // EDITED CLIENT GUI MODS BRAND
+    String lastAddress = "Pinging...";
+    // EDITED CLIENT GUI MODS SERVERPINGER
+    private ServerData serverData;
+    private volatile String addressPort;
 
     public GuiCheckHost(final GuiScreen screen) {
         this.mode = "";
@@ -58,8 +54,8 @@ public class GuiCheckHost extends GuiScreen {
     @Override
     public void updateScreen() {
         this.inputIp.updateCursorCounter();
-        this.buttonList.get(1).displayString = ((this.mode == "tcp") ? "TCP" : "TCP");
-        this.buttonList.get(2).displayString = ((this.mode == "http") ? "HTTP" : "HTTP");
+        this.buttonList.get(1).displayString = ("TCP");
+        this.buttonList.get(2).displayString = ("HTTP");
     }
 
     @Override
@@ -69,9 +65,9 @@ public class GuiCheckHost extends GuiScreen {
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(1, this.width - 70, this.height - 30, 60, 20, "Back"));
         this.buttonList
-                .add(new GuiButton(2, this.width - 144 + 74, 54, 60, 20, (this.mode == "tcp") ? "TCP" : "TCP"));
+                .add(new GuiButton(2, this.width - 144 + 74, 54, 60, 20, "TCP"));
         this.buttonList
-                .add(new GuiButton(3, this.width - 144 + 10, 54, 60, 20, (this.mode == "http") ? "HTTP" : "HTTP"));
+                .add(new GuiButton(3, this.width - 144 + 10, 54, 60, 20, "HTTP"));
         (this.inputIp = new GuiTextField(0, this.fontRendererObj, this.width - 134, 30, 124, 20))
                 .setMaxStringLength(65535);
     }
@@ -187,10 +183,10 @@ public class GuiCheckHost extends GuiScreen {
                     final DecimalFormat fm = new DecimalFormat("00.##");
                     final String pingFormat = fm.format(endResult.getPing());
                     Minecraft.getMinecraft().fontRendererObj
-                            .drawStringWithShadow("" + r.getCity() + "," + r.getCountryCode(), 10.0f, (float) y, -1);
-                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("" + pingFormat + " seconds",
+                            .drawStringWithShadow(r.getCity() + "," + r.getCountryCode(), 10.0f, (float) y, -1);
+                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(pingFormat + " seconds",
                             150.0f, (float) y, -1);
-                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("" + endResult.getStatus(), 265.0f,
+                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(endResult.getStatus(), 265.0f,
                             (float) y, -1);
                     final String file = "textures/gui/flags/" + r.getCountryCode() + ".png";
                     Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(file));
@@ -201,8 +197,8 @@ public class GuiCheckHost extends GuiScreen {
                     try {
                         ServerData sd = serverData;
                         String version = sd.gameVersion;
-                        String protocolVersion = "" + sd.version;
-                        String ping = "" + sd.pingToServer;
+                        String protocolVersion = String.valueOf(sd.version);
+                        String ping = String.valueOf(sd.pingToServer);
 
                         new Thread(() -> {
                             try {
@@ -214,7 +210,6 @@ public class GuiCheckHost extends GuiScreen {
                                     addressPort = (InetAddress.getByName(serveradress.getIP()).getHostAddress() + " "
                                             + serveradress.getPort());
 
-                                    return;
                                 }
                             } catch (Exception ignored) {
                             }
@@ -248,7 +243,7 @@ public class GuiCheckHost extends GuiScreen {
                         } else {
                             heigh1 += adder;
                             this.mc.fontRendererObj.drawStringWithShadow("Protocol: " + protocolVersion + " -> "
-                                    + ProtocolVersionUtils.getInstance().getKnownAs(sd.version), width, heigh1, -1);
+                                    + ProtocolVersionUtils.getKnownAs(sd.version), width, heigh1, -1);
                         }
 
                         if (sd.pingToServer < 0L) {
@@ -357,9 +352,7 @@ public class GuiCheckHost extends GuiScreen {
                             this.mc.fontRendererObj.drawStringWithShadow("Reverse: " + GeoUtils.getInstance().getREVERSE(),
                                     width, heigh, -1);
                         }
-                    }
-
-                    catch (Throwable ignored) {
+                    } catch (Throwable ignored) {
                         // empty catch block
                     }
                     // EDITED CLIENT GUI MODS GEO
@@ -376,10 +369,10 @@ public class GuiCheckHost extends GuiScreen {
                     final DecimalFormat fm = new DecimalFormat("00.##");
                     final String pingFormat = fm.format(endResult3.getPing());
                     Minecraft.getMinecraft().fontRendererObj
-                            .drawStringWithShadow("" + r.getCity() + "," + r.getCountryCode(), 10.0f, (float) y, -1);
-                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("" + pingFormat + " seconds",
+                            .drawStringWithShadow(r.getCity() + "," + r.getCountryCode(), 10.0f, (float) y, -1);
+                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(pingFormat + " seconds",
                             150.0f, (float) y, -1);
-                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow("" + r.getName(), 265.0f, (float) y,
+                    Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(r.getName(), 265.0f, (float) y,
                             -1);
                     final String file = "textures/gui/flags/" + r.getCountryCode() + ".png";
                     Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(file));
@@ -389,8 +382,8 @@ public class GuiCheckHost extends GuiScreen {
                     try {
                         ServerData sd = serverData;
                         String version = sd.gameVersion;
-                        String protocolVersion = "" + sd.version;
-                        String ping = "" + sd.pingToServer;
+                        String protocolVersion = String.valueOf(sd.version);
+                        String ping = String.valueOf(sd.pingToServer);
 
                         new Thread(() -> {
                             try {
@@ -402,7 +395,6 @@ public class GuiCheckHost extends GuiScreen {
                                     addressPort = (InetAddress.getByName(serveradress.getIP()).getHostAddress() + " "
                                             + serveradress.getPort());
 
-                                    return;
                                 }
                             } catch (Exception ignored) {
                             }
@@ -438,7 +430,7 @@ public class GuiCheckHost extends GuiScreen {
                         } else {
                             heigh1 += adder;
                             this.mc.fontRendererObj.drawStringWithShadow("Protocol: " + protocolVersion + " -> "
-                                    + ProtocolVersionUtils.getInstance().getKnownAs(sd.version), width, heigh1, -1);
+                                    + ProtocolVersionUtils.getKnownAs(sd.version), width, heigh1, -1);
                         }
 
                         if (sd.pingToServer < 0L) {
@@ -547,9 +539,7 @@ public class GuiCheckHost extends GuiScreen {
                             this.mc.fontRendererObj.drawStringWithShadow("Reverse: " + GeoUtils.getInstance().getREVERSE(),
                                     width, heigh, -1);
                         }
-                    }
-
-                    catch (Throwable ignored) {
+                    } catch (Throwable ignored) {
                         // empty catch block
                     }
                     // EDITED CLIENT GUI MODS GEO
@@ -565,15 +555,15 @@ public class GuiCheckHost extends GuiScreen {
         GL11.glPushMatrix();
         {
             GL11.glDisable(GL11.GL_CULL_FACE);
-            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+            GLSL.MAINMENU.useShader(width, height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
 
 
             GL11.glBegin(GL11.GL_QUADS);
             {
-                GL11.glVertex2f(0,0);
-                GL11.glVertex2f(0,height);
-                GL11.glVertex2f(width,height);
-                GL11.glVertex2f(width,0);
+                GL11.glVertex2f(0, 0);
+                GL11.glVertex2f(0, height);
+                GL11.glVertex2f(width, height);
+                GL11.glVertex2f(width, 0);
                 GL11.glEnd();
             }
             GL20.glUseProgram(0);

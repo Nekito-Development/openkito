@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class CheckResult<T>
-{
+public class CheckResult<T> {
     private final CheckHostType type;
     private final List<CheckHostServer> servers;
     private final String requestId;
@@ -53,23 +52,23 @@ public class CheckResult<T>
         };
         switch (this.type) {
             case PING: {
-                this.result = (T)CheckHostAPI.ping(entry);
+                this.result = (T) CheckHostAPI.ping(entry);
                 break;
             }
             case DNS: {
-                this.result = (T)CheckHostAPI.dns(entry);
+                this.result = (T) CheckHostAPI.dns(entry);
                 break;
             }
             case HTTP: {
-                this.result = (T)CheckHostAPI.http(entry);
+                this.result = (T) CheckHostAPI.http(entry);
                 break;
             }
             case UDP: {
-                this.result = (T)CheckHostAPI.udp(entry);
+                this.result = (T) CheckHostAPI.udp(entry);
                 break;
             }
             case TCP: {
-                this.result = (T)CheckHostAPI.tcp(entry);
+                this.result = (T) CheckHostAPI.tcp(entry);
                 break;
             }
         }

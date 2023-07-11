@@ -1,21 +1,17 @@
 package wtf.norma.nekito.clickgui.item.impl;
 
 import net.minecraft.client.gui.Gui;
-import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.clickgui.item.Item;
-import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.NumberSetting;
+import wtf.norma.nekito.module.value.impl.RangeNumberValue;
 import wtf.norma.nekito.util.font.Fonts;
 
-import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class ItemSlider extends Item<NumberSetting> {
-    private boolean sliding = false;
-    private double renderWidth;
+public class ItemSlider extends Item<RangeNumberValue> {
+    private boolean sliding;
 
-    public ItemSlider(NumberSetting numberSetting, int x, int y, int width, int height) {
+    public ItemSlider(RangeNumberValue numberSetting, int x, int y, int width, int height) {
         super(numberSetting, x, y, width, height);
     }
 
@@ -27,28 +23,27 @@ public class ItemSlider extends Item<NumberSetting> {
         double max = getObject().getMax();
         double l = 100;
 
-        renderWidth = (l) * (getObject().getValue() - min) / (max - min);
+        double renderWidth = (l) * (getObject().get() - min) / (max - min);
 
         double diff = Math.min(l, Math.max(0, mouseX - x));
         if (sliding) {
             if (diff == 0) {
-                getObject().setValue(getObject().getMin());
-            }
-            else {
+                getObject().set(getObject().getMin());
+            } else {
                 double newValue = roundToPlace(((diff / l) * (max - min) + min), 1);
-                getObject().setValue((float) newValue);
+                getObject().set((float) newValue);
             }
         }
 
         Gui.drawRect(x, (int) y, x + width, (int) (y + height), 0x80000000);
         Gui.drawRect(x, (int) (y), (int) (x + renderWidth), (int) (y + height), 0xFF2B71F3);
-        Fonts.SEMI_BOLD_18.drawString(getObject().getName() + ": " + getObject().getValue(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, -1);
+        Fonts.SEMI_BOLD_18.drawString(getObject().getName() + ": " + getObject().get(), x + 5, y + height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f + 1, -1);
         return height;
     }
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        if (bounding((int) (mouseX), mouseY)) {
+        if (bounding(mouseX, mouseY)) {
             sliding = true;
         }
     }

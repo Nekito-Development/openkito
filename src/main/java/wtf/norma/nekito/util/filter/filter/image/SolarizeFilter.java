@@ -21,12 +21,12 @@ package wtf.norma.nekito.util.filter.filter.image;
  */
 public class SolarizeFilter extends TransferFilter {
 
-	protected float transferFunction( float v ) {
-		return v > 0.5f ? 2*(v-0.5f) : 2*(0.5f-v);
-	}
+    protected float transferFunction(float v) {
+        return v > 0.5f ? 2 * (v - 0.5f) : 2 * (0.5f - v);
+    }
 
-	public String toString() {
-		return "Colors/Solarize";
-	}
+    public String toString() {
+        return "Colors/Solarize";
+    }
 }
 

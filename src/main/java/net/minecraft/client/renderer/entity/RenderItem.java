@@ -65,8 +65,10 @@ import optifine.CustomItems;
 import optifine.Reflector;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
-import wtf.norma.nekito.module.impl.CustomHotbar;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.impl.visuals.EarsModule;
+import wtf.norma.nekito.module.impl.visuals.draggable.CustomHotBarModule;
 import wtf.norma.nekito.util.font.Fonts;
 
 public class RenderItem implements IResourceManagerReloadListener {
@@ -482,7 +484,7 @@ public class RenderItem implements IResourceManagerReloadListener {
                 GlStateManager.disableDepth();
                 GlStateManager.disableBlend();
 
-                if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) {
+                if (Nekito.INSTANCE.getModuleManager().findModule(CustomHotBarModule.class).map(Module::isEnabled).orElse(false)) {
                     Fonts.SEMI_BOLD_18.drawStringWithShadow(s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 9), 16777215);
                 } else {
                     fr.drawStringWithShadow(s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 9), 16777215);

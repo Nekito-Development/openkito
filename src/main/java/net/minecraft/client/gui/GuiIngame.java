@@ -4,7 +4,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
@@ -49,9 +48,9 @@ import optifine.Config;
 import optifine.CustomColors;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
-import wtf.norma.nekito.module.impl.CustomHotbar;
-import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.util.render.RenderUtility;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.module.impl.visuals.draggable.CustomHotBarModule;
 
 public class GuiIngame extends Gui {
     private static final ResourceLocation vignetteTexPath = new ResourceLocation("textures/misc/vignette.png");
@@ -173,19 +172,19 @@ public class GuiIngame extends Gui {
             this.renderTooltip(scaledresolution, partialTicks);
         }
 
-        if (!joinedFirst) {
-
-            (new Thread(() -> {
-                try {
-                    TimeUnit.SECONDS.sleep(4L);
-                } catch (InterruptedException var3) {
-                    throw new RuntimeException(var3);
-                }
-                nekito.INSTANCE.onWelcomeUI();
-            })).start();
-
-            joinedFirst = true;
-        }
+//        if (!joinedFirst) {
+//
+//            (new Thread(() -> {
+//                try {
+//                    TimeUnit.SECONDS.sleep(4L);
+//                } catch (InterruptedException var3) {
+//                    throw new RuntimeException(var3);
+//                }
+//                Nekito.INSTANCE.onWelcomeUI();
+//            })).start();
+//
+//            joinedFirst = true;
+//        }
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(icons);
@@ -352,15 +351,19 @@ public class GuiIngame extends Gui {
             this.overlayPlayerList.renderPlayerlist(i, scoreboard, scoreobjective1);
         }
 
-        Event.dispatch(new EventRender2D(partialTicks));
-        nekito.INSTANCE.getDraggableManager().Render();
+        //Event.dispatch(new EventRender2D(partialTicks));
+
+        final EventRender2D event2D = new EventRender2D(scaledresolution, partialTicks);
+        event2D.post();
+
+        //Nekito.INSTANCE.getDraggableManager().Render();
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
     }
 
-        boolean niggerEnabled = nekito.INSTANCE.getModuleManager().getModuleByName("CustomHotbar").isToggled();
+        //boolean niggerEnabled = Nekito.INSTANCE.getModuleManager().getModuleByName("CustomHotbar").isToggled();
 
     protected void renderTooltip(ScaledResolution sr, float partialTicks) {
         if (this.mc.getRenderViewEntity() instanceof EntityPlayer) {
@@ -371,7 +374,11 @@ public class GuiIngame extends Gui {
             float f = this.zLevel;
             this.zLevel = -90.0F;
 
-            if (!nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) {
+            boolean isHotBarEnabled = Nekito.INSTANCE.getModuleManager().findModule(CustomHotBarModule.class)
+                    .map(Module::isEnabled)
+                    .orElse(false);
+
+            if (!isHotBarEnabled) {
                 this.drawTexturedModalRect(i - 91, sr.getScaledHeight() - 22, 0, 0, 182, 22);
                 this.drawTexturedModalRect(i - 91 - 1 + entityplayer.inventory.currentItem * 20, sr.getScaledHeight() - 22 - 1, 0, 22, 24, 22);
             }
@@ -384,7 +391,7 @@ public class GuiIngame extends Gui {
             RenderHelper.enableGUIStandardItemLighting();
 
             for (int j = 0; j < 9; ++j) {
-                if (!nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) {
+                if (!isHotBarEnabled) {
                     int k = sr.getScaledWidth() / 2 - 90 + j * 20 + 2;
                     int l = sr.getScaledHeight() - 16 - 3;
                     this.renderHotbarItem(j, k, l, partialTicks, entityplayer);
@@ -414,7 +421,10 @@ public class GuiIngame extends Gui {
     }
 
     public void renderExpBar(ScaledResolution p_175176_1_, int p_175176_2_) {
-        if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) return;
+        if (Nekito.INSTANCE.getModuleManager().findModule(CustomHotBarModule.class)
+                .map(Module::isEnabled)
+                .orElse(false))
+            return;
 
         this.mc.mcProfiler.startSection("expBar");
         this.mc.getTextureManager().bindTexture(Gui.icons);
@@ -455,7 +465,10 @@ public class GuiIngame extends Gui {
     }
 
     public void func_181551_a(ScaledResolution p_181551_1_) {
-        if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) return;
+        if (Nekito.INSTANCE.getModuleManager().findModule(CustomHotBarModule.class)
+                .map(Module::isEnabled)
+                .orElse(false))
+            return;
 
         this.mc.mcProfiler.startSection("selectedItemName");
 
@@ -595,7 +608,10 @@ public class GuiIngame extends Gui {
 
     private void renderPlayerStats(ScaledResolution p_180477_1_) {
         //BEST $ CODE $ FIRE
-        if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) return;
+        if (Nekito.INSTANCE.getModuleManager().findModule(CustomHotBarModule.class)
+                .map(Module::isEnabled)
+                .orElse(false))
+            return;
 
         if (this.mc.getRenderViewEntity() instanceof EntityPlayer) {
             EntityPlayer entityplayer = (EntityPlayer) this.mc.getRenderViewEntity();

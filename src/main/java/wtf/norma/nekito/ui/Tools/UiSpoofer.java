@@ -7,7 +7,6 @@ import net.minecraft.client.gui.GuiTextField;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.util.player.UUIDFetcherUtils;
 
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.UUID;
@@ -16,11 +15,10 @@ public class UiSpoofer extends GuiScreen {
     public static String FakeIp = null;
     public static String FakeUUID = null;
     public static String renderText = "";
+    private final GuiScreen before;
     private GuiTextField field_1;
     private GuiTextField field_2;
     private GuiTextField field_3;
-
-    private GuiScreen before;
 
     public UiSpoofer(GuiScreen before) {
         this.before = before;
@@ -72,7 +70,7 @@ public class UiSpoofer extends GuiScreen {
                 break;
             }
             case 3: {
-                this.field_2.setText("" + UUID.randomUUID());
+                this.field_2.setText(String.valueOf(UUID.randomUUID()));
                 break;
             }
             case 4: {
@@ -103,8 +101,8 @@ public class UiSpoofer extends GuiScreen {
         UiSpoofer.drawCenteredString(mc.fontRendererObj, "Cracked Username", width / 2, height / 2 - 20 - 45, Color.WHITE.hashCode());
         UiSpoofer.drawCenteredString(mc.fontRendererObj, "Fake UUID", width / 2, height / 2 - 20 + 25, Color.WHITE.hashCode());
         GL11.glPushMatrix();
-        GL11.glColor4d((double)1.0, (double)1.0, (double)1.0, (double)1.0);
-        GL11.glScaled((double)4.0, (double)4.0, (double)4.0);
+        GL11.glColor4d(1.0, 1.0, 1.0, 1.0);
+        GL11.glScaled(4.0, 4.0, 4.0);
         UiSpoofer.drawCenteredString(mc.fontRendererObj, renderText, width / 8, height / 4 - mc.fontRendererObj.FONT_HEIGHT, 0);
         GL11.glPopMatrix();
         super.drawScreen(mouseX, mouseY, partialTicks);
