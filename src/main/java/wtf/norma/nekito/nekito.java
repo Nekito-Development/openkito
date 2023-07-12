@@ -27,7 +27,7 @@ import wtf.norma.nekito.util.render.RenderUtil;
 
 public enum nekito {
     INSTANCE;
-
+    Minecraft mc = Minecraft.getMinecraft();
     public double animationSpeed = 0.20;
 
     private final CommandManager commandManager;
@@ -64,7 +64,7 @@ public enum nekito {
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 
-    Minecraft mc = Minecraft.getMinecraft();
+
     public void onWelcomeUI() {
         mc.displayGuiScreen(new WelcomeGUI());
         nekito.INSTANCE.getCommandManager().getCommands().stream()

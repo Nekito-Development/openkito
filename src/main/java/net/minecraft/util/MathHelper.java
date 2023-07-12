@@ -11,6 +11,8 @@ public class MathHelper
     private static final int SIN_COUNT = 4096;
     public static final float PI = (float)Math.PI;
     public static final float PI2 = ((float)Math.PI * 2F);
+
+
     public static final float PId2 = ((float)Math.PI / 2F);
     private static final float radFull = ((float)Math.PI * 2F);
     private static final float degFull = 360.0F;
@@ -96,6 +98,86 @@ public class MathHelper
             return num > max ? max : num;
         }
     }
+
+
+    public static double atan2(double p_181159_0_, double p_181159_2_)
+    {
+        double d0 = p_181159_2_ * p_181159_2_ + p_181159_0_ * p_181159_0_;
+
+        if (Double.isNaN(d0))
+        {
+            return Double.NaN;
+        }
+        else
+        {
+            boolean flag = p_181159_0_ < 0.0D;
+
+            if (flag)
+            {
+                p_181159_0_ = -p_181159_0_;
+            }
+
+            boolean flag1 = p_181159_2_ < 0.0D;
+
+            if (flag1)
+            {
+                p_181159_2_ = -p_181159_2_;
+            }
+
+            boolean flag2 = p_181159_0_ > p_181159_2_;
+
+            if (flag2)
+            {
+                double d1 = p_181159_2_;
+                p_181159_2_ = p_181159_0_;
+                p_181159_0_ = d1;
+            }
+
+            double d9 = fastInvSqrt(d0);
+            p_181159_2_ = p_181159_2_ * d9;
+            p_181159_0_ = p_181159_0_ * d9;
+            double d2 = field_181163_d + p_181159_0_;
+            int i = (int)Double.doubleToRawLongBits(d2);
+            double d3 = field_181164_e[i];
+            double d4 = field_181165_f[i];
+            double d5 = d2 - field_181163_d;
+            double d6 = p_181159_0_ * d4 - p_181159_2_ * d5;
+            double d7 = (6.0D + d6 * d6) * d6 * 0.16666666666666666D;
+            double d8 = d3 + d7;
+
+            if (flag2)
+            {
+                d8 = (Math.PI / 2D) - d8;
+            }
+
+            if (flag1)
+            {
+                d8 = Math.PI - d8;
+            }
+
+            if (flag)
+            {
+                d8 = -d8;
+            }
+
+            return d8;
+        }
+    }
+
+
+
+
+    public static double fastInvSqrt(double p_181161_0_)
+    {
+        double d0 = 0.5D * p_181161_0_;
+        long i = Double.doubleToRawLongBits(p_181161_0_);
+        i = 6910469410427058090L - (i >> 1);
+        p_181161_0_ = Double.longBitsToDouble(i);
+        p_181161_0_ = p_181161_0_ * (1.5D - d0 * p_181161_0_ * p_181161_0_);
+        return p_181161_0_;
+    }
+
+
 
     /**
      * Returns the value of the first parameter, clamped to be within the lower and upper limits given by the second and
@@ -652,6 +734,7 @@ public class MathHelper
 
         multiplyDeBruijnBitPosition = new int[] {0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9};
         field_181163_d = Double.longBitsToDouble(4805340802404319232L);
+
         field_181164_e = new double[257];
         field_181165_f = new double[257];
 

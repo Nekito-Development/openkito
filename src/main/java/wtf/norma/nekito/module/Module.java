@@ -19,7 +19,10 @@ public class Module {
 
 
 
+
+
     public final static Minecraft mc = Minecraft.getMinecraft();
+
     public ArrayList<Setting> settings = new ArrayList<Setting>();
     public Module(String name, Category category, int keybind) {
         this.name = name;
@@ -85,7 +88,7 @@ public class Module {
     }
 
     public enum Category {
-        MOVEMENT("Movement"), VISUALS("Visuals"),CRASHERS("Crashers");
+        LEGIT ("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"),CRASHERS("Crashers");
 
         public String name;
 

@@ -40,6 +40,9 @@ public class CustomModel extends Module {
     }
 
 
+    // nie wiem
+    // https://www.youtube.com/watch?v=xjD8MiCe9BU
+
     public void onEvent(Event event) {
         GlStateManager.pushMatrix();
 
