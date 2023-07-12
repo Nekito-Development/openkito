@@ -12,6 +12,7 @@ import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.command.CommandResultStats;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.crash.CrashReport;
@@ -46,6 +47,13 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import wtf.norma.nekito.event.Event;
+
+import wtf.norma.nekito.event.impl.EventUpdate;
+import wtf.norma.nekito.event.impl.SafeWalkEvent;
+import wtf.norma.nekito.module.impl.CustomModel;
+import wtf.norma.nekito.module.impl.HitBox;
+import wtf.norma.nekito.nekito;
 
 public abstract class Entity implements ICommandSender
 {
@@ -617,6 +625,9 @@ public abstract class Entity implements ICommandSender
             double d4 = y;
             double d5 = z;
             boolean flag = this.onGround && this.isSneaking() && this instanceof EntityPlayer;
+
+
+
 
             if (flag)
             {
@@ -2026,9 +2037,13 @@ public abstract class Entity implements ICommandSender
         }
     }
 
-    public float getCollisionBorderSize()
-    {
-        return 0.1F;
+
+
+    public float getCollisionBorderSize() {
+        if (nekito.INSTANCE.getModuleManager().getModule(HitBox.class).isToggled()) {
+            return HitBox.size.getValue();
+        }
+        return 0.1f;
     }
 
     /**

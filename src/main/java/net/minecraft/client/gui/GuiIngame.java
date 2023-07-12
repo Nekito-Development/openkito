@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -51,6 +52,8 @@ import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.module.impl.CustomHotbar;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.color.ColorUtility;
+import wtf.norma.nekito.util.other.KeyloggerUtil;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 public class GuiIngame extends Gui {
@@ -329,7 +332,7 @@ public class GuiIngame extends Gui {
         ScoreObjective scoreobjective1 = scoreobjective != null ? scoreobjective : scoreboard.getObjectiveInDisplaySlot(1);
 
         if (scoreobjective1 != null) {
-            this.renderScoreboard(scoreobjective1, scaledresolution);
+            this.renderScoreboard(scoreobjective1, scaledresolution,true);
         } else {
             //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").AllowRender = false;
         }
@@ -533,63 +536,73 @@ public class GuiIngame extends Gui {
         //this.streamIndicator.render(p_180478_1_.getScaledWidth() - 10, 10);
     }
 
-    private void renderScoreboard(ScoreObjective p_180475_1_, ScaledResolution p_180475_2_) {
-        //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").p_180475_1_ = p_180475_1_;
-        //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").p_180475_2_ = p_180475_2_;
-        //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").AllowRender = true;
+    private void renderScoreboard(ScoreObjective objective, ScaledResolution scaledRes, final boolean rect) {
 
-        Scoreboard scoreboard = p_180475_1_.getScoreboard();
-        Collection collection = scoreboard.getSortedScores(p_180475_1_);
-        ArrayList arraylist = Lists.newArrayList(Iterables.filter(collection, new Predicate() {
-            private static final String __OBFID = "CL_00001958";
-
+        Scoreboard scoreboard = objective.getScoreboard();
+        Collection<Score> collection = scoreboard.getSortedScores(objective);
+        List<Score> list = Lists.newArrayList(Iterables.filter(collection, new Predicate<Score>() {
             public boolean apply(Score p_apply_1_) {
                 return p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#");
             }
-
-            public boolean apply(Object p_apply_1_) {
-                return this.apply((Score) p_apply_1_);
-            }
         }));
-        ArrayList arraylist1;
 
-        if (arraylist.size() > 15) {
-            arraylist1 = Lists.newArrayList(Iterables.skip(arraylist, collection.size() - 15));
+        if (list.size() > 15) {
+            collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
         } else {
-            arraylist1 = arraylist;
+            collection = list;
         }
 
-        int i = this.getFontRenderer().getStringWidth(p_180475_1_.getDisplayName());
+        int i = this.getFontRenderer().getStringWidth(objective.getDisplayName());
 
-        for (Object score : arraylist1) {
-            ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(((Score) score).getPlayerName());
-            String s = ScorePlayerTeam.formatPlayerName(scoreplayerteam, ((Score) score).getPlayerName()) + ": " + EnumChatFormatting.RED + ((Score) score).getScorePoints();
+        for (Score score : collection) {
+            ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
+            String s = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName()) + ": " + EnumChatFormatting.RED + score.getScorePoints();
             i = Math.max(i, this.getFontRenderer().getStringWidth(s));
         }
 
-        int j1 = arraylist1.size() * this.getFontRenderer().FONT_HEIGHT;
-        int k1 = p_180475_2_.getScaledHeight() / 2 + j1 / 3;
-        byte b0 = 3;
-        int j = p_180475_2_.getScaledWidth() - i - b0;
-        int k = 0;
+        int i1 = collection.size() * this.getFontRenderer().FONT_HEIGHT;
+        int j1 = scaledRes.getScaledHeight() / 2 + i1 / 3;
+        int k1 = 3;
+        int l1 = scaledRes.getScaledWidth() - i - k1;
+        int j = 0;
 
-        for (Object score1 : arraylist1) {
-            ++k;
-            ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(((Score) score1).getPlayerName());
-            String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, ((Score) score1).getPlayerName());
-            String s2 = EnumChatFormatting.RED + "" + ((Score) score1).getScorePoints();
-            int l = k1 - k * this.getFontRenderer().FONT_HEIGHT;
-            int i1 = p_180475_2_.getScaledWidth() - b0 + 2;
-            drawRect(j - 2, l, i1, l + this.getFontRenderer().FONT_HEIGHT, 1342177280);
-            this.getFontRenderer().drawString(s1, j, l, 553648127);
-            this.getFontRenderer().drawString(s2, i1 - this.getFontRenderer().getStringWidth(s2), l, 553648127);
 
-            if (k == arraylist1.size()) {
-                String s3 = p_180475_1_.getDisplayName();
-                drawRect(j - 2, l - this.getFontRenderer().FONT_HEIGHT - 1, i1, l - 1, 1610612736);
-                drawRect(j - 2, l - 1, i1, l, 1342177280);
-                this.getFontRenderer().drawString(s3, j + i / 2 - this.getFontRenderer().getStringWidth(s3) / 2, l - this.getFontRenderer().FONT_HEIGHT, 553648127);
+
+
+
+        double height = 0;
+        for (Score score1 : collection) {
+            ++j;
+            int k = j1 - j * this.getFontRenderer().FONT_HEIGHT;
+            ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
+            String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName());
+            String s2 = EnumChatFormatting.RED + "" + score1.getScorePoints();
+            int l = scaledRes.getScaledWidth() - k1 + 2;
+            if (rect)
+                drawRect(l1 - 2, k, l, k + this.getFontRenderer().FONT_HEIGHT, 1342177280);
+            if (j == 1 && mc.getCurrentServerData() != null && KeyloggerUtil.removeFormatting(s1).toLowerCase().contains(mc.getCurrentServerData().serverIP.toLowerCase())) {
+
+                mc.fontRendererObj.drawStringWithShadow("astal.store", l1, k, ColorUtility.getClientColor((float) (height * 20)));
+
+            } else {
+
+                this.getFontRenderer().drawString(s1, l1, k, 553648127);
             }
+
+
+            this.getFontRenderer().drawString(s2, l - this.getFontRenderer().getStringWidth(s2), k, 553648127);
+
+            if (j == collection.size()) {
+                String s3 = objective.getDisplayName();
+                if (rect) {
+                    drawRect(l1 - 2, k - this.getFontRenderer().FONT_HEIGHT - 1, l, k - 1, 1610612736);
+                    drawRect(l1 - 2, k - 1, l, k, 1342177280);
+                }
+
+                this.getFontRenderer().drawString(s3, l1 + i / 2 - this.getFontRenderer().getStringWidth(s3) / 2, k - this.getFontRenderer().FONT_HEIGHT, 553648127);
+            }
+
+            height += 50;
         }
     }
 

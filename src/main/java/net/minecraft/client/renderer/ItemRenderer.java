@@ -321,7 +321,10 @@ public class ItemRenderer
         GlStateManager.rotate(60.0F, 0.0F, 1.0F, 0.0F);
     }
 
+
+
     /**
+     *
      * Renders the active item in the player's hand when in first person mode. Args: partialTickTime
      */
     public void renderItemInFirstPerson(float partialTicks)
@@ -360,12 +363,13 @@ public class ItemRenderer
                         break;
 
                     case 4://block
-                                    float f6 = MathHelper.sin((float)(MathHelper.sqrt_float(f1) * 3.1D));
-                                    GlStateManager.rotate(-f6 * 55.0F / 2.0F, -8.0F, -0.0F, 9.0F);
-                                    GlStateManager.rotate(-f6 * 45.0F, 1.0F, f6 / 2.0F, -0.0F);
-                                    GL11.glTranslated(1.2D, 0.3D, 0.5D);
-                                    GL11.glTranslatef(-1.0F, -0.1F, 0.2F);
-                                    GlStateManager.scale(1.5D, 1.5D, 1.5D);
+
+
+
+                        // TU ANIMACJE DODAC TODO
+
+
+
                         break;
 
                     case 5://bow

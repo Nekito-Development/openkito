@@ -52,6 +52,10 @@ public class ColorUtility {
         }
         return 0xFFFFC0CB;
     }
+    public static int getClientColor(float counter) {
+
+        return new Color(ColorUtility.getColor(0,0)).getRGB();
+    }
 
     public static int getColor(int red, int green, int blue, int alpha) {
         int color = 0;

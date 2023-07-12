@@ -53,7 +53,12 @@ import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.EventType;
+import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.event.impl.EventUpdate;
+
+import wtf.norma.nekito.nekito;
+
+import javax.xml.stream.Location;
 
 public class EntityPlayerSP extends AbstractClientPlayer
 {
@@ -917,4 +922,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
             this.sendPlayerAbilities();
         }
     }
+
+
+
 }

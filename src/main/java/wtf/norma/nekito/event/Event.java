@@ -9,7 +9,7 @@ import java.util.List;
 public class Event {
 
     public EventType type;
-    public boolean cancelled;
+    private boolean canceled;
 
     public static void dispatch(Event e) {
         nekito.INSTANCE.getModuleManager().getModules().stream().filter(Module::isToggled).forEach(m -> m.onEvent(e));
@@ -34,11 +34,11 @@ public class Event {
         this.type = type;
     }
 
-    public boolean isCancelled() {
-        return cancelled;
+    public boolean isCanceled(){
+        return canceled;
     }
 
     public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
+        this.canceled = cancelled;
     }
 }
