@@ -250,57 +250,44 @@ public class ShaderGroup
         }
     }
 
-    private void initUniform(JsonElement p_148028_1_) throws JsonException
-    {
+    private void initUniform(JsonElement p_148028_1_) throws JsonException {
         JsonObject jsonobject = JsonUtils.getJsonObject(p_148028_1_, "uniform");
         String s = JsonUtils.getString(jsonobject, "name");
-        ShaderUniform shaderuniform = ((Shader)this.listShaders.get(this.listShaders.size() - 1)).getShaderManager().getShaderUniform(s);
-
-        if (shaderuniform == null)
-        {
-            throw new JsonException("Uniform \'" + s + "\' does not exist");
+        ShaderUniform shaderuniform = this.listShaders.get(this.listShaders.size() - 1).getShaderManager().getShaderUniform(s);
+        if (shaderuniform == null) {
+            throw new JsonException("Uniform '" + s + "' does not exist");
         }
-        else
-        {
-            float[] afloat = new float[4];
-            int i = 0;
-
-            for (JsonElement jsonelement : JsonUtils.getJsonArray(jsonobject, "values"))
-            {
-                try
-                {
-                    afloat[i] = JsonUtils.getFloat(jsonelement, "value");
-                }
-                catch (Exception exception)
-                {
-                    JsonException jsonexception = JsonException.func_151379_a(exception);
-                    jsonexception.func_151380_a("values[" + i + "]");
-                    throw jsonexception;
-                }
-
-                ++i;
+        float[] afloat = new float[4];
+        int i = 0;
+        for (JsonElement jsonelement : JsonUtils.getJsonArray(jsonobject, "values")) {
+            try {
+                afloat[i] = JsonUtils.getFloat(jsonelement, "value");
             }
-
-            switch (i)
-            {
-                case 0:
-                default:
-                    break;
-
-                case 1:
-                    shaderuniform.set(afloat[0]);
-                    break;
-
-                case 2:
-                    shaderuniform.set(afloat[0], afloat[1]);
-                    break;
-
-                case 3:
-                    shaderuniform.set(afloat[0], afloat[1], afloat[2]);
-                    break;
-
-                case 4:
-                    shaderuniform.set(afloat[0], afloat[1], afloat[2], afloat[3]);
+            catch (Exception exception) {
+                JsonException jsonexception = JsonException.func_151379_a(exception);
+                jsonexception.func_151380_a("values[" + i + "]");
+                throw jsonexception;
+            }
+            ++i;
+        }
+        switch (i) {
+            default: {
+                break;
+            }
+            case 1: {
+                shaderuniform.set(afloat[0]);
+                break;
+            }
+            case 2: {
+                shaderuniform.set(afloat[0], afloat[1]);
+                break;
+            }
+            case 3: {
+                shaderuniform.set(afloat[0], afloat[1], afloat[2]);
+                break;
+            }
+            case 4: {
+                shaderuniform.set(afloat[0], afloat[1], afloat[2], afloat[3]);
             }
         }
     }

@@ -2214,6 +2214,17 @@ public class EntityRenderer implements IResourceManagerReloadListener
         GlStateManager.translate(0.0F, 0.0F, -2000.0F);
     }
 
+    public void setupOverlayRendering2(int i) {
+        ScaledResolution scaledresolution = new ScaledResolution(this.mc);
+        GlStateManager.clear(256);
+        GlStateManager.matrixMode(5889);
+        GlStateManager.loadIdentity();
+        GlStateManager.ortho(0.0D, scaledresolution.getScaledWidth_double(), scaledresolution.getScaledHeight_double(), 0.0D, 1000.0D, 3000.0D);
+        GlStateManager.matrixMode(5888);
+        GlStateManager.loadIdentity();
+        GlStateManager.translate(0.0F, 0.0F, -2000.0F);
+    }
+
     /**
      * calculates fog and calls glClearColor
      */

@@ -42,6 +42,8 @@ public class Module {
         return category;
     }
 
+
+
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -57,6 +59,8 @@ public class Module {
     public boolean isToggled() {
         return toggled;
     }
+
+
 
     public void setToggled(boolean toggled) {
         this.toggled = toggled;

@@ -364,7 +364,8 @@ public class ItemRenderer
 
                     case 4://block
 
-
+                        this.transformFirstPersonItem(f - 0.3F, f1);
+                        this.func_178103_d();
 
                         // TU ANIMACJE DODAC TODO
 

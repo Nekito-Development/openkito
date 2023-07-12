@@ -50,7 +50,6 @@ import net.minecraft.world.WorldServer;
 import wtf.norma.nekito.event.Event;
 
 import wtf.norma.nekito.event.impl.EventUpdate;
-import wtf.norma.nekito.event.impl.SafeWalkEvent;
 import wtf.norma.nekito.module.impl.CustomModel;
 import wtf.norma.nekito.module.impl.HitBox;
 import wtf.norma.nekito.nekito;

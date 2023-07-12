@@ -14,6 +14,13 @@ public class NumberSetting extends Setting {
         this.increment = increment;
     }
 
+    public float getFloatValue() {
+        return (float) this.value;
+    }
+    public int getCurrentValueInt() {
+        return (int)this.value;
+    }
+
     public float getValue() {
         return value;
     }

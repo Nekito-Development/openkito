@@ -10,14 +10,7 @@ import net.minecraft.client.gui.GuiMerchant;
 import net.minecraft.client.gui.GuiRepair;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiScreenBook;
-import net.minecraft.client.gui.inventory.GuiBeacon;
-import net.minecraft.client.gui.inventory.GuiBrewingStand;
-import net.minecraft.client.gui.inventory.GuiChest;
-import net.minecraft.client.gui.inventory.GuiCrafting;
-import net.minecraft.client.gui.inventory.GuiDispenser;
-import net.minecraft.client.gui.inventory.GuiEditSign;
-import net.minecraft.client.gui.inventory.GuiFurnace;
-import net.minecraft.client.gui.inventory.GuiScreenHorseInventory;
+import net.minecraft.client.gui.inventory.*;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.command.server.CommandBlockLogic;
 import net.minecraft.entity.Entity;
@@ -29,6 +22,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C01PacketChatMessage;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
@@ -42,13 +36,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatFileWriter;
 import net.minecraft.tileentity.TileEntitySign;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MovementInput;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import wtf.norma.nekito.event.Event;
@@ -57,6 +45,7 @@ import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.event.impl.EventUpdate;
 
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.Animations.AnimationHelper;
 
 import javax.xml.stream.Location;
 
@@ -170,13 +159,19 @@ public class EntityPlayerSP extends AbstractClientPlayer
         }
     }
 
+
     /**
      * Called to update the entity's position/logic.
      */
     EventUpdate eventUpdate = new EventUpdate();
 
-    public void onUpdate()
-    {
+    public void onUpdate() {
+        GuiInventory.phase = this.mc.currentScreen instanceof GuiInventory || this.mc.currentScreen instanceof GuiInventory ? AnimationHelper.animation(GuiInventory.phase, 1.0, (double)0.05f) : AnimationHelper.animation(GuiInventory.phase, 0.0, (double)0.1f);
+        GuiInventory.phase = MathHelper.clamp(GuiInventory.phase, 0.0, 1.0);
+        GuiInventory.animation = GuiInventory.createAnimation(GuiInventory.phase);
+
+
+
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ)))
         {
             super.onUpdate();

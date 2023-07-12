@@ -8,6 +8,7 @@ public class Fonts {
 
     public static FontRenderer SEMI_BOLD_45 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 45, 0), true, true);
 
+    public static FontRenderer fx = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("comicfont.ttf"), 50, 0), true, true);
 
 
     public static FontRenderer SEMI_BOLD_18 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 18, 0), true, true);

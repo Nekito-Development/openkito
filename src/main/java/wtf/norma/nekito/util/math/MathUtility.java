@@ -11,6 +11,8 @@ public class MathUtility {
         return bd;
     }
 
+
+
     //    map
     public static float map(float value, float istart, float istop, float ostart, float ostop) {
         return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
@@ -39,6 +41,11 @@ public class MathUtility {
         return bd.doubleValue();
     }
 
+
+    // random float i chuj
+    public static float randomizeFloat(float min, float max) {
+        return (float) (Math.random() * (double) (max - min)) + min;
+    }
     public static double interpolate(double current, double old, double scale) {
         return old + (current - old) * scale;
     }

@@ -14,7 +14,7 @@ author @intexpression
 
 public class Cape extends Module {
 
-    public static ModeSetting selectedCape = new ModeSetting("Wing type", "Black", "Black", "Pink","Blue");
+    public static ModeSetting selectedCape = new ModeSetting("Wing type", "Black", "Black", "Pink","Blue","Animated");
 
     public Cape() {
         super("Cape", Category.VISUALS, Keyboard.KEY_NONE);

@@ -17,7 +17,7 @@ import java.util.Comparator;
 
 public class AimBot extends Module {
 
-    public NumberSetting ZASIEGCHUJA = new NumberSetting("Range",25,1,100,1);
+    public NumberSetting ZASIEGCHUJA = new NumberSetting("Range",3,1,6,0.5f);
 
     public AimBot() {
         super("AimBot", Category.LEGIT, Keyboard.KEY_NONE);

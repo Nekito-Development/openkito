@@ -3,6 +3,7 @@ package wtf.norma.nekito.module;
 import wtf.norma.nekito.module.impl.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ModuleManager {
 
@@ -13,7 +14,6 @@ public class ModuleManager {
                 new Sprint(),
                 new ClickGUI(),
                 new Cape(),
-                new Eagle(),
                 new ItemPhysics(),
                 new Fly(),
                 new NoSlowDown(),
@@ -35,9 +35,7 @@ public class ModuleManager {
     }
 
     public void addAll(Module... modules) {
-        for (Module m : modules) {
-            this.modules.add(m);
-        }
+        this.modules.addAll(Arrays.asList(modules));
     }
 
     public Module getModuleByName(String name) {

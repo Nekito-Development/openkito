@@ -20,10 +20,9 @@ import java.util.Comparator;
 
 public class NoSlowDown extends Module {
 
-    public static ModeSetting mode = new ModeSetting("Mode", "Normal", "Normal", "Intave");
+
     public NoSlowDown() {
         super("NoSlowDown", Category.MOVEMENT, Keyboard.KEY_NONE);
-        addSettings(mode);
     }
 
     @Override
@@ -41,30 +40,7 @@ public class NoSlowDown extends Module {
     public void onEvent(Event e) {
         // CWEL POLSKA AGREED?
         if (mc.thePlayer.isUsingItem()) {
-        switch (mode.getMode()) {
-            case"Normal":
 
-            mc.thePlayer.movementInput.moveForward *= 5F * 98;
-            mc.thePlayer.movementInput.moveStrafe *= 5F * 98;
-            mc.thePlayer.setSprinting(true);
-
-            if (mc.thePlayer.onGround && !mc.gameSettings.keyBindJump.isKeyDown()) {
-                if (mc.thePlayer.ticksExisted % 2 == 0) {
-                    mc.thePlayer.motionX *= 0.46;
-                    mc.thePlayer.motionZ *= 0.46;
-                }
-            } else if (mc.thePlayer.fallDistance > 0.2) {
-                mc.thePlayer.motionX *= 0.98;
-                mc.thePlayer.motionZ *= 0.98;
-            }
-            break;
-            case"Intave":
-                if (mc.thePlayer.ticksExisted % 5 == 0) {
-                    PacketUtility.sendPacket(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
-                    PacketUtility.sendPacket(new C08PacketPlayerBlockPlacement(mc.thePlayer.inventory.getCurrentItem()));
-                }
-                break;
-        }
 
         }
     }

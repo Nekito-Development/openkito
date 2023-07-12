@@ -17,6 +17,7 @@ public class JsonException extends IOException
         this.field_151382_b = p_i45279_1_;
     }
 
+
     public JsonException(String p_i45280_1_, Throwable p_i45280_2_)
     {
         super(p_i45280_2_);

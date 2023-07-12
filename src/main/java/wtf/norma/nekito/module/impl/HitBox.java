@@ -11,6 +11,7 @@ public class HitBox extends Module {
 
     public HitBox() {
         super("HitBox", Category.LEGIT, Keyboard.KEY_NONE);
+        addSettings(size);
     }
 
     @Override
