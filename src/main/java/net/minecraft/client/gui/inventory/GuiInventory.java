@@ -2,6 +2,8 @@ package net.minecraft.client.gui.inventory;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
@@ -53,6 +55,8 @@ public class GuiInventory extends InventoryEffectRenderer
      */
     public void updateScreen()
     {
+
+
         if (this.mc.playerController.isInCreativeMode())
         {
             this.mc.displayGuiScreen(new GuiContainerCreative(this.mc.thePlayer));
@@ -69,10 +73,15 @@ public class GuiInventory extends InventoryEffectRenderer
     private float progress = 0.0f;
 
     private long lastMS = 0L;
-
+    public static boolean CZARURAWFARQ23 = false;
 
     public void initGui()
     {
+
+
+        // tak mozna plakac o to zezwalam
+
+
         this.lastMS = System.currentTimeMillis();
         this.progress = 0.0f;
         this.buttonList.clear();
@@ -84,12 +93,9 @@ public class GuiInventory extends InventoryEffectRenderer
         else
         {
             super.initGui();
-
         }
 
 
-
-     //   cos typu  RenderUtility.drawImage(577, 130, 422, 591, new ResourceLocation("nekito/uwu/SchoolGirl.png"));
 
 
 

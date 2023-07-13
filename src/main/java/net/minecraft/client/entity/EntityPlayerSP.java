@@ -166,7 +166,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
     EventUpdate eventUpdate = new EventUpdate();
 
     public void onUpdate() {
-        GuiInventory.phase = this.mc.currentScreen instanceof GuiInventory || this.mc.currentScreen instanceof GuiInventory ? AnimationHelper.animation(GuiInventory.phase, 1.0, (double)0.05f) : AnimationHelper.animation(GuiInventory.phase, 0.0, (double)0.1f);
+
+       GuiInventory.phase = this.mc.currentScreen instanceof GuiInventory || this.mc.currentScreen instanceof GuiInventory ? AnimationHelper.animation(GuiInventory.phase, 1.0, (double)0.05f) : AnimationHelper.animation(GuiInventory.phase, 0.0, (double)0.1f);
         GuiInventory.phase = MathHelper.clamp(GuiInventory.phase, 0.0, 1.0);
         GuiInventory.animation = GuiInventory.createAnimation(GuiInventory.phase);
 
