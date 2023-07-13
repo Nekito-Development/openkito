@@ -28,6 +28,7 @@ public class ModuleManager {
                 new AutoClicker(),
                 new AimBot(),
                 new NoWeather(),
+                new Reach(),
                 new CustomHotbar(),
                 new Wings(),
                 new Ears()

@@ -1,5 +1,6 @@
 package wtf.norma.nekito.util.color;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
@@ -34,18 +35,34 @@ public class ColorUtility {
         return rgba((int) r, (int) g, (int) b, (int) a);
     }
 
+
+    public static int getNekito(int speed, int offset) {
+        // yeah ik hardcodded
+
+        // DODAC TE NEW
+        Minecraft mc = Minecraft.getMinecraft();
+        int cwel = ColorUtility.getGradientOffset(new Color(98, 207, 244), new Color(44, 103, 242), (Math.abs(((System.currentTimeMillis()) / 10)) / 100D) + offset / mc.fontRendererObj.FONT_HEIGHT * 9.95).getRGB();
+   return  cwel;
+    }
+
     public static int getRainbow(int speed, int offset) {
         float hue = (System.currentTimeMillis() + offset) % speed;
         hue /= speed;
         return Color.getHSBColor(hue, 0.55f, 1f).getRGB();
     }
+
     public static int getColor(int offset, int i) {
+        Minecraft mc = Minecraft.getMinecraft();
         //convertingcolors.com fajno strona
         switch (Watermark.colorMode.getMode()) {
             case "Purple":
                 return 0xff9000c4;
             case"Pink":
                 return  0xFFFFC0CB;
+            case"Nekito":
+
+              return getNekito(4000,offset * 5) ;
+
             case "Rainbow":
                 return getRainbow(4000, offset * 5);
 
@@ -57,6 +74,20 @@ public class ColorUtility {
         return new Color(ColorUtility.getColor(0,0)).getRGB();
     }
 
+
+    public static Color getGradientOffset(Color color1, Color color2, double offset) {
+        if (offset > 1) {
+            double left = offset % 1;
+            int off = (int) offset;
+            offset = off % 2 == 0 ? left : 1 - left;
+
+        }
+        double inverse_percent = 1 - offset;
+        int redPart = (int) (color1.getRed() * inverse_percent + color2.getRed() * offset);
+        int greenPart = (int) (color1.getGreen() * inverse_percent + color2.getGreen() * offset);
+        int bluePart = (int) (color1.getBlue() * inverse_percent + color2.getBlue() * offset);
+        return new Color(redPart, greenPart, bluePart);
+    }
     public static int getColor(int red, int green, int blue, int alpha) {
         int color = 0;
         color |= alpha << 24;

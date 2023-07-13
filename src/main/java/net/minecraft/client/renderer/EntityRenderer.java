@@ -92,6 +92,8 @@ import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender3D;
+import wtf.norma.nekito.module.impl.HitBox;
+import wtf.norma.nekito.module.impl.Reach;
 import wtf.norma.nekito.module.impl.WorldColor;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.color.ColorUtility;
@@ -459,12 +461,12 @@ public class EntityRenderer implements IResourceManagerReloadListener
     /**
      * Finds what block or object the mouse is over at the specified partial tick time. Args: partialTickTime
      */
-    public void getMouseOver(float partialTicks)
-    {
+    public void getMouseOver(float partialTicks) {
         Entity entity = this.mc.getRenderViewEntity();
 
-        if (entity != null && this.mc.theWorld != null)
-        {
+        if (entity != null && this.mc.theWorld != null) {
+            double reachValue;
+            //nie spalem cala noc spoko?
             this.mc.mcProfiler.startSection("pick");
             this.mc.pointedEntity = null;
             double d0 = (double)this.mc.playerController.getBlockReachDistance();
@@ -473,20 +475,11 @@ public class EntityRenderer implements IResourceManagerReloadListener
             Vec3 vec3 = entity.getPositionEyes(partialTicks);
             boolean flag = false;
             boolean flag1 = true;
-
-            if (this.mc.playerController.extendedReach())
-            {
-                d0 = 6.0D;
-                d1 = 6.0D;
-            }
-            else
-            {
-                if (d0 > 3.0D)
-                {
-                    flag = true;
-                }
-
-                d0 = d0;
+            double d = reachValue = nekito.INSTANCE.getModuleManager().getModule(Reach.class).isToggled() ? (double) Reach.reachValue.getValue() : 3.0;
+            if (this.mc.playerController.extendedReach()) {
+                d0 = d1 = 6.0;
+            } else if (d0 > reachValue) {
+                flag = true;
             }
 
             if (this.mc.objectMouseOver != null)
@@ -549,10 +542,12 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 }
             }
 
-            if (this.pointedEntity != null && flag && vec3.distanceTo(vec33) > 3.0D)
-            {
+
+
+
+            if (this.pointedEntity != null && flag && vec3.distanceTo(vec33) > reachValue) {
                 this.pointedEntity = null;
-                this.mc.objectMouseOver = new MovingObjectPosition(MovingObjectPosition.MovingObjectType.MISS, vec33, (EnumFacing)null, new BlockPos(vec33));
+                this.mc.objectMouseOver = new MovingObjectPosition(MovingObjectPosition.MovingObjectType.MISS, vec33, null, new BlockPos(vec33));
             }
 
             if (this.pointedEntity != null && (d2 < d1 || this.mc.objectMouseOver == null))
