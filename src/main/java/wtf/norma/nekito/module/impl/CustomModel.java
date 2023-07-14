@@ -8,6 +8,9 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.event.Event;
 
+import wtf.norma.nekito.event.impl.EventMotion;
+import wtf.norma.nekito.event.impl.EventRender2D;
+import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.util.math.MathUtility;
@@ -44,28 +47,29 @@ public class CustomModel extends Module {
     // https://www.youtube.com/watch?v=xjD8MiCe9BU
 
     public void onEvent(Event event) {
-        GlStateManager.pushMatrix();
+        if (event instanceof EventRender3D) {
+            GlStateManager.pushMatrix();
 
-        AbstractClientPlayer entity = mc.thePlayer;
-        RenderManager manager = mc.getRenderManager();
-        double x = MathUtility.interpolate(entity.posX, entity.lastTickPosX, 0) - manager.renderPosX;
-        double y = MathUtility.interpolate(entity.posY, entity.lastTickPosY, 0) - manager.renderPosY;
-        double z =  MathUtility.interpolate(entity.posZ, entity.lastTickPosZ, 0) - manager.renderPosZ;
-        float yaw = mc.thePlayer.prevRotationYaw + (mc.thePlayer.rotationYaw - mc.thePlayer.prevRotationYaw) * mc.getRenderPartialTicks();
-        boolean sneak = mc.thePlayer.isSneaking();
-        GL11.glTranslated(x, y, z);
-        if (!(mc.currentScreen instanceof GuiContainer))
-            GL11.glRotatef(-yaw, 0.0F, mc.thePlayer.height, 0.0F);
-        GlStateManager.scale(0.03, sneak ? 0.027 : 0.029, 0.03);
+            AbstractClientPlayer entity = mc.thePlayer;
+            RenderManager manager = mc.getRenderManager();
+            double x = MathUtility.interpolate(entity.posX, entity.lastTickPosX, 0) - manager.renderPosX;
+            double y = MathUtility.interpolate(entity.posY, entity.lastTickPosY, 0) - manager.renderPosY;
+            double z = MathUtility.interpolate(entity.posZ, entity.lastTickPosZ, 0) - manager.renderPosZ;
+            float yaw = mc.thePlayer.prevRotationYaw + (mc.thePlayer.rotationYaw - mc.thePlayer.prevRotationYaw) * mc.getRenderPartialTicks();
+            boolean sneak = mc.thePlayer.isSneaking();
+            GL11.glTranslated(x, y, z);
+            if (!(mc.currentScreen instanceof GuiContainer))
+                GL11.glRotatef(-yaw, 0.0F, mc.thePlayer.height, 0.0F);
+            GlStateManager.scale(0.03, sneak ? 0.027 : 0.029, 0.03);
 
-        GlStateManager.disableLighting();
-        GlStateManager.color(1, 1, 1, 1.0F);
-        this.hitlerHead.render();
-        this.hitlerBody.render();
-        GlStateManager.enableLighting();
-        GlStateManager.resetColor();
-        GlStateManager.popMatrix();
-
+            GlStateManager.disableLighting();
+            GlStateManager.color(1, 1, 1, 1.0F);
+            this.hitlerHead.render();
+            this.hitlerBody.render();
+            GlStateManager.enableLighting();
+            GlStateManager.resetColor();
+            GlStateManager.popMatrix();
+        }
     }
 
 }
