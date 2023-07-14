@@ -3,6 +3,7 @@ package wtf.norma.nekito.module.impl;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventMotion;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
@@ -36,7 +37,7 @@ public class Fly extends Module {
 
     @Override
     public void onEvent(Event e) {
-        if (e instanceof EventUpdate) {
+        if (e instanceof EventMotion) {
             if (e.isPre()) {
 
                 switch (mode.getMode().toUpperCase()) {

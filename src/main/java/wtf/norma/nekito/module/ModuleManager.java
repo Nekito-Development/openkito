@@ -31,7 +31,8 @@ public class ModuleManager {
                 new Reach(),
                 new CustomHotbar(),
                 new Wings(),
-                new Ears()
+                new Ears(),
+                new KillAura()
         );
     }
 
