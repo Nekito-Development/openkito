@@ -176,6 +176,10 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         GuiInventory.phase = MathHelper.clamp(GuiInventory.phase, 0.0, 1.0);
         GuiInventory.animation = GuiInventory.createAnimation(GuiInventory.phase);
 
+        GuiChest.phase = this.mc.currentScreen instanceof GuiChest || this.mc.currentScreen instanceof GuiChest ? AnimationHelper.animation(GuiChest.phase, 1.0, (double)0.05f) : AnimationHelper.animation(GuiChest.phase, 0.0, (double)0.1f);
+        GuiChest.phase = MathHelper.clamp(GuiChest.phase, 0.0, 1.0);
+        GuiChest.animation = GuiChest.createAnimation(GuiChest.phase);
+
 
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
             super.onUpdate();

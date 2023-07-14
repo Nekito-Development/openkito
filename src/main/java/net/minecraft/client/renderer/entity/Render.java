@@ -370,6 +370,12 @@ public abstract class Render<T extends Entity>
                 b0 = -10;
             }
 
+
+            // hard code
+
+
+
+
             int i = fontrenderer.getStringWidth(str) / 2;
             GlStateManager.disableTexture2D();
             worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
