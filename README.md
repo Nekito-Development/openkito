@@ -3,13 +3,18 @@ Open-Source Crash client Made by eleczka, lekoz , groszus and tecness.
 Special thanks to narumii for the base
 
 
-# Website
-You can check our website by clicking [here](https://astal.store)
 
 
 
 # Discord
 Join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
+
+
+# Website
+You can check our website by clicking [here](https://astal.store)
+
+
+
 
 
 # Issues
