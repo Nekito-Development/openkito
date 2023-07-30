@@ -26,6 +26,14 @@ Found a bug or have an idea for a new feature? You can let us know by clicking [
 Known bugs:
 
 > ~~resourcepacks not working~~ (fixed)
+
+
 > sound not working (frick u openal)
+
+
 > not running on mac (idk why :[ )
+
+
 > open on lan button (ill just remove it useless)
+
+
