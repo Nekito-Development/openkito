@@ -102,6 +102,10 @@ public class GuiIngameMenu extends GuiScreen
             case 7:
                 this.mc.displayGuiScreen(new GuiShareToLan(this));
 
+                //
+                break;
+
+
             case 8:
                 this.mc.displayGuiScreen(new UiTools(   this));
                 // this.mc.setIngameFocus();

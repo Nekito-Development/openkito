@@ -45,12 +45,6 @@ public class Fly extends Module {
                         mc.thePlayer.capabilities.isFlying = true;
                         mc.thePlayer.capabilities.setFlySpeed(speed.getValue());
                         break;
-                    case"CwelGrim":
-                      //  System.exit(69); TROLLED TOO HARD
-
-
-
-                        break;
                     case "MOTION":
                         mc.thePlayer.motionX = 0;
                         mc.thePlayer.motionY = 0;

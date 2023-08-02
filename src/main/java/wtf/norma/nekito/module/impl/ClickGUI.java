@@ -12,6 +12,9 @@ public class ClickGUI extends Module {
         this.addSettings(anime);
     }
 
+
+
+
     public static ModeSetting anime = new ModeSetting("Anime", "Fixmem", "Fixmem", "Astolfo", "Astolfo2","BabaWithPlecak",
             "Hideri","Felix","Cot","ten rekin z ikea","None");
 

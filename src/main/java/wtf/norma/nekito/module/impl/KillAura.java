@@ -27,8 +27,9 @@ public class KillAura extends Module {
     public NumberSetting ZASIEGCHUJA = new NumberSetting("Range", 3, 1, 6, 0.5f);
     public NumberSetting discord = new NumberSetting("APS", 12, 1, 20, 0.1f);
     public ModeSetting rotations = new ModeSetting("Rotations", "Basic", "Basic", "None");
-    public BooleanSetting onlyPlayers = new BooleanSetting("Only players", false);
+    public BooleanSetting onlyPlayers = new BooleanSetting("Only players", true);
 
+    //
     public KillAura() {
         super("KillAura", Category.LEGIT, Keyboard.KEY_R);
         this.addSettings(rotations, ZASIEGCHUJA, discord, onlyPlayers);

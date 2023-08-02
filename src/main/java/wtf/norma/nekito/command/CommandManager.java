@@ -18,6 +18,7 @@ public class CommandManager {
         addAll(new ExploitCommand(),
                 new HelpCommand(),
                 new OnlineCommand(),
+                new UnbindCommand(),
                 new FakeGamemodeCommand(),
                 new BindCommand(),
                 new HclipCommand(),
