@@ -9,6 +9,8 @@ import wtf.norma.nekito.module.Module;
 public class ItemPhysics extends Module {
 
     public ItemPhysics() {
+
+
         super("ItemPhysics", Category.VISUALS, Keyboard.KEY_NONE);
     }
 

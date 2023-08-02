@@ -7,4 +7,5 @@ public class Ears extends Module {
     public Ears() {
         super("Ears", Category.VISUALS, Keyboard.KEY_NONE);
     }
+
 }

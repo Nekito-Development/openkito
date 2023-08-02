@@ -245,6 +245,9 @@ public class ItemRenderer
 
     private void func_178105_d(float p_178105_1_)
     {
+        // aszalamulajchum widzowie z tej strony dawid skidder dzisiej bedziemy pastowac opensource clienty
+
+
         float f = -0.4F * MathHelper.sin(MathHelper.sqrt_float(p_178105_1_) * (float)Math.PI);
         float f1 = 0.2F * MathHelper.sin(MathHelper.sqrt_float(p_178105_1_) * (float)Math.PI * 2.0F);
         float f2 = -0.2F * MathHelper.sin(p_178105_1_ * (float)Math.PI);
@@ -348,7 +351,7 @@ public class ItemRenderer
             }
             else if (entityplayersp.getItemInUseCount() > 0)
             {
-                EnumAction enumaction = this.itemToRender.getItemUseAction();
+                    EnumAction enumaction = this.itemToRender.getItemUseAction();
 
                 switch (ItemRenderer.ItemRenderer$1.field_178094_a[enumaction.ordinal()])
                 {

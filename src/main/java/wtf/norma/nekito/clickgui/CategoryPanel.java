@@ -2,11 +2,13 @@ package wtf.norma.nekito.clickgui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
 import wtf.norma.nekito.exploit.Exploit;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.font.Fonts;
+import wtf.norma.nekito.util.render.BlurUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
@@ -20,7 +22,10 @@ public class CategoryPanel {
     private final int y;
     private final int width;
     private final int height;
+
     private final Minecraft mc;
+
+
     private final List<ModuleButton> moduleButtons = new ArrayList<>();
 
     private final List<ExploitButton> exploitButtons = new ArrayList<>();
@@ -48,6 +53,8 @@ public class CategoryPanel {
         }
     }
 
+    int offset = 50;
+
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         if (this.open) {
             int offset = height;
@@ -63,7 +70,23 @@ public class CategoryPanel {
             }
         }
 
+        //SHADER CWEL INSERT WIDZOWIE
+
+
+
+
         RenderUtility.drawRound(x - 1, y, width + 2, height - 1, 4, new Color(43, 92, 255));
+
+
+
+
+
+
+
+
+
+
+
         Fonts.SEMI_BOLD_18.drawString(category.name, x + 5, y + 5, -1);
         Fonts.SEMI_BOLD_18.drawString(open ? "-" : "+", x + 90, y + 5, -1);
     }

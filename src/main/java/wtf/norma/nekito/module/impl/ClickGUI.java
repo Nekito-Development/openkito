@@ -13,7 +13,7 @@ public class ClickGUI extends Module {
     }
 
     public static ModeSetting anime = new ModeSetting("Anime", "Fixmem", "Fixmem", "Astolfo", "Astolfo2","BabaWithPlecak",
-            "Hideri","Shiina","Felix","Cot","ten rekin z ikea","None");
+            "Hideri","Felix","Cot","ten rekin z ikea","None");
 
 
     @Override

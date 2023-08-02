@@ -43,7 +43,7 @@ public class FullBright extends Module {
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
-            if (e.isPre()) {
+
                 switch (mode.getMode()) {
                     case "Gamma":
                         mc.gameSettings.gammaSetting = 100;
@@ -52,7 +52,7 @@ public class FullBright extends Module {
                         mc.thePlayer.addPotionEffect(new PotionEffect(Potion.nightVision.getId(), Integer.MAX_VALUE));
                         break;
                 }
-            }
+
         }
     }
 }

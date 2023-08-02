@@ -8,6 +8,14 @@ public class MovementUtil {
 
 
 
+    public static boolean isOnGround(double height) {
+        // jestes cwelem i chuj
+        if (!mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0.0D, -height, 0.0D)).isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 

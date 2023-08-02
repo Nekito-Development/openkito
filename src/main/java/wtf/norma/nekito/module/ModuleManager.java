@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class ModuleManager {
 
-    public ArrayList<Module> modules = new ArrayList<>();
+    public static ArrayList<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
         addAll(
@@ -37,13 +37,15 @@ public class ModuleManager {
     }
 
     public void addAll(Module... modules) {
-        this.modules.addAll(Arrays.asList(modules));
+        this.modules.addAll(
+                Arrays.asList(modules));
     }
 
     public Module getModuleByName(String name) {
         for (Module m : modules) {
             if (m.getName().equalsIgnoreCase(name)) {
                 return m;
+
             }
         }
         return null;

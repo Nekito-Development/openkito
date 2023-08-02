@@ -52,8 +52,6 @@ public class AutoClicker extends Module {
 
         }
         if (right.isEnabled()) {
-
-
             if (Minecraft.getMinecraft().currentScreen == null && Mouse.isButtonDown(1)) {
                 if (timer.hasReached(1000 / RandomUtils.nextInt((int) pedalMIN.getValue(), (int) pedalMAX.getValue()))) {
                     int key = mc.gameSettings.keyBindUseItem.getKeyCode();

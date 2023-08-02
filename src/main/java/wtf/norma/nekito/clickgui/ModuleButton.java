@@ -13,7 +13,9 @@ import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.font.Fonts;
+import wtf.norma.nekito.util.render.BlurUtility;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +54,12 @@ public class ModuleButton {
         this.offset = offset;
         int y = this.y + offset;
         Gui.drawRect(x, y, x + width, y + height, 0x80000000);
-        Fonts.SEMI_BOLD_18.drawString(module.getName(), x + 3, y + (height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f) + 1, this.module.isToggled() ? 0xFF2B71F3 : -1);
+
+        // CWEL?
+
+            Fonts.SEMI_BOLD_18.drawString(module.getName(), x + 3, y + (height / 2f - mc.fontRendererObj.FONT_HEIGHT / 2f) + 1, this.module.isToggled() ? 0xFF2B71F3 : -1);
+
+
 
         if (module.settings.size() > 0) {
             Fonts.SEMI_BOLD_18.drawString(open ? "-" : "+", x + 90, y + 4, -1);

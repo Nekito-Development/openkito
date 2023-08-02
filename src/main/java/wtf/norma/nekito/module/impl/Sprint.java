@@ -4,10 +4,12 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.nekito;
 
 public class Sprint extends Module {
 
     public Sprint() {
+
         super("Sprint", Category.MOVEMENT, Keyboard.KEY_NONE);
     }
 

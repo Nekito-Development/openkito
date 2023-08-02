@@ -160,36 +160,7 @@ public class ColorUtility {
     public static void setColor(double red, double green, double blue, double alpha) {
         GL11.glColor4d(red, green, blue, alpha);
     }
-    public static int setAlpha(int color, int alpha) {
-        Color c = new Color(color);
-        return new Color(c.getRed(), c.getGreen(), c.getBlue(), alpha).getRGB();
-    }
 
-    public static Color fade(int speed, int index, Color color, float alpha) {
-        float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
-        int angle = (int) ((System.currentTimeMillis() / speed + index) % 360);
-        angle = (angle > 180 ? 360 - angle : angle) + 180;
-
-        Color colorHSB = new Color(Color.HSBtoRGB(hsb[0], hsb[1], angle / 360f));
-
-        return new Color(colorHSB.getRed(), colorHSB.getGreen(), colorHSB.getBlue(), Math.max(0, Math.min(255, (int) (alpha * 255))));
-    }
-    public static Color TwoColorEffect(Color cl1, Color cl2, double speed) {
-        double thing = speed / 4.0 % 1.0;
-        float val = MathHelper.clamp((float) Math.sin(Math.PI * 6 * thing) / 2.0f + 0.5f, 0.0f, 1.0f);
-        return new Color(lerp((float) cl1.getRed() / 255.0f, (float) cl2.getRed() / 255.0f, val),
-                lerp((float) cl1.getGreen() / 255.0f, (float) cl2.getGreen() / 255.0f, val),
-                lerp((float) cl1.getBlue() / 255.0f, (float) cl2.getBlue() / 255.0f, val));
-    }
-    public static Color rainbow(int speed, int index, float saturation, float brightness, float opacity) {
-        int angle = (int) ((System.currentTimeMillis() / speed + index) % 360);
-        float hue = angle / 360f;
-        Color color = new Color(Color.HSBtoRGB(hue, saturation, brightness));
-        return new Color(color.getRed(), color.getGreen(), color.getBlue(), Math.max(0, Math.min(255, (int) (opacity * 255))));
-    }
-    public static float lerp(float a, float b, float f) {
-        return a + f * (b - a);
-    }
 
     public static void setColor(Color color) {
         if (color == null)
@@ -206,15 +177,6 @@ public class ColorUtility {
         float g = (float) (color >> 8 & 255) / 255.0F;
         float b = (float) (color & 255) / 255.0F;
         GlStateManager.color(r, g, b, alpha);
-    }
-    public static Color applyOpacity(Color color, int alpha) {
-        alpha = MathHelper.clamp(alpha, 0, 255);
-        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
-    }
-
-    public static Color applyOpacity(Color color, float opacity) {
-        opacity = Math.min(1, Math.max(0, opacity));
-        return new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (color.getAlpha() * opacity));
     }
 
 
