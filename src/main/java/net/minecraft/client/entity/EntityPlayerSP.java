@@ -42,6 +42,7 @@ import net.minecraft.world.World;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.EventType;
 import wtf.norma.nekito.event.impl.EventMotion;
+import wtf.norma.nekito.event.impl.EventPreMotion;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.event.impl.EventUpdate;
 
@@ -195,6 +196,10 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         }
     }
 
+    private boolean prevOnGround;
+
+
+
     /**
      * called every tick when the player is on foot. Performs all the things that normally happen during movement.
      */
@@ -204,8 +209,19 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         event.setType(EventType.PRE);
         Event.dispatch(event);
 
+
+        EventPreMotion eventPre = new EventPreMotion(rotationYaw, rotationPitch, posX, posY, posZ, onGround);
+        Event.dispatch(eventPre);
+
         if (event.isCanceled()) return;
 
+
+
+        this.rotationYaw = eventPre.getYaw();
+        this.rotationPitch = eventPre.getPitch();
+        if (eventPre.isCanceled()) {
+            return;
+        }
         if (flag != this.serverSprintState) {
             if (flag) {
                 this.sendQueue.addToSendQueue(new C0BPacketEntityAction(this, C0BPacketEntityAction.Action.START_SPRINTING));
@@ -215,6 +231,8 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
             this.serverSprintState = flag;
         }
+
+
 
         boolean flag1 = this.isSneaking();
 
@@ -229,23 +247,23 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         }
 
         if (this.isCurrentViewEntity()) {
-            double d0 = event.getX() - this.lastReportedPosX;
-            double d1 = event.getY() - this.lastReportedPosY;
-            double d2 = event.getZ() - this.lastReportedPosZ;
-            double d3 = (double) (event.getYaw() - this.lastReportedYaw);
-            double d4 = (double) (event.getPitch() - this.lastReportedPitch);
+            double d0 = eventPre.getPosX() - this.lastReportedPosX;
+            double d1 = eventPre.getPosY() - this.lastReportedPosY;
+            double d2 = eventPre.getPosZ() - this.lastReportedPosZ;
+            double d3 = eventPre.getYaw() - this.lastReportedYaw;
+            double d4 = eventPre.getPitch() - this.lastReportedPitch;
             boolean flag2 = d0 * d0 + d1 * d1 + d2 * d2 > 9.0E-4D || this.positionUpdateTicks >= 20;
             boolean flag3 = d3 != 0.0D || d4 != 0.0D;
 
             if (this.ridingEntity == null) {
                 if (flag2 && flag3) {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(event.getX(), event.getY(), event.getZ(), event.getYaw(), event.getPitch(), event.isOnGround()));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(eventPre.getPosX(), eventPre.getPosY(), eventPre.getPosZ(), eventPre.getYaw(), eventPre.getPitch(), eventPre.isOnGround()));
                 } else if (flag2) {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(event.getX(), event.getY(), event.getZ(), event.isOnGround()));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(eventPre.getPosX(), eventPre.getPosY(), eventPre.getPosZ(), eventPre.isOnGround()));
                 } else if (flag3) {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(event.getYaw(), event.getPitch(), event.isOnGround()));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(eventPre.getYaw(), eventPre.getPitch(), eventPre.isOnGround()));
                 } else {
-                    this.sendQueue.addToSendQueue(new C03PacketPlayer(event.isOnGround()));
+                    this.sendQueue.addToSendQueue(new C03PacketPlayer(eventPre.isOnGround()));
                 }
             } else {
                 this.sendQueue.addToSendQueue(new C03PacketPlayer.C06PacketPlayerPosLook(this.motionX, -999.0D, this.motionZ, event.getYaw(), event.getPitch(), event.isOnGround()));
@@ -255,16 +273,18 @@ public class EntityPlayerSP extends AbstractClientPlayer {
             ++this.positionUpdateTicks;
 
             if (flag2) {
-                this.lastReportedPosX = event.getX();
-                this.lastReportedPosY = event.getY();
-                this.lastReportedPosZ = event.getZ();
+                this.lastReportedPosX = eventPre.getPosX();
+                this.lastReportedPosY = eventPre.getPosY();
+                this.lastReportedPosZ = eventPre.getPosZ();
                 this.positionUpdateTicks = 0;
             }
 
             if (flag3) {
-                this.lastReportedYaw = event.getYaw();
-                this.lastReportedPitch = event.getPitch();
+                this.lastReportedYaw = eventPre.getYaw();
+                this.lastReportedPitch = eventPre.getPitch();
             }
+            this.prevOnGround = eventPre.isOnGround();
+
         }
         event.setType(EventType.POST);
         Event.dispatch(event);

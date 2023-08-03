@@ -189,7 +189,7 @@ public abstract class EntityLivingBase extends Entity
     private float landMovementFactor;
 
     /** Number of ticks since last jump */
-    private int jumpTicks;
+    public int jumpTicks;
     private float absorptionAmount;
 
     /**
