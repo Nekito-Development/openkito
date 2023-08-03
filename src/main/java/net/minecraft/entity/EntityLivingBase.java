@@ -51,6 +51,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.EventType;
 import wtf.norma.nekito.event.impl.EventJump;
 import wtf.norma.nekito.event.impl.EventMotion;
 
@@ -1562,6 +1563,9 @@ public abstract class EntityLivingBase extends Entity
         EventJump DIDOS = new EventJump();
         double ymot = this.isPotionActive(Potion.jump) ? getJumpUpwardsMotion() + (getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F: getJumpUpwardsMotion();
         DIDOS.mullvadzlamany(ymot, true);
+        Event.setType(EventType.PRE);
+        Event.dispatch(DIDOS);
+        
         if (DIDOS.isCanceled()) {
             return;
         }
@@ -1575,6 +1579,8 @@ public abstract class EntityLivingBase extends Entity
 
         isAirBorne = true;
         DIDOS.mullvadzlamany(DIDOS.getMotionY(), false);
+        Event.setType(EventType.POST);
+        Event.dispatch(DIDOS);
     }
 
     /**
