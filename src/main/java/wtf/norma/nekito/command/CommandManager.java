@@ -19,6 +19,7 @@ public class CommandManager {
                 new HelpCommand(),
                 new OnlineCommand(),
                 new UnbindCommand(),
+                new PingCommand(),
                 new FakeGamemodeCommand(),
                 new BindCommand(),
                 new HclipCommand(),

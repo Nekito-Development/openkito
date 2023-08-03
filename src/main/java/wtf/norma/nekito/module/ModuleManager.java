@@ -24,6 +24,7 @@ public class ModuleManager {
                 new ServerInfo(),
                 new HELIUMDDOS(),
                 new WorldColor(),
+                new CrashGUI(),
                 new Watermark(),
                 new AirJump(),
                 new Watermark2(),
@@ -34,6 +35,8 @@ public class ModuleManager {
                 new NoWeather(),
                 new Reach(),
                 new CustomHotbar(),
+                new TimeChanger(),
+
                 new Wings(),
                 new Ears(),
                 new KillAura()

@@ -1,20 +1,16 @@
-package wtf.norma.nekito.clickgui;
+package wtf.norma.nekito.ui.clickgui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.ScaledResolution;
 import wtf.norma.nekito.exploit.Exploit;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.BlurUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class CategoryPanel {
     private final Module.Category category;

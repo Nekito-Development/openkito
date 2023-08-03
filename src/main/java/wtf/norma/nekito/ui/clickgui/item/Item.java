@@ -1,4 +1,4 @@
-package wtf.norma.nekito.clickgui.item;
+package wtf.norma.nekito.ui.clickgui.item;
 
 import net.minecraft.client.Minecraft;
 

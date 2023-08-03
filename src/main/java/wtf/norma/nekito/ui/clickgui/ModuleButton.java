@@ -1,21 +1,19 @@
-package wtf.norma.nekito.clickgui;
+package wtf.norma.nekito.ui.clickgui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import wtf.norma.nekito.clickgui.item.Item;
-import wtf.norma.nekito.clickgui.item.impl.ItemBoolean;
-import wtf.norma.nekito.clickgui.item.impl.ItemKeyBind;
-import wtf.norma.nekito.clickgui.item.impl.ItemMode;
-import wtf.norma.nekito.clickgui.item.impl.ItemSlider;
+import wtf.norma.nekito.ui.clickgui.item.Item;
+import wtf.norma.nekito.ui.clickgui.item.impl.ItemBoolean;
+import wtf.norma.nekito.ui.clickgui.item.impl.ItemKeyBind;
+import wtf.norma.nekito.ui.clickgui.item.impl.ItemMode;
+import wtf.norma.nekito.ui.clickgui.item.impl.ItemSlider;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.Setting;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.BlurUtility;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

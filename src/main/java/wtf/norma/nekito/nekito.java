@@ -5,12 +5,10 @@ import java.io.IOException;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
-import wtf.norma.nekito.clickgui.ClickGuiMain;
+import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
 import wtf.norma.nekito.command.impl.*;
 import wtf.norma.nekito.draggable.DraggableManager;
@@ -22,6 +20,7 @@ import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
+import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
 import wtf.norma.nekito.util.render.RenderUtil;
 
@@ -39,6 +38,11 @@ public enum nekito {
     private final ModuleManager moduleManager;
     private final ClickGuiMain clickGuiMain;
 
+    private final CrashGuiMain crashGuiMain;
+
+
+
+
     public static String version = "1.6";
 
     nekito() {
@@ -50,6 +54,8 @@ public enum nekito {
         draggableManager = new DraggableManager();
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
+
+        crashGuiMain = new CrashGuiMain();
 
 
         ViaMCP.create();
@@ -124,4 +130,9 @@ public enum nekito {
     public ClickGuiMain getClickGui() {
         return clickGuiMain;
     }
+    public CrashGuiMain getCrashGui() {
+        return crashGuiMain;
+    }
+
+
 }

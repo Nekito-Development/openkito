@@ -44,7 +44,7 @@ import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.command.CommandManager;
 
-public abstract class GuiScreen extends Gui implements GuiYesNoCallback
+public class GuiScreen extends Gui implements GuiYesNoCallback
 {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final Set<String> PROTOCOLS = Sets.newHashSet(new String[] {"http", "https"});

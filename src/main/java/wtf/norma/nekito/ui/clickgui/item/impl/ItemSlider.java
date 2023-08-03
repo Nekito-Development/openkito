@@ -1,13 +1,10 @@
-package wtf.norma.nekito.clickgui.item.impl;
+package wtf.norma.nekito.ui.clickgui.item.impl;
 
 import net.minecraft.client.gui.Gui;
-import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.clickgui.item.Item;
-import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.ui.clickgui.item.Item;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.font.Fonts;
 
-import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
