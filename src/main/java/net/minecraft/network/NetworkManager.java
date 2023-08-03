@@ -48,6 +48,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.EventType;
 import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.helper.TimeHelper;
@@ -214,7 +215,8 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet> {
                 Holder.setLastPacketMS(TimeHelper.getCurrentTime());
                 PacketEvent e = new PacketEvent(packet);
                 e.setType(EventType.Incoming);
-                PacketEvent.setType(EventType.POST);
+              //  PacketEvent.setType(EventType.POST);
+                Event.dispatch(e);
                 if (!e.isCanceled()) {
                     e.getPacket().processPacket(this.packetListener);
                 }

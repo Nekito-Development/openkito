@@ -207,6 +207,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.MapData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.EventType;
 import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.holder.Holder;
@@ -836,7 +837,8 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         try {
             PacketEvent e = new PacketEvent(p_147297_1_);
             e.setType(EventType.Outgoing);
-            PacketEvent.setType(EventType.POST);
+            Event.dispatch(e);
+            //PacketEvent.setType(EventType.POST);
 
             if (!e.isCanceled()) {
                 this.netManager.sendPacket(e.getPacket());

@@ -30,7 +30,7 @@ public class Event {
 
 
 
-    public static void setType(EventType type) {
+    public void setType(EventType type) {
         this.type = type;
     }
 

@@ -22,7 +22,7 @@ public class ModuleManager {
                 new CustomButtons(),
                 new CustomModel(),
                 new ServerInfo(),
-                new wkuriwatorekore(),
+                new HELIUMDDOS(),
                 new WorldColor(),
                 new Watermark(),
                 new Arraylist(),
