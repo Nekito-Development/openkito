@@ -13,8 +13,8 @@ public class AntiVoid extends Module {
 
     public NumberSetting falldisc = new NumberSetting("Fall Distance",3,1,10,1);
     public AntiVoid() {
-
         super("Anti Void", Category.OTHER, Keyboard.KEY_NONE);
+        addSettings(falldisc);
     }
 
     @Override
