@@ -1,7 +1,9 @@
 package wtf.norma.nekito.util.Time;
 
 
-public class Timer {
+import wtf.norma.nekito.util.Util;
+
+public class TimerUtility implements Util {
     private static long lastTime;
 
     public void Timer() {
@@ -16,7 +18,7 @@ public class Timer {
         return ((System.currentTimeMillis() - lastTime) >= milliseconds);
     }
 
-    public long getLastTime() {
-        return lastTime;
-    }
+
+// we dont care
+
 }

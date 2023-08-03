@@ -92,7 +92,7 @@ public class Module {
     }
 
     public enum Category {
-        LEGIT ("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"),CRASHERS("Crashers");
+        LEGIT ("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"),OTHER("Other"),CRASHERS("Crashers");
 
         public String name;
 

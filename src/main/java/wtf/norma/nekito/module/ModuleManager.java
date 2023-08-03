@@ -26,6 +26,7 @@ public class ModuleManager {
                 new Watermark(),
                 new Arraylist(),
                 new AutoClicker(),
+                new Timer(),
                 new AimBot(),
                 new NoWeather(),
                 new Reach(),

@@ -12,7 +12,7 @@ import wtf.norma.nekito.event.impl.EventMotion;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.NumberSetting;
-import wtf.norma.nekito.util.Time.Timer;
+import wtf.norma.nekito.util.Time.TimerUtility;
 
 import java.util.Comparator;
 

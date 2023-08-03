@@ -12,7 +12,7 @@ import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
-import wtf.norma.nekito.util.Time.Timer;
+import wtf.norma.nekito.util.Time.TimerUtility;
 
 import java.util.Comparator;
 import java.util.List;
@@ -23,7 +23,7 @@ public class KillAura extends Module {
 
     public static EntityLivingBase target;
 
-    public Timer t = new Timer();
+    public TimerUtility t = new TimerUtility();
     public NumberSetting ZASIEGCHUJA = new NumberSetting("Range", 3, 1, 6, 0.5f);
     public NumberSetting discord = new NumberSetting("APS", 12, 1, 20, 0.1f);
     public ModeSetting rotations = new ModeSetting("Rotations", "Basic", "Basic", "None");

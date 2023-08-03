@@ -11,7 +11,7 @@ import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
-import wtf.norma.nekito.util.Time.Timer;
+import wtf.norma.nekito.util.Time.TimerUtility;
 
 
 public class AutoClicker extends Module {
@@ -23,7 +23,7 @@ public class AutoClicker extends Module {
 
     public NumberSetting pedalMIN = new NumberSetting("Min Right APS",20,1,40,1);
     public NumberSetting pedalMAX = new NumberSetting("Max Right APS",22,1,40,1);
-    private final Timer timer = new Timer();
+    private final TimerUtility timer = new TimerUtility();
     public AutoClicker() {
         super("AutoClicker", Category.LEGIT, Keyboard.KEY_NONE);
         this.addSettings(cwelMIN,cwelMAX,right,pedalMIN,pedalMAX);

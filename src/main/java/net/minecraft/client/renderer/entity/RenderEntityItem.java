@@ -13,7 +13,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import wtf.norma.nekito.module.impl.ItemPhysics;
 import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.util.Time.Timer;
+
+import wtf.norma.nekito.util.Time.TimerUtility;
 
 public class RenderEntityItem extends Render<EntityItem>
 {
@@ -28,7 +29,7 @@ public class RenderEntityItem extends Render<EntityItem>
         this.shadowOpaque = 0.75F;
     }
 
-    Timer timer = new Timer();
+    TimerUtility timer = new TimerUtility();
     private int func_177077_a(EntityItem itemIn, double p_177077_2_, double p_177077_4_, double p_177077_6_,
                               float p_177077_8_, IBakedModel p_177077_9_) {
         ItemStack itemstack = itemIn.getEntityItem();
@@ -50,7 +51,7 @@ public class RenderEntityItem extends Render<EntityItem>
 
                 float pitch = itemIn.onGround ? 90 : itemIn.rotationPitch;
 
-                if (Timer.hasReached(5)) {
+                if (TimerUtility.hasReached(5)) {
                     timer.reset();
                     itemIn.rotationPitch += 1;
                 }
