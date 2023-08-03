@@ -33,7 +33,7 @@ Known bugs:
 > not running on mac (idk why :[ )
 
 
-> open on lan button (ill just remove it useless)
+> ~~open on lan button (ill just remove it useless)~~ (fixed)
 
 
 <img src="https://raw.githubusercontent.com/intexpression/intexpression/master/resources/banner.png" alt="banner">
