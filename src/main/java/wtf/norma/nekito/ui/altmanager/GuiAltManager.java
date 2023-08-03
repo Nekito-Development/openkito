@@ -27,9 +27,6 @@ public final class GuiAltManager extends GuiScreen {
     public long init;
 
 
-
-
-
     public GuiAltManager(GuiScreen previousScreen) {
         this.previousScreen = previousScreen;
     }
@@ -43,11 +40,9 @@ public final class GuiAltManager extends GuiScreen {
                     break;
 
                 case 0:
-                    thread = new AltLoginThread(username.getText(), "");
+                    thread = new AltLoginThread(username.getText(), password.getText());
                     thread.start();
                     break;
-
-
 
                 case 3:
                     thread = null;
@@ -56,11 +51,9 @@ public final class GuiAltManager extends GuiScreen {
                     break;
 
                 case 4:
-
                     break;
 
                 case 5:
-
                     break;
                 case 6:
                     thread = null;
@@ -84,16 +77,16 @@ public final class GuiAltManager extends GuiScreen {
 
         drawBackground();
         username.drawTextBox();
-
+        password.drawTextBox();
+        
         this.drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
-        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(),
-                (int) (width / 2f),
-                29,
-                -1);
+        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(), (int) (width / 2f), 29, -1);
         if (username.getText().isEmpty()) {
             font.drawStringWithShadow("Username", width / 2F - 96, 66, -7829368);
         }
-
+        if (password.getText().isEmpty()) {
+            font.drawStringWithShadow("Password", width / 2F - 96, 96, -7829368);
+        }
 
         super.drawScreen(x, y2, z);
     }
@@ -106,6 +99,8 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, "Generate Cracked Account"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         username.setFocused(true);
+        password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 90, 200, 20);
+        password.setFocused(false);
         init = System.currentTimeMillis();
         Keyboard.enableRepeatEvents(true);
     }
@@ -129,6 +124,7 @@ public final class GuiAltManager extends GuiScreen {
             actionPerformed(buttonList.get(0));
         }
         username.textboxKeyTyped(character, key);
+        password.textboxKeyTyped(character, key);
     }
 
     @Override
@@ -139,7 +135,7 @@ public final class GuiAltManager extends GuiScreen {
             e.printStackTrace();
         }
         username.mouseClicked(x, y2, button);
-
+        password.mouseClicked(x, y2, button);
     }
 
     @Override
@@ -157,15 +153,15 @@ public final class GuiAltManager extends GuiScreen {
         GL11.glPushMatrix();
         {
             GL11.glDisable(GL11.GL_CULL_FACE);
-            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
+            GLSL.MAINMENU.useShader(width, height, 0, 0, (System.currentTimeMillis() - init) / 1000f);
 
 
             GL11.glBegin(GL11.GL_QUADS);
             {
-                GL11.glVertex2f(0,0);
-                GL11.glVertex2f(0,height);
-                GL11.glVertex2f(width,height);
-                GL11.glVertex2f(width,0);
+                GL11.glVertex2f(0, 0);
+                GL11.glVertex2f(0, height);
+                GL11.glVertex2f(width, height);
+                GL11.glVertex2f(width, 0);
                 GL11.glEnd();
             }
             GL20.glUseProgram(0);
