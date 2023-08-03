@@ -314,6 +314,8 @@ public class RenderUtil {
         });*/
     }
 
+
+
     public void bloom(final int x, final int y, final int width, final int height, final int blurRadius, final int bloomAlpha, final boolean ignoreModule) {
         this.bloom(x, y, width, height, blurRadius, new Color(0, 0, 0, bloomAlpha), ignoreModule);
     }

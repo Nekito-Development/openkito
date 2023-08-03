@@ -28,7 +28,7 @@ public final class GuiAltManager extends GuiScreen {
 
 
 
-    // 30% of this is from sleek cuz im lazy af
+
 
     public GuiAltManager(GuiScreen previousScreen) {
         this.previousScreen = previousScreen;
@@ -72,7 +72,7 @@ public final class GuiAltManager extends GuiScreen {
                     break;
             }
         } catch (Throwable var11) {
-            //REMOVE ME LATER: throw new RuntimeException();
+
         }
     }
 

@@ -25,6 +25,7 @@ public class ModuleManager {
                 new HELIUMDDOS(),
                 new WorldColor(),
                 new Watermark(),
+                new Watermark2(),
                 new Arraylist(),
                 new AutoClicker(),
                 new Timer(),

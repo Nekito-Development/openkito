@@ -22,7 +22,7 @@ public class Arraylist extends AbstractDraggable {
     @Override
     public void Init() {
         super.Init();
-        AllowRender = true;
+       // AllowRender = false;
         ScaledResolution sr = new ScaledResolution(mc);
         X = 5;
         Y = 5;

@@ -19,6 +19,7 @@ public class DraggableManager {
         Add(new Watermark());
         Add(new Arraylist());
         Add(new ServerInfo());
+        Add(new Watermark2());
         Add(new Hotbar());
 
         for(AbstractDraggable draggable : DraggableList) {

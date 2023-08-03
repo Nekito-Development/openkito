@@ -22,7 +22,7 @@ public class Watermark extends Module {
     }
 
 
-    public static ModeSetting mode = new ModeSetting("Watermark", "Nekito", "Intexpression");
+
 
     public static ModeSetting colorMode = new ModeSetting("Color", "Rainbow", "Rainbow","Nekito", "Purple","Pink");
 
@@ -35,8 +35,8 @@ public class Watermark extends Module {
 
     @Override
     public void onEnable() {
+            nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark>Get("Watermark").AllowRender = true;
         super.onEnable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark>Get("Watermark").AllowRender = true;
     }
 
     @Override
