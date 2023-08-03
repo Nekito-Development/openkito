@@ -29,6 +29,8 @@ public final class OpenGlHelper {
     }
   }
 
+
+
   public static int rainbowColor(int speed, int offset) {
     float hue = (System.currentTimeMillis() + offset) % speed;
     hue /= speed;

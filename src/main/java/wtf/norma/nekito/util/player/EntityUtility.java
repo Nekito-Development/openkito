@@ -4,7 +4,7 @@ import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import wtf.norma.nekito.util.Util;
 
-public class EntityUtility extends Util {
+public class EntityUtility implements Util {
 
 
 

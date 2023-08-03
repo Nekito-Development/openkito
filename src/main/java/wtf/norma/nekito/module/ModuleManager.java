@@ -23,6 +23,7 @@ public class ModuleManager {
                 new CustomModel(),
                 new ServerInfo(),
                 new HELIUMDDOS(),
+                new Velocity(),
                 new WorldColor(),
                 new CrashGUI(),
                 new Watermark(),

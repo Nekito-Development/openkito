@@ -47,6 +47,15 @@
       <version>1.6.2</version>
     </dependency>
 
+    <dependency>
+      <groupId>xd</groupId>
+      <artifactId>xdcwel</artifactId>
+      <version>czytias</version>
+      <systemPath>${basedir}/libs/Paulscode-SoundSystem-2013.04.17.jar</systemPath>
+      <scope>system</scope>
+    </dependency>
+
+
 
     <dependency>
       <groupId>org.lwjgl</groupId>

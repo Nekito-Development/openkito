@@ -6,8 +6,11 @@ import wtf.norma.nekito.event.Event;
 public class PacketEvent extends Event {
     private Packet packet;
 
+
+
     public PacketEvent(Packet packet){
         this.packet = packet;
+
     }
 
     private boolean cancelled;

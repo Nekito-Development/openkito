@@ -31,7 +31,7 @@ public class KillAura extends Module {
 
     //
     public KillAura() {
-        super("KillAura", Category.LEGIT, Keyboard.KEY_R);
+        super("KillAura", Category.COMBAT, Keyboard.KEY_R);
         this.addSettings(rotations, ZASIEGCHUJA, discord, onlyPlayers);
     }
 
