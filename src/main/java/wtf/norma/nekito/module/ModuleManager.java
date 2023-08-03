@@ -14,6 +14,7 @@ public class ModuleManager {
                 new Sprint(),
                 new ClickGUI(),
                 new Cape(),
+                new AntiVoid(),
                 new ItemPhysics(),
                 new Fly(),
                 new NoSlowDown(),

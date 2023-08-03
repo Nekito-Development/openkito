@@ -20,6 +20,8 @@ public class Velocity extends Module {
         addSettings(horizontal,vertical);
     }
 
+    // yes it is float
+
     public NumberSetting horizontal = new NumberSetting("Horizontal",0F, 0F, 1F, 0.01F);
 
     public NumberSetting vertical = new NumberSetting("Vertical",0F, 0F, 1F, 0.01F);

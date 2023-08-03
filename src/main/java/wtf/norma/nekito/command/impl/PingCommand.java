@@ -20,7 +20,7 @@ public class PingCommand extends Command {
     @Override
     public void execute(String... args) throws CommandException {
 
-        ChatHelper.printMessage(EnumChatFormatting.WHITE + "Ваш пинг: " + EnumChatFormatting.LIGHT_PURPLE + EntityUtility.getPing());
+        ChatHelper.printMessage(EnumChatFormatting.WHITE + "Your Ping is: " + EnumChatFormatting.LIGHT_PURPLE + EntityUtility.getPing() + "ms");
     }
 
 
