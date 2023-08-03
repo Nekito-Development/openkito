@@ -254,6 +254,7 @@ public class ItemRenderer
         GlStateManager.translate(f, f1, f2);
     }
 
+
     private void func_178104_a(AbstractClientPlayer clientPlayer, float p_178104_2_)
     {
         float f = (float)clientPlayer.getItemInUseCount() - p_178104_2_ + 1.0F;
@@ -272,6 +273,7 @@ public class ItemRenderer
         GlStateManager.rotate(f3 * 10.0F, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(f3 * 30.0F, 0.0F, 0.0F, 1.0F);
     }
+
 
     /**
      * Performs transformations prior to the rendering of a held item in first person.
@@ -361,7 +363,7 @@ public class ItemRenderer
 
                     case 2://eat
                     case 3://drink
-                        this.func_178104_a(entityplayersp, partialTicks);
+                        this.func_178104_a(entityplayersp, partialTicks);          // fuckingtransform eat or something idk
                         this.transformFirstPersonItem(f, 0.0F);
                         break;
 

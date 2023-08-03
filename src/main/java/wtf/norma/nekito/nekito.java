@@ -60,7 +60,7 @@ public enum nekito {
     }
 
     public void setDisplay() throws IOException {
-        Display.setTitle(String.format("Nekito " + version + " LWJGL " + Sys.getVersion()));
+        Display.setTitle(String.format("Nekito " + version + " xaries edition " + " LWJGL " + Sys.getVersion()));
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 

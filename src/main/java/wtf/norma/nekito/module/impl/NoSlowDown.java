@@ -10,6 +10,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventMotion;
+import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
@@ -36,10 +38,21 @@ public class NoSlowDown extends Module {
     }
 
     Minecraft mc = Minecraft.getMinecraft();
+
+
+
     @Override
     public void onEvent(Event e) {
-        // CWEL POLSKA AGREED?
-        if (mc.thePlayer.isUsingItem()) {
+        if (e instanceof EventUpdate) {
+       // cum
+
+
+
+
+
+
+
+
 
 
         }

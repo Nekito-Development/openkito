@@ -2,6 +2,7 @@ package net.minecraft.client.gui;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+import wtf.norma.nekito.module.impl.ClickGUI;
 import wtf.norma.nekito.ui.altmanager.GuiAltManager;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.BlurUtility;
@@ -62,9 +63,10 @@ public class GuiMainMenu extends GuiScreen {
         drawbackground();
 
 
-        BlurUtility.drawShadow(5, 2, () -> {
-            Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
-        }, Color.WHITE);
+
+            BlurUtility.drawShadow(5, 2, () -> {
+                Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
+            }, Color.WHITE);
         Fonts.MONTSERRAT45.drawCenteredString("NEKITO", x + widthRound / 2 + 1, (sr.getScaledHeight() / 2) - 40 - offset, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

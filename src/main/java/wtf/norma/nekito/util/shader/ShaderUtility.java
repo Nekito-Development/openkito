@@ -45,7 +45,7 @@ public class ShaderUtility {
 
 
     public ShaderUtility(String fragmentShaderLoc) {
-        this(fragmentShaderLoc, "client/shaders/vertex.vsh");
+        this(fragmentShaderLoc, "shaders/vertex.vsh");
     }
 
 

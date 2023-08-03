@@ -434,6 +434,40 @@ public class RenderUtility {
         GL11.glEnd();
         GL11.glEnable(GL11.GL_ALPHA_TEST);
     }
+    public static void bindTexture(int texture) {
+        glBindTexture(GL_TEXTURE_2D, texture);
+    }
+
+    public static Framebuffer createFrameBuffer(Framebuffer framebuffer) {
+        if (framebuffer == null || framebuffer.framebufferWidth != mc.displayWidth || framebuffer.framebufferHeight != mc.displayHeight) {
+            if (framebuffer != null) {
+                framebuffer.deleteFramebuffer();
+            }
+            return new Framebuffer(mc.displayWidth, mc.displayHeight, true);
+        }
+        return framebuffer;
+    }
+
+    public static void drawBlur(float radius, Runnable data) {
+        StencilUtil.initStencilToWrite();
+        data.run();
+        StencilUtil.readStencilBuffer(1);
+        GaussianBlur.renderBlur(radius);
+        StencilUtil.uninitStencilBuffer();
+    }
+    public static void drawSmoothRect(double left, double top, double right, double bottom, int color) {
+        GlStateManager.resetColor();
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+        drawRect(left, top, right, bottom, color);
+        GL11.glScalef(0.5f, 0.5f, 0.5f);
+        drawRect(left * 2.0f - 1.0f, top * 2.0f, left * 2.0f, bottom * 2.0f - 1.0f, color);
+        drawRect(left * 2.0f, top * 2.0f - 1.0f, right * 2.0f, top * 2.0f, color);
+        drawRect(right * 2.0f, top * 2.0f, right * 2.0f + 1.0f, bottom * 2.0f - 1.0f, color);
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glScalef(2.0f, 2.0f, 2.0f);
+    }
+
 
     public static void renderShadow(double x, double y, double width, double height, int color, int blurRadius) {
         renderShadow0(x, y, width, height, color, blurRadius);

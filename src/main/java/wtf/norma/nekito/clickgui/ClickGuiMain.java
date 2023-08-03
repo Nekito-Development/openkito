@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ResourceLocation;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.impl.ClickGUI;
@@ -32,6 +33,7 @@ public class ClickGuiMain extends GuiScreen {
 
             }
 
+
         }
     }
 
@@ -40,7 +42,16 @@ public class ClickGuiMain extends GuiScreen {
         ScaledResolution sr = new ScaledResolution(mc);
 
 
+        if (ClickGUI.blur.isEnabled()){
+            RenderUtility.drawBlur(15, () -> {
+                RenderUtility.drawSmoothRect(0, 0, sr.getScaledWidth(), sr.getScaledHeight(), new Color(20, 20, 20, 190).getRGB());
+            });
+        }
+
         this.panels.forEach(panel -> panel.drawScreen(mouseX, mouseY, partialTicks));
+
+
+
 
 
 
@@ -51,42 +62,40 @@ public class ClickGuiMain extends GuiScreen {
             //cry abt it
 
 
-
-
-            case"None":
+            case "None":
                 // Sent all your  info to https://astal.store/spyware. Thanks for using Nekito
                 break;
             case "Fixmem":
-            RenderUtility.drawImage(new ResourceLocation("nekito/uwu/fixmem.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
-            break;
-            case"Astolfo":
-            RenderUtility.drawImage(new ResourceLocation("nekito/uwu/asstolfo.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
-            break;
-            case"Astolfo2":
-            RenderUtility.drawImage(new ResourceLocation("nekito/uwu/astoflo4.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
-             break;
-            case"BabaWithPlecak":
-            RenderUtility.drawImage(new ResourceLocation("nekito/uwu/baba.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
-            break;
-            case"Hideri":
-            RenderUtility.drawImage(new ResourceLocation("nekito/uwu/hideri.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
-            break;
-            case"Shiina":
-            RenderUtility.drawImage(new ResourceLocation("nekito/uwu/Shiina.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/fixmem.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
                 break;
-            case"Felix":
+            case "Astolfo":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/asstolfo.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
+            case "Astolfo2":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/astoflo4.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
+            case "BabaWithPlecak":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/baba.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
+            case "Hideri":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/hideri.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
+            case "Shiina":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/Shiina.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
+            case "Felix":
                 RenderUtility.drawImage(new ResourceLocation("nekito/uwu/felix.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
                 break;
-            case"Cot":
+            case "Cot":
                 RenderUtility.drawImage(new ResourceLocation("nekito/uwu/cot.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
                 break;
-            case"ten rekin z ikea":
+            case "ten rekin z ikea":
                 //
                 RenderUtility.drawImage(new ResourceLocation("nekito/uwu/tenvtuber.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
                 break;
 
-        }
 
+        }
     }
 
     @Override
