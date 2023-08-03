@@ -207,6 +207,8 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.storage.MapData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import wtf.norma.nekito.event.EventType;
+import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.holder.Holder;
 
 public class NetHandlerPlayClient implements INetHandlerPlayClient
@@ -831,7 +833,17 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
             mc.thePlayer.lastPosY = c03.getPositionY();
             mc.thePlayer.lastPosZ = c03.getPositionZ();
         }
-        this.netManager.sendPacket(p_147297_1_);
+        try {
+            PacketEvent e = new PacketEvent(p_147297_1_);
+            e.setType(EventType.Outgoing);
+            PacketEvent.setType(EventType.POST);
+
+            if (!e.isCanceled()) {
+                this.netManager.sendPacket(e.getPacket());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void handleCollectItem(S0DPacketCollectItem packetIn)

@@ -50,6 +50,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventJump;
+import wtf.norma.nekito.event.impl.EventMotion;
 
 public abstract class EntityLivingBase extends Entity
 {
@@ -1555,23 +1558,23 @@ public abstract class EntityLivingBase extends Entity
     /**
      * Causes this entity to do an upwards motion (jumping).
      */
-    protected void jump()
-    {
-        this.motionY = (double)this.getJumpUpwardsMotion();
-
-        if (this.isPotionActive(Potion.jump))
-        {
-            this.motionY += (double)((float)(this.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F);
+    protected void jump() {
+        EventJump DIDOS = new EventJump();
+        double ymot = this.isPotionActive(Potion.jump) ? getJumpUpwardsMotion() + (getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F: getJumpUpwardsMotion();
+        DIDOS.mullvadzlamany(ymot, true);
+        if (DIDOS.isCanceled()) {
+            return;
         }
+        motionY = DIDOS.getMotionY();
 
-        if (this.isSprinting())
-        {
+        if (isSprinting()) {
             float f = this.rotationYaw * 0.017453292F;
             this.motionX -= (double)(MathHelper.sin(f) * 0.2F);
             this.motionZ += (double)(MathHelper.cos(f) * 0.2F);
         }
 
-        this.isAirBorne = true;
+        isAirBorne = true;
+        DIDOS.mullvadzlamany(DIDOS.getMotionY(), false);
     }
 
     /**

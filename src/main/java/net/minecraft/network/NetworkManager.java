@@ -48,6 +48,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import wtf.norma.nekito.event.EventType;
+import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
 
@@ -205,13 +207,20 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet> {
     }
 
     protected void channelRead0(ChannelHandlerContext ctx, Packet packet) {
+
+
         if (this.channel.isOpen()) {
             try {
-                //YES BOI
                 Holder.setLastPacketMS(TimeHelper.getCurrentTime());
-                packet.processPacket(this.packetListener);
-            } catch (ThreadQuickExitException ignored) {
+                PacketEvent e = new PacketEvent(packet);
+                e.setType(EventType.Incoming);
+                PacketEvent.setType(EventType.POST);
+                if (!e.isCanceled()) {
+                    e.getPacket().processPacket(this.packetListener);
+                }
             }
+            catch (ThreadQuickExitException ignored)
+            {}
         }
     }
 

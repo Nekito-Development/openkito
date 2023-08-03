@@ -1,8 +1,10 @@
 package wtf.norma.nekito.module.impl;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
+import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
@@ -32,6 +34,7 @@ public class Timer extends Module {
         mc.timer.timerSpeed = 1;
         super.onEnable();
     }
+
 
     @Override
     public void onDisable() {

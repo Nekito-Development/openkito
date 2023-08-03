@@ -22,6 +22,7 @@ public class ModuleManager {
                 new CustomButtons(),
                 new CustomModel(),
                 new ServerInfo(),
+                new wkuriwatorekore(),
                 new WorldColor(),
                 new Watermark(),
                 new Arraylist(),
