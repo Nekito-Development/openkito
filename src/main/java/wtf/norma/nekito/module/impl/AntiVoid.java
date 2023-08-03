@@ -4,11 +4,14 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.player.MovementUtil;
 
 
 public class AntiVoid extends Module {
 
+
+    public NumberSetting falldisc = new NumberSetting("Fall Distance",3,1,10,1);
     public AntiVoid() {
 
         super("Anti Void", Category.OTHER, Keyboard.KEY_NONE);
@@ -36,7 +39,7 @@ public class AntiVoid extends Module {
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
-            if (czyjestwvoid() && mc.thePlayer.fallDistance > 3) {
+            if (czyjestwvoid() && mc.thePlayer.fallDistance > falldisc.getValue()) {
                 mc.thePlayer.setVelocity(0, 0, 0);
             }
         }
