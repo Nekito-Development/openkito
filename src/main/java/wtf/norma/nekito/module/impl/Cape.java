@@ -14,7 +14,7 @@ author @intexpression
 
 public class Cape extends Module {
 
-    public static ModeSetting selectedCape = new ModeSetting("Cape Type", "Black", "Black", "Pink","Blue","shit");
+    public static ModeSetting selectedCape = new ModeSetting("Cape Type", "Black", "Black", "minecon", "zmeczony","heart","shit");
 
     public Cape() {
         super("Cape", Category.VISUALS, Keyboard.KEY_NONE);
@@ -37,10 +37,12 @@ public class Cape extends Module {
 
             case "Black":
                 return new ResourceLocation("images/cape/black.png");
-            case "Pink":
-                return new ResourceLocation("images/cape/pink.png");
-            case "Blue":
-                return new ResourceLocation("images/cape/blue.png");
+            case "minecon":
+                return new ResourceLocation("images/cape/minecon.png");
+            case "zmeczony":
+                return new ResourceLocation("images/cape/cape1.png");
+            case "heart":
+                return new ResourceLocation("images/cape/cape3.png");
             case"shit":
                 return new ResourceLocation("images/cape/paste.png");
             default:
