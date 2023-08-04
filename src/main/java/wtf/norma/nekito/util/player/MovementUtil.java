@@ -1,7 +1,13 @@
 package wtf.norma.nekito.util.player;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MovementInput;
+import wtf.norma.nekito.module.impl.KillAura;
+import wtf.norma.nekito.module.impl.TargetStrafe;
+import wtf.norma.nekito.nekito;
+
+import static java.lang.Math.toRadians;
 
 public class MovementUtil {
     public final static Minecraft mc = Minecraft.getMinecraft();
@@ -17,7 +23,80 @@ public class MovementUtil {
         }
     }
 
+    public static void setMotion(double speed) {
+        EntityLivingBase entity = KillAura.target;
+        TargetStrafe ddospolska = (TargetStrafe) nekito.INSTANCE.getModuleManager().getModuleByName("Target Strafe");
+        // credits: jakis gosciu z forum
+        boolean targetStrafe = MovementUtil.mozeStrafe();
+        MovementInput movementInput = mc.thePlayer.movementInput;
+        float yaw = targetStrafe ? HeadUtility.getRotationsRandom(entity).getRotationYaw() : mc.thePlayer.rotationYaw;
+        double forward = targetStrafe ? mc.thePlayer.getDistanceToEntity(entity) <= (float)ddospolska.range.getValue() ? 0 : 1 : movementInput.moveForward;
+        double strafe = targetStrafe ? -1 : movementInput.moveStrafe;
+        if ((forward == 0.0D) && (strafe == 0.0D)) {
+            mc.thePlayer.motionX = 0;
+            mc.thePlayer.motionZ = 0;
+        } else {
+            if (forward != 0.0D) {
+                if (strafe > 0.0D) {
+                    yaw += (forward > 0.0D ? -45 : 45);
+                } else if (strafe < 0.0D) {
+                    yaw += (forward > 0.0D ? 45 : -45);
+                }
+                strafe = 0.0D;
+                if (forward > 0.0D) {
+                    forward = 1;
+                } else if (forward < 0.0D) {
+                    forward = -1;
+                }
+            }
 
+            mc.thePlayer.motionX = forward * speed * Math.cos(toRadians(yaw + 90.0F)) + strafe * speed * Math.sin(toRadians(yaw + 90.0F));
+            mc.thePlayer.motionZ = forward * speed * Math.sin(toRadians(yaw + 90.0F)) - strafe * speed * Math.cos(toRadians(yaw + 90.0F));
+        }
+    }
+
+    public static float getDirection() {float yaw = Minecraft.getMinecraft().thePlayer.rotationYaw;final float forward = Minecraft.getMinecraft().thePlayer.moveForward;final float strafe = Minecraft.getMinecraft().thePlayer.moveStrafing;yaw += ((forward < 0.0f) ? 180 : 0);final int i = (forward < 0.0f) ? -45 : ((forward == 0.0f) ? 90 : 45);if (strafe < 0.0f) {yaw += i;}if (strafe > 0.0f) {yaw -= i;}return yaw * 0.017453292f;}
+
+
+    public static void strafe(double speed) {
+        if (!isMoving()) {
+            mc.thePlayer.motionX = (0.0F);
+            mc.thePlayer.motionZ = (0.0F);
+        } else {
+            double direction = getDirection();
+            mc.thePlayer.motionX = (Math.sin(direction) * -speed);
+            mc.thePlayer.motionZ = (Math.cos(direction) * speed);
+        }
+    }
+
+    public static boolean isMoving() {
+        return mc.thePlayer.moveForward != 0 || mc.thePlayer.moveStrafing != 0;
+    }
+
+
+    public static float getSpeed() {
+        return (float) Math.sqrt(mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ);
+    }
+
+
+
+    public static boolean mozeStrafe() {
+
+        if (!nekito.INSTANCE.getModuleManager().getModuleByName("KillAura").isToggled()) {
+            return false;
+        }
+        if (!nekito.INSTANCE.getModuleManager().getModuleByName("Target Strafe").isToggled()) {
+            return false;
+        }
+        if (TargetStrafe.jump.isEnabled()) {
+            if (mc.gameSettings.keyBindJump.isPressed())
+                return KillAura.target != null;
+            else
+                return false;
+        } else {
+            return KillAura.target != null;
+        }
+    }
 
 
     public double direction() {
