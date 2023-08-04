@@ -471,6 +471,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         }
 
         logger.info("LWJGL Version: " + Sys.getVersion());
+
         //this.setWindowIcon();
         this.setInitialDisplayMode();
         this.createDisplay();
@@ -566,6 +567,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
          * @Niko: GuiInGame hook
          * spierdalaj nie ma zadnego huka
          */
+
+
 
         this.ingameGUI = new GuiIngame(this);
 

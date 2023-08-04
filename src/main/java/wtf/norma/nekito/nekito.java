@@ -1,11 +1,16 @@
 package wtf.norma.nekito;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.google.common.collect.ImmutableList;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.entity.player.EntityPlayer;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
@@ -22,6 +27,7 @@ import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
+import wtf.norma.nekito.util.player.CapeHandler;
 import wtf.norma.nekito.util.render.RenderUtil;
 
 public enum nekito {
@@ -54,8 +60,8 @@ public enum nekito {
         draggableManager = new DraggableManager();
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
-
         crashGuiMain = new CrashGuiMain();
+
 
 
         ViaMCP.create();
@@ -78,6 +84,7 @@ public enum nekito {
                 .forEach(command -> ChatHelper.printMessage(
                         String.format("&5%s &f- &d%s", command.getAlias(), command.getDescription())));
     }
+
 
     public void postInit() {
         RenderUtil.Instance = new RenderUtil(true);

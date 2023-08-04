@@ -1,6 +1,9 @@
 package net.minecraft.client.multiplayer;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
+
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.Callable;
@@ -15,6 +18,7 @@ import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -39,6 +43,8 @@ import optifine.Config;
 import optifine.DynamicLights;
 import optifine.PlayerControllerOF;
 import optifine.Reflector;
+import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.player.CapeHandler;
 
 public class WorldClient extends World
 {
@@ -112,6 +118,8 @@ public class WorldClient extends World
         this.theProfiler.endStartSection("blocks");
         this.updateBlocks();
         this.theProfiler.endSection();
+        List<EntityPlayer> players = ImmutableList.copyOf(this.playerEntities);
+        CapeHandler.onWorldTick(players);
     }
 
     /**
