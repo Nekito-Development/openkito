@@ -51,7 +51,7 @@ public enum nekito {
         return Minecraft.getDebugFPS() > 0 ? (1.0000 / Minecraft.getDebugFPS()) : 1;
     }
 
-    public static String version = "1.6";
+    public static String version = "1.7";
 
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
