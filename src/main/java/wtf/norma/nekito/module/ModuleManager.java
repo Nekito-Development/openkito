@@ -42,6 +42,7 @@ public class ModuleManager {
                 new CustomHotbar(),
                 new TimeChanger(),
                 new Speed(),
+                new Stealer(),
                 new Wings(),
                 new Ears(),
                 new KillAura()

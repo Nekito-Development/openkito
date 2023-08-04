@@ -24,7 +24,7 @@ public class NoSlowDown extends Module {
 
 
     public NoSlowDown() {
-        super("NoSlowDown", Category.MOVEMENT, Keyboard.KEY_NONE);
+        super("No Slow Down", Category.MOVEMENT, Keyboard.KEY_NONE);
     }
 
     @Override
