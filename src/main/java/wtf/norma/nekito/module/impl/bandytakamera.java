@@ -32,7 +32,7 @@ public class bandytakamera extends Module {
     @Override
     public void onEnable() {
         ChatHelper.printMessage("this module is in beta(you can have issues with it)");
-        ChatHelper.printMessage("If its dark wait 5secs");
+        ChatHelper.printMessage("If its bugged or dark wait 8secs");
         super.onEnable();
     }
 
@@ -47,10 +47,8 @@ public class bandytakamera extends Module {
     public void onEvent(Event e) {
         if (e instanceof EventRender2D) {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-
                if(mc.gameSettings.thirdPersonView <= 0 ) {
-                   mc.getTextureManager().bindTexture(new ResourceLocation("images/cwelowate/bandicam.png"));
-                   Gui.drawModalRectWithCustomSizedTexture(sr.getScaledWidth() / 2 - 200, 1, 400, 100, 400, 100, 400, 100);
+                   RenderUtility.drawImage(new ResourceLocation("images/cwelowate/bandicam.png"), sr.getScaledWidth() / 2 - 200, 1, 400, 100, new Color(255, 255, 255));
                  }
         }
     }
