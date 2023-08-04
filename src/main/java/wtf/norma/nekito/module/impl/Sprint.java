@@ -9,9 +9,10 @@ import wtf.norma.nekito.nekito;
 public class Sprint extends Module {
 
     public Sprint() {
-
         super("Sprint", Category.MOVEMENT, Keyboard.KEY_NONE);
     }
+
+
 
     @Override
     public void onEnable() {
@@ -27,9 +28,9 @@ public class Sprint extends Module {
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
-            if (e.isPre()) {
+            // SLAYYYYYYYYYYYYYYY 🙄🙄🙄🙄🙄🙄🙄🙄🙄🙄🙄😴🥱😫😪😪
                 mc.gameSettings.keyBindSprint.pressed = true;
-            }
+
         }
     }
 }

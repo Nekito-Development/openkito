@@ -17,7 +17,7 @@ import java.util.Random;
 public class Speed extends Module {
 
     public Speed() {
-        super("Player Speed", Category.MOVEMENT, Keyboard.KEY_NONE);
+        super("Player Speed", Category.MOVEMENT, Keyboard.KEY_G);
         addSettings(mode);
     }
 

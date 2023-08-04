@@ -21,7 +21,7 @@ public class Timer extends Module {
         addSettings(nobardmud);
     }
 
-    public NumberSetting nobardmud = new NumberSetting("Speed",1.0f,0.01f,10.0f,0.1f);
+    public NumberSetting nobardmud = new NumberSetting("Speed",1.0f,1f,10.0f,0.1f);
 
 
     public void onEvent(Event event) {

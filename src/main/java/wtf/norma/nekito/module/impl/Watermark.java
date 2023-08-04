@@ -18,11 +18,12 @@ import java.awt.*;
 public class Watermark extends Module {
     public Watermark() {
         super("Watermark", Category.VISUALS, Keyboard.KEY_NONE);
-        addSettings(colorMode);
+        addSettings(mode,colorMode);
     }
 
 
 
+    public static ModeSetting mode = new ModeSetting("Mode", "Nekito", "Nekito","wzrost");
 
     public static ModeSetting colorMode = new ModeSetting("Color", "Rainbow", "Rainbow","Nekito", "Purple","Pink");
 

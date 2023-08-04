@@ -26,6 +26,7 @@ public class ModuleManager {
                 new ServerInfo(),
                 new HELIUMDDOS(),
                 new Velocity(),
+                new NoClip(),
                 new WorldColor(),
                 new CrashGUI(),
                 new Watermark(),

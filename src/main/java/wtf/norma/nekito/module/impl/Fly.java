@@ -9,6 +9,7 @@ import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
+import wtf.norma.nekito.util.Time.TimerUtility;
 import wtf.norma.nekito.util.player.MovementUtil;
 
 public class Fly extends Module {
@@ -58,16 +59,9 @@ public class Fly extends Module {
                 } else {
                     mc.thePlayer.motionY = 0;
                 }
-
-
-
-
-
-
-
-
-
                         break;
+
+
                 }
             }
         }

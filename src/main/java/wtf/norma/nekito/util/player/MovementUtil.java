@@ -1,7 +1,13 @@
 package wtf.norma.nekito.util.player;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
 import wtf.norma.nekito.module.impl.KillAura;
 import wtf.norma.nekito.module.impl.TargetStrafe;
@@ -23,6 +29,29 @@ public class MovementUtil {
         }
     }
 
+    public static boolean isOnLiquid() {
+        AxisAlignedBB boundingBox = mc.thePlayer.getEntityBoundingBox();
+        if (boundingBox == null) {
+            return false;
+        }
+        boundingBox = boundingBox.contract(0.01D, 0.0D, 0.01D).offset(0.0D, -0.01D, 0.0D);
+        boolean onLiquid = false;
+        int y = (int) boundingBox.minY;
+        for (int x = MathHelper.floor_double(boundingBox.minX); x < MathHelper
+                .floor_double(boundingBox.maxX + 1.0D); x++) {
+            for (int z = MathHelper.floor_double(boundingBox.minZ); z < MathHelper
+                    .floor_double(boundingBox.maxZ + 1.0D); z++) {
+                Block block = mc.theWorld.getBlockState((new BlockPos(x, y, z))).getBlock();
+                if (block != Blocks.air) {
+                    if (!(block instanceof BlockLiquid)) {
+                        return false;
+                    }
+                    onLiquid = true;
+                }
+            }
+        }
+        return onLiquid;
+    }
     public static void setMotion(double speed) {
         EntityLivingBase entity = KillAura.target;
         TargetStrafe ddospolska = (TargetStrafe) nekito.INSTANCE.getModuleManager().getModuleByName("Target Strafe");
