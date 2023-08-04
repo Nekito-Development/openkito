@@ -87,6 +87,22 @@ public class MathHelper
     }
 
 
+
+    public static float lerp(float a, float b, float t) {
+        return a + (b - a) * t;
+    }
+
+    public static float lerp(double a, double b, double t) {
+        return (float) (a + (b - a) * t);
+    }
+    public static float EaseOutBack(float start, float end, float value) {
+        float s = 1.20158f;
+        end -= start;
+        value = (value) - 1;
+        return end * ((value) * value * ((s + 1) * value + s) + 1) + start;
+    }
+
+
     public static int clamp(int num, int min, int max)
     {
         if (num < min)

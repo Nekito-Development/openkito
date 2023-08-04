@@ -96,6 +96,7 @@ import wtf.norma.nekito.module.impl.HitBox;
 import wtf.norma.nekito.module.impl.Reach;
 import wtf.norma.nekito.module.impl.WorldColor;
 import wtf.norma.nekito.nekito;
+
 import wtf.norma.nekito.util.color.ColorUtility;
 
 public class EntityRenderer implements IResourceManagerReloadListener
@@ -1422,6 +1423,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 }
             }
         }
+        ScaledResolution sr = new ScaledResolution(mc);
+
 
         this.frameFinish();
         this.waitForServerThread();

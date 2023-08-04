@@ -18,7 +18,7 @@ public class ClickGUI extends Module {
     
 
 
-    public static ModeSetting anime = new ModeSetting("Anime", "Fixmem", "Fixmem", "Astolfo", "Astolfo2","BabaWithPlecak",
+    public static ModeSetting anime = new ModeSetting("Anime", "Fixmem", "Fixmem", "Astolfo", "Astolfo2","Neko","xdddd","BabaWithPlecak",
             "Hideri","Felix","Cot","ten rekin z ikea","None");
 
     public static BooleanSetting blur = new BooleanSetting("Blur",true);

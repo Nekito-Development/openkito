@@ -10,6 +10,8 @@ public class Fonts {
 
 
     public static FontRenderer fx = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("comicfont.ttf"), 50, 0), true, true);
+
+    public static FontRenderer gay = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("gray.ttf"), 15, 0), true, true);
     public static FontRenderer sans_35 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 35, 0), true, true);
     public static FontRenderer Comfortaa_40 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 40, 0), true, true);
     public static FontRenderer Comfortaa_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 13, 0), true, true);
@@ -28,12 +30,17 @@ public class Fonts {
 
     public static FontRenderer MONTSERRAT13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("mntsb.ttf"), 13, 0), true, true);
 
+    public static FontRenderer MONTSERRAT18 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("mntsb.ttf"), 18, 0), true, true);
 
-
+    public static FontRenderer MONTSERRAT16 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("mntsb.ttf"), 16, 0), true, true);
     public static FontRenderer MONTSERRAT45 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("mntsb.ttf"), 45, 0), true, true);
 
 
     public static FontRenderer neverlose900_30 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("neverlose900.ttf"), 30, 0), true, true);
+
+
+
+    public static FontRenderer neverlose500_18 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("neverlose500.ttf"), 18, 0), true, true);
 
 
 

@@ -62,6 +62,12 @@ public class ClickGuiMain extends GuiScreen {
             case "Fixmem":
                 RenderUtility.drawImage(new ResourceLocation("nekito/uwu/fixmem.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
                 break;
+            case"Neko":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/Neko.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
+            case"xdddd":
+                RenderUtility.drawImage(new ResourceLocation("nekito/uwu/xdddd.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
+                break;
             case "Astolfo":
                 RenderUtility.drawImage(new ResourceLocation("nekito/uwu/asstolfo.png"), sr.getScaledWidth() - 250, sr.getScaledHeight() / 2, 250, 255, new Color(255, 255, 255));
                 break;

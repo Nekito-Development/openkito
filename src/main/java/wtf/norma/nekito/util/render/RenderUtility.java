@@ -97,6 +97,14 @@ public class RenderUtility {
             GL11.glDisable(GL11.GL_BLEND);
     }
 
+    public static void color(int color, float alpha) {
+        float r = (float) (color >> 16 & 255) / 255.0F;
+        float g = (float) (color >> 8 & 255) / 255.0F;
+        float b = (float) (color & 255) / 255.0F;
+        GlStateManager.color(r, g, b, alpha);
+    }
+
+
     //    draw triangle with rotation
     public static void drawTriangle(double x, double y, double width, double height, double rotation) {
         boolean needBlend = !GL11.glIsEnabled(GL11.GL_BLEND);
@@ -131,6 +139,67 @@ public class RenderUtility {
             GL11.glDisable(GL11.GL_BLEND);
     }
 
+    private static HashMap<Integer, Integer> shadowCache = new HashMap<Integer, Integer>();
+
+    public static void drawBlurredShadow(float x, float y, float width, float height, int blurRadius, Color color) {
+        BufferedImage original = null;
+        GaussianFilter op = null;
+        GL11.glPushMatrix();
+        GlStateManager.alphaFunc(516, 0.01f);
+        width += blurRadius * 2;
+        height += blurRadius * 2;
+        x -= blurRadius;
+        y -= blurRadius;
+        final float _X = x - 0.25f;
+        final float _Y = y + 0.25f;
+        final int identifier = String.valueOf(width * height + width + 1000000000 * blurRadius + blurRadius).hashCode();
+        GL11.glEnable(3553);
+        GL11.glDisable(2884);
+        GL11.glEnable(3008);
+        GlStateManager.enableBlend();
+        int texId = -1;
+        if (shadowCache.containsKey(identifier)) {
+            texId = shadowCache.get(identifier);
+            GlStateManager.bindTexture(texId);
+        }
+        else {
+            if (width <= 0.0f) {
+                width = 1.0f;
+            }
+            if (height <= 0.0f) {
+                height = 1.0f;
+            }
+            if (original == null) {
+                original = new BufferedImage((int)width, (int)height, 3);
+            }
+            final Graphics g = original.getGraphics();
+            g.setColor(Color.white);
+            g.fillRect(blurRadius, blurRadius, (int)(width - blurRadius * 2), (int)(height - blurRadius * 2));
+            g.dispose();
+            if (op == null) {
+                op = new GaussianFilter((float)blurRadius);
+            }
+            final BufferedImage blurred = op.filter(original, (BufferedImage)null);
+            texId = TextureUtil.uploadTextureImageAllocate(TextureUtil.glGenTextures(), blurred, true, false);
+            shadowCache.put(identifier, texId);
+        }
+        color(color.getRGB());
+        GL11.glBegin(7);
+        GL11.glTexCoord2f(0.0f, 0.0f);
+        GL11.glVertex2f(_X, _Y);
+        GL11.glTexCoord2f(0.0f, 1.0f);
+        GL11.glVertex2f(_X, _Y + height);
+        GL11.glTexCoord2f(1.0f, 1.0f);
+        GL11.glVertex2f(_X + width, _Y + height);
+        GL11.glTexCoord2f(1.0f, 0.0f);
+        GL11.glVertex2f(_X + width, _Y);
+        GL11.glEnd();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+        GlStateManager.resetColor();
+        GL11.glEnable(2884);
+        GL11.glPopMatrix();
+    }
     public static void drawTriangle(float x, float y, float vector, int color) {
         GL11.glPushMatrix();
         GL11.glTranslated(x, y, 0);

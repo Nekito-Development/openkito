@@ -47,7 +47,9 @@ public enum nekito {
     private final CrashGuiMain crashGuiMain;
 
 
-
+    public static double deltaTime() {
+        return Minecraft.getDebugFPS() > 0 ? (1.0000 / Minecraft.getDebugFPS()) : 1;
+    }
 
     public static String version = "1.6";
 
