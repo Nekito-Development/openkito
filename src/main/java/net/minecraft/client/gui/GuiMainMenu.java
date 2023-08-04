@@ -93,7 +93,7 @@ public class GuiMainMenu extends GuiScreen {
         super.actionPerformed(button);
     }
 
-    public void drawbackground() {
+    private void drawbackground() {
         GL11.glPushMatrix();
         {
             GL11.glDisable(GL11.GL_CULL_FACE);

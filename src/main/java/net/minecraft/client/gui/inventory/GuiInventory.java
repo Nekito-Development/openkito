@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
@@ -22,12 +23,18 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
+import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.module.impl.CustomModel;
+import wtf.norma.nekito.module.impl.InventorySettings;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.Animations.EasingHelper;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
+import wtf.norma.nekito.util.shader.GLSL;
 import wtf.norma.nekito.util.shader.ShaderUtility;
+
+import static org.lwjgl.opengl.GL11.glColor4f;
+import static org.lwjgl.opengl.GL11C.*;
 
 public class GuiInventory extends InventoryEffectRenderer
 {
@@ -121,6 +128,7 @@ public class GuiInventory extends InventoryEffectRenderer
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+
         this.drawDefaultBackground();
         ScaledResolution sr = new ScaledResolution(this.mc);
 
@@ -145,27 +153,64 @@ public class GuiInventory extends InventoryEffectRenderer
     {
         ScaledResolution sr = new ScaledResolution(this.mc);
 
+
+
         this.progress = this.progress >= 1.0f ? 1.0f : (float)(System.currentTimeMillis() - this.lastMS) / 850.0f;
         // dzialalo kiedys ale teraz n dziala i chuj Xddddddddd
         double trueAnim = EasingHelper.easeOutQuart(this.progress);
-        GL11.glTranslated((1.0 - trueAnim) * ((double)this.width / 2.0), (1.0 - trueAnim) * ((double)this.height / 2.0), 0.0);
-        GL11.glScaled(trueAnim, trueAnim, trueAnim);
-        GL11.glScaled(trueAnim, trueAnim, trueAnim);
+        if (InventorySettings.anime.isEnabled()) {
+            GL11.glTranslated((1.0 - trueAnim) * ((double) this.width / 2.0), (1.0 - trueAnim) * ((double) this.height / 2.0), 0.0);
+            GL11.glScaled(trueAnim, trueAnim, trueAnim);
+            GL11.glScaled(trueAnim, trueAnim, trueAnim);
 
-        GL11.glColor4d(animation, animation, animation, animation);
-        ANIME_GIRL = new ResourceLocation("nekito/uwu/babaxd.png");
 
-        mc.getTextureManager().bindTexture(ANIME_GIRL);
-        RenderUtility.drawImage(ANIME_GIRL, (float)((double)sr.getScaledWidth() - 350.0 * animation), sr.getScaledHeight() - 370, 400.0f, 400.0f, Color.WHITE);
-        GL11.glColor4d(1.0, 1.0, 1.0, 1.0);
-        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        GL11.glPopMatrix();
+            GL11.glColor4d(animation, animation, animation, animation);
 
+            ANIME_GIRL = new ResourceLocation("nekito/uwu/felix.png");
+
+
+            mc.getTextureManager().bindTexture(ANIME_GIRL);
+            RenderUtility.drawImage(ANIME_GIRL, (float) ((double) sr.getScaledWidth() - 350.0 * animation), sr.getScaledHeight() - 370, 400.0f, 400.0f, Color.WHITE);
+            GL11.glColor4d(1.0, 1.0, 1.0, 1.0);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+            GL11.glPopMatrix();
+        }
+        if (InventorySettings.shader.isEnabled()) {
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            drawbackground();
+        }
         this.mc.getTextureManager().bindTexture(inventoryBackground);
         int i = this.guiLeft;
         int j = this.guiTop;
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
         drawEntityOnScreen(i + 51, j + 75, 30, (float)(i + 51) - this.oldMouseX, (float)(j + 75 - 50) - this.oldMouseY, this.mc.thePlayer);
+    }
+
+
+    // draws background for eq
+    private void drawbackground() {
+
+        GL11.glPushMatrix();
+        {
+            GL11.glDisable(GL11.GL_CULL_FACE);
+
+            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - lastMS) / 1000f);
+
+
+            GL11.glBegin(GL11.GL_QUADS);
+            {
+
+
+                GL11.glVertex2f(0,0);
+                GL11.glVertex2f(0,height);
+                GL11.glVertex2f(width,height);
+                GL11.glVertex2f(width,0);
+                GL11.glEnd();
+            }
+            GL20.glUseProgram(0);
+        }
+        GL11.glPopMatrix();
     }
 
     /**
