@@ -1,5 +1,5 @@
 # nekito
-Open-Source Crash client Made by eleczka, lekoz , groszus and tecness.
+Open-Source Hacked/Crash client Made by eleczka, lekoz , groszus and tecness.
 Special thanks to narumii for the base
 
 
