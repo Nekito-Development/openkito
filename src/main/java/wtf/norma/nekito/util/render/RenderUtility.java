@@ -17,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import wtf.norma.nekito.module.impl.TargetStrafe;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.color.ColorUtils;
 import wtf.norma.nekito.util.filter.filter.image.GaussianFilter;
@@ -59,6 +60,8 @@ public class RenderUtility {
         drawRect(x, y2, x2, y2 - 1, borderedColor);
         drawRect(x, y, x + 1, y2, borderedColor);
     }
+
+
 
     public static void drawTriangle() {
         boolean needBlend = !GL11.glIsEnabled(GL11.GL_BLEND);

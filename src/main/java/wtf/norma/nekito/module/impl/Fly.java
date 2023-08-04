@@ -46,14 +46,27 @@ public class Fly extends Module {
                         mc.thePlayer.capabilities.setFlySpeed(speed.getValue());
                         break;
                     case "MOTION":
-                        mc.thePlayer.motionX = 0;
-                        mc.thePlayer.motionY = 0;
-                        mc.thePlayer.motionZ = 0;
-
+                      MovementUtil.setMotion(speed.getValue());
                         if (mc.gameSettings.keyBindSneak.isKeyDown()) mc.thePlayer.motionY -= speed.getValue() / 2;
                         if (mc.gameSettings.keyBindJump.isKeyDown()) mc.thePlayer.motionY += speed.getValue() / 2;
+                        if (mc.thePlayer.movementInput.jump) {
+                            mc.thePlayer.motionY = 0.5f;
+                        }
+                        // i was drunk ok?
+                        else if (mc.thePlayer.movementInput.sneak) {
+                    mc.thePlayer.motionY = -0.5f;
+                } else {
+                    mc.thePlayer.motionY = 0;
+                }
 
-                        new MovementUtil().strafe(speed.getValue());
+
+
+
+
+
+
+
+
                         break;
                 }
             }

@@ -15,6 +15,7 @@ public class ModuleManager {
                 new ClickGUI(),
                 new Cape(),
                 new AntiVoid(),
+                new TargetStrafe(),
                 new ItemPhysics(),
                 new Fly(),
                 new NoSlowDown(),
@@ -38,7 +39,7 @@ public class ModuleManager {
                 new Reach(),
                 new CustomHotbar(),
                 new TimeChanger(),
-
+                new Speed(),
                 new Wings(),
                 new Ears(),
                 new KillAura()

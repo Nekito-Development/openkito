@@ -2,6 +2,7 @@ package wtf.norma.nekito.module.impl;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.ModeSetting;
@@ -24,6 +25,7 @@ public class Cape extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+
     }
 
     @Override
@@ -32,8 +34,12 @@ public class Cape extends Module {
     }
 
 
+
+
+
     public ResourceLocation getCape() {
         switch (selectedCape.getMode()) {
+
 
             case "Black":
                 return new ResourceLocation("images/cape/black.png");
