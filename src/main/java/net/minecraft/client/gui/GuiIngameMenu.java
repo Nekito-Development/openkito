@@ -6,7 +6,13 @@ import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.realms.RealmsBridge;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import wtf.norma.nekito.module.impl.InventorySettings;
 import wtf.norma.nekito.ui.Tools.UiTools;
+import wtf.norma.nekito.util.shader.GLSL;
+
+import static org.lwjgl.opengl.GL11C.*;
 
 public class GuiIngameMenu extends GuiScreen
 {
@@ -29,6 +35,8 @@ public class GuiIngameMenu extends GuiScreen
         {
             ((GuiButton)this.buttonList.get(0)).displayString = I18n.format("menu.disconnect", new Object[0]);
         }
+
+
 
         this.buttonList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + i, I18n.format("menu.returnToGame", new Object[0])));
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + i, 98, 20, I18n.format("menu.options", new Object[0])));
@@ -113,6 +121,8 @@ public class GuiIngameMenu extends GuiScreen
 
         }
     }
+    private long lastMS = 0L;
+
 
     /**
      * Called from the main game loop to update the screen.
@@ -120,7 +130,7 @@ public class GuiIngameMenu extends GuiScreen
     public void updateScreen()
     {
         super.updateScreen();
-        ++this.field_146444_f;
+       ++this.field_146444_f;
     }
 
     /**
@@ -128,7 +138,10 @@ public class GuiIngameMenu extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+
+
         this.drawDefaultBackground();
+
         this.drawCenteredString(this.fontRendererObj, I18n.format("menu.game", new Object[0]), this.width / 2, 40, 16777215);
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

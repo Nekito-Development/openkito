@@ -25,7 +25,7 @@ public class Watermark extends Module {
 
   //  public static ModeSetting mode = new ModeSetting("Mode", "Nekito", "Nekito","wzrost");
 
-    public static ModeSetting colorMode = new ModeSetting("Color", "Rainbow", "Rainbow","Nekito", "Purple","Pink");
+    public static ModeSetting colorMode = new ModeSetting("Color", "Nekito", "Nekito","Rainbow", "Purple","Pink");
 
 
 

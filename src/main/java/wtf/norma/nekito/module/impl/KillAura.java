@@ -4,15 +4,18 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventMotion;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.Time.TimerUtility;
+import wtf.norma.nekito.util.packet.PacketUtility;
 
 import java.util.Comparator;
 import java.util.List;
@@ -69,6 +72,10 @@ public class KillAura extends Module {
                 if (target != null) {
                     if (rotate(target, (EventMotion) e)) {
                         if (t.hasReached((long) (1000 / discord.getValue()))) {
+                            if (nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
+                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
+                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+                            }
                             mc.thePlayer.swingItem();
                             mc.getNetHandler().getNetworkManager().sendPacketNoEvent(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
                             t.reset();

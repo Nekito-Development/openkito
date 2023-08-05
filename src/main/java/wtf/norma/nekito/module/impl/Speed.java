@@ -26,7 +26,7 @@ public class Speed extends Module {
         addSettings(mode);
     }
 
-    public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan", "Ground","LowHop","Matrix Timer");
+    public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan", "Ground","LowHop","Matrix Timer","Hypixel");
 
 
 
@@ -82,6 +82,18 @@ public class Speed extends Module {
                     } else {
                         mc.timer.timerSpeed = 1.0f;
                     }
+                    break;
+                case"Hypixel": // yes it works   (05.08.2023)
+                    if (MovementUtil.isMoving() && mc.thePlayer.onGround) {
+                        mc.thePlayer.jump();
+                        MovementUtil.setMotion(0.48421);
+
+                    }
+                    if (mc.thePlayer.hurtTime > 1) {
+                        // strafe
+                    }
+
+
                     break;
 
             }

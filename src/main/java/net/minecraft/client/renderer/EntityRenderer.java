@@ -91,6 +91,7 @@ import org.lwjgl.util.glu.Project;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventFogColor;
 import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.module.impl.HitBox;
 import wtf.norma.nekito.module.impl.Reach;
@@ -2580,6 +2581,12 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 Reflector.callVoid(Reflector.ForgeHooksClient_onFogRender, new Object[] {this, entity, block, Float.valueOf(partialTicks), Integer.valueOf(p_78468_1_), Float.valueOf(f)});
             }
         }
+        EventFogColor event = new EventFogColor(fogColorRed, fogColorGreen, fogColorBlue, 0);
+        Event.dispatch(event);
+
+        fogColorRed = event.red / 255F;
+        fogColorGreen = event.green / 255F;
+        fogColorBlue = event.blue / 255F;
 
         GlStateManager.enableColorMaterial();
         GlStateManager.enableFog();

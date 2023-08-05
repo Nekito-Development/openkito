@@ -62,6 +62,24 @@ public class RenderUtility {
     }
 
 
+    public static void connectPoints(float xOne, float yOne, float xTwo, float yTwo) {
+        GL11.glPushMatrix();
+        GL11.glEnable(2848);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
+        GL11.glDisable(3553);
+        GL11.glBlendFunc(770, 771);
+        GL11.glEnable(3042);
+        GL11.glLineWidth(0.5F);
+        GL11.glBegin(1);
+        GL11.glVertex2f(xOne, yOne);
+        GL11.glVertex2f(xTwo, yTwo);
+        GL11.glEnd();
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glDisable(2848);
+        GL11.glEnable(3553);
+        GL11.glPopMatrix();
+    }
+
 
     public static void drawTriangle() {
         boolean needBlend = !GL11.glIsEnabled(GL11.GL_BLEND);

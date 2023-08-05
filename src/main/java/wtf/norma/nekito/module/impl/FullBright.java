@@ -15,7 +15,7 @@ public class FullBright extends Module {
 
     public FullBright() {
         super("FullBright", Category.VISUALS, Keyboard.KEY_NONE);
-        toggle();
+    //    toggle();
         this.addSettings(mode);
     }
 

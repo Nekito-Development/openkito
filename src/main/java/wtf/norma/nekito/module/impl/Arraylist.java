@@ -1,6 +1,8 @@
 package wtf.norma.nekito.module.impl;
 
 import org.lwjgl.input.Keyboard;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 
@@ -9,6 +11,8 @@ public class Arraylist extends Module {
         super("Arraylist", Category.VISUALS, Keyboard.KEY_NONE);
       //  toggle();
     }
+
+
 
 
     @Override

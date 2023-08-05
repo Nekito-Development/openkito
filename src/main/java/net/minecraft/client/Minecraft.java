@@ -1446,7 +1446,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         {
             this.displayGuiScreen(new GuiIngameMenu());
 
-            if (this.isSingleplayer() && !this.theIntegratedServer.getPublic())
+           if (this.isSingleplayer() && !this.theIntegratedServer.getPublic())
             {
                 this.mcSoundHandler.pauseSounds();
             }
