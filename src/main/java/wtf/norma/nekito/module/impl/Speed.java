@@ -1,7 +1,11 @@
 package wtf.norma.nekito.module.impl;
 
 import net.minecraft.block.*;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
+import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
@@ -9,6 +13,7 @@ import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
+import wtf.norma.nekito.util.packet.PacketUtility;
 import wtf.norma.nekito.util.player.MovementUtil;
 
 import java.util.Random;
@@ -21,7 +26,7 @@ public class Speed extends Module {
         addSettings(mode);
     }
 
-    public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan", "Ground","Matrix Timer");
+    public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan", "Ground","LowHop","Matrix Timer");
 
 
 
@@ -56,6 +61,15 @@ public class Speed extends Module {
                         }
                     }
                     break;
+                    case"LowHop":
+                        if (mc.thePlayer.onGround && mc.thePlayer.moveForward > 0) {
+                            double speed = 0.5;
+                            float yaw = mc.thePlayer.rotationYaw * 0.0174532920F;
+                            mc.thePlayer.motionY = 0.2;
+                            mc.thePlayer.motionX -= MathHelper.sin(yaw) * (speed / 2);
+                            mc.thePlayer.motionZ += MathHelper.cos(yaw) * (speed / 2);
+                        }
+                        break;
                 case"Matrix Timer":
                     float timerValue = mc.thePlayer.fallDistance <= 0.22f ? 2f :
                             (float) (mc.thePlayer.fallDistance < 1.25f ? 0.67 : 1f);
