@@ -48,6 +48,7 @@ import wtf.norma.nekito.event.impl.EventPreMotion;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.event.impl.EventUpdate;
 
+import wtf.norma.nekito.module.impl.NoSlowDown;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 
@@ -706,7 +707,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         this.movementInput.updatePlayerMoveState();
 
         if (this.isUsingItem() && !this.isRiding()) {
-            if(!nekito.INSTANCE.getModuleManager().getModuleByName("No Slow Down").isToggled()){
+            if(!nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).isToggled()){
                 this.movementInput.moveStrafe *= 0.2F;
                 this.movementInput.moveForward *= 0.2F;
                 this.sprintToggleTimer = 0;

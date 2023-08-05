@@ -54,7 +54,7 @@ public class MovementUtil {
     }
     public static void setMotion(double speed) {
         EntityLivingBase entity = KillAura.target;
-        TargetStrafe ddospolska = (TargetStrafe) nekito.INSTANCE.getModuleManager().getModuleByName("Target Strafe");
+        TargetStrafe ddospolska = (TargetStrafe) nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class);
         // credits: jakis gosciu z forum
         boolean targetStrafe = MovementUtil.mozeStrafe();
         MovementInput movementInput = mc.thePlayer.movementInput;
@@ -111,10 +111,10 @@ public class MovementUtil {
 
     public static boolean mozeStrafe() {
 
-        if (!nekito.INSTANCE.getModuleManager().getModuleByName("KillAura").isToggled()) {
+        if (!nekito.INSTANCE.getModuleManager().getModule(KillAura.class).isToggled()) {
             return false;
         }
-        if (!nekito.INSTANCE.getModuleManager().getModuleByName("Target Strafe").isToggled()) {
+        if (!nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).isToggled()) {
             return false;
         }
         if (TargetStrafe.jump.isEnabled()) {

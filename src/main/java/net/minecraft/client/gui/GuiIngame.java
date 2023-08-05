@@ -363,7 +363,7 @@ public class GuiIngame extends Gui {
         GlStateManager.enableAlpha();
     }
 
-        boolean niggerEnabled = nekito.INSTANCE.getModuleManager().getModuleByName("CustomHotbar").isToggled();
+        boolean niggerEnabled = nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).isToggled();
 
     protected void renderTooltip(ScaledResolution sr, float partialTicks) {
         if (this.mc.getRenderViewEntity() instanceof EntityPlayer) {

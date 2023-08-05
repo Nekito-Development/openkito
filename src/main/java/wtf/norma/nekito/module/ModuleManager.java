@@ -27,6 +27,7 @@ public class ModuleManager {
                 new HELIUMDDOS(),
                 new Velocity(),
                 new InventorySettings(),
+                new eleczkamode(),
                 new bandytakamera(),
                 new NoClip(),
                 new WorldColor(),

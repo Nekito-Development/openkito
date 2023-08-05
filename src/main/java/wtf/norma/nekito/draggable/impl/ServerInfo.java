@@ -9,6 +9,8 @@ import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
+import wtf.norma.nekito.module.impl.eleczkamode;
+import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.render.RenderUtil;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -46,38 +48,79 @@ public class ServerInfo extends AbstractDraggable {
             Holder.setTPS(Holder.getTPS() - 0.01);
         }
 
-        info.add(ChatHelper.fix("&fSession: &d" + mc.session.getUsername()));
-        if (!mc.isSingleplayer()) {
-            info.add(ChatHelper.fix("&fServer: &d" + mc.getCurrentServerData().serverIP));
-        }
 
-        if (mc.thePlayer.getClientBrand() != null) {
-            String brand = mc.thePlayer.getClientBrand().contains("<- ") ?
-                    mc.thePlayer.getClientBrand().split(" ")[0] + " -> " + mc.thePlayer.getClientBrand()
-                            .split("<- ")[1] : mc.thePlayer.getClientBrand().split(" ")[0];
 
-            info.add(ChatHelper.fix("&fServer brand: &d" + brand));
-        }
+        if (nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).isToggled()){
 
-        info.add(ChatHelper.fix(String.format("&fX, Y, Z: &d%s, %s, %s", x, y, z)));
+            info.add(ChatHelper.fix("&fSuwussion: &d" + mc.session.getUsername()));
+            if (!mc.isSingleplayer()) {
+                info.add(ChatHelper.fix("&fSeuwer: &d" + mc.getCurrentServerData().serverIP));
+            }
 
-        if (Holder.getTPS() != -1) {
-            String tps = String.format((Holder.getTPS() > 15
-                    ? "&a%.2f" : (Holder.getTPS() > 10
-                    ? "&e%.2f" : (Holder.getTPS() > 5
-                    ? "&6%.2f" : "&c%.2f"))), Holder.getTPS());
+            if (mc.thePlayer.getClientBrand() != null) {
+                String brand = mc.thePlayer.getClientBrand().contains("<- ") ?
+                        mc.thePlayer.getClientBrand().split(" ")[0] + " -> " + mc.thePlayer.getClientBrand()
+                                .split("<- ")[1] : mc.thePlayer.getClientBrand().split(" ")[0];
 
-            info.add(ChatHelper.fix(String.format("&fTPS: &d%s", tps)));
-        }
+                info.add(ChatHelper.fix("&fSeuwer brawnd: &d" + brand));
+            }
 
-        if (Holder.getLastPacketMS() != -1) {
-            String packetMs = (lastPacketMS < 1000
-                    ? "&a" + lastPacketMS : (lastPacketMS < 7000
-                    ? "&e" + lastPacketMS : (lastPacketMS < 15000
-                    ? "&6" + lastPacketMS : "&c" + lastPacketMS)));
-            info.add(ChatHelper.fix(
-                    lastPacketMS > 30500 ? "&fLast packet: &dBroken pipe"
-                            : String.format("&fLast packet: &d%s&7ms &fago", packetMs)));
+            info.add(ChatHelper.fix(String.format("&fX, Y, Z: &d%s, %s, %s", x, y, z)));
+
+            if (Holder.getTPS() != -1) {
+                String tps = String.format((Holder.getTPS() > 15
+                        ? "&a%.2f" : (Holder.getTPS() > 10
+                        ? "&e%.2f" : (Holder.getTPS() > 5
+                        ? "&6%.2f" : "&c%.2f"))), Holder.getTPS());
+
+                info.add(ChatHelper.fix(String.format("&fTPS Chan: &d%s", tps)));
+            }
+
+            if (Holder.getLastPacketMS() != -1) {
+                String packetMs = (lastPacketMS < 1000
+                        ? "&a" + lastPacketMS : (lastPacketMS < 7000
+                        ? "&e" + lastPacketMS : (lastPacketMS < 15000
+                        ? "&6" + lastPacketMS : "&c" + lastPacketMS)));
+                info.add(ChatHelper.fix(
+                        lastPacketMS > 30500 ? "&fLawst pawcket: &dBrowken pipe"
+                                : String.format("&fLawst pawcket: &d%s&7ms &fago", packetMs)));
+            }
+        } else {
+
+
+            info.add(ChatHelper.fix("&fSession: &d" + mc.session.getUsername()));
+            if (!mc.isSingleplayer()) {
+                info.add(ChatHelper.fix("&fServer: &d" + mc.getCurrentServerData().serverIP));
+            }
+
+            if (mc.thePlayer.getClientBrand() != null) {
+                String brand = mc.thePlayer.getClientBrand().contains("<- ") ?
+                        mc.thePlayer.getClientBrand().split(" ")[0] + " -> " + mc.thePlayer.getClientBrand()
+                                .split("<- ")[1] : mc.thePlayer.getClientBrand().split(" ")[0];
+
+                info.add(ChatHelper.fix("&fServer brand: &d" + brand));
+            }
+
+            info.add(ChatHelper.fix(String.format("&fX, Y, Z: &d%s, %s, %s", x, y, z)));
+
+            if (Holder.getTPS() != -1) {
+                String tps = String.format((Holder.getTPS() > 15
+                        ? "&a%.2f" : (Holder.getTPS() > 10
+                        ? "&e%.2f" : (Holder.getTPS() > 5
+                        ? "&6%.2f" : "&c%.2f"))), Holder.getTPS());
+
+                info.add(ChatHelper.fix(String.format("&fTPS: &d%s", tps)));
+            }
+
+            if (Holder.getLastPacketMS() != -1) {
+                String packetMs = (lastPacketMS < 1000
+                        ? "&a" + lastPacketMS : (lastPacketMS < 7000
+                        ? "&e" + lastPacketMS : (lastPacketMS < 15000
+                        ? "&6" + lastPacketMS : "&c" + lastPacketMS)));
+                info.add(ChatHelper.fix(
+                        lastPacketMS > 30500 ? "&fLast packet: &dBroken pipe"
+                                : String.format("&fLast packet: &d%s&7ms &fago", packetMs)));
+            }
         }
 
         int offset = 0;

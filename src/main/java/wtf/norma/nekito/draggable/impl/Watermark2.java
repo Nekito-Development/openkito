@@ -45,6 +45,7 @@ public class Watermark2 extends AbstractDraggable {
 
         String serverip = mc.isSingleplayer() ? "localhost:25565" : !mc.getCurrentServerData().serverIP.contains(":") ? mc.getCurrentServerData().serverIP + ":25565" : mc.getCurrentServerData().serverIP;
         String infox = "nekito | " + mc.getSession().getUsername() + " | "+ Minecraft.getDebugFPS() + " fps | " + serverip + " | " + ddos.format(new Date());
+
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         GL11.glEnable(GL11.GL_BLEND);
 

@@ -1234,7 +1234,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
                     int k = (int)(f9 * 255.0F);
                     int l = (int)(f10 * 255.0F);
                     // ASZALAMULAJCHUM WIDZOWIE DZIS BEDZIEMY PASTOWAC OPEN SOURCE CLIENT SPOKO?
-                    WorldColor RAT = (WorldColor) nekito.INSTANCE.getModuleManager().getModuleByName("WorldColor");
+                    WorldColor RAT = (WorldColor) nekito.INSTANCE.getModuleManager().getModule(WorldColor.class);
                     if (RAT.isToggled()) {
                             this.lightmapColors[i] = new Color(ColorUtility.getColor(3000,1)).getRGB();
                     } else {

@@ -51,6 +51,8 @@ public enum nekito {
         return Minecraft.getDebugFPS() > 0 ? (1.0000 / Minecraft.getDebugFPS()) : 1;
     }
 
+    public static String name = "Nekito";
+
     public static String version = "1.7";
 
     nekito() {
@@ -74,7 +76,7 @@ public enum nekito {
     }
 
     public void setDisplay() throws IOException {
-        Display.setTitle(String.format("Nekito " + version + " xaries edition " + " LWJGL " + Sys.getVersion()));
+        Display.setTitle(String.format(name + version + " xaries edition " + " LWJGL " + Sys.getVersion()));
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
     }
 

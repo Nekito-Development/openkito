@@ -92,7 +92,7 @@ public abstract class AbstractClientPlayer extends EntityPlayer
 
     public ResourceLocation getLocationCape()
     {
-        Cape capes = (Cape) nekito.INSTANCE.getModuleManager().getModuleByName("Cape");
+        Cape capes = (Cape) nekito.INSTANCE.getModuleManager().getModule(Cape.class);
 
         if (!Config.isShowCapes())
         {
