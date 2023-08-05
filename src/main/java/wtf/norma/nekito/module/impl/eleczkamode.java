@@ -34,7 +34,7 @@ public class eleczkamode extends Module {
     public void onEnable() {
 
 
-        ChatHelper.printMessage("this module is in beta(you can have issues with it)");
+     //   ChatHelper.printMessage("this module is in beta(you can have issues with it)");
         // modules
         nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "onichan supido";
         nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillUwUra";

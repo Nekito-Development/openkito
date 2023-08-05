@@ -1526,8 +1526,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
     /**
      * Called when user clicked he's mouse right button (place)
-     */
-    private void rightClickMouse()
+     */ public void rightClickMouse()
     {
         if (!this.playerController.func_181040_m())
         {
