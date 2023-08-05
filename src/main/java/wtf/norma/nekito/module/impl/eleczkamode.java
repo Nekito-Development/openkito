@@ -92,6 +92,41 @@ public class eleczkamode extends Module {
     public void onDisable() {  // insane shitcode polska.pl cry abt it
         nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "Player Speed"; // insane
         nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillAura"; // insane
+        nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).name = "Target Strafe";
+        nekito.INSTANCE.getModuleManager().getModule(Velocity.class).name = "Velocity";
+        nekito.INSTANCE.getModuleManager().getModule(HitBox.class).name = "HitBox";
+        nekito.INSTANCE.getModuleManager().getModule(AutoClicker.class).name = "AutoClicker";
+        nekito.INSTANCE.getModuleManager().getModule(AimBot.class).name = "AimBot";
+        nekito.INSTANCE.getModuleManager().getModule(Reach.class).name = "Reach";
+        nekito.INSTANCE.getModuleManager().getModule(Sprint.class).name = "Sprint";
+        nekito.INSTANCE.getModuleManager().getModule(Fly.class).name = "Fly";
+        nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).name = "No Slow Down";
+        nekito.INSTANCE.getModuleManager().getModule(AirJump.class).name = "AirJump";
+        nekito.INSTANCE.getModuleManager().getModule(Stealer.class).name = "romanian simulator";
+        nekito.INSTANCE.getModuleManager().getModule(ClickGUI.class).name = "ClickGUI";
+        nekito.INSTANCE.getModuleManager().getModule(Cape.class).name = "Cape";
+        nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).name = "ItemPhysics";
+        nekito.INSTANCE.getModuleManager().getModule(FullBright.class).name = "FullBright";
+        nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CustomButtons";
+        nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CustomModel";
+        nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "ServerInfo";
+        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "InventorySettings";
+        nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "bandytakamera";
+        nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WorldColor";
+        nekito.INSTANCE.getModuleManager().getModule(CrashGUI.class).name = "CrashGUI";
+        nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "Watermark";
+        nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "cfx watermark ";
+        nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "Arraylist";
+        nekito.INSTANCE.getModuleManager().getModule(NoWeather.class).name = "No Weather";
+        nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).name = "CustomHotbar";
+        nekito.INSTANCE.getModuleManager().getModule(TimeChanger.class).name = "Time Changer";
+        nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Wings";
+        nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ears";
+        nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Anti Void";
+        nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "helium auth disabler";
+        nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eleczkamode";
+        nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "No Clip";
+        nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";
 
 
 

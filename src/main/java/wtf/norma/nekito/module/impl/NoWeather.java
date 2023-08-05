@@ -13,7 +13,7 @@ import wtf.norma.nekito.module.Module;
 public class NoWeather extends Module {
 
     public NoWeather() {
-        super("NoWeather", Category.VISUALS, Keyboard.KEY_NONE);
+        super("No Weather", Category.VISUALS, Keyboard.KEY_NONE);
     }
 
     @Override
