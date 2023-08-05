@@ -73,6 +73,8 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eweczka mowt";
         nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "NowCliwp";
         nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timwmer";
+        nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criwtakals";
+        nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fowo Colowwr";
 
         //categories
         Category.COMBAT.name = "COwObat";
@@ -92,6 +94,7 @@ public class eleczkamode extends Module {
     public void onDisable() {  // insane shitcode polska.pl cry abt it
         nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "Player Speed"; // insane
         nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillAura"; // insane
+        nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criticals";
         nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).name = "Target Strafe";
         nekito.INSTANCE.getModuleManager().getModule(Velocity.class).name = "Velocity";
         nekito.INSTANCE.getModuleManager().getModule(HitBox.class).name = "HitBox";
@@ -127,6 +130,7 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eleczkamode";
         nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "No Clip";
         nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";
+        nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
 
 
 
