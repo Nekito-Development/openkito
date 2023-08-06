@@ -18,7 +18,7 @@ public class InventorySettings extends Module {
 
 
     public InventorySettings() {
-        super("Inventory Settings", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Gui Settings", Category.VISUALS, Keyboard.KEY_NONE);
         addSettings(shader,anime);
     }
 

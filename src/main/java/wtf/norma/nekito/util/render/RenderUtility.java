@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.lwjgl.opengl.GL11.*;
+import static wtf.norma.nekito.util.render.BlurUtility.bloomFramebuffer;
 
 public class RenderUtility {
 
@@ -249,6 +250,46 @@ public class RenderUtility {
         GL11.glRotatef(-180 - vector, 0F, 0F, 1.0F);
         GL11.glTranslated(-x, -y, 0);
         GlStateManager.resetColor();
+        GL11.glPopMatrix();
+    }
+    public static void drawRoundedRectAlpha(double x, double y, double width, double height, double cornerRadius, Color color) {
+        GL11.glPushMatrix();
+        GL11.glDisable(3553);
+        GL11.glEnable(3042);
+        color(color.getRGB());
+        GL11.glBegin(9);
+        double cornerX = x + width - cornerRadius;
+        double cornerY = y + height - cornerRadius;
+
+        for(int i = 0; i <= 90; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        cornerX = x + width - cornerRadius;
+        cornerY = y + cornerRadius;
+
+        for(int i = 90; i <= 180; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        cornerX = x + cornerRadius;
+        cornerY = y + cornerRadius;
+
+        for(int i = 180; i <= 270; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        cornerX = x + cornerRadius;
+        cornerY = y + height - cornerRadius;
+
+        for(int i = 270; i <= 360; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        GL11.glEnd();
+        GlStateManager.resetColor();
+        GL11.glDisable(3042);
+        GL11.glEnable(3553);
         GL11.glPopMatrix();
     }
 
@@ -492,6 +533,28 @@ public class RenderUtility {
 
 
     public static Map<Integer, Integer> cache = new HashMap();
+    public static void stuffToBlur(boolean bloom) {
+
+        // Gui.drawRect2(40, 40, 400, 40, -1);
+
+    }
+
+    public static void drawShadow(float radius, float offset, Runnable data) {
+        bloomFramebuffer = RenderUtility.createFrameBuffer(bloomFramebuffer);
+        bloomFramebuffer.framebufferClear();
+        bloomFramebuffer.bindFramebuffer(true);
+        data.run();
+        stuffToBlur(true);
+        bloomFramebuffer.unbindFramebuffer();
+        BloomUtil.renderBlur(bloomFramebuffer.framebufferTexture, (int) radius, (int) offset);
+
+    }
+
+    public static void setAlphaLimit(float limit) {
+        GlStateManager.enableAlpha();
+        GlStateManager.alphaFunc(GL_GREATER, (float) (limit * .01));
+    }
+
     private static void renderShadow0(double x, double y, double width, double height, int color, int blurRadius) {
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         width += 10;
@@ -557,6 +620,9 @@ public class RenderUtility {
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glScalef(2.0f, 2.0f, 2.0f);
     }
+
+
+
 
 
     public static void renderShadow(double x, double y, double width, double height, int color, int blurRadius) {
@@ -722,6 +788,61 @@ public class RenderUtility {
         roundedShader.unload();
         GlStateManager.disableBlend();
         GlStateManager.resetColor();
+    }
+
+    public static void drawRoundedRectGradient(double x, double y, double width, double height, double cornerRadius, Color start, Color end) {
+        GL11.glPushMatrix();
+        GL11.glDisable(3553);
+        GL11.glEnable(2848);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glShadeModel(7425);
+        color(start.getRGB());
+        GL11.glBegin(9);
+        double cornerX = x + width - cornerRadius;
+        double cornerY = y + height - cornerRadius;
+
+        for(int i = 0; i <= 90; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        cornerX = x + width - cornerRadius;
+        cornerY = y + cornerRadius;
+
+        for(int i = 90; i <= 180; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        color(end.getRGB());
+        cornerX = x + cornerRadius;
+        cornerY = y + cornerRadius;
+
+        for(int i = 180; i <= 270; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        cornerX = x + cornerRadius;
+        cornerY = y + height - cornerRadius;
+
+        for(int i = 270; i <= 360; i += 30) {
+            GL11.glVertex2d(cornerX + Math.sin((double)i * Math.PI / 180.0) * cornerRadius, cornerY + Math.cos((double)i * Math.PI / 180.0) * cornerRadius);
+        }
+
+        GL11.glEnd();
+        GL11.glShadeModel(7424);
+        color(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glDisable(3042);
+        GL11.glDisable(2848);
+        GL11.glEnable(3553);
+        GL11.glPopMatrix();
+    }
+
+    public static void color(float red, float green, float blue, float alpha) {
+        GL11.glColor4f(red / 255.0F, green / 255.0F, blue / 255.0F, alpha / 255.0F);
+    }
+
+    public static void color(Color color) {
+        color((float)color.getRed(), (float)color.getGreen(), (float)color.getBlue(), (float)color.getAlpha());
     }
 
     public static void drawGradientRound(float x, float y, float width, float height, float radius, Color bottomLeft, Color topLeft, Color bottomRight, Color topRight) {

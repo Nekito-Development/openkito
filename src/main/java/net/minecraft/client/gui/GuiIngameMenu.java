@@ -25,6 +25,8 @@ public class GuiIngameMenu extends GuiScreen
      */
     public void initGui()
     {
+
+        this.lastMS = System.currentTimeMillis();
         this.field_146445_a = 0;
         this.buttonList.clear();
         int i = -16;
@@ -133,12 +135,42 @@ public class GuiIngameMenu extends GuiScreen
        ++this.field_146444_f;
     }
 
+
+    // draws a background ok?
+    private void drawbackground() {
+
+        GL11.glPushMatrix();
+        {
+            GL11.glDisable(GL11.GL_CULL_FACE);
+
+            GLSL.MAINMENU.useShader(width,height, 0, 0, (System.currentTimeMillis() - lastMS) / 1000f);
+
+
+            GL11.glBegin(GL11.GL_QUADS);
+            {
+
+
+                GL11.glVertex2f(0,0);
+                GL11.glVertex2f(0,height);
+                GL11.glVertex2f(width,height);
+                GL11.glVertex2f(width,0);
+                GL11.glEnd();
+            }
+            GL20.glUseProgram(0);
+        }
+        GL11.glPopMatrix();
+    }
+
     /**
      * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-
+        if (InventorySettings.shader.isEnabled()) {
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            drawbackground();
+        }
 
         this.drawDefaultBackground();
 

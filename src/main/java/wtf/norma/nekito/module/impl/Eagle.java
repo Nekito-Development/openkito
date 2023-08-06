@@ -37,7 +37,7 @@ public class Eagle extends Module {
 
     @Override
     public void onEvent(Event e) {
-    
+
         if (e instanceof EventUpdate) {
             mc.thePlayer.setSprinting(false);
             mc.gameSettings.keyBindSprint.pressed = false;

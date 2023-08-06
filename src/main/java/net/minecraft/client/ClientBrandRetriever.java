@@ -4,6 +4,6 @@ public class ClientBrandRetriever
 {
     public static String getClientModName()
     {
-        return "vanilla";
+        return "astal.store";
     }
 }

@@ -65,7 +65,6 @@ import optifine.CustomItems;
 import optifine.Reflector;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
-import wtf.norma.nekito.module.impl.CustomHotbar;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.font.Fonts;
 
@@ -465,6 +464,77 @@ public class RenderItem implements IResourceManagerReloadListener {
     public void renderItemOverlays(FontRenderer fr, ItemStack stack, int xPosition, int yPosition) {
         this.renderItemOverlayIntoGUI(fr, stack, xPosition, yPosition, (String) null);
     }
+
+    public void renderItemOverlays(wtf.norma.nekito.util.font.FontRenderer fr, ItemStack stack, int xPosition, int yPosition) {
+        this.renderItemOverlayIntoGUI(fr, stack, xPosition, yPosition, (String) null);
+    }
+
+
+
+    public void renderItemOverlayIntoGUI(wtf.norma.nekito.util.font.FontRenderer fr, ItemStack stack, int xPosition, int yPosition, String text) {
+        if (stack != null) {
+            if (stack.stackSize != 1 || text != null) {
+                String s = text == null ? String.valueOf(stack.stackSize) : text;
+
+                if (text == null && stack.stackSize < 1) {
+                    s = EnumChatFormatting.RED + String.valueOf(stack.stackSize);
+                }
+
+                GlStateManager.disableLighting();
+                GlStateManager.disableDepth();
+                GlStateManager.disableBlend();
+
+              //  if (nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender) {
+             //       Fonts.SEMI_BOLD_18.drawStringWithShadow(s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 9), 16777215);
+           //     } else {
+          //          fr.drawStringWithShadow(s, (float) (xPosition + 19 - 2 - fr.getStringWidth(s)), (float) (yPosition + 9), 16777215);
+           //     }  groszus problem maker
+
+                GlStateManager.enableLighting();
+                GlStateManager.enableDepth();
+            }
+
+            boolean flag = stack.isItemDamaged();
+
+            if (Reflector.ForgeItem_showDurabilityBar.exists()) {
+                flag = Reflector.callBoolean(stack.getItem(), Reflector.ForgeItem_showDurabilityBar, new Object[]{stack});
+            }
+
+            if (flag) {
+                int i = (int) Math.round(13.0D - (double) stack.getItemDamage() * 13.0D / (double) stack.getMaxDamage());
+                int j = (int) Math.round(255.0D - (double) stack.getItemDamage() * 255.0D / (double) stack.getMaxDamage());
+
+                if (Reflector.ForgeItem_getDurabilityForDisplay.exists()) {
+                    double d0 = Reflector.callDouble(stack.getItem(), Reflector.ForgeItem_getDurabilityForDisplay, new Object[]{stack});
+                    i = (int) Math.round(13.0D - d0 * 13.0D);
+                    j = (int) Math.round(255.0D - d0 * 255.0D);
+                }
+
+                GlStateManager.disableLighting();
+                GlStateManager.disableDepth();
+                GlStateManager.disableTexture2D();
+                GlStateManager.disableAlpha();
+                GlStateManager.disableBlend();
+                Tessellator tessellator = Tessellator.getInstance();
+                WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+                this.func_181565_a(worldrenderer, xPosition + 2, yPosition + 13, 13, 2, 0, 0, 0, 255);
+                this.func_181565_a(worldrenderer, xPosition + 2, yPosition + 13, 12, 1, (255 - j) / 4, 64, 0, 255);
+                this.func_181565_a(worldrenderer, xPosition + 2, yPosition + 13, i, 1, 255 - j, j, 0, 255);
+
+                if (!Reflector.ForgeHooksClient.exists()) {
+                    GlStateManager.enableBlend();
+                }
+
+                GlStateManager.enableAlpha();
+                GlStateManager.enableTexture2D();
+                GlStateManager.enableLighting();
+                GlStateManager.enableDepth();
+            }
+        }
+    }
+
+
+
 
     /**
      * Renders the stack size and/or damage bar for the given ItemStack.

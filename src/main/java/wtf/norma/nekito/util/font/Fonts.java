@@ -1,12 +1,19 @@
 package wtf.norma.nekito.util.font;
 
+
 import net.minecraft.util.ResourceLocation;
-
-
 
 public class Fonts {
 
     public static FontRenderer SEMI_BOLD_45 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 45, 0), true, true);
+
+    public static FontRenderer SEMI_BOLD_40 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 40, 0), true, true);
+
+
+    public static FontRenderer simkarta = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("courbd.ttf"), 30, 0), true, true);
+
+    public static FontRenderer SEMI_BOLD_30 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 30, 0), true, true);
+
 
 
     public static FontRenderer fx = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("comicfont.ttf"), 50, 0), true, true);
@@ -15,6 +22,12 @@ public class Fonts {
     public static FontRenderer sans_35 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 35, 0), true, true);
     public static FontRenderer Comfortaa_40 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 40, 0), true, true);
     public static FontRenderer Comfortaa_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 13, 0), true, true);
+
+
+    public static FontRenderer Comfortaa_20 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 20, 0), true, true);
+
+
+    public static FontRenderer Comfortaa_15 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 15, 0), true, true);
 
    // public static FontRenderer verdana_12 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("verdana.ttf"), 12, 0), true, true);
     public static FontRenderer verdana_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("verdana.ttf"), 13, 0), true, true);

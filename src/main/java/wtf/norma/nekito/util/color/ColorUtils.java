@@ -5,7 +5,8 @@ public enum ColorUtils {
 
     WHITE(-65794),
 
-    GREY(-9868951);
+    GREY(-9868951),
+    ORANGE(-29696);
 
 
     public int cwel;

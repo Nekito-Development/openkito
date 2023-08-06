@@ -56,13 +56,14 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CuwustomBuwttons";
         nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CuwstommOwOdel";
         nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "SeuwuerInfu";
-        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Invuntoworysetungs";
+        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gwui setuwnii";
         nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "gorocamuwera";
         nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WourdCowolowr";
         nekito.INSTANCE.getModuleManager().getModule(CrashGUI.class).name = "CrauwshGuwuI";
         nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "WauterMaurk";
         nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "XauwuesWauterMaurk";
         nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "AuwrList";
+        nekito.INSTANCE.getModuleManager().getModule(TargetHUD.class).name = "Tawwget HUD";
         nekito.INSTANCE.getModuleManager().getModule(NoWeather.class).name = "No Wauther";
         nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).name = "CuwustomHoutbar";
         nekito.INSTANCE.getModuleManager().getModule(TimeChanger.class).name = "TimeChawwger";
@@ -103,6 +104,7 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(Reach.class).name = "Reach";
         nekito.INSTANCE.getModuleManager().getModule(Sprint.class).name = "Sprint";
         nekito.INSTANCE.getModuleManager().getModule(Fly.class).name = "Fly";
+        nekito.INSTANCE.getModuleManager().getModule(TargetHUD.class).name = "Target HUD";
         nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).name = "No Slow Down";
         nekito.INSTANCE.getModuleManager().getModule(AirJump.class).name = "AirJump";
         nekito.INSTANCE.getModuleManager().getModule(Stealer.class).name = "romanian simulator";
@@ -113,7 +115,7 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CustomButtons";
         nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CustomModel";
         nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "ServerInfo";
-        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "InventorySettings";
+        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gui Settings";
         nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "bandytakamera";
         nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WorldColor";
         nekito.INSTANCE.getModuleManager().getModule(CrashGUI.class).name = "CrashGUI";

@@ -295,9 +295,9 @@ public class GuiNewChat extends Gui
     /**
      * Returns true if the chat GUI is open
      */
-    public boolean getChatOpen()
+    public static boolean getChatOpen()
     {
-        return this.mc.currentScreen instanceof GuiChat;
+        return Minecraft.getMinecraft().currentScreen instanceof GuiChat;
     }
 
     /**

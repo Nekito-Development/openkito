@@ -7,6 +7,9 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import wtf.norma.nekito.util.render.RenderUtility;
+
+import static org.lwjgl.opengl.GL11C.GL_QUADS;
 
 public class Gui
 {
@@ -83,6 +86,9 @@ public class Gui
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
     }
+
+
+
 
     /**
      * Draws a rectangle with a vertical gradient between the specified colors (ARGB format). Args : x1, y1, x2, y2,

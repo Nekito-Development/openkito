@@ -22,6 +22,7 @@ public class DraggableManager {
         Add(new Watermark2());
         Add(new Hotbar());
 
+
         for(AbstractDraggable draggable : DraggableList) {
             draggable.Init();
         }

@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.util.Util;
+import wtf.norma.nekito.util.math.MathUtility;
 import wtf.norma.nekito.util.shader.ShaderUtility;
 
 import java.awt.*;
@@ -68,9 +69,63 @@ public class BloomUtil implements Util {
         GlStateManager.popMatrix();
     }
 
+
+    public static void renderBlur(int sourceTexture, int radius, int offset) {
+        framebuffer = RenderUtility.createFrameBuffer(framebuffer);
+        GlStateManager.enableAlpha();
+        GlStateManager.alphaFunc(516, 0.0f);
+        GlStateManager.enableBlend();
+        OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, GL11.GL_ONE, GL11.GL_ZERO);
+
+        final FloatBuffer weightBuffer = BufferUtils.createFloatBuffer(256);
+        for (int i = 0; i <= radius; i++) {
+            weightBuffer.put(MathUtility.calculateGaussianValue(i, radius));
+        }
+        weightBuffer.rewind();
+
+        RenderUtility.setAlphaLimit(0.0F);
+
+        framebuffer.framebufferClear();
+        framebuffer.bindFramebuffer(true);
+        gaussianBloom.init();
+        setupUniforms(radius, offset, 0, weightBuffer);
+        RenderUtility.bindTexture(sourceTexture);
+        ShaderUtility.drawQuads();
+        gaussianBloom.unload();
+        framebuffer.unbindFramebuffer();
+
+
+        mc.getFramebuffer().bindFramebuffer(true);
+
+        gaussianBloom.init();
+        setupUniforms(radius, 0, offset, weightBuffer);
+        GL13.glActiveTexture(GL13.GL_TEXTURE16);
+        RenderUtility.bindTexture(sourceTexture);
+        GL13.glActiveTexture(GL13.GL_TEXTURE0);
+        RenderUtility.bindTexture(framebuffer.framebufferTexture);
+        ShaderUtility.drawQuads();
+        gaussianBloom.unload();
+
+        GlStateManager.alphaFunc(516, 0.1f);
+        GlStateManager.enableAlpha();
+
+        GlStateManager.bindTexture(0);
+    }
+
+
     public static void setAlphaLimit(float limit) {
         GlStateManager.enableAlpha();
         GlStateManager.alphaFunc(GL_GREATER, (float) (limit * .01));
+    }
+
+    // without color and des cuz i can ok?
+    public static void setupUniforms(int radius, int directionX, int directionY, FloatBuffer weights) {
+        gaussianBloom.setUniformi("inTexture", 0);
+        gaussianBloom.setUniformi("textureToCheck", 16);
+        gaussianBloom.setUniformf("radius", radius);
+        gaussianBloom.setUniformf("texelSize", 1.0F / (float) mc.displayWidth, 1.0F / (float) mc.displayHeight);
+        gaussianBloom.setUniformf("direction", directionX, directionY);
+        GL20.glUniform1fv(gaussianBloom.getUniform("weights"), weights);
     }
 
     public static void setupUniforms(int radius, int directionX, int directionY, FloatBuffer weights, Color c, float des) {

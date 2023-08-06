@@ -1306,6 +1306,12 @@ public abstract class EntityLivingBase extends Entity
         return (float)this.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
     }
 
+
+    public final double getMaxHealth2()
+    {
+        return (double)this.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
+    }
+
     /**
      * counts the amount of arrows stuck in the entity. getting hit by arrows increases this, used in rendering
      */

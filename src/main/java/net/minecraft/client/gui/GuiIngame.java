@@ -787,7 +787,7 @@ public class GuiIngame extends Gui {
                 this.mc.mcProfiler.endStartSection("mountHealth");
                 EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
                 int l7 = (int) Math.ceil((double) entitylivingbase.getHealth());
-                float f3 = entitylivingbase.getMaxHealth();
+                float f3 = (float) entitylivingbase.getMaxHealth();
                 int l6 = (int) (f3 + 0.5F) / 2;
 
                 if (l6 > 30) {
