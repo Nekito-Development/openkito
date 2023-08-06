@@ -20,6 +20,12 @@ import wtf.norma.nekito.util.render.RenderUtility;
 import java.awt.*;
 
 
+/**
+ * @project nekito
+ * @prod hackerzy mysliborz S.A
+ * @author eleczka
+ */
+
 public class eleczkamode extends Module {
 
 
@@ -76,6 +82,10 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timwmer";
         nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criwtakals";
         nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fowo Colowwr";
+        nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "TiwwBawse";
+        nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fawll";
+        nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
+        nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
 
         //categories
         Category.COMBAT.name = "COwObat";
@@ -133,6 +143,11 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "No Clip";
         nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";
         nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
+        nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "Tickbase";
+        nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
+        nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
+        nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
+
 
         Category.COMBAT.name = "Combat";
         Category.LEGIT.name = "Legit";

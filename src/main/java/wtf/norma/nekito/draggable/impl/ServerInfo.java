@@ -9,8 +9,13 @@ import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
+import wtf.norma.nekito.module.impl.TargetHUD;
 import wtf.norma.nekito.module.impl.eleczkamode;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.util.color.ColorUtility;
+import wtf.norma.nekito.util.color.ColorUtils;
+import wtf.norma.nekito.util.font.Fonts;
+import wtf.norma.nekito.util.render.BlurUtility;
 import wtf.norma.nekito.util.render.RenderUtil;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -40,6 +45,13 @@ public class ServerInfo extends AbstractDraggable {
 
         ArrayList<String> info = new ArrayList<>();
 
+        final float playerWidth = 135;
+
+        final float height = 60;
+
+
+
+
         int x = (int) mc.thePlayer.posX, y = (int) mc.thePlayer.posY, z = (int) mc.thePlayer.posZ;
 
         long lastPacketMS = TimeHelper.getCurrentTime() - Holder.getLastPacketMS();
@@ -47,6 +59,7 @@ public class ServerInfo extends AbstractDraggable {
         {
             Holder.setTPS(Holder.getTPS() - 0.01);
         }
+
 
 
 

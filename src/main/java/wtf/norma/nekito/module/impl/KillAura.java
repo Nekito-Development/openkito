@@ -68,7 +68,6 @@ public class KillAura extends Module {
         if (e instanceof EventMotion) {
             if (e.isPre()) {
                 target = getTarget(ZASIEGCHUJA.getValue());
-
                 if (target != null) {
                     if (rotate(target, (EventMotion) e)) {
                         if (t.hasReached((long) (1000 / discord.getValue()))) {

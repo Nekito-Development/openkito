@@ -28,7 +28,7 @@ public class TargetStrafe extends Module {
 
 
 
-    public void onchuj(Event e) {
+    public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
             if (KillAura.target != null) {
                 if (mc.thePlayer.isCollidedHorizontally) {

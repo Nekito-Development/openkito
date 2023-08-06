@@ -177,6 +177,7 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
+import wtf.norma.nekito.module.impl.FastWorldLoad;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.ui.MainMenuLoadingScreen;
 
@@ -1234,8 +1235,12 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         try
         {
-            System.gc();
-            this.loadWorld((WorldClient)null);
+
+            if (!nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).isToggled()) {
+                System.gc();
+                this.loadWorld((WorldClient) null);
+            }
+
         }
         catch (Throwable var2)
         {

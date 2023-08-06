@@ -33,6 +33,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
+/**
+ * @project nekito
+ * @prod hackerzy mysliborz S.A
+ * @author eleczka
+ * @at 05.08, 3:37
+ */
+
+
 public class TargetHUD extends Module {
     public TargetHUD() {
         super("Target HUD", Category.VISUALS, Keyboard.KEY_NONE);
@@ -66,21 +74,28 @@ public class TargetHUD extends Module {
     public final float mysliborzpolska = height;
     public void onEvent(Event e) {
         if (e instanceof EventRender2D) {
-
                 this.draworangenakarte(KillAura.target);
+
+
+
+
 
 
         }
 
     }
     private final float playerWidth = 135;
-    private static EntityLivingBase curTarget = null;
-    private float healthBarWidth;
+
 
 
     public static final Color cwel = new Color(250,247,250);
     public void draworangenakarte(EntityLivingBase target) {
+
+
         if (KillAura.target != null) {
+
+
+
 
             // why are you skidding my targethud?
             // anyway tag me if you do.
@@ -91,6 +106,7 @@ public class TargetHUD extends Module {
             int y = 50;
             int curTargetHealth = (int) target.getHealth();
             int maxTargetHealth = (int) target.getMaxHealth2();
+
 
             //  Fonts.SEMI_BOLD_18.drawString("Orange",256,890, ColorUtils.ORANGE.cwel);
 
@@ -110,6 +126,9 @@ public class TargetHUD extends Module {
                 RenderUtility.drawImage(new ResourceLocation("images/cwelowate/numerfona.png"), 117, 100, 50, 30, new Color(255, 255, 255));
                 Fonts.SEMI_BOLD_12.drawString(target.getName(), 123, 120, ColorUtils.GREY.cwel);
             }
+
+
+
 
             //     RenderUtility.drawImage(new ResourceLocation("images/cwelowate/kartysim.png"), 230, 100, 50, 30, new Color(255, 255, 255));
 

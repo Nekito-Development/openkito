@@ -13,7 +13,7 @@ import wtf.norma.nekito.util.player.MovementUtil;
 public class NoClip extends Module {
 
     public NoClip() {
-        super("No Clip", Category.OTHER, Keyboard.KEY_NONE);
+        super("No Clip", Category.MOVEMENT, Keyboard.KEY_NONE);
     }
 
 

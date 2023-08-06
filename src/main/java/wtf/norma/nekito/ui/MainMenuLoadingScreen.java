@@ -63,7 +63,7 @@ public class MainMenuLoadingScreen {
 
         // Initialize the splash texture
         if (splash == null) {
-            splash = new ResourceLocation("cwel.jpg");
+            splash = new ResourceLocation("loading.png");
         }
 
         // Bind the texture
