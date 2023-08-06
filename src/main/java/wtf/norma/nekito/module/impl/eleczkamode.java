@@ -134,7 +134,12 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";
         nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
 
-
+        Category.COMBAT.name = "Combat";
+        Category.LEGIT.name = "Legit";
+        Category.MOVEMENT.name = "Movement";
+        Category.VISUALS.name = "Visuals";
+        Category.OTHER.name = "Other";
+        Category.CRASHERS.name = "Crashers List";
 
 
         super.onDisable();
@@ -146,8 +151,6 @@ public class eleczkamode extends Module {
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
-
-            //    KillAura.name = "guwno";
 
         }
 

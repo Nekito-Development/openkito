@@ -17,6 +17,7 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
+import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
@@ -47,6 +48,8 @@ public class TargetHUD extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+        ChatHelper.printMessage("isnt draggable cuz im too lazy");
+        ChatHelper.printMessage("this module is in beta(you can have issues with it)");
      //   nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = true;
     }
 
@@ -64,11 +67,8 @@ public class TargetHUD extends Module {
     public void onEvent(Event e) {
         if (e instanceof EventRender2D) {
 
-                this.draworangenakarte(mc.thePlayer);
-                // zmienic to potem na killaura.target
+                this.draworangenakarte(KillAura.target);
 
-
-                //      System.out.println("X:   " + Mouse.getX() +  " Y: " + Mouse.getY());
 
         }
 
@@ -80,39 +80,40 @@ public class TargetHUD extends Module {
 
     public static final Color cwel = new Color(250,247,250);
     public void draworangenakarte(EntityLivingBase target) {
+        if (KillAura.target != null) {
 
-        // why are you skidding my targethud?
-        // anyway tag me if you do.
+            // why are you skidding my targethud?
+            // anyway tag me if you do.
 
-        // author: eleczka aka intexpression
+            // author: eleczka aka intexpression
 
-        int x = 50;
-        int y = 50;
-        int curTargetHealth = (int) target.getHealth();
-        int maxTargetHealth = (int) target.getMaxHealth2();
+            int x = 50;
+            int y = 50;
+            int curTargetHealth = (int) target.getHealth();
+            int maxTargetHealth = (int) target.getMaxHealth2();
 
-      //  Fonts.SEMI_BOLD_18.drawString("Orange",256,890, ColorUtils.ORANGE.cwel);
+            //  Fonts.SEMI_BOLD_18.drawString("Orange",256,890, ColorUtils.ORANGE.cwel);
 
-        RenderUtility.drawRound(x  + (mysliborzpolska - 15), y, playerWidth + 15, height, 6, cwel);
-        Fonts.SEMI_BOLD_30.drawString("Orange na karte", 117 , 52  , -29696);
-        RenderUtility.drawImage(new ResourceLocation("images/cwelowate/simswap.png"),   117, 75, 30, 20, new Color(255, 255, 255));
-        // prints targetet by killaura player Health (hp)
-        Fonts.simkarta.drawString(curTargetHealth + "0GB na", 165, 78  , ColorUtils.GREY.cwel);
-        // prints targetet by killaura player max Healthhp)
-        Fonts.simkarta.drawString(maxTargetHealth  + "0 dni", 165, 90  , ColorUtils.GREY.cwel);
+            RenderUtility.drawRound(x + (mysliborzpolska - 15), y, playerWidth + 15, height, 6, cwel);
+            Fonts.SEMI_BOLD_30.drawString("Orange na karte", 117, 52, -29696);
+            RenderUtility.drawImage(new ResourceLocation("images/cwelowate/simswap.png"), 117, 75, 30, 20, new Color(255, 255, 255));
+            // prints targetet by killaura player Health (hp)
+            Fonts.simkarta.drawString(curTargetHealth + "0GB na", 165, 78, ColorUtils.GREY.cwel);
+            // prints targetet by killaura player max Healthhp)
+            Fonts.simkarta.drawString(maxTargetHealth + "0 dni", 165, 90, ColorUtils.GREY.cwel);
 
-        RenderUtility.drawImage(new ResourceLocation("images/cwelowate/orange.png"),   245, 54, 15, 15, new Color(255, 255, 255));
+            RenderUtility.drawImage(new ResourceLocation("images/cwelowate/orange.png"), 245, 54, 15, 15, new Color(255, 255, 255));
 
 
+            // fuck this bordered rect all my homies uses drawimage
+            if (numerfona.isEnabled()) {
+                RenderUtility.drawImage(new ResourceLocation("images/cwelowate/numerfona.png"), 117, 100, 50, 30, new Color(255, 255, 255));
+                Fonts.SEMI_BOLD_12.drawString(target.getName(), 123, 120, ColorUtils.GREY.cwel);
+            }
 
-        // fuck this bordered rect all my homies uses drawimage
-        if (numerfona.isEnabled()) {
-            RenderUtility.drawImage(new ResourceLocation("images/cwelowate/numerfona.png"), 117, 100, 50, 30, new Color(255, 255, 255));
-            Fonts.SEMI_BOLD_12.drawString(target.getName(),123,120,ColorUtils.GREY.cwel);
+            //     RenderUtility.drawImage(new ResourceLocation("images/cwelowate/kartysim.png"), 230, 100, 50, 30, new Color(255, 255, 255));
+
         }
-
-   //     RenderUtility.drawImage(new ResourceLocation("images/cwelowate/kartysim.png"), 230, 100, 50, 30, new Color(255, 255, 255));
-
     }
 
 
