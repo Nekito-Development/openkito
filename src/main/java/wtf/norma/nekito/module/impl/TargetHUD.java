@@ -74,7 +74,7 @@ public class TargetHUD extends Module {
     public final float mysliborzpolska = height;
     public void onEvent(Event e) {
         if (e instanceof EventRender2D) {
-                this.draworangenakarte(KillAura.target);
+                this.draworangenakarte();
 
 
 
@@ -84,49 +84,68 @@ public class TargetHUD extends Module {
         }
 
     }
+    private double scale = 0;
+
+
     private final float playerWidth = 135;
 
-
+    private static EntityLivingBase curTarget = null;
 
     public static final Color cwel = new Color(250,247,250);
-    public void draworangenakarte(EntityLivingBase target) {
+    public void draworangenakarte() {
 
-
-        if (KillAura.target != null) {
-
-
-
-
-            // why are you skidding my targethud?
-            // anyway tag me if you do.
-
-            // author: eleczka aka intexpression
-
-            int x = 50;
-            int y = 50;
-            int curTargetHealth = (int) target.getHealth();
-            int maxTargetHealth = (int) target.getMaxHealth2();
-
-
-            //  Fonts.SEMI_BOLD_18.drawString("Orange",256,890, ColorUtils.ORANGE.cwel);
-
-            RenderUtility.drawRound(x + (mysliborzpolska - 15), y, playerWidth + 15, height, 6, cwel);
-            Fonts.SEMI_BOLD_30.drawString("Orange na karte", 117, 52, -29696);
-            RenderUtility.drawImage(new ResourceLocation("images/cwelowate/simswap.png"), 117, 75, 30, 20, new Color(255, 255, 255));
-            // prints targetet by killaura player Health (hp)
-            Fonts.simkarta.drawString(curTargetHealth + "0GB na", 165, 78, ColorUtils.GREY.cwel);
-            // prints targetet by killaura player max Healthhp)
-            Fonts.simkarta.drawString(maxTargetHealth + "0 dni", 165, 90, ColorUtils.GREY.cwel);
-
-            RenderUtility.drawImage(new ResourceLocation("images/cwelowate/orange.png"), 245, 54, 15, 15, new Color(255, 255, 255));
-
-
-            // fuck this bordered rect all my homies uses drawimage
-            if (numerfona.isEnabled()) {
-                RenderUtility.drawImage(new ResourceLocation("images/cwelowate/numerfona.png"), 117, 100, 50, 30, new Color(255, 255, 255));
-                Fonts.SEMI_BOLD_12.drawString(target.getName(), 123, 120, ColorUtils.GREY.cwel);
+        if (KillAura.target == null) {
+            if (mc.thePlayer != null && mc.currentScreen instanceof GuiChat) {
+                curTarget = mc.thePlayer;
+                scale = AnimationHelper.animation((float) scale, (float) 1, (float) (6 * nekito.deltaTime()));
+            } else {
+                scale = AnimationHelper.animation((float) scale, (float) 0, (float) (6 * nekito.deltaTime()));
             }
+        } else {
+            curTarget = KillAura.target;
+            scale = AnimationHelper.animation((float) scale, (float) 1, (float) (6 * nekito.deltaTime()));
+        }
 
+
+        if (curTarget != null) {
+
+                // why are you skidding my targethud?
+                // anyway tag me if you do.
+
+                // author: eleczka aka intexpression
+
+                int x = 50;
+                int y = 50;
+                int curTargetHealth = (int) curTarget.getHealth();
+                int maxTargetHealth = (int) curTarget.getMaxHealth2();
+
+
+            GlStateManager.pushMatrix();
+            GlStateManager.resetColor();
+            GL11.glTranslated(x + 36, y + 26, 0);
+            GL11.glScaled(scale, scale, 0);
+            GL11.glTranslated(-(x + 36), -(y + 26), 0);
+
+
+
+                RenderUtility.drawRound(x + (mysliborzpolska - 15), y, playerWidth + 15, height, 6, cwel);
+                Fonts.SEMI_BOLD_30.drawString("Orange na karte", 117, 52, -29696);
+                RenderUtility.drawImage(new ResourceLocation("images/cwelowate/simswap.png"), 117, 75, 30, 20, new Color(255, 255, 255));
+                // prints targetet by killaura player Health (hp)
+                Fonts.simkarta.drawString(curTargetHealth + "0GB na", 165, 78, ColorUtils.GREY.cwel);
+                // prints targetet by killaura player max Healthhp)
+                Fonts.simkarta.drawString(maxTargetHealth + "0 dni", 165, 90, ColorUtils.GREY.cwel);
+
+                RenderUtility.drawImage(new ResourceLocation("images/cwelowate/orange.png"), 245, 54, 15, 15, new Color(255, 255, 255));
+
+
+                // fuck this bordered rect all my homies uses drawimage
+                if (numerfona.isEnabled()) {
+                    RenderUtility.drawImage(new ResourceLocation("images/cwelowate/numerfona.png"), 117, 100, 50, 30, new Color(255, 255, 255));
+                    Fonts.SEMI_BOLD_12.drawString(curTarget.getName(), 123, 120, ColorUtils.GREY.cwel);
+                }
+
+            GL11.glPopMatrix();
 
 
 
