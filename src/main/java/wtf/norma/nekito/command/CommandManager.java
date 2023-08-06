@@ -23,6 +23,7 @@ public class CommandManager {
                 new FakeGamemodeCommand(),
                 new BindCommand(),
                 new HclipCommand(),
+              //  new ConfigCommand(),
                 new VclipCommand());
     }
 

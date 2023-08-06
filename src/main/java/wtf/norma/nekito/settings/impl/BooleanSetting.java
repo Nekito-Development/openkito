@@ -18,4 +18,8 @@ public class BooleanSetting extends Setting {
 	public boolean isEnabled() {
 		return value;
 	}
+
+	public void setBoolValue(boolean value) {
+		this.value = value;
+	}
 }
