@@ -673,7 +673,7 @@ public abstract class ServerConfigurationManager
         }
     }
 
-    public void sendMessageToTeamOrEvryPlayer(EntityPlayer player, IChatComponent message)
+    public void sendMessageToTeamOrEveryPlayer(EntityPlayer player, IChatComponent message)
     {
         Team team = player.getTeam();
 
