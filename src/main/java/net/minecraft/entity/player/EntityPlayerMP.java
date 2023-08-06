@@ -500,7 +500,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
                 }
                 else if (team.getDeathMessageVisibility() == Team.EnumVisible.HIDE_FOR_OWN_TEAM)
                 {
-                    this.mcServer.getConfigurationManager().sendMessageToTeamOrEvryPlayer(this, this.getCombatTracker().getDeathMessage());
+                    this.mcServer.getConfigurationManager().sendMessageToTeamOrEveryPlayer(this, this.getCombatTracker().getDeathMessage());
                 }
             }
             else
