@@ -29,7 +29,9 @@ public class ModeSetting extends Setting {
 		}
 		return modes.get(index);
 	}
-	
+	public void setMode(String selected) {
+		this.index = this.modes.indexOf(selected);
+	}
 	public void cycle() {
 		if (index < modes.size() - 1) {
 			index++;

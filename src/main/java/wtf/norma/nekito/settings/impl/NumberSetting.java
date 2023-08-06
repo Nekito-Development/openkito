@@ -45,6 +45,11 @@ public class NumberSetting extends Setting {
         this.max = max;
     }
 
+    public void setValueNumber(float value) {
+        this.value = value;
+    }
+
+
     public float getIncrement() {
         return increment;
     }
