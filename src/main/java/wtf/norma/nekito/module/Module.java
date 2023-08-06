@@ -100,8 +100,8 @@ public class Module {
 
     public void load(JsonObject object) {
         if (object != null) {
-            if (object.has("state")) {
-                this.setToggled(object.get("state").getAsBoolean());
+            if (object.has("value")) {
+                this.setToggled(object.get("value").getAsBoolean());
             }
             if (object.has("keyIndex")) {
                 this.setKeybind(object.get("keyIndex").getAsInt());
@@ -130,7 +130,7 @@ public class Module {
 
     public JsonObject save() {
         JsonObject object = new JsonObject();
-        object.addProperty("state", isToggled());
+        object.addProperty("value", isToggled());
         object.addProperty("keyIndex", getKeybind());
         JsonObject propertiesObject = new JsonObject();
         for (Setting set : this.getSettings()) {
@@ -147,6 +147,7 @@ public class Module {
         }
         return object;
     }
+
 
 
 
