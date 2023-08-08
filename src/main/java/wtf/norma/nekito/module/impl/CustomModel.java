@@ -66,8 +66,6 @@ public class CustomModel extends Module {
             GlStateManager.enableLighting();
             GlStateManager.resetColor();
             GlStateManager.popMatrix();
-
-
         }
     }
 

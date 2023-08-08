@@ -128,6 +128,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                 Event.dispatch(pornstar);
             }
 
+
             try
             {
                 float f = this.interpolateRotation(entity.prevRenderYawOffset, entity.renderYawOffset, partialTicks);
@@ -206,8 +207,9 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                         GlStateManager.pushMatrix();
                     }
                     if (entity instanceof EntityPlayerSP) {
+
                         if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
-                            this.renderModel(entity, f6, f5, f8, f2, f7, f4);
+                            this.renderModel(entity, f6, f5, f7, f2, f8, 0.0625F);
                     }
                     else
                         this.renderModel(entity, f6, f5, f7, f2, f8, 0.0625F);
@@ -233,7 +235,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                     {
                         if (entity instanceof EntityPlayerSP) {
                             if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
-                                this.renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
+                                this.renderLayers(entity, f6, f5, partialTicks, f7, f2, f8, 0.0625F);
                         }
                         else
                             this.renderLayers(entity, f6, f5, partialTicks, f7, f2, f8, 0.0625F);
