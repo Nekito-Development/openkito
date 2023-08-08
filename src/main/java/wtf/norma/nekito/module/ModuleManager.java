@@ -30,6 +30,7 @@ public class ModuleManager {
                 new CustomModel(),
                 new TargetHUD(),
                 new Eagle(),
+                new Strafe(),
                 new ServerInfo(),
                 new Tickbase(),
                 new HELIUMDDOS(),

@@ -86,6 +86,8 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fawll";
         nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
+        nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
+
 
         //categories
         Category.COMBAT.name = "COwObat";
@@ -147,6 +149,8 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
         nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
+        nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Strafe";
+
 
 
         Category.COMBAT.name = "Combat";

@@ -29,7 +29,6 @@ public class Speed extends Module {
     public ModeSetting mode = new ModeSetting("Mode", "Vulcan", "Vulcan","VulcanReal", "Ground","LowHop","Matrix Timer","Hypixel");
 
 
-
     public static boolean isOnGround() {
         if (!mc.thePlayer.onGround) return false;
         return mc.thePlayer.isCollidedVertically;
@@ -61,6 +60,7 @@ public class Speed extends Module {
                             MovementUtil.setMotion((float) MovementUtil.getSpeed() + 0.3f);
                         }
                     }
+
                     break;
                     case"LowHop":
                         if (mc.thePlayer.onGround && mc.thePlayer.moveForward > 0) {
@@ -71,6 +71,9 @@ public class Speed extends Module {
                             mc.thePlayer.motionZ += MathHelper.cos(yaw) * (speed / 2);
                         }
                         break;
+
+
+
                 case"Matrix Timer":
                     float timerValue = mc.thePlayer.fallDistance <= 0.22f ? 2f :
                             (float) (mc.thePlayer.fallDistance < 1.25f ? 0.67 : 1f);

@@ -26,19 +26,11 @@ public class Tickbase extends Module {
 
     }
 
-    private int ostatnitick;
-    public static boolean cipendejs;
-
-
-    TimerUtility CWEL = new TimerUtility();
-
-    private boolean timerichuj;
 
 
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
-
 
         }
     }
