@@ -36,13 +36,11 @@ public class Fly extends Module {
     public NumberSetting speed = new NumberSetting("Speed", 0.5f, 0, 10, 0.1f);
     public BooleanSetting stopOnDisable = new BooleanSetting("Stop on disable", true);
     double startY = 0;
+
     public Fly() {
         super("Fly", Category.MOVEMENT, Keyboard.KEY_F);
         this.addSettings(mode, speed, stopOnDisable);
     }
-
-
-
 
 
     @Override
@@ -73,7 +71,7 @@ public class Fly extends Module {
                         mc.thePlayer.capabilities.setFlySpeed(speed.getValue());
                         break;
                     case "MOTION":
-                      MovementUtil.setMotion(speed.getValue());
+                        MovementUtil.setMotion(speed.getValue());
                         if (mc.gameSettings.keyBindSneak.isKeyDown()) mc.thePlayer.motionY -= speed.getValue() / 2;
                         if (mc.gameSettings.keyBindJump.isKeyDown()) mc.thePlayer.motionY += speed.getValue() / 2;
                         if (mc.thePlayer.movementInput.jump) {
@@ -81,10 +79,10 @@ public class Fly extends Module {
                         }
                         // i was drunk ok?
                         else if (mc.thePlayer.movementInput.sneak) {
-                    mc.thePlayer.motionY = -0.5f;
-                } else {
-                    mc.thePlayer.motionY = 0;
-                }
+                            mc.thePlayer.motionY = -0.5f;
+                        } else {
+                            mc.thePlayer.motionY = 0;
+                        }
                         break;
 
 
@@ -92,20 +90,5 @@ public class Fly extends Module {
             }
         }
 
-    }
-
-    public static void sendPacketUnlogged(Packet<? extends INetHandler > packet) {
-        mc.getNetHandler().getNetworkManager().sendPacket(packet);
-    }
-    public static double getX() {
-        return mc.thePlayer.posX;
-    }
-
-    public static double getY() {
-        return mc.thePlayer.posY;
-    }
-
-    public static double getZ() {
-        return mc.thePlayer.posZ;
     }
 }

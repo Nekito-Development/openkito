@@ -10,6 +10,7 @@ import wtf.norma.nekito.event.Event;
 
 import wtf.norma.nekito.event.impl.*;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.math.MathUtility;
 import wtf.norma.nekito.util.render.models.TessellatorModel;
 import wtf.norma.nekito.event.impl.EventCustomModel;
@@ -18,26 +19,39 @@ public class CustomModel extends Module {
 
 
 
+    public ModeSetting mode = new ModeSetting("Mode", "Hitla", "Hitla", "Jake","Baba");
+
     public CustomModel() {
         super("CustomModel", Category.VISUALS, Keyboard.KEY_NONE);
+        addSettings(mode);
     }
 
     private TessellatorModel hitlerHead;
     private TessellatorModel hitlerBody;
 
+    private TessellatorModel jake;
+    private TessellatorModel baba;
+
+
+
 
     @Override
     public void onEnable() {
         super.onEnable();
-        this.hitlerHead = new TessellatorModel("/assets/minecraft/nekito/head.obj");
-        this.hitlerBody = new TessellatorModel("/assets/minecraft/nekito/body.obj");
+            this.hitlerHead = new TessellatorModel("/assets/minecraft/nekito/head.obj");
+            this.hitlerBody = new TessellatorModel("/assets/minecraft/nekito/body.obj");
+            this.jake = new TessellatorModel("/assets/minecraft/nekito/Jake.obj");
+          this.baba = new TessellatorModel("/assets/minecraft/nekito/Aether.obj"); // ta z genshina kojarze ja bo gralem
+        // cwele z mihoyo kiedy kurwa wkoncu ten jeabny nintendo switch support bo na tym jebanym nvidia now sie grac nie dai
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
         this.hitlerHead = null;
+        this.jake = null;
         this.hitlerBody = null;
+        this.baba = null;
     }
 
 
@@ -58,11 +72,29 @@ public class CustomModel extends Module {
             GL11.glTranslated(x, y, z);
             if (!(mc.currentScreen instanceof GuiContainer))
                 GL11.glRotatef(-yaw, 0.0F, mc.thePlayer.height, 0.0F);
-            GlStateManager.scale(0.03, sneak ? 0.027 : 0.029, 0.03);
-            GlStateManager.disableLighting();
-            GlStateManager.color(1, 1, 1, 1.0F);
-            this.hitlerHead.render();
-            this.hitlerBody.render();
+
+
+            switch (mode.getMode()) {
+                case"Hitla":
+                    GlStateManager.scale(0.03, sneak ? 0.027 : 0.029, 0.03);
+                    GlStateManager.disableLighting();
+                    GlStateManager.color(1, 1, 1, 1.0F);
+                    this.hitlerHead.render();
+                    this.hitlerBody.render();
+                    break;
+                case "Jake":
+                GlStateManager.scale(0.3, sneak ? 0.27 : 0.29, 0.3);
+                GlStateManager.disableLighting();
+                GlStateManager.color(1, 1, 1, 1.0F);
+                this.jake.render();
+               break;
+                case"Baba":
+                    GlStateManager.scale(0.3, sneak ? 0.12 : 0.15, 0.3);
+                    GlStateManager.disableLighting();
+                    GlStateManager.color(1, 1, 1, 1.0F);
+                    this.baba.render();
+                    break;
+            }
             GlStateManager.enableLighting();
             GlStateManager.resetColor();
             GlStateManager.popMatrix();
