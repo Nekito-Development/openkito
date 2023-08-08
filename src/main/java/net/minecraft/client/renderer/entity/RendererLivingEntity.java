@@ -33,6 +33,7 @@ import shadersmod.client.Shaders;
 
 import wtf.norma.nekito.event.Event;
 
+import wtf.norma.nekito.event.impl.EventCustomModel;
 import wtf.norma.nekito.module.impl.CustomModel;
 import wtf.norma.nekito.nekito;
 
@@ -121,7 +122,11 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
             this.mainModel.isChild = entity.isChild();
 
 
+            if (entity instanceof EntityPlayerSP) {
 
+                EventCustomModel pornstar = new EventCustomModel((EntityPlayerSP) entity);
+                Event.dispatch(pornstar);
+            }
 
             try
             {
@@ -201,9 +206,8 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                         GlStateManager.pushMatrix();
                     }
                     if (entity instanceof EntityPlayerSP) {
-
                         if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
-                            this.renderModel(entity, f6, f5, f7, f2, f8, 0.0625F);
+                            this.renderModel(entity, f6, f5, f8, f2, f7, f4);
                     }
                     else
                         this.renderModel(entity, f6, f5, f7, f2, f8, 0.0625F);
@@ -229,7 +233,7 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                     {
                         if (entity instanceof EntityPlayerSP) {
                             if (!nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).isToggled())
-                                this.renderLayers(entity, f6, f5, partialTicks, f7, f2, f8, 0.0625F);
+                                this.renderLayers(entity, f6, f5, partialTicks, f8, f2, f7, f4);
                         }
                         else
                             this.renderLayers(entity, f6, f5, partialTicks, f7, f2, f8, 0.0625F);
