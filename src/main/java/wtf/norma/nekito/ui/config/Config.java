@@ -7,6 +7,8 @@ import wtf.norma.nekito.nekito;
 
 import java.io.File;
 import java.util.Iterator;
+
+/*
 public final class Config implements ConfigUpdater {
     private final String name;
     private final File file;
@@ -48,6 +50,7 @@ public final class Config implements ConfigUpdater {
         return jsonObject;
     }
 
+    /*
     public void load(JsonObject object) {
         if (object.has("Features")) {
             JsonObject modulesObject = object.getAsJsonObject("Features");
@@ -59,6 +62,9 @@ public final class Config implements ConfigUpdater {
                 module.load(modulesObject.getAsJsonObject(module.getName()));
             }
         }
-
-    }
 }
+
+     */
+
+
+

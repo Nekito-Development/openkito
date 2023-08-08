@@ -7,6 +7,6 @@ public class CrashReportCpu implements Callable
 {
     public Object call() throws Exception
     {
-        return OpenGlHelper.func_183029_j();
+        return OpenGlHelper.getCpu();
     }
 }

@@ -25,7 +25,7 @@ public class HclipCommand extends Command  {
     public void execute(String[] args) throws CommandException {
         if (args.length > 0) {
             final double dist = Double.parseDouble(args[0]);
-            final String direction = dist > 0 ? "forward" : "back";
+            final String direction = dist > 0 ? "forward" : "back"; // UNUSED POLSKA??????????????????
 
             final double rotation = Math.toRadians(mc.thePlayer.rotationYaw);
 

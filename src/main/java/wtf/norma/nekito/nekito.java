@@ -25,7 +25,7 @@ import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
-import wtf.norma.nekito.ui.config.ConfigManager;
+
 import wtf.norma.nekito.ui.config.FileManager;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
@@ -50,7 +50,7 @@ public enum nekito {
 
     private final CrashGuiMain crashGuiMain;
 
-    public ConfigManager configManager;
+  //  public ConfigManager configManager;
 
 
     public static double deltaTime() {
@@ -70,7 +70,7 @@ public enum nekito {
         draggableManager = new DraggableManager();
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
-        configManager = new ConfigManager();
+     //   configManager = new ConfigManager();
         crashGuiMain = new CrashGuiMain();
         (fileManager = new FileManager()).loadFiles(); // loaduje files  ktore kiedys dodam typu friends czy inne gowno
         // albo rat 🤪🤪🤪🤪🤪🤪🤪
@@ -106,7 +106,7 @@ public enum nekito {
 
     public void shutDown() {
         (fileManager = new FileManager()).saveFiles();
-     nekito.INSTANCE.configManager.saveConfig("default");
+    // nekito.INSTANCE.configManager.saveConfig("default");
      DiscordRPC.discordShutdown();
     }
 

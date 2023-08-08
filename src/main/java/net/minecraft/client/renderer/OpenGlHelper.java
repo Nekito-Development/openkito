@@ -3,27 +3,16 @@ package net.minecraft.client.renderer;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.settings.GameSettings;
-import optifine.Config;
 
+import optifine.Config;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.ARBFramebufferObject;
-import org.lwjgl.opengl.ARBMultitexture;
-import org.lwjgl.opengl.ARBShaderObjects;
-import org.lwjgl.opengl.ARBVertexBufferObject;
-import org.lwjgl.opengl.ARBVertexShader;
-import org.lwjgl.opengl.ContextCapabilities;
-import org.lwjgl.opengl.EXTBlendFuncSeparate;
-import org.lwjgl.opengl.EXTFramebufferObject;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL14;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
-import org.lwjgl.opengl.GLContext;
+import org.lwjgl.opengl.*;
+import oshi.SystemInfo;
 
 public class OpenGlHelper
 {
@@ -85,7 +74,7 @@ public class OpenGlHelper
     public static boolean openGL21;
     public static boolean shadersSupported;
     private static String logText = "";
-    private static String field_183030_aa;
+    private static String cpu;
     public static boolean vboSupported;
     public static boolean field_181062_Q;
     private static boolean arbVbo;
@@ -333,13 +322,11 @@ public class OpenGlHelper
 
         try
         {
-            /**
-             * @Niko: idk lol xd
-             */
-            //Processor[] aprocessor = (new SystemInfo()).getHardware().getProcessors();
-            //field_183030_aa = String.format("%dx %s", new Object[] {Integer.valueOf(aprocessor.length), aprocessor[0]}).replaceAll("\\s+", " ");
+             // nie pozdrawiam pana
+
+
         }
-        catch (Throwable var3)
+        catch (Throwable var5)
         {
             ;
         }
@@ -965,8 +952,8 @@ public class OpenGlHelper
         return Config.isFastRender() ? false : (Config.isAntialiasing() ? false : framebufferSupported && Minecraft.getMinecraft().gameSettings.fboEnable);
     }
 
-    public static String func_183029_j()
+    public static String getCpu()
     {
-        return field_183030_aa == null ? "<unknown>" : field_183030_aa;
+        return cpu == null ? "<unknown>" : cpu;
     }
 }

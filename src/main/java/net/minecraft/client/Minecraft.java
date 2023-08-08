@@ -2720,7 +2720,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         {
             public String call()
             {
-                return OpenGlHelper.func_183029_j();
+                return OpenGlHelper.getCpu();
             }
         });
 

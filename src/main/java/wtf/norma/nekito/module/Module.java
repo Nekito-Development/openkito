@@ -99,6 +99,9 @@ public class Module {
 
 
     public void load(JsonObject object) {
+
+        // dont work cum polska
+        // idk why :(
         if (object != null) {
             if (object.has("value")) {
                 this.setToggled(object.get("value").getAsBoolean());

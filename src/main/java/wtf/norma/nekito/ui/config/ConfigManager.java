@@ -9,16 +9,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 
+/*
+
 public final class ConfigManager extends Manager<Config> {
 
     public static final File configDirectory = new File("C:\\nekito\\", "configs");
     private static final ArrayList<Config> loadedConfigs = new ArrayList<>();
 
     public ConfigManager() {
-        setContents(loadConfigs());
+      //  setContents(loadConfigs());
         configDirectory.mkdirs();
     }
-
+ /*
     private static ArrayList<Config> loadConfigs() {
         File[] files = configDirectory.listFiles();
         if (files != null) {
@@ -30,11 +32,13 @@ public final class ConfigManager extends Manager<Config> {
         return loadedConfigs;
     }
 
+
+
     public static ArrayList<Config> getLoadedConfigs() {
         return loadedConfigs;
     }
 
-    public void load() {
+   /* public void load() {
         if (!configDirectory.exists()) {
             configDirectory.mkdirs();
         }
@@ -46,6 +50,8 @@ public final class ConfigManager extends Manager<Config> {
             }
         }
     }
+
+
 
     public boolean loadConfig(String configName) {
         if (configName == null)
@@ -108,4 +114,8 @@ public final class ConfigManager extends Manager<Config> {
         }
         return false;
     }
+
+
+
 }
+            */
