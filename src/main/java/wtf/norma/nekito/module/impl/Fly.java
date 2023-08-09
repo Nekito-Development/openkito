@@ -68,7 +68,7 @@ public class Fly extends Module {
                 switch (mode.getMode().toUpperCase()) {
                     case "CAPABILITIES":
                         mc.thePlayer.capabilities.isFlying = true;
-                        mc.thePlayer.capabilities.setFlySpeed(speed.getValue());
+                        mc.thePlayer.capabilities.setFlySpeed((float) speed.getValue());
                         break;
                     case "MOTION":
                         MovementUtil.setMotion(speed.getValue());

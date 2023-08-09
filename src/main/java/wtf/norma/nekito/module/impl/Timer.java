@@ -25,7 +25,7 @@ public class Timer extends Module {
 
 
     public void onEvent(Event event) {
-        mc.timer.timerSpeed = nobardmud.getValue();
+        mc.timer.timerSpeed = (float) nobardmud.getValue();
     }
 
 

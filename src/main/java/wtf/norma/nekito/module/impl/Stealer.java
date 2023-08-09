@@ -17,7 +17,7 @@ public class Stealer extends Module {
 
 
     public Stealer() {
-        super("romanian simulator", Category.MOVEMENT, Keyboard.KEY_NONE);
+        super("romanian simulator", Category.OTHER, Keyboard.KEY_NONE);
         addSettings(delay,checkname);
     }
 

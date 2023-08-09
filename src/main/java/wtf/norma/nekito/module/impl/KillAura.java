@@ -2,6 +2,13 @@ package wtf.norma.nekito.module.impl;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityMagmaCube;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
@@ -16,6 +23,7 @@ import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.Time.TimerUtility;
 import wtf.norma.nekito.util.packet.PacketUtility;
+import wtf.norma.nekito.util.player.Rotation;
 
 import java.util.Comparator;
 import java.util.List;
@@ -72,6 +80,8 @@ public class KillAura extends Module {
                 target = getTarget(ZASIEGCHUJA.getValue());
                 if (target != null) {
                     if (rotate(target, (EventMotion) e)) {
+                        if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
+                        }
                         if (t.hasReached((long) (1000 / discord.getValue()))) {
                             if (nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
                                 PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
@@ -101,6 +111,12 @@ public class KillAura extends Module {
         }
         return true;
     }
+
+
+
+
+
+
 
     public EntityLivingBase getTarget(double range) {
         List<Entity> targets = mc.theWorld.getLoadedEntityList().stream().filter(entity -> entity instanceof EntityLivingBase).filter(entity -> entity != mc.thePlayer).filter(entity -> !entity.isDead).filter(entity -> mc.thePlayer.getDistanceToEntity(entity) <= range).sorted(Comparator.comparingDouble(entity -> mc.thePlayer.getDistanceToEntity(entity))).collect(Collectors.toList());

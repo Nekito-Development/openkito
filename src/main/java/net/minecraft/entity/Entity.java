@@ -2040,7 +2040,7 @@ public abstract class Entity implements ICommandSender
 
     public float getCollisionBorderSize() {
         if (nekito.INSTANCE.getModuleManager().getModule(HitBox.class).isToggled()) {
-            return HitBox.size.getValue();
+            return (float) HitBox.size.getValue();
         }
         return 0.1f;
     }

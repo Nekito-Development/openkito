@@ -14,9 +14,11 @@ public class TimerUtility implements Util {
         this.lastTime = System.currentTimeMillis();
     }
 
-    public static boolean hasReached(double milliseconds) {
+    public  boolean hasReached(double milliseconds) {
         return ((System.currentTimeMillis() - lastTime) >= milliseconds);
     }
+
+
 
 
 // we dont care

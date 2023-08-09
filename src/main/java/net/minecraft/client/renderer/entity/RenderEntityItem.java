@@ -51,7 +51,12 @@ public class RenderEntityItem extends Render<EntityItem>
 
                 float pitch = itemIn.onGround ? 90 : itemIn.rotationPitch;
 
-                if (TimerUtility.hasReached(5)) {
+
+                TimerUtility cwel = new TimerUtility();
+
+
+
+                if (cwel.hasReached(5)) {
                     timer.reset();
                     itemIn.rotationPitch += 1;
                 }

@@ -57,6 +57,7 @@ public class ModuleManager {
                 new Stealer(),
                 new Wings(),
                 new Ears(),
+                new LagDetector(),
                 new KillAura()
         );
     }
