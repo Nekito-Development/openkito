@@ -36,7 +36,10 @@ Known bugs:
 > ~~open on lan button (ill just remove it useless)~~ (fixed)
 
 
-<img src="https://raw.githubusercontent.com/intexpression/intexpression/master/resources/banner.png" alt="banner">
+#ClickGui
+
+
+<img src="https://raw.githubusercontent.com/intexpression/intexpression/master/java_wasv1Ncy1z.jpg" alt="banner">
 
 
 
