@@ -33,7 +33,7 @@ public class LagDetector extends Module {
         if (e instanceof EventRender2D) {
             ScaledResolution sr = new ScaledResolution(mc);
             if (timer.hasReached(ping.getValue())) {
-                if (timer.hasReached(ping.getValue() + 30)) {
+                if (timer.hasReached(ping.getValue() + 10)) {
                     RenderUtility.drawImage(new ResourceLocation("images/cwelowate/lag2.png"), sr.getScaledWidth() / 2 - 20, sr.getScaledHeight() / 2 - 130, 40,40, new Color(255, 255, 255));
                 }
                 else {
