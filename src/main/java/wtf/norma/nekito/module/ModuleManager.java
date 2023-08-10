@@ -16,6 +16,7 @@ public class ModuleManager {
                 new ClickGUI(),
                 new Cape(),
                 new FogColor(),
+                new NoServerRotations(),
                 new AntiVoid(),
                 new TargetStrafe(),
                 new ItemPhysics(),
