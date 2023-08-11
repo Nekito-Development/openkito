@@ -31,7 +31,7 @@ public class FogColor extends Module {
     @Override
     public void onEvent(Event event) {
         if (event instanceof EventFogColor) {
-            Color customColorValue = new Color(ColorUtility.getColor(0,0));
+            Color customColorValue = new Color(ColorUtility.getColor(0));
             ((EventFogColor) event).setRed(customColorValue.getRed());
             ((EventFogColor) event).setGreen(customColorValue.getGreen());
             ((EventFogColor) event).setBlue(customColorValue.getBlue());

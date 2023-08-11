@@ -36,7 +36,7 @@ public class ColorUtility {
     }
 
 
-    public static int getNekito(int speed, int offset) {
+    public static int getNekito( int offset) {
         // yeah ik hardcodded
 
         // DODAC TE NEW
@@ -51,7 +51,7 @@ public class ColorUtility {
         return Color.getHSBColor(hue, 0.55f, 1f).getRGB();
     }
 
-    public static int getColor(int offset, int i) {
+    public static int getColor(int offset) {
         Minecraft mc = Minecraft.getMinecraft();
         //convertingcolors.com fajno strona
         switch (Watermark.colorMode.getMode()) {
@@ -60,8 +60,7 @@ public class ColorUtility {
             case"Pink":
                 return  0xFFFFC0CB;
             case"Nekito":
-
-              return getNekito(4000,offset * 5) ;
+              return getNekito(offset * 5) ;
 
             case "Rainbow":
                 return getRainbow(4000, offset * 5);
@@ -71,7 +70,7 @@ public class ColorUtility {
     }
     public static int getClientColor(float counter) {
 
-        return new Color(ColorUtility.getColor(0,0)).getRGB();
+        return new Color(ColorUtility.getColor(0)).getRGB();
     }
 
 
@@ -140,9 +139,7 @@ public class ColorUtility {
         }
         return 0xff000000 | (r << 16) | (g << 8) | (b);
     }
-    public static int getColor(int bright) {
-        return getColor(bright, bright, bright, 255);
-    }
+
     public static String getHealthStr(EntityLivingBase entity) {
         String str = "";
         int health = (int) entity.getHealth();

@@ -48,20 +48,20 @@ public class Arraylist extends AbstractDraggable {
                     longest = Fonts.SEMI_BOLD_16.getStringWidth(m.getName());
                 }
                 Gui.drawRect(X-1,offset,X+Fonts.SEMI_BOLD_16.getStringWidth(m.getName())+2,offset+10,new Color(0,0,0,153).getRGB());
-                Fonts.SEMI_BOLD_16.drawString(m.getName(),X,offset+2, ColorUtility.getColor(3000, 1 + offset * 22));
+                Fonts.SEMI_BOLD_16.drawString(m.getName(),X,offset+2, ColorUtility.getColor(3000));
                 offset+=10;
             }
-            Gui.drawRect(X-1,Y-1,X+longest+2,Y,ColorUtility.getColor(3000, 1 + 1 * 22));
+            Gui.drawRect(X-1,Y-1,X+longest+2,Y,ColorUtility.getColor(300));
         } else {
             for(Module m : enabledMods) {
                 if(Fonts.SEMI_BOLD_16.getStringWidth(m.getName()) > longest) {
                     longest = Fonts.SEMI_BOLD_16.getStringWidth(m.getName());
                 }
                 Gui.drawRect(X-Fonts.SEMI_BOLD_16.getStringWidth(m.getName())-1,offset,X-Fonts.SEMI_BOLD_16.getStringWidth(m.getName())+Fonts.SEMI_BOLD_16.getStringWidth(m.getName())+2,offset+10,new Color(0,0,0,153).getRGB());
-                Fonts.SEMI_BOLD_16.drawString(m.getName(),X-Fonts.SEMI_BOLD_16.getStringWidth(m.getName()),offset+2, ColorUtility.getColor(3000, 1 + offset * 22));
+                Fonts.SEMI_BOLD_16.drawString(m.getName(),X-Fonts.SEMI_BOLD_16.getStringWidth(m.getName()),offset+2, ColorUtility.getColor(3000));
                 offset+=10;
             }
-            Gui.drawRect(X-longest-1,Y-1,X+2,Y,ColorUtility.getColor(3000, 1 + 1 * 22));
+            Gui.drawRect(X-longest-1,Y-1,X+2,Y,ColorUtility.getColor(3000));
         }
 
         return  new Vector2f(longest,100);

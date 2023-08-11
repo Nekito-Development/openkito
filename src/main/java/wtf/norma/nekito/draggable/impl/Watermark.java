@@ -30,7 +30,7 @@ public class Watermark extends AbstractDraggable {
 
         String text = "N" + EnumChatFormatting.WHITE + "ekito" + EnumChatFormatting.DARK_GRAY + " [" + EnumChatFormatting.WHITE + Minecraft.getDebugFPS() + " FPS" + EnumChatFormatting.DARK_GRAY + "]";
         RenderUtility.drawRound(3, 4, mc.fontRendererObj.getStringWidth(text) + 4, 10, 3, new Color(0, 0, 0, 100));
-        mc.fontRendererObj.drawStringWithShadow(text, 5, 5, ColorUtility.getColor(3000, 1));
+        mc.fontRendererObj.drawStringWithShadow(text, 5, 5, ColorUtility.getColor(3000));
 
         //Returning size
         GlStateManager.popMatrix();

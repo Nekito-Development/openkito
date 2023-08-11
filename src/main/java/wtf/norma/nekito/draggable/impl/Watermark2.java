@@ -50,7 +50,7 @@ public class Watermark2 extends AbstractDraggable {
         GL11.glEnable(GL11.GL_BLEND);
 
         // it looks better with verdana font but it is bugged af aka letter "k"
-       RenderUtility.renderShadow(5, 5, Fonts.sans_13.getStringWidth(infox) + 9, 15, ColorUtility.getColor(0, 0), 7);
+       RenderUtility.renderShadow(5, 5, Fonts.sans_13.getStringWidth(infox) + 9, 15, ColorUtility.getColor(0), 7);
 
         int colorx = 0;
 
