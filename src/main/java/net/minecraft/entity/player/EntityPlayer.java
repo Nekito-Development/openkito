@@ -2350,6 +2350,8 @@ public abstract class EntityPlayer extends EntityLivingBase
         this.getDataWatcher().updateObject(17, Float.valueOf(amount));
     }
 
+
+
     public float getAbsorptionAmount()
     {
         return this.getDataWatcher().getWatchableObjectFloat(17);

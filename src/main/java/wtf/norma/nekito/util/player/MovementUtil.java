@@ -3,6 +3,7 @@ package wtf.norma.nekito.util.player;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
@@ -27,6 +28,16 @@ public class MovementUtil {
         } else {
             return false;
         }
+    }
+
+
+    public static Entity getRidingEntity() {
+        return Entity.ridingEntity;
+    }
+
+    public static boolean isBlockAboveHead() {
+        AxisAlignedBB axisAlignedBB = new AxisAlignedBB(mc.thePlayer.posX - 0.3, mc.thePlayer.posY + mc.thePlayer.getEyeHeight(), mc.thePlayer.posZ + 0.3, mc.thePlayer.posX + 0.3, mc.thePlayer.posY + (!mc.thePlayer.onGround ? 1.5 : 2.5), mc.thePlayer.posZ - 0.3);
+        return mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, axisAlignedBB).isEmpty();
     }
 
     public static boolean isOnLiquid() {

@@ -71,7 +71,7 @@ public abstract class Entity implements ICommandSender
     public Entity riddenByEntity;
 
     /** The entity we are currently riding */
-    public Entity ridingEntity;
+    public static Entity ridingEntity;
     public boolean forceSpawn;
 
     /** Reference to the World object. */
@@ -128,7 +128,7 @@ public abstract class Entity implements ICommandSender
      */
     public boolean isCollided;
     public boolean velocityChanged;
-    protected boolean isInWeb;
+    public boolean isInWeb;
     private boolean isOutsideBorder;
 
     /**

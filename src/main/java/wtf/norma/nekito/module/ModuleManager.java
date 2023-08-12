@@ -59,6 +59,7 @@ public class ModuleManager {
                 new Wings(),
                 new Ears(),
                 new LagDetector(),
+                new TriggerBot(),
                 new KillAura()
         );
     }

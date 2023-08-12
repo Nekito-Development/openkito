@@ -88,6 +88,7 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
         nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
         nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name ="LagoDetectoro";
+        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name ="TiwwerBowt";
 
 
         //categories
@@ -151,6 +152,7 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
         nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name ="Lag Detector";
+        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name ="TriggerBot";
         nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Strafe";
 
 
