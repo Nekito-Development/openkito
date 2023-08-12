@@ -80,7 +80,7 @@ public enum nekito {
         ViaMCP.create();
         ViaMCP.INSTANCE.initAsyncSlider();
 
-        NetHelper.createSession("uwuleczka", null);
+      //  NetHelper.createSession("uwuleczka", null);
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
     }
 
