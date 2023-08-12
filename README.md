@@ -27,7 +27,7 @@ Known bugs:
 > ~~resourcepacks not working~~ (fixed)
 
 
-> sound not working (frick u openal)
+> ~~sound not working (frick u openal)~~ (probably fixed) 
 
 
 > not running on mac (idk why :[ )
