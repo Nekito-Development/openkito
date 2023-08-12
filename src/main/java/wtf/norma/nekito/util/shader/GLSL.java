@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import static org.lwjgl.opengl.GL20.*;
 
 public enum GLSL {
-    MAINMENU("/assets/minecraft/shadersMenu/menu.fsh");
+    MAINMENU("/assets/minecraft/shaders/menu.fsh");
 
 
     private int programId;

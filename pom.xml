@@ -48,12 +48,30 @@
     </dependency>
 
     <dependency>
-      <groupId>xd</groupId>
-      <artifactId>xdcwel</artifactId>
-      <version>czytias</version>
-      <systemPath>${basedir}/libs/Paulscode-SoundSystem-2013.04.17.jar</systemPath>
-      <scope>system</scope>
+      <groupId>com.paulscode</groupId>
+      <artifactId>codecjorbis</artifactId>
+      <version>20101023</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.paulscode</groupId>
+      <artifactId>codecwav</artifactId>
+      <version>20101023</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.paulscode</groupId>
+      <artifactId>libraryjavasound</artifactId>
+      <version>20101123</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.paulscode</groupId>
+      <artifactId>soundsystem</artifactId>
+      <version>20120107</version>
+    </dependency>
+
+
 
     <dependency>
       <groupId>cwel1</groupId>
@@ -100,6 +118,7 @@
       <artifactId>kotlin-stdlib-common</artifactId>
       <version>1.9.0-RC</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>

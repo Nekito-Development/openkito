@@ -51,7 +51,6 @@ public class TriggerBot extends Module {
             if (entity == null || mc.thePlayer.getDistanceToEntity(entity) > cwel.getValue() || entity.isDead || ((EntityLivingBase) entity).getHealth() <= 0.0f) {
                 return;
             }
-
             if (sprawdzWyjebkenablik((EntityLivingBase) entity)) {
                     mc.playerController.attackEntity(mc.thePlayer, entity);
                     mc.thePlayer.swingItem();
