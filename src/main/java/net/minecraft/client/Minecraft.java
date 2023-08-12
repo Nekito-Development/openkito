@@ -1068,7 +1068,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         {
             while (!this.scheduledTasks.isEmpty())
             {
-                Util.func_181617_a((FutureTask)this.scheduledTasks.poll(), logger);
+                Util.func_181617_a(this.scheduledTasks.poll(), logger);
             }
         }
 

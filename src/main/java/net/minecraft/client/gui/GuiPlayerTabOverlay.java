@@ -45,7 +45,7 @@ public class GuiPlayerTabOverlay extends Gui
     /**
      * Returns the name that should be renderd for the player supplied
      */
-    public String getPlayerName(NetworkPlayerInfo networkPlayerInfoIn)
+    public static String getPlayerName(NetworkPlayerInfo networkPlayerInfoIn)
     {
         return networkPlayerInfoIn.getDisplayName() != null ? networkPlayerInfoIn.getDisplayName().getFormattedText() : ScorePlayerTeam.formatPlayerName(networkPlayerInfoIn.getPlayerTeam(), networkPlayerInfoIn.getGameProfile().getName());
     }
