@@ -18,6 +18,7 @@ public class ModuleManager {
                 new FogColor(),
                 new NoServerRotations(),
                 new AntiVoid(),
+                new Arrows(),
                 new TargetStrafe(),
                 new ItemPhysics(),
                 new NoFall(),

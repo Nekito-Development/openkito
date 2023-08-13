@@ -158,6 +158,70 @@ public class RenderUtility {
             GL11.glDisable(GL11.GL_BLEND);
     }
 
+    public static void drawTriangle(float x, float y, float width, float height, int firstColor, int secondColor) {
+        GL11.glPushMatrix();
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        enableSmoothLine(1F);
+        GL11.glRotatef(180 + 90, 0F, 0F, 1.0F);
+
+        // fill.
+        GL11.glBegin(9);
+        color(firstColor);
+        GL11.glVertex2f(x, y - 2);
+        GL11.glVertex2f(x + width, y + height);
+        GL11.glVertex2f(x + width, y);
+        GL11.glVertex2f(x, y - 2);
+        GL11.glEnd();
+
+        GL11.glBegin(9);
+        color(secondColor);
+        GL11.glVertex2f(x + width, y);
+        GL11.glVertex2f(x + width, y + height);
+        GL11.glVertex2f(x + width * 2, y - 2);
+        GL11.glVertex2f(x + width, y);
+        GL11.glEnd();
+
+        // line.
+        GL11.glBegin(3);
+        color(firstColor);
+        GL11.glVertex2f(x, y - 2);
+        GL11.glVertex2f(x + width, y + height);
+        GL11.glVertex2f(x + width, y);
+        GL11.glVertex2f(x, y - 2);
+        GL11.glEnd();
+
+        GL11.glBegin(3);
+        color(secondColor);
+        GL11.glVertex2f(x + width, y);
+        GL11.glVertex2f(x + width, y + height);
+        GL11.glVertex2f(x + width * 2, y - 2);
+        GL11.glVertex2f(x + width, y);
+        GL11.glEnd();
+
+        disableSmoothLine();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glRotatef(-180 - 90, 0F, 0F, 1.0F);
+        GL11.glPopMatrix();
+    }
+
+    public static void enableSmoothLine(float width) {
+        GL11.glDisable(GL11.GL_ALPHA_TEST);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GL11.glDepthMask(false);
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);
+        GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
+        GL11.glLineWidth(width);
+    }
+    // cum abt it
+
+    public static void disableSmoothLine() {
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glDepthMask(true);
+        GL11.glDisable(GL11.GL_LINE_SMOOTH);
+        GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST);
+    }
     private static HashMap<Integer, Integer> shadowCache = new HashMap<Integer, Integer>();
 
     public static void drawBlurredShadow(float x, float y, float width, float height, int blurRadius, Color color) {
