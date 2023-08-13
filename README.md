@@ -1,5 +1,6 @@
 # nekito
-Open-Source Hacked/Crash client Made by eleczka, lekoz , groszus and tecness.
+
+Open-Source Hacked/Crash client.
 Special thanks to narumii for the base
 
 
