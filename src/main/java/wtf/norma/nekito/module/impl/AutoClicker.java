@@ -7,6 +7,7 @@ import org.apache.commons.lang3.RandomUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
@@ -41,6 +42,7 @@ public class AutoClicker extends Module {
 
     @Override
     public void onEvent(Event e) {
+        if (e instanceof EventUpdate) {
         if (Minecraft.getMinecraft().currentScreen == null && Mouse.isButtonDown(0)) {
             if (timer.hasReached(1000 / RandomUtils.nextInt((int) cwelMIN.getValue(), (int) cwelMAX.getValue()))) {
                 KeyBinding.setKeyBindState(-100, true);
@@ -63,6 +65,7 @@ public class AutoClicker extends Module {
                 }
 
             }
+        }
 
         }
     }

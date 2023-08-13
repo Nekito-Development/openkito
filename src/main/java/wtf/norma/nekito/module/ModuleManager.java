@@ -13,6 +13,7 @@ public class ModuleManager {
     public ModuleManager() {
         addAll(
                 new Sprint(),
+                new Autoarmor(),
                 new ClickGUI(),
                 new Cape(),
                 new FogColor(),

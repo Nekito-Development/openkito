@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 
-
+// author: markus aszlamulajchum
 public class FastMine extends Module {
 
     public FastMine() {
