@@ -29,6 +29,7 @@ import optifine.FontUtils;
 
 import org.apache.commons.io.IOUtils;
 import org.lwjgl.opengl.GL11;
+import wtf.norma.nekito.util.render.RenderUtility;
 
 public class FontRenderer implements IResourceManagerReloadListener
 {
@@ -380,6 +381,8 @@ public class FontRenderer implements IResourceManagerReloadListener
     {
         return !this.enabled ? 0 : this.drawString(text, (float)x, (float)y, color, false);
     }
+
+
 
     /**
      * Draws the specified string.

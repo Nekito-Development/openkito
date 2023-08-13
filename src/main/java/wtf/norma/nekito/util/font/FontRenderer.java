@@ -4,6 +4,7 @@ package wtf.norma.nekito.util.font;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import org.lwjgl.opengl.GL11;
+import wtf.norma.nekito.util.render.RenderUtility;
 
 
 import java.awt.*;
@@ -460,6 +461,13 @@ public class FontRenderer
             }
             this.colorCode[index] = (red & 0xFF) << 16 | (green & 0xFF) << 8 | blue & 0xFF;
         }
+    }
+
+
+    public void drawBlurredStringWithShadow(String text, double x, double y, int blurRadius, Color blurColor, int color) {
+        GlStateManager.resetColor();
+        RenderUtility.drawBlurredShadow((int) x, (int) y,  getStringWidth(text), getFontHeight(), blurRadius, blurColor);
+        drawStringWithShadow(text, (float) x, (float) y, color);
     }
 
 

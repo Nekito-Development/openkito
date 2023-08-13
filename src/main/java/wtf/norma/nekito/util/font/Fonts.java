@@ -52,6 +52,14 @@ public class Fonts {
     public static FontRenderer neverlose900_30 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("neverlose900.ttf"), 30, 0), true, true);
 
 
+    public static FontRenderer neverlose900_20 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("neverlose900.ttf"), 20, 0), true, true);
+
+
+    // im dying inside
+    //fucking 4 am and im making this shit
+
+    public static FontRenderer neverlose900_16 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("neverlose900.ttf"), 16, 0), true, true);
+
 
     public static FontRenderer neverlose500_18 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("neverlose500.ttf"), 18, 0), true, true);
 

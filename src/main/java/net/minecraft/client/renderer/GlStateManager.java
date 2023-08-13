@@ -64,6 +64,12 @@ public class GlStateManager
         }
     }
 
+    public static void glLineWidth(float p_187441_0_)
+    {
+        GL11.glLineWidth(p_187441_0_);
+    }
+
+
     public static void tryBlendFuncSeparate(SourceFactor srcFactor, DestFactor dstFactor, SourceFactor srcFactorAlpha, DestFactor dstFactorAlpha)
     {
         tryBlendFuncSeparate(srcFactor.factor, dstFactor.factor, srcFactorAlpha.factor, dstFactorAlpha.factor);

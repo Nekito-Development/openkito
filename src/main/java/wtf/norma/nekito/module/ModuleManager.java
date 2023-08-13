@@ -30,6 +30,7 @@ public class ModuleManager {
                 new FullBright(),
                 new CustomButtons(),
                 new CustomModel(),
+                new EntityESP(),
                 new TargetHUD(),
                 new Eagle(),
                 new Strafe(),
