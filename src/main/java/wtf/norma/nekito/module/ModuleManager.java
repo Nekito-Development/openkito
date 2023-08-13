@@ -20,6 +20,7 @@ public class ModuleManager {
                 new AntiVoid(),
                 new Arrows(),
                 new TargetStrafe(),
+                new FastMine(),
                 new ItemPhysics(),
                 new NoFall(),
                 new Fly(),

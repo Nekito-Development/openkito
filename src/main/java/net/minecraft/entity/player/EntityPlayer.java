@@ -74,6 +74,8 @@ import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.LockCode;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
+import wtf.norma.nekito.module.impl.FastMine;
+import wtf.norma.nekito.nekito;
 
 @SuppressWarnings("incomplete-switch")
 public abstract class EntityPlayer extends EntityLivingBase
@@ -899,7 +901,14 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public float getToolDigEfficiency(Block p_180471_1_)
     {
+
+
+
         float f = this.inventory.getStrVsBlock(p_180471_1_);
+
+        if (nekito.INSTANCE.getModuleManager().getModule(FastMine.class).isToggled()){
+            f = FastMine.speed();
+        }
 
         if (f > 1.0F)
         {
