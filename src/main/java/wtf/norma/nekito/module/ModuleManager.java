@@ -34,6 +34,7 @@ public class ModuleManager {
                 new EntityESP(),
                 new TargetHUD(),
                 new Eagle(),
+                new PolishHat(),
                 new Strafe(),
                 new ServerInfo(),
                 new Tickbase(),

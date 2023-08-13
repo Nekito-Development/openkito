@@ -22,6 +22,16 @@ import java.util.HashMap;
 
 public class RenderUtil {
 
+
+
+
+
+    // other render  "made" by tecness
+    // i dont use it anymore
+    // it is really bad
+    // intexpression
+
+
     private final Minecraft mc;
     private final HashMap<Integer, Integer> shadowCache;
     private final ResourceLocation blurLocation;

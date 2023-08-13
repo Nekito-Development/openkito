@@ -23,6 +23,7 @@ public class DraggableManager {
         Add(new Hotbar());
 
 
+
         for(AbstractDraggable draggable : DraggableList) {
             draggable.Init();
         }

@@ -1724,7 +1724,7 @@ public class CustomColors
         }
     }
 
-    private static int getPotionId(String p_getPotionId_0_)
+    public static int getPotionId(String p_getPotionId_0_)
     {
         if (p_getPotionId_0_.equals("potion.water"))
         {
