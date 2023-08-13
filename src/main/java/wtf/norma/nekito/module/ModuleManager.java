@@ -40,6 +40,7 @@ public class ModuleManager {
                 new Velocity(),
                 new InventorySettings(),
                 new eleczkamode(),
+                new ChestESP(),
                 new bandytakamera(),
                 new NoClip(),
                 new WorldColor(),

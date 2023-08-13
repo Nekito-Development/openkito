@@ -70,7 +70,7 @@ public class EntityESP extends Module {
           //  if (dyinginside.getMode().equals("Box")) {
                 GlStateManager.pushMatrix();
                 for (Entity entity : mc.theWorld.loadedEntityList) {
-                    if (!(entity instanceof EntityPlayer) || entity == mc.thePlayer && mc.gameSettings.thirdPersonView == 0) {
+                    if (!(entity instanceof EntityPlayer) || entity == mc.thePlayer && mc.gameSettings.thirdPersonView == 0 ) {
                         continue;
                     }
                     if (cweluch.isEnabled()) {
@@ -88,116 +88,5 @@ public class EntityESP extends Module {
         }
 
     }
-    private boolean isValid(Entity entity) {
-        if (entity == null) {
-            return false;
-        }
-
-        if (mc.gameSettings.thirdPersonView == 0 && entity == mc.thePlayer) {
-            return false;
-        }
-
-        if (entity.isDead) {
-            return false;
-        }
-
-        if (entity instanceof EntityAnimal) {
-            return false;
-        }
-
-        if (entity instanceof EntityPlayer) {
-            return true;
-        }
-
-        if (entity instanceof EntityArmorStand) {
-            return false;
-        }
-
-        if (entity instanceof IAnimals) {
-            return false;
-        }
-
-        if (entity instanceof EntityItemFrame) {
-            return false;
-        }
-
-        if (entity instanceof EntityArrow ) {
-            return false;
-        }
-
-        if (entity instanceof EntityMinecart) {
-            return false;
-        }
-
-        if (entity instanceof EntityBoat) {
-            return false;
-        }
-
-        if (entity instanceof EntityFireball) {
-            return false;
-        }
-
-        if (entity instanceof EntityXPOrb) {
-            return false;
-        }
-
-        if (entity instanceof EntityMinecartChest) {
-            return false;
-        }
-
-        if (entity instanceof EntityTNTPrimed) {
-            return false;
-        }
-
-        if (entity instanceof EntityMinecartTNT) {
-            return false;
-        }
-
-        if (entity instanceof EntityVillager) {
-            return false;
-        }
-
-        if (entity instanceof EntityExpBottle) {
-            return false;
-        }
-
-        if (entity instanceof EntityLightningBolt) {
-            return false;
-        }
-
-        if (entity instanceof EntityPotion) {
-            return false;
-        }
-
-        if (!(!(entity instanceof Entity) || entity instanceof EntityMob || entity instanceof EntityWaterMob || entity instanceof IAnimals || entity instanceof EntityLiving || entity instanceof EntityItem)) {
-            return false;
-        }
-
-        if ((entity instanceof EntityMob || entity instanceof EntitySlime || entity instanceof EntityDragon || entity instanceof EntityGolem)) {
-            return false;
-        }
-
-        return entity != mc.thePlayer;
-    }
-
-    private Vector3d project2D(int scaleFactor, double x, double y, double z) {
-        float xPos = (float) x;
-        float yPos = (float) y;
-        float zPos = (float) z;
-        IntBuffer viewport = GLAllocation.createDirectIntBuffer(16);
-        FloatBuffer modelview = GLAllocation.createDirectFloatBuffer(16);
-        FloatBuffer projection = GLAllocation.createDirectFloatBuffer(16);
-        FloatBuffer vector = GLAllocation.createDirectFloatBuffer(4);
-        GL11.glGetFloat(GL11.GL_MODELVIEW_MATRIX);
-        GL11.glGetFloat(GL11.GL_PROJECTION_MATRIX);
-        GL11.glGetInteger(GL11.GL_VIEWPORT);
-
-        if (GLU.gluProject(xPos, yPos, zPos, modelview, projection, viewport, vector)) {
-            return new Vector3d(vector.get(0) / (float) scaleFactor, ((float) Display.getHeight() - vector.get(1)) / (float) scaleFactor, vector.get(2));
-        }
-
-        return null;
-    }
-
 
 }

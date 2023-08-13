@@ -11,7 +11,7 @@ import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.render.RenderUtility;
 
-public class TargetStrafe extends Module {
+public class  TargetStrafe extends Module {
 
     public TargetStrafe() {
         super("Target Strafe", Category.COMBAT, Keyboard.KEY_NONE);

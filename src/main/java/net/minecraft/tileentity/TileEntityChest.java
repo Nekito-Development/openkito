@@ -20,6 +20,8 @@ public class TileEntityChest extends TileEntityLockable implements ITickable, II
 {
     private ItemStack[] chestContents = new ItemStack[27];
 
+    public boolean isEmpty;
+
     /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked;
 
