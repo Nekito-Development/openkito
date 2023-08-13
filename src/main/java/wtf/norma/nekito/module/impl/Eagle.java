@@ -2,18 +2,12 @@ package wtf.norma.nekito.module.impl;
 
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.init.Blocks;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.ModeSetting;
-
-import java.util.Random;
 
 
 // OSZUSTWO W GRA KOMPUTEROWA KLOC I.N.C
@@ -38,7 +32,7 @@ public class Eagle extends Module {
     public void onDisable() {
         int key = mc.gameSettings.keyBindUseItem.getKeyCode();
         // orzel utopil sie w swetrze
-       KeyBinding.setKeyBindState(key, false);
+        KeyBinding.setKeyBindState(key, false);
         mc.gameSettings.keyBindSneak.pressed = false;
         super.onDisable();
     }

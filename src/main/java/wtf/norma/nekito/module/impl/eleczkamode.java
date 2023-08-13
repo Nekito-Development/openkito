@@ -1,29 +1,16 @@
 package wtf.norma.nekito.module.impl;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventMotion;
-import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.event.impl.EventUpdate;
-import wtf.norma.nekito.exploit.ExploitInfo;
-import wtf.norma.nekito.exploit.impl.creative.AnvilExploit;
-import wtf.norma.nekito.exploit.impl.flood.AttackExploit;
-import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.RenderUtility;
-
-import java.awt.*;
 
 
 /**
+ * @author eleczka
  * @project nekito
  * @prod hackerzy mysliborz S.A
- * @author eleczka
  */
 
 public class eleczkamode extends Module {
@@ -31,6 +18,9 @@ public class eleczkamode extends Module {
 
     // nudzilo mi sie ok?
 
+
+    int x = 10;
+    int y = 10;
 
     public eleczkamode() {
         super("eleczkamode", Category.OTHER, Keyboard.KEY_NONE);
@@ -40,7 +30,7 @@ public class eleczkamode extends Module {
     public void onEnable() {
 
 
-     //   ChatHelper.printMessage("this module is in beta(you can have issues with it)");
+        //   ChatHelper.printMessage("this module is in beta(you can have issues with it)");
         // modules
         nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "onichan supido";
         nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillUwUra";
@@ -87,8 +77,8 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
         nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
-        nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name ="LagoDetectoro";
-        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name ="TiwwerBowt";
+        nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "LagoDetectoro";
+        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TiwwerBowt";
 
 
         //categories
@@ -151,10 +141,9 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
         nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
-        nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name ="Lag Detector";
-        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name ="TriggerBot";
+        nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "Lag Detector";
+        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TriggerBot";
         nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Strafe";
-
 
 
         Category.COMBAT.name = "Combat";
@@ -168,9 +157,6 @@ public class eleczkamode extends Module {
         super.onDisable();
     }
 
-
-    int x = 10;
-    int y = 10;
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {
@@ -178,7 +164,6 @@ public class eleczkamode extends Module {
         }
 
     }
-
 
 
 }

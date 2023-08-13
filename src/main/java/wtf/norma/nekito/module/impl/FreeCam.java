@@ -2,35 +2,32 @@ package wtf.norma.nekito.module.impl;
 
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.player.MovementUtil;
 
 
 public class FreeCam extends Module {
 
+    double oldX, oldY, oldZ;
+    private float old;
+    private float oldGamma;
+
+
     public FreeCam() {
         super("FreeCam", Category.VISUALS, Keyboard.KEY_NONE);
 
     }
-    private float old;
-    double oldX, oldY, oldZ;
-
-
-    private float oldGamma;
 
     @Override
     public void onEnable() {
         oldX = mc.thePlayer.posX;
         oldY = mc.thePlayer.posY;
         oldZ = mc.thePlayer.posZ;
-        oldY = (int)mc.thePlayer.posY;
+        oldY = (int) mc.thePlayer.posY;
         EntityOtherPlayerMP fakePlayer = new EntityOtherPlayerMP(mc.theWorld, mc.thePlayer.getGameProfile());
         fakePlayer.copyLocationAndAnglesFrom(mc.thePlayer);
         fakePlayer.posY -= 0.0;
@@ -71,7 +68,7 @@ public class FreeCam extends Module {
                 mc.thePlayer.motionY = 0.5f / 1.5f;
             }
             if (mc.gameSettings.keyBindSneak.isKeyDown()) {
-                mc.thePlayer.motionY = - 0.5f / 1.5f;
+                mc.thePlayer.motionY = -0.5f / 1.5f;
             }
             MovementUtil.setMotion(0.5f);
             mc.thePlayer.capabilities.isFlying = true;

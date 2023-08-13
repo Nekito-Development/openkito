@@ -1,11 +1,8 @@
 package wtf.norma.nekito.module;
 
 import com.google.gson.JsonObject;
-import de.gerrygames.viarewind.utils.ChatUtil;
 import net.minecraft.client.Minecraft;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.settings.Setting;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
@@ -16,19 +13,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Module {
+    public final static Minecraft mc = Minecraft.getMinecraft();
     public String name;
     public int keybind;
     public boolean toggled;
     public boolean enabled;
     public Category category;
-
-
-
-
-
-    public final static Minecraft mc = Minecraft.getMinecraft();
-
     public ArrayList<Setting> settings = new ArrayList<Setting>();
+
     public Module(String name, Category category, int keybind) {
         this.name = name;
         this.category = category;
@@ -53,7 +45,6 @@ public class Module {
     }
 
 
-
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -69,7 +60,6 @@ public class Module {
     public boolean isToggled() {
         return toggled;
     }
-
 
 
     public void setToggled(boolean toggled) {
@@ -129,8 +119,6 @@ public class Module {
     }
 
 
-
-
     public JsonObject save() {
         JsonObject object = new JsonObject();
         object.addProperty("value", isToggled());
@@ -152,14 +140,12 @@ public class Module {
     }
 
 
-
-
     public void addSettings(Setting... settings) {
         this.settings.addAll(Arrays.asList(settings));
     }
 
     public enum Category {
-        COMBAT("Combat"), LEGIT ("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"),OTHER("Other"),CRASHERS("Crashers List");
+        COMBAT("Combat"), LEGIT("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"), OTHER("Other"), CRASHERS("Crashers List");
 
         public String name;
 

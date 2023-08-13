@@ -4,15 +4,12 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.settings.impl.ModeSetting;
 
 
 public class Watermark2 extends Module {
     public Watermark2() {
         super("cfx watermark", Category.VISUALS, Keyboard.KEY_NONE);
     }
-
-
 
 
     @Override

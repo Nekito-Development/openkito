@@ -2,15 +2,14 @@ package wtf.norma.nekito.module.impl;
 
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.util.color.ColorUtility;
-import wtf.norma.nekito.util.color.ColorUtils;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -35,8 +34,8 @@ public class Arrows extends Module {
                 if (isValid(entity)) {
                     GlStateManager.pushMatrix();
                     GlStateManager.disableBlend();
-                    double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.timer.renderPartialTicks - mc.getRenderManager().renderPosX;
-                    double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * mc.timer.renderPartialTicks - mc.getRenderManager().renderPosZ;
+                    double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.timer.renderPartialTicks - RenderManager.renderPosX;
+                    double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * mc.timer.renderPartialTicks - RenderManager.renderPosZ;
                     double cos = Math.cos(mc.thePlayer.rotationYaw * (Math.PI * 2 / 360));
                     double sin = Math.sin(mc.thePlayer.rotationYaw * (Math.PI * 2 / 360));
                     double rotY = -(z * cos - x * sin);

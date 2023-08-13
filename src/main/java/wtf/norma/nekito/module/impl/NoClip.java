@@ -16,7 +16,12 @@ public class NoClip extends Module {
         super("No Clip", Category.MOVEMENT, Keyboard.KEY_NONE);
     }
 
+    public static boolean jestcwelem(Entity entity) {
+        boolean cwel1;
+        cwel1 = mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() != Blocks.web && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() == Blocks.water && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() == Blocks.lava && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() == Blocks.air;
+        return cwel1;
 
+    }
 
     @Override
     public void onEnable() {
@@ -52,19 +57,6 @@ public class NoClip extends Module {
             }
         }
     }
-
-
-    public static boolean jestcwelem(Entity entity) {
-        boolean cwel1;
-        if ((mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() != Blocks.web && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() == Blocks.water && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() == Blocks.lava && mc.theWorld.getBlockState(new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ)).getBlock() == Blocks.air)) {
-            cwel1 = true;
-        } else {
-            cwel1 = false;
-        }
-        return cwel1;
-
-    }
-
 
 
 }

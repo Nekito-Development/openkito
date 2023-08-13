@@ -11,10 +11,21 @@ import wtf.norma.nekito.util.player.MovementUtil;
 public class AntiVoid extends Module {
 
 
-    public NumberSetting falldisc = new NumberSetting("Fall Distance",3,1,10,1);
+    public NumberSetting falldisc = new NumberSetting("Fall Distance", 3, 1, 10, 1);
+
     public AntiVoid() {
         super("Anti Void", Category.OTHER, Keyboard.KEY_NONE);
         addSettings(falldisc);
+    }
+
+    public static boolean czyjestwvoid() {
+        for (int i = 0; i <= 128; i++) {
+            // tak wiem shitcode a i cry abt it
+            if (MovementUtil.isOnGround(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -27,15 +38,7 @@ public class AntiVoid extends Module {
         super.onDisable();
 
     }
-    public static boolean czyjestwvoid() {
-        for (int i = 0; i <= 128; i++) {
-            // tak wiem shitcode a i cry abt it
-            if (MovementUtil.isOnGround(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
+
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventUpdate) {

@@ -8,22 +8,14 @@ import wtf.norma.nekito.settings.impl.ModeSetting;
 
 public class ClickGUI extends Module {
 
+    public static ModeSetting anime = new ModeSetting("Anime", "Fixmem", "Fixmem", "Astolfo", "Astolfo2", "Neko", "xdddd", "BabaWithPlecak",
+            "Hideri", "Felix", "Cot", "ten rekin z ikea", "None");
+    public static BooleanSetting blur = new BooleanSetting("Blur", true);
+
     public ClickGUI() {
         super("ClickGUI", Category.VISUALS, Keyboard.KEY_RSHIFT);
-        this.addSettings(anime,blur);
+        this.addSettings(anime, blur);
     }
-
-
-
-    
-
-
-    public static ModeSetting anime = new ModeSetting("Anime", "Fixmem", "Fixmem", "Astolfo", "Astolfo2","Neko","xdddd","BabaWithPlecak",
-            "Hideri","Felix","Cot","ten rekin z ikea","None");
-
-    public static BooleanSetting blur = new BooleanSetting("Blur",true);
-
-
 
     @Override
     public void onEnable() {

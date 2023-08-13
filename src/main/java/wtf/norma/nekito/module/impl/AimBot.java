@@ -1,18 +1,12 @@
 package wtf.norma.nekito.module.impl;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
-import org.apache.commons.lang3.RandomUtils;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventMotion;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.NumberSetting;
-import wtf.norma.nekito.util.Time.TimerUtility;
 
 import java.util.Comparator;
 

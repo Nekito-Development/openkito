@@ -1,13 +1,9 @@
 package wtf.norma.nekito.module.impl;
 
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventFogColor;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.color.ColorUtility;
 
 import java.awt.*;
@@ -20,12 +16,10 @@ public class FogColor extends Module {
     }
 
 
-
     @Override
     public void onEnable() {
         super.onEnable();
     }
-
 
 
     @Override

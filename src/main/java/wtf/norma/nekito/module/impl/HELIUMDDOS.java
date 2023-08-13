@@ -2,23 +2,15 @@ package wtf.norma.nekito.module.impl;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.*;
-import wtf.norma.nekito.helper.ChatHelper;
+import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.funny.DDOSUTIL;
-import wtf.norma.nekito.util.render.CwelUtility;
-import wtf.norma.nekito.util.render.RenderUtility;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class HELIUMDDOS extends Module {
 
@@ -46,7 +38,6 @@ public class HELIUMDDOS extends Module {
 
     @Override
     public void onEvent(Event e) {
-
 
 
         if (e instanceof EventRender2D) {

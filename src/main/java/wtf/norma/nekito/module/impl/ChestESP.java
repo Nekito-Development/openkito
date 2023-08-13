@@ -12,19 +12,17 @@ import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
-import wtf.norma.nekito.settings.impl.ModeSetting;
-import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 // author: omikron
 public class ChestESP extends Module {
 
-    public ChestESP() {
-        super("ChestESP", Category.VISUALS, Keyboard.KEY_NONE   );
-    }
-
-
     public static BooleanSetting colorMode = new BooleanSetting("Client Color", true);
+
+
+    public ChestESP() {
+        super("ChestESP", Category.VISUALS, Keyboard.KEY_NONE);
+    }
 
     public void onEvent(Event event) {
         if (event instanceof EventRender3D) {

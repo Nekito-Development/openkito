@@ -4,7 +4,6 @@ import wtf.norma.nekito.module.impl.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class ModuleManager {
 
@@ -70,9 +69,8 @@ public class ModuleManager {
     }
 
 
-
     public void addAll(Module... modules) {
-        this.modules.addAll(Arrays.asList(modules));
+        ModuleManager.modules.addAll(Arrays.asList(modules));
     }
 
     public Module getModuleByName(String name) {

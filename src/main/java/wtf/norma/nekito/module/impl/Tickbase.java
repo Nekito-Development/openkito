@@ -4,19 +4,15 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.ModeSetting;
-import wtf.norma.nekito.settings.impl.NumberSetting;
-import wtf.norma.nekito.util.Time.TimerUtility;
 
 /**
+ * @author eleczka
  * @project nekito
  * @prod hackerzy mysliborz S.A
- * @author eleczka
  * @at 06.08, 14:46
  */
 
 public class Tickbase extends Module {
-
 
 
     // KARTOFEL POLSKA AGREEED
@@ -25,7 +21,6 @@ public class Tickbase extends Module {
         super("Tick base", Category.OTHER, Keyboard.KEY_NONE);
 
     }
-
 
 
     @Override
