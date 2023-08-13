@@ -1,16 +1,10 @@
 package wtf.norma.nekito;
 
 import java.io.IOException;
-import java.util.List;
 
-import com.google.common.collect.ImmutableList;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.entity.player.EntityPlayer;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
@@ -19,7 +13,6 @@ import wtf.norma.nekito.command.impl.*;
 import wtf.norma.nekito.draggable.DraggableManager;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.helper.NetHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
@@ -29,7 +22,6 @@ import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.ui.config.FileManager;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
-import wtf.norma.nekito.util.player.CapeHandler;
 import wtf.norma.nekito.util.render.RenderUtil;
 
 public enum nekito {
@@ -97,6 +89,7 @@ public enum nekito {
                 .forEach(command -> ChatHelper.printMessage(
                         String.format("&5%s &f- &d%s", command.getAlias(), command.getDescription())));
     }
+
 
 
     public void postInit() {

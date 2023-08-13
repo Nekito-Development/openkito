@@ -1,5 +1,9 @@
 package wtf.norma.nekito.module.impl;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
@@ -44,13 +48,17 @@ public class AimBot extends Module {
     }
 
 
+
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventMotion) {
             EntityPlayer target = mc.theWorld.playerEntities.stream().filter(entityPlayer -> entityPlayer != mc.thePlayer).min(Comparator.comparing(entityPlayer ->
                     entityPlayer.getDistanceToEntity(mc.thePlayer))).filter(entityPlayer -> entityPlayer.getDistanceToEntity(mc.thePlayer) <= ZASIEGCHUJA.getValue()).orElse(null);
 
-            if (target != null && mc.thePlayer.canEntityBeSeen(target)) {
+
+
+
+            if (target != null && !target.isInvisible() && mc.thePlayer.canEntityBeSeen(target)) {
                 mc.thePlayer.rotationYaw = rotations(target)[0];
                 mc.thePlayer.rotationPitch = rotations(target)[1];
             }

@@ -6,6 +6,8 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.entity.projectile.EntityLargeFireball;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
@@ -28,6 +30,9 @@ public class TriggerBot extends Module {
 
         if (player instanceof EntityPlayer || player instanceof EntityAnimal || player instanceof EntityMob || player instanceof EntityVillager) {
             if (player instanceof EntityAnimal) {
+                return false;
+            }
+            if (player.isInvisible()) {
                 return false;
             }
             if (player instanceof EntityMob) {

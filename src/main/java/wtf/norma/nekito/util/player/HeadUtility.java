@@ -11,18 +11,7 @@ import wtf.norma.nekito.util.Util;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HeadUtility implements Util {
-
-
-
-
-
-
-
-
-
-
     private static final Minecraft mc = Minecraft.getMinecraft();
-
 
     // credits: jakis gosciu z forum
     public static Rotation getRotationsRandom(EntityLivingBase entity) {
@@ -46,8 +35,4 @@ public class HeadUtility implements Util {
         float pitch = (float) -(Math.atan2(yDiff, dist) * 180 / Math.PI);
         return new Rotation(yaw, pitch);
     }
-
-
-
-
 }

@@ -46,6 +46,7 @@ public class ModuleManager {
                 new NoClip(),
                 new WorldColor(),
                 new CrashGUI(),
+                new AntiBot(),
                 new Watermark(),
                 new AirJump(),
                 new Watermark2(),

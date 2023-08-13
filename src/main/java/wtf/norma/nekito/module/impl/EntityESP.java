@@ -38,7 +38,7 @@ public class EntityESP extends Module {
             //  if (dyinginside.getMode().equals("Box")) {
             GlStateManager.pushMatrix();
             for (Entity entity : mc.theWorld.loadedEntityList) {
-                if (!(entity instanceof EntityPlayer) || entity == mc.thePlayer && mc.gameSettings.thirdPersonView == 0) {
+                if (!(entity instanceof EntityPlayer) || entity == mc.thePlayer && mc.gameSettings.thirdPersonView == 0 && !entity.isInvisible()) {
                     continue;
                 }
                 if (cweluch.isEnabled()) {

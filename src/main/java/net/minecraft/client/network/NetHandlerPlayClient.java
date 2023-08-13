@@ -1916,27 +1916,21 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
     /**
      * May create a scoreboard objective, remove an objective from the scoreboard or update an objectives' displayname
      */
-    public void handleScoreboardObjective(S3BPacketScoreboardObjective packetIn)
-    {
+
+    public void handleScoreboardObjective(S3BPacketScoreboardObjective packetIn) {
         PacketThreadUtil.checkThreadAndEnqueue(packetIn, this, this.gameController);
         Scoreboard scoreboard = this.clientWorldController.getScoreboard();
 
-        if (packetIn.func_149338_e() == 0)
-        {
+        if (packetIn.func_149338_e() == 0) {
             ScoreObjective scoreobjective = scoreboard.addScoreObjective(packetIn.func_149339_c(), IScoreObjectiveCriteria.DUMMY);
             scoreobjective.setDisplayName(packetIn.func_149337_d());
             scoreobjective.setRenderType(packetIn.func_179817_d());
-        }
-        else
-        {
+        } else {
             ScoreObjective scoreobjective1 = scoreboard.getObjective(packetIn.func_149339_c());
 
-            if (packetIn.func_149338_e() == 1)
-            {
+            if (packetIn.func_149338_e() == 1) {
                 scoreboard.removeObjective(scoreobjective1);
-            }
-            else if (packetIn.func_149338_e() == 2)
-            {
+            } else if (packetIn.func_149338_e() == 2) {
                 scoreobjective1.setDisplayName(packetIn.func_149337_d());
                 scoreobjective1.setRenderType(packetIn.func_179817_d());
             }

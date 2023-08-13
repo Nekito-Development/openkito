@@ -225,7 +225,7 @@ public class Scoreboard
             }
         }
 
-        List<ScoreObjective> list = (List)this.scoreObjectiveCriterias.get(p_96519_1_.getCriteria());
+        List list = this.scoreObjectiveCriterias.get(p_96519_1_.getCriteria());
 
         if (list != null)
         {
@@ -239,6 +239,7 @@ public class Scoreboard
 
         this.func_96533_c(p_96519_1_);
     }
+
 
     /**
      * 0 is tab menu, 1 is sidebar, 2 is below name
