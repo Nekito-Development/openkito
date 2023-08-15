@@ -51,7 +51,7 @@ public enum nekito {
 
     public static String name = "Nekito";
 
-    public static String version = "1.7";
+    public static String version = "1.8";
 
     nekito() {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
