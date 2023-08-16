@@ -50,6 +50,7 @@ public class ModuleManager {
                 new AntiBot(),
                 new Watermark(),
                 new AirJump(),
+                new Autogapple(),
                 new Watermark2(),
                 new Arraylist(),
                 new AutoClicker(),

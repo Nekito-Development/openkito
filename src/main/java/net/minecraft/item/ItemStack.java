@@ -19,6 +19,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.HoverEvent;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -35,6 +36,8 @@ import net.minecraft.world.World;
 
 public final class ItemStack
 {
+
+    public static final ItemStack field_190927_a = new ItemStack((Item) null);
     public static final DecimalFormat DECIMALFORMAT = new DecimalFormat("#.###");
 
     /** Size of the stack. */
@@ -114,6 +117,25 @@ public final class ItemStack
         this.canPlaceOnCacheBlock = null;
         this.canPlaceOnCacheResult = false;
     }
+
+
+    public boolean isEmpty() {
+        if (this == field_190927_a) {
+            return true;
+        } else if (this.item != null && this.item != Item.getItemFromBlock(Blocks.air)) {
+            if (this.stackSize <= 0) {
+                return true;
+            } else {
+                return this.itemDamage < -32768 || this.itemDamage > 65535;
+            }
+        } else {
+            return true;
+        }
+    }
+
+
+
+
 
     /**
      * Splits off a stack of the given amount of this stack and reduces this stack by the amount.

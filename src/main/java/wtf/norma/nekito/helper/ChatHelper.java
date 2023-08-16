@@ -16,7 +16,7 @@ public final class ChatHelper {
     printMessage(message, true);
   }
 
-  public static void printMessage(String message, boolean prefix) {
+  public static void printMessage(String message, boolean prefix) {  // retarded
     mc.thePlayer.addChatMessage(new ChatComponentText(fix("&d" + PREFIX + " &8>> &7" + message)));
   }
 }

@@ -31,8 +31,7 @@ public class PolishHat extends Module {
             if (e instanceof EventRender3D) {
                 double height = 0.0;
                 final ItemStack stack = mc.thePlayer.getEquipmentInSlot(4);
-                final double d = (stack.getItem() instanceof ItemArmor) ? (mc.thePlayer.isSneaking() ? -0.1 : 0.12) : (height = (mc.thePlayer.isSneaking() ? -0.22 : 0.0));
-                if (mc.gameSettings.thirdPersonView == 1 || mc.gameSettings.thirdPersonView == 2) { // change this later
+             if (mc.gameSettings.thirdPersonView == 1 || mc.gameSettings.thirdPersonView == 2) { // change this later
                     GlStateManager.pushMatrix();
                     GL11.glBlendFunc(770, 771);
                     GlStateManager.disableDepth();
@@ -56,9 +55,9 @@ public class PolishHat extends Module {
                     GL11.glBegin(2);
                     for (float i = 0.0f; i < 360.5; ++i) {
                         RenderUtility.glColor(color, 255);
-                        GL11.glVertex3d(Math.cos(i * 3.15 / 180.0) * 0.45, 0.10, Math.sin(i * 3.15 / 180.0) * 0.45);
-                        GL11.glVertex3d(Math.cos(i * 3.15 / 180.0) * 0.45, 0.10, Math.sin(i * 3.15 / 180.0) * 0.45);
-                        GL11.glVertex3d(Math.cos(i * 3.15 / 180.0) * 0.45, 0.10, Math.sin(i * 3.15 / 180.0) * 0.45);
+                        GL11.glVertex3d(Math.cos(i * 3.14 / 180.0) * 0.45, 0.10, Math.sin(i * 3.14 / 180.0) * 0.45);
+                        GL11.glVertex3d(Math.cos(i * 3.14/ 180.0) * 0.45, 0.10, Math.sin(i * 3.14 / 180.0) * 0.45);
+                        GL11.glVertex3d(Math.cos(i * 3.14 / 180.0) * 0.45, 0.10, Math.sin(i * 3.14 / 180.0) * 0.45);
                     }
                     GL11.glEnd();
                     GlStateManager.enableAlpha();
