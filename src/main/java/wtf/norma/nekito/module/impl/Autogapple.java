@@ -20,7 +20,7 @@ import java.awt.*;
 public class Autogapple extends Module {
 
     public Autogapple() {
-        super("Autogapple", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Autogapple", Category.COMBAT, Keyboard.KEY_NONE);
         addSettings(zycko);
     }
 
