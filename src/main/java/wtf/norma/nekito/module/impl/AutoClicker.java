@@ -46,12 +46,8 @@ public class AutoClicker extends Module {
 
     @Override
     public void onEvent(Event e) {
-
-            if (Minecraft.getMinecraft().currentScreen == null && mc.gameSettings.keyBindAttack.isPressed()) {
+            if (Minecraft.getMinecraft().currentScreen == null && Mouse.isButtonDown(0)) {
                 if (mc.thePlayer.isUsingItem()) return;
-
-
-
                 if (timer.hasReached(1000 / RandomUtils.nextInt((int) cwelMIN.getValue(), (int) cwelMAX.getValue()))) {
                     KeyBinding.setKeyBindState(-100, true);
                     KeyBinding.onTick(-100);
@@ -59,8 +55,6 @@ public class AutoClicker extends Module {
                 } else {
                     KeyBinding.setKeyBindState(-100, false);
                 }
-
-
             if (right.isEnabled()) {
                 if (Minecraft.getMinecraft().currentScreen == null && Mouse.isButtonDown(1)) {
                     if (timer.hasReached(1000 / RandomUtils.nextInt((int) pedalMIN.getValue(), (int) pedalMAX.getValue()))) {
