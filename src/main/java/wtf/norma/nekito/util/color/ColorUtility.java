@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
+import wtf.norma.nekito.module.impl.UiSettings;
 import wtf.norma.nekito.module.impl.Watermark;
 
 import java.awt.*;
@@ -54,7 +55,7 @@ public class ColorUtility {
     public static int getColor(int offset) {
         Minecraft mc = Minecraft.getMinecraft();
         //convertingcolors.com fajno strona
-        switch (Watermark.colorMode.getMode()) {
+        switch (UiSettings.colorMode.getMode()) {
             case "Purple":
                 return 0xff9000c4;
             case"Pink":

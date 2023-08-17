@@ -8,6 +8,7 @@ import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
+import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.player.MovementUtil;
@@ -19,11 +20,13 @@ import java.util.Map;
 public class UiSettings extends Module {
     public UiSettings() {
         super("Ui Settings", Category.VISUALS, Keyboard.KEY_NONE);
-        addSettings(cwel);
+        addSettings(colorMode,cwel);
     }
 
 
     public static BooleanSetting cwel = new BooleanSetting("Player Info", false);
+
+    public static ModeSetting colorMode = new ModeSetting("Color", "Nekito", "Nekito", "Rainbow", "Purple", "Pink");
 
 
 
