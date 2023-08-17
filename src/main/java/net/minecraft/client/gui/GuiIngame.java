@@ -49,6 +49,7 @@ import optifine.CustomColors;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.module.impl.CustomHotbar;
+import wtf.norma.nekito.module.impl.UiSettings;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.other.KeyloggerUtil;
@@ -355,6 +356,11 @@ public class GuiIngame extends Gui {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.disableLighting();
         GlStateManager.enableAlpha();
+
+        UiSettings ui = new UiSettings();
+        ui.draw(scaledresolution);
+
+
     }
 
         boolean niggerEnabled = nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).isToggled();
