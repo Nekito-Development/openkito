@@ -18,10 +18,6 @@ public class eleczkamode extends Module {
 
     // nudzilo mi sie ok?
 
-
-    int x = 10;
-    int y = 10;
-
     public eleczkamode() {
         super("eleczkamode", Category.OTHER, Keyboard.KEY_NONE);
     }

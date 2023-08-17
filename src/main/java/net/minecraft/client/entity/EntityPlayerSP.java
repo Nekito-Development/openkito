@@ -172,9 +172,10 @@ public class EntityPlayerSP extends AbstractClientPlayer {
     /**
      * Called to update the entity's position/logic.
      */
-    EventUpdate eventUpdate = new EventUpdate();
+
 
     public void onUpdate() {
+
 
         GuiInventory.phase = this.mc.currentScreen instanceof GuiInventory || this.mc.currentScreen instanceof GuiInventory ? AnimationHelper.animation(GuiInventory.phase, 1.0, (double) 0.05f) : AnimationHelper.animation(GuiInventory.phase, 0.0, (double) 0.1f);
         GuiInventory.phase = MathHelper.clamp(GuiInventory.phase, 0.0, 1.0);
@@ -187,7 +188,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
             super.onUpdate();
-
+            EventUpdate eventUpdate = new EventUpdate();
             if (this.isRiding()) {
                 this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(this.rotationYaw, this.rotationPitch, this.onGround));
                 this.sendQueue.addToSendQueue(new C0CPacketInput(this.moveStrafing, this.moveForward, this.movementInput.jump, this.movementInput.sneak));

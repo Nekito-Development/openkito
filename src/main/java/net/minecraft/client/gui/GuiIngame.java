@@ -4,8 +4,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -54,7 +52,6 @@ import wtf.norma.nekito.module.impl.CustomHotbar;
 import wtf.norma.nekito.nekito;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.other.KeyloggerUtil;
-import wtf.norma.nekito.util.render.RenderUtility;
 
 public class GuiIngame extends Gui {
     private static final ResourceLocation vignetteTexPath = new ResourceLocation("textures/misc/vignette.png");
@@ -194,7 +191,7 @@ public class GuiIngame extends Gui {
         this.mc.getTextureManager().bindTexture(icons);
         GlStateManager.enableBlend();
 
-        if (this.showCrosshair() && this.mc.gameSettings.thirdPersonView < 1) {
+        if (this.showCrosshair() &&  this.mc.gameSettings.thirdPersonView < 1) {
             GlStateManager.tryBlendFuncSeparate(775, 769, 1, 0);
             GlStateManager.enableAlpha();
             this.drawTexturedModalRect(i / 2 - 7, j / 2 - 7, 0, 0, 16, 16);
@@ -333,10 +330,7 @@ public class GuiIngame extends Gui {
 
         if (scoreobjective1 != null) {
             this.renderScoreboard(scoreobjective1, scaledresolution,true);
-        } else {
-            //nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Scoreboard>Get("Scoreboard").AllowRender = false;
         }
-
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         GlStateManager.disableAlpha();

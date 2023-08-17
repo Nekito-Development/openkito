@@ -222,7 +222,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private RenderItem renderItem;
     private ItemRenderer itemRenderer;
     public EntityPlayerSP thePlayer;
-    private Entity renderViewEntity;
+    private static Entity renderViewEntity;
     public Entity pointedEntity;
     public EffectRenderer effectRenderer;
     public Session session;
@@ -3162,9 +3162,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         return this.skinManager;
     }
 
-    public Entity getRenderViewEntity()
+    public static Entity getRenderViewEntity()
     {
-        return this.renderViewEntity;
+        return renderViewEntity;
     }
 
     public void setRenderViewEntity(Entity viewingEntity)

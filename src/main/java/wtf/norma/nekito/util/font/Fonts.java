@@ -19,6 +19,8 @@ public class Fonts {
     public static FontRenderer fx = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("comicfont.ttf"), 50, 0), true, true);
 
     public static FontRenderer gay = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("gray.ttf"), 15, 0), true, true);
+
+    public static FontRenderer gay2 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("gray.ttf"), 18, 0), true, true);
     public static FontRenderer sans_35 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 35, 0), true, true);
     public static FontRenderer Comfortaa_40 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 40, 0), true, true);
     public static FontRenderer Comfortaa_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 13, 0), true, true);
