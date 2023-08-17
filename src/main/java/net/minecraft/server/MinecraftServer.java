@@ -119,7 +119,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
 
     /**
      * The task the server is currently working on(and will output on outputPercentRemaining).
-     */
+U     */
     public String currentTask;
 
     /** The percentage of the current task finished so far. */

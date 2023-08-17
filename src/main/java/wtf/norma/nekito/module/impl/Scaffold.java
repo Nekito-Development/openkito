@@ -16,8 +16,7 @@ public class Scaffold extends Module {
     }
 
 
-    public void onUpdate(EventUpdate event) {
-    }
+
 
 
     @Override

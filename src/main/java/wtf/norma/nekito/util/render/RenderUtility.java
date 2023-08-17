@@ -245,14 +245,18 @@ public class RenderUtility {
         GL11.glDisable(3042);
     }
 
-    public static void glColor(final Color color) {
-        final float red = color.getRed() / 255F;
-        final float green = color.getGreen() / 255F;
-        final float blue = color.getBlue() / 255F;
-        final float alpha = color.getAlpha() / 255F;
-
-        GlStateManager.color(red, green, blue, alpha);
+    private static final Frustum frustrum = new Frustum();
+    public static boolean isInViewFrustrum(Entity entity) {
+        return (isInViewFrustrum(entity.getEntityBoundingBox()) || entity.ignoreFrustumCheck);
     }
+
+    private static boolean isInViewFrustrum(AxisAlignedBB bb) {
+        Entity current = Minecraft.getRenderViewEntity();
+        frustrum.setPosition(current.posX, current.posY, current.posZ);
+        return frustrum.isBoundingBoxInFrustum(bb);
+    }
+
+
 
     public static void glColor(final Color color, final int alpha) {
         glColor(color, alpha / 255F);
