@@ -14,6 +14,7 @@ import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.player.MovementUtil;
 
+import java.awt.*;
 
 
 public class PacketDebugger extends Module {
@@ -56,14 +57,13 @@ public class PacketDebugger extends Module {
 
             if (mc.theWorld != null && mc.thePlayer != null) {
 
-
-
                 // keep alive
                 if (((EventUpdate) e).getPacket() instanceof C00PacketKeepAlive && keepAlive.isEnabled()) {
 
                     long lastPacket = System.currentTimeMillis() - cwel;
 
                     ChatHelper.printMessage("Keep Alive Packet : " + ((C00PacketKeepAlive) ((EventUpdate) e).getPacket()).getKey() + " " + lastPacket + "ms");
+
 
                     this.cwel = System.currentTimeMillis();
                 }

@@ -30,7 +30,6 @@ public class PolishHat extends Module {
         public void onEvent(Event e) {
             if (e instanceof EventRender3D) {
                 double height = 0.0;
-                final ItemStack stack = mc.thePlayer.getEquipmentInSlot(4);
              if (mc.gameSettings.thirdPersonView == 1 || mc.gameSettings.thirdPersonView == 2) { // change this later
                     GlStateManager.pushMatrix();
                     GL11.glBlendFunc(770, 771);
