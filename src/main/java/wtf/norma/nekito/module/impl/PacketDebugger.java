@@ -20,6 +20,7 @@ import java.awt.*;
 public class PacketDebugger extends Module {
 
 
+    public static ModeSetting Brand = new ModeSetting("Client brand", "Vanilla", "Vanilla", "Lunar","Console Spammer","None");
 
     public static BooleanSetting Render = new BooleanSetting("Render in Ui", false);
 
@@ -36,9 +37,12 @@ public class PacketDebugger extends Module {
 
 
 
+
+
+
     public PacketDebugger() {
         super("Packet Debugger", Category.OTHER, Keyboard.KEY_NONE);
-        addSettings(keepAlive, payloads, transaction,velo);
+        addSettings(Brand,keepAlive, payloads, transaction,velo);
     }
 
 

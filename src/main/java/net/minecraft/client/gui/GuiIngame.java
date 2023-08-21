@@ -182,7 +182,7 @@ public class GuiIngame extends Gui {
                 } catch (InterruptedException var3) {
                     throw new RuntimeException(var3);
                 }
-                nekito.INSTANCE.onWelcomeUI();
+                //nekito.INSTANCE.onWelcomeUI();
             })).start();
 
             joinedFirst = true;
