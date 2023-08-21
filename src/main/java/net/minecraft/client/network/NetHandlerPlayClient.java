@@ -301,8 +301,8 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         this.gameController.playerController.setGameType(packetIn.getGameType());
         this.gameController.gameSettings.sendSettingsToServer();
 
-        mc.thePlayer.sendQueue.getNetworkManager().sendPacketNoEvent((new C17PacketCustomPayload("MC|Brand", (new PacketBuffer(Unpooled.buffer())).writeString("Feather Forge"))));
-        // quality spuf ?????
+        this.netManager.sendPacket(new C17PacketCustomPayload("MC|Brand", (new PacketBuffer(Unpooled.buffer())).writeString(ClientBrandRetriever.getClientModName())));
+        // cum polska
     }
 
     /**
