@@ -20,7 +20,7 @@ import java.awt.*;
 public class PacketDebugger extends Module {
 
 
-    public static ModeSetting Brand = new ModeSetting("Client brand", "Vanilla", "Vanilla", "Lunar","Console Spammer","None");
+    public static ModeSetting Brand = new ModeSetting("Client brand", "Vanilla", "Vanilla", "Lunar","Console Spammer","Smile","None");
 
     public static BooleanSetting Render = new BooleanSetting("Render in Ui", false);
 
