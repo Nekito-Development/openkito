@@ -37,16 +37,18 @@ public class UiSettings extends Module {
         if(cwel.isEnabled()) {
             String xyz = (int) mc.thePlayer.posX + ", " + (int) mc.thePlayer.posY + ", " + (int) mc.thePlayer.posZ;
             Color clr = new Color(ColorUtility.getColor(0));
-            Fonts.gay2.drawString("FPS: ", 14 + Fonts.gay2.getStringWidth("Speed: ") + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz + String.format("%.1f", MovementUtil.getSpeed()) + " b/s"), sr.getScaledHeight() - 14, clr.getRGB(), false);
-            Fonts.gay2.drawString(String.valueOf(Minecraft.getDebugFPS()), 14 + Fonts.gay2.getStringWidth("FPS: ") + Fonts.gay2.getStringWidth("XYZ: " + xyz) + Fonts.gay2.getStringWidth("Speed: " + String.format("%.1f", MovementUtil.getSpeed()) + " b/s"), sr.getScaledHeight() - 14, -1, false);
+            Fonts.gay2.drawString("FPS: ", 9 + Fonts.gay2.getStringWidth("Speed: ") + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz + String.format("%.1f", MovementUtil.getSpeed()) + " b/s"), sr.getScaledHeight() - 9, clr.getRGB(), false);
+            Fonts.gay2.drawString(String.valueOf(Minecraft.getDebugFPS()), 9 + Fonts.gay2.getStringWidth("FPS: ") + Fonts.gay2.getStringWidth("XYZ: " + xyz) + Fonts.gay2.getStringWidth("Speed: " + String.format("%.1f", MovementUtil.getSpeed()) + " b/s"), sr.getScaledHeight() - 9, -1, false);
 
-            Fonts.gay2.drawString("Speed: ", 8 + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz), sr.getScaledHeight() - 14, clr.getRGB(), false);
-            Fonts.gay2.drawString(String.format("%.1f", MovementUtil.getSpeed()) + " b/s", 8 + Fonts.gay2.getStringWidth("Speed: ") + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz), sr.getScaledHeight() - 14, -1, false);
-            Fonts.gay2.drawString("XYZ: ", 2, sr.getScaledHeight() - 14, clr.getRGB(), false);
-            Fonts.gay2.drawString(xyz, 2 + Fonts.gay2.getStringWidth("XYZ: "), sr.getScaledHeight() - 14, -1, false);
+            Fonts.gay2.drawString("Speed: ", 8 + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz), sr.getScaledHeight() - 9, clr.getRGB(), false);
+            Fonts.gay2.drawString(String.format("%.1f", MovementUtil.getSpeed()) + " b/s", 6 + Fonts.gay2.getStringWidth("Speed: ") + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz), sr.getScaledHeight() - 9, -1, false);
+            Fonts.gay2.drawString("XYZ: ", 2, sr.getScaledHeight() - 9, clr.getRGB(), false);
+            Fonts.gay2.drawString(xyz, 2 + Fonts.gay2.getStringWidth("XYZ: "), sr.getScaledHeight() - 9, -1, false);
         }
 
+
     }
+
 
 
 
