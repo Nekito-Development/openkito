@@ -26,7 +26,7 @@ public class AirJump extends Module {
         super.onDisable();
 
     }
-
+    //
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventPreMotion) {
