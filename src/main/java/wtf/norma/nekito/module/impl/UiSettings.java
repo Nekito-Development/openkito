@@ -44,7 +44,7 @@ public class UiSettings extends Module {
             Fonts.gay2.drawString(String.format("%.1f", MovementUtil.getSpeed()) + " b/s", 6 + Fonts.gay2.getStringWidth("Speed: ") + Fonts.gay2.getStringWidth("XYZ: ") + Fonts.gay2.getStringWidth(xyz), sr.getScaledHeight() - 9, -1, false);
             Fonts.gay2.drawString("XYZ: ", 2, sr.getScaledHeight() - 9, clr.getRGB(), false);
             Fonts.gay2.drawString(xyz, 2 + Fonts.gay2.getStringWidth("XYZ: "), sr.getScaledHeight() - 9, -1, false);
-        }
+        }//
 
 
     }
