@@ -75,6 +75,7 @@ import net.minecraft.world.LockCode;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
 import wtf.norma.nekito.module.impl.FastMine;
+import wtf.norma.nekito.module.impl.KeepSprint;
 import wtf.norma.nekito.nekito;
 
 @SuppressWarnings("incomplete-switch")
@@ -1366,9 +1367,15 @@ public abstract class EntityPlayer extends EntityLivingBase
                         if (i > 0)
                         {
                             targetEntity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
-                            this.motionX *= 0.6D;
-                            this.motionZ *= 0.6D;
-                            this.setSprinting(false);
+                            if(nekito.INSTANCE.getModuleManager().getModule(KeepSprint.class).isToggled()) {
+                                this.motionX *= KeepSprint.motionX.getValue();
+                                this.motionZ *= KeepSprint.motionZ.getValue();
+                                this.setSprinting(KeepSprint.setSprinting.value); //cryabtit
+                            } else {
+                                this.motionX *= 0.6D;
+                                this.motionZ *= 0.6D;
+                                this.setSprinting(false);
+                            }
                         }
 
                         if (targetEntity instanceof EntityPlayerMP && targetEntity.velocityChanged)

@@ -23,6 +23,7 @@ public class ModuleManager {
                 new FastMine(),
                 new ItemPhysics(),
                 new NoFall(),
+                new KeepSprint(),
                 new Fly(),
                 new FreeCam(),
                 new FastWorldLoad(),
