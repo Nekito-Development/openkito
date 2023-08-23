@@ -30,13 +30,16 @@ public class AirJump extends Module {
     @Override
     public void onEvent(Event e) {
         if (e instanceof EventPreMotion) {
-            if ((!Util.mc.theWorld.getCollidingBoundingBoxes(Minecraft.getMinecraft().thePlayer, Minecraft.getMinecraft().thePlayer.getEntityBoundingBox().offset(0, -1, 0).expand(0.5, 0, 0.5)).isEmpty() && Minecraft.getMinecraft().thePlayer.ticksExisted % 2 == 0)) {
-                if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-                    Minecraft.getMinecraft().thePlayer.jumpTicks = 0;
-                    Minecraft.getMinecraft().thePlayer.fallDistance = 0;
+            // IDK HOW BUT IT BYPASSES VULCAN AND VERUS AND OTHER SHIT LUB
+            if (mc.thePlayer.onGround) {
+                mc.thePlayer.jump();
+            }
+            if ((!Util.mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, -1, 0).expand(0.5, 0, 0.5)).isEmpty() && mc.thePlayer.ticksExisted % 2 == 0)) {
+                    mc.gameSettings.keyBindJump.pressed = true;
+                    mc.thePlayer.jumpTicks = 0;
+                    mc.thePlayer.fallDistance = 0;
                     ((EventPreMotion) e).setOnGround(true);
-                    Minecraft.getMinecraft().thePlayer.onGround = true;
-                }
+                    mc.thePlayer.onGround = true;
             }
         }
     }
