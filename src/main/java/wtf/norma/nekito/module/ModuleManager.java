@@ -47,6 +47,7 @@ public class ModuleManager {
                 new bandytakamera(),
                 new NoClip(),
                 new NevaLose(),
+                new NevaLoseinfo(),
                 new WorldColor(),
               //  new CrashGUI(),
                 new AntiBot(),

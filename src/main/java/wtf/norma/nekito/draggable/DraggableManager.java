@@ -20,6 +20,7 @@ public class DraggableManager {
         Add(new Arraylist());
         Add(new NevaLose());
         Add(new ServerInfo());
+        Add(new NevaLoseinfo());
         Add(new Watermark2());
         Add(new Hotbar());
 
