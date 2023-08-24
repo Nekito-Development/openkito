@@ -51,7 +51,7 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gwui setuwnii";
         nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "gorocamuwera";
         nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WourdCowolowr";
-        nekito.INSTANCE.getModuleManager().getModule(CrashGUI.class).name = "CrauwshGuwuI";
+
         nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "WauterMaurk";
         nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "XauwuesWauterMaurk";
         nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "AuwrList";
@@ -118,7 +118,6 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gui Settings";
         nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "bandytakamera";
         nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WorldColor";
-        nekito.INSTANCE.getModuleManager().getModule(CrashGUI.class).name = "CrashGUI";
         nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "Watermark";
         nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "cfx watermark ";
         nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "Arraylist";

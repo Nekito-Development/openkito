@@ -54,10 +54,6 @@ public class AimBot extends Module {
         if (e instanceof EventMotion) {
             EntityPlayer target = mc.theWorld.playerEntities.stream().filter(entityPlayer -> entityPlayer != mc.thePlayer).min(Comparator.comparing(entityPlayer ->
                     entityPlayer.getDistanceToEntity(mc.thePlayer))).filter(entityPlayer -> entityPlayer.getDistanceToEntity(mc.thePlayer) <= ZASIEGCHUJA.getValue()).orElse(null);
-
-
-
-
             if (target != null && !target.isInvisible() && mc.thePlayer.canEntityBeSeen(target)) {
                 mc.thePlayer.rotationYaw = rotations(target)[0];
                 mc.thePlayer.rotationPitch = rotations(target)[1];

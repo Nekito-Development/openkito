@@ -1570,14 +1570,13 @@ public abstract class Entity implements ICommandSender
         {
             tagCompund.setString("id", s);
             this.writeToNBT(tagCompund);
-            return true;
+            return true; // notch $$$
         }
         else
         {
             return false;
         }
     }
-
     /**
      * Either write this entity to the NBT tag given and return true, or return false without doing anything. If this
      * returns false the entity is not saved on disk. Ridden entities return false here as they are saved with their

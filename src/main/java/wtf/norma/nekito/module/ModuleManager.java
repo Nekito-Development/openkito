@@ -47,7 +47,7 @@ public class ModuleManager {
                 new bandytakamera(),
                 new NoClip(),
                 new WorldColor(),
-                new CrashGUI(),
+              //  new CrashGUI(),
                 new AntiBot(),
                 new Watermark(),
                 new AirJump(),

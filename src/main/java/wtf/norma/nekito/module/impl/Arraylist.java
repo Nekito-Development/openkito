@@ -3,12 +3,23 @@ package wtf.norma.nekito.module.impl;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.settings.impl.BooleanSetting;
+import wtf.norma.nekito.settings.impl.ModeSetting;
 
 public class Arraylist extends Module {
     public Arraylist() {
         super("Arraylist", Category.VISUALS, Keyboard.KEY_NONE);
         //  toggle();
+        addSettings(fonts,line);
     }
+
+
+    public static ModeSetting fonts = new ModeSetting("Fonts", "SemiBold", "SemiBold","ProductSans","Sans","Rubik", "Ubuntu",  "Vag", "Hack");
+
+    public static BooleanSetting line = new BooleanSetting("Line",true);
+
+
+
 
 
     @Override

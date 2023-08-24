@@ -43,6 +43,13 @@ public class LagDetector extends Module {
             }
         }
     }
+    public int calculatePing() {
+        return mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()) != null ?
+                mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() : 0;
+    }
+
+
+
 
 
 }

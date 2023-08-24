@@ -52,5 +52,4 @@ public class Autogapple extends Module {
         return (itemStack != null && !itemStack.isEmpty() && itemStack.getItem() instanceof ItemAppleGold);
     }
 
-
 }

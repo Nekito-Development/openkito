@@ -13,10 +13,15 @@ public class Fonts {
     public static FontRenderer simkarta = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("courbd.ttf"), 30, 0), true, true);
 
     public static FontRenderer SEMI_BOLD_30 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 30, 0), true, true);
+    public static FontRenderer vag16 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("vag.ttf"), 16, 0), true, true);
+        public static FontRenderer hack16 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("hack.ttf"), 16, 0), true, true);
 
 
+    public static FontRenderer RUBIK_16 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("rub.ttf"), 16, 0), true, true);
 
-    public static FontRenderer fx = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("comicfont.ttf"), 50, 0), true, true);
+    public static FontRenderer ubuntu16 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("ubuntu.ttf"), 16, 0), true, true);
+
+
 
     public static FontRenderer gay = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("gray.ttf"), 15, 0), true, true);
 
@@ -34,6 +39,11 @@ public class Fonts {
    // public static FontRenderer verdana_12 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("verdana.ttf"), 12, 0), true, true);
     public static FontRenderer verdana_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("verdana.ttf"), 13, 0), true, true);
     public static FontRenderer sans_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 13, 0), true, true);
+
+    public static FontRenderer productSansRegular16     = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("product_sans_regular.ttf"), 16, 0), true, true);
+
+
+    public static FontRenderer sans_16= new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 16, 0), true, true);
 
     public static FontRenderer SEMI_BOLD_18 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sfpro.otf"), 18, 0), true, true);
 
