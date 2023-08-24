@@ -41,11 +41,24 @@ public class Arraylist extends AbstractDraggable {
         // productsansior$$$
     }
 
+
+
+
+
+
+
     @Override
     public Vector2f Render() {
         longest = 0;
         ScaledResolution sr = new ScaledResolution(mc);
         ArrayList<Module> enabledMods = new ArrayList<Module>();
+
+
+        boolean lowercase;
+        lowercase = wtf.norma.nekito.module.impl.Arraylist.lowerCase.isEnabled();
+
+
+
         for(Module m : nekito.INSTANCE.getModuleManager().getModules())
             if(m.isToggled())
                 enabledMods.add(m);
@@ -57,11 +70,19 @@ public class Arraylist extends AbstractDraggable {
         int offset = Y;
         if(X < sr.getScaledWidth()/2.0f) {
             for(Module m : enabledMods) {
-                if(getFont().getStringWidth(m.getName()) > longest) {
-                    longest = getFont().getStringWidth(m.getName());
+
+                String cwel = m.getName();
+                if (wtf.norma.nekito.module.impl.Arraylist.lowerCase.isEnabled()){
+                    cwel = cwel.toLowerCase();
                 }
-                Gui.drawRect(X-1,offset,X+getFont().getStringWidth(m.getName())+2,offset+10,new Color(0,0,0,153).getRGB());
-                getFont().drawString(m.getName(),X,offset+2, ColorUtility.getColor(3000));
+
+                if(getFont().getStringWidth(cwel) > longest) {
+                    longest = getFont().getStringWidth(cwel);
+                }
+
+
+                Gui.drawRect(X-1,offset,X+getFont().getStringWidth(cwel)+2,offset+10,new Color(0,0,0,153).getRGB());
+                getFont().drawString(cwel,X,offset+2, ColorUtility.getColor(3000));
                 offset+=10;
             }
             if (wtf.norma.nekito.module.impl.Arraylist.line.isEnabled()) {
@@ -69,11 +90,15 @@ public class Arraylist extends AbstractDraggable {
             }
         } else {
             for(Module m : enabledMods) {
-                if(getFont().getStringWidth(m.getName()) > longest) {
-                    longest = getFont().getStringWidth(m.getName());
+                String cwel = m.getName();
+                if (wtf.norma.nekito.module.impl.Arraylist.lowerCase.isEnabled()){
+                    cwel = cwel.toLowerCase();
                 }
-                Gui.drawRect(X-getFont().getStringWidth(m.getName())-1,offset,X-getFont().getStringWidth(m.getName())+getFont().getStringWidth(m.getName())+2,offset+10,new Color(0,0,0,153).getRGB());
-                getFont().drawString(m.getName(),X-getFont().getStringWidth(m.getName()),offset+2, ColorUtility.getColor(3000));
+                if(getFont().getStringWidth(cwel) > longest) {
+                    longest = getFont().getStringWidth(cwel);
+                }
+                Gui.drawRect(X-getFont().getStringWidth(cwel)-1,offset,X-getFont().getStringWidth(cwel)+getFont().getStringWidth(cwel)+2,offset+10,new Color(0,0,0,153).getRGB());
+                getFont().drawString(cwel,X-getFont().getStringWidth(cwel),offset+2, ColorUtility.getColor(3000));
                 offset+=10;
             }
             if (wtf.norma.nekito.module.impl.Arraylist.line.isEnabled()){
