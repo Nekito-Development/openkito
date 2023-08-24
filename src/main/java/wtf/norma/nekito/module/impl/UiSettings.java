@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class UiSettings extends Module {
     public UiSettings() {
-        super("Ui Settings", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Ui Settings", Category.HUD, Keyboard.KEY_NONE);
         addSettings(colorMode,cwel);
     }
 

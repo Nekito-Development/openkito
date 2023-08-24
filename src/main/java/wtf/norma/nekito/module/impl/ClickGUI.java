@@ -13,7 +13,7 @@ public class ClickGUI extends Module {
     public static BooleanSetting blur = new BooleanSetting("Blur", true);
 
     public ClickGUI() {
-        super("ClickGUI", Category.VISUALS, Keyboard.KEY_RSHIFT);
+        super("ClickGUI", Category.HUD, Keyboard.KEY_RSHIFT);
         this.addSettings(anime, blur);
     }
 

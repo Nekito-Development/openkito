@@ -9,7 +9,7 @@ public class CustomButtons extends Module {
     public static ModeSetting font = new ModeSetting("Font", "Custom", "Custom", "Minecraft");
 
     public CustomButtons() {
-        super("CustomButtons", Category.VISUALS, Keyboard.KEY_NONE);
+        super("CustomButtons", Category.HUD, Keyboard.KEY_NONE);
         this.addSettings(rect, font);
     }
 

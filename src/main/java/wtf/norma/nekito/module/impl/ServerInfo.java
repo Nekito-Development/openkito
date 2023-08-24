@@ -8,7 +8,7 @@ import wtf.norma.nekito.nekito;
 
 public class ServerInfo extends Module {
     public ServerInfo() {
-        super("ServerInfo", Category.VISUALS, Keyboard.KEY_NONE);
+        super("ServerInfo", Category.HUD, Keyboard.KEY_NONE);
     }
 
     @Override

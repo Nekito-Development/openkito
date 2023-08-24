@@ -26,7 +26,7 @@ public class Watermark extends Module {
     //  public static ModeSetting mode = new ModeSetting("Mode", "Nekito", "Nekito","wzrost");
 
     public Watermark() {
-        super("Watermark", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Watermark", Category.HUD, Keyboard.KEY_NONE);
     }
 
 

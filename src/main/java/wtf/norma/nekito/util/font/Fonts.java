@@ -29,6 +29,8 @@ public class Fonts {
     public static FontRenderer sans_35 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("sans.ttf"), 35, 0), true, true);
     public static FontRenderer Comfortaa_40 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 40, 0), true, true);
     public static FontRenderer Comfortaa_13 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 13, 0), true, true);
+    public static FontRenderer Comfortaa_14 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 14, 0), true, true);
+
 
 
     public static FontRenderer Comfortaa_20 = new FontRenderer(FontUtility.getFontFromTTF(new ResourceLocation("Comfortaa.ttf"), 20, 0), true, true);

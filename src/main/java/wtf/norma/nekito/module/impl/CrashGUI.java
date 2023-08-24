@@ -13,7 +13,7 @@ public class CrashGUI extends Module {
     public static BooleanSetting blur = new BooleanSetting("Blur", false);
 
     public CrashGUI() {
-        super("CrashGUI", Category.VISUALS, Keyboard.KEY_INSERT);
+        super("CrashGUI", Category.HUD, Keyboard.KEY_INSERT);
         this.addSettings(anime, blur);
     }
 

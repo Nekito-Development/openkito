@@ -46,6 +46,7 @@ public class ModuleManager {
                 new ChestESP(),
                 new bandytakamera(),
                 new NoClip(),
+                new NevaLose(),
                 new WorldColor(),
               //  new CrashGUI(),
                 new AntiBot(),

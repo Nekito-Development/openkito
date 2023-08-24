@@ -8,7 +8,7 @@ import wtf.norma.nekito.nekito;
 
 public class Watermark2 extends Module {
     public Watermark2() {
-        super("cfx watermark", Category.VISUALS, Keyboard.KEY_NONE);
+        super("cfx watermark", Category.HUD, Keyboard.KEY_NONE);
     }
 
 

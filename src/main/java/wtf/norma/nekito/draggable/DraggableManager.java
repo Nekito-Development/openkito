@@ -18,6 +18,7 @@ public class DraggableManager {
     public void Init() {
         Add(new Watermark());
         Add(new Arraylist());
+        Add(new NevaLose());
         Add(new ServerInfo());
         Add(new Watermark2());
         Add(new Hotbar());

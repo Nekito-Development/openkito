@@ -6,7 +6,7 @@ import wtf.norma.nekito.nekito;
 
 public class CustomHotbar extends Module {
     public CustomHotbar() {
-        super("CustomHotbar", Category.VISUALS, Keyboard.KEY_NONE);
+        super("CustomHotbar", Category.HUD, Keyboard.KEY_NONE);
     }
 
     @Override

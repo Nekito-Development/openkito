@@ -8,7 +8,7 @@ import wtf.norma.nekito.settings.impl.ModeSetting;
 
 public class Arraylist extends Module {
     public Arraylist() {
-        super("Arraylist", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Arraylist", Category.HUD, Keyboard.KEY_NONE);
         //  toggle();
         addSettings(fonts,line,lowerCase);
     }

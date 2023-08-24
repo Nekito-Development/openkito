@@ -13,7 +13,7 @@ public class InventorySettings extends Module {
     public static BooleanSetting anime = new BooleanSetting("Anime in Inventory", true);
 
     public InventorySettings() {
-        super("Gui Settings", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Gui Settings", Category.HUD, Keyboard.KEY_NONE);
         addSettings(shader, anime);
     }
 

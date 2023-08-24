@@ -145,7 +145,7 @@ public class Module {
     }
 
     public enum Category {
-        COMBAT("Combat"), LEGIT("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"), OTHER("Other"), CRASHERS("Crashers List");
+        COMBAT("Combat"), LEGIT("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"), OTHER("Other"),HUD("Hud"), CRASHERS("Crashers List");
 
         public String name;
 

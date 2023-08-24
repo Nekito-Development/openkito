@@ -38,7 +38,7 @@ public class TargetHUD extends Module {
     private double scale = 0;
 
     public TargetHUD() {
-        super("Target HUD", Category.VISUALS, Keyboard.KEY_NONE);
+        super("Target HUD", Category.HUD, Keyboard.KEY_NONE);
         //  toggle();
         addSettings(numerfona);
 
