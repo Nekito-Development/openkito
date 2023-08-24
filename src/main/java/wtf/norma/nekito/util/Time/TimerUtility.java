@@ -11,7 +11,7 @@ public class TimerUtility implements Util {
     }
 
     public void reset() {
-        this.lastTime = System.currentTimeMillis();
+        lastTime = System.currentTimeMillis();
     }
 
     public  boolean hasReached(double milliseconds) {

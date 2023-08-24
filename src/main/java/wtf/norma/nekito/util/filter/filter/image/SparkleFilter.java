@@ -27,9 +27,9 @@ public class SparkleFilter extends PointFilter {
 	private int randomness = 25;
 	private int width, height;
 	private int centreX, centreY;
-	private long seed = 371;
+	private final long seed = 371;
 	private float[] rayLengths;
-	private Random randomNumbers = new Random();
+	private final Random randomNumbers = new Random();
 	
 	public SparkleFilter() {
 	}

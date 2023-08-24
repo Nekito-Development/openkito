@@ -15,7 +15,7 @@ public class NumberSetting extends Setting {
     }
 
     public float getFloatValue() {
-        return (float) this.value;
+        return this.value;
     }
     public int getCurrentValueInt() {
         return (int)this.value;

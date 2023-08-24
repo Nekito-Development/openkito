@@ -37,7 +37,7 @@ public class NoiseFilter extends PointFilter {
 	private int distribution = UNIFORM;
 	private boolean monochrome = false;
 	private float density = 1;
-	private Random randomNumbers = new Random();
+	private final Random randomNumbers = new Random();
 	
 	public NoiseFilter() {
 	}

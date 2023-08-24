@@ -37,20 +37,21 @@ public class ShadeFilter extends WholeImageFilter {
 
 	private float bumpHeight;
 	private float bumpSoftness;
-	private float viewDistance = 10000.0f;
-	private int colorSource = COLORS_FROM_IMAGE;
+	private final float viewDistance = 10000.0f;
+	private final int colorSource = COLORS_FROM_IMAGE;
 	private int bumpSource = BUMPS_FROM_IMAGE;
 	private Function2D bumpFunction;
 	private BufferedImage environmentMap;
 	private int[] envPixels;
 	private int envWidth = 1, envHeight = 1;
-	private Vector3f l;
-	private Vector3f v;
-	private Vector3f n;
-	private Color4f shadedColor;
-	private Color4f diffuse_color;
-	private Color4f specular_color;
-	private Vector3f tmpv, tmpv2;
+	private final Vector3f l;
+	private final Vector3f v;
+	private final Vector3f n;
+	private final Color4f shadedColor;
+	private final Color4f diffuse_color;
+	private final Color4f specular_color;
+	private final Vector3f tmpv;
+	private final Vector3f tmpv2;
 
 	public ShadeFilter() {
 		bumpHeight = 1.0f;

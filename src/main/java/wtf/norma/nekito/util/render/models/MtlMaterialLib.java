@@ -8,7 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MtlMaterialLib {
 
@@ -28,9 +29,9 @@ public class MtlMaterialLib {
     public static final String TEXTURE_DIFFUSE = "map_Kd";
     public static final String TEXTURE_SPECULAR = "map_Ks";
     public static final String TEXTURE_TRANSPARENCY = "map_d";
-    private ArrayList<Material> materials;
-    private String path;
-    private String startPath;
+    private final ArrayList<Material> materials;
+    private final String path;
+    private final String startPath;
 
     public MtlMaterialLib(String path) {
         this.path = path;
@@ -76,7 +77,7 @@ public class MtlMaterialLib {
     }
 
     public static ByteBuffer imageToByteBuffer(BufferedImage img) {
-        int[] pixels = img.getRGB(0, 0, img.getWidth(), img.getHeight(), (int[]) null, 0, img.getWidth());
+        int[] pixels = img.getRGB(0, 0, img.getWidth(), img.getHeight(), null, 0, img.getWidth());
         int bufLen = pixels.length * 4;
         ByteBuffer oglPixelBuf = BufferUtils.createByteBuffer(bufLen);
 

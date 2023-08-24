@@ -75,7 +75,7 @@ public class CurlFilter extends TransformFilter {
 	static class Sampler {
 		private int edgeAction;
 		private int width, height;
-		private int[] inPixels;
+		private final int[] inPixels;
 		
 		public Sampler( BufferedImage image ) {
 			int width = image.getWidth();

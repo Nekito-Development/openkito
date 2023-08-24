@@ -1,7 +1,10 @@
 package wtf.norma.nekito.util.render.models;
 
-import java.io.*;
-import java.util.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 // author: saph
 // thanks for it
 
@@ -40,19 +43,19 @@ public abstract class ObjModel extends Model {
     }
 
     public void renderGroup(ObjObject group) {
-        if (this.fireEvent((new ObjEvent(this, ObjEvent.EventType.PRE_RENDER_GROUP)).setData(new Object[]{group, group}))) {
+        if (this.fireEvent((new ObjEvent(this, ObjEvent.EventType.PRE_RENDER_GROUP)).setData(group, group))) {
             this.renderGroupImpl(group);
         }
 
-        this.fireEvent((new ObjEvent(this, ObjEvent.EventType.POST_RENDER_GROUP)).setData(new Object[]{group, group}));
+        this.fireEvent((new ObjEvent(this, ObjEvent.EventType.POST_RENDER_GROUP)).setData(group, group));
     }
 
     public void renderGroups(String groupsName) {
-        if (this.fireEvent((new ObjEvent(this, ObjEvent.EventType.PRE_RENDER_GROUPS)).setData(new Object[]{groupsName}))) {
+        if (this.fireEvent((new ObjEvent(this, ObjEvent.EventType.PRE_RENDER_GROUPS)).setData(groupsName))) {
             this.renderGroupsImpl(groupsName);
         }
 
-        this.fireEvent((new ObjEvent(this, ObjEvent.EventType.POST_RENDER_GROUPS)).setData(new Object[]{groupsName}));
+        this.fireEvent((new ObjEvent(this, ObjEvent.EventType.POST_RENDER_GROUPS)).setData(groupsName));
     }
 
     public void render() {

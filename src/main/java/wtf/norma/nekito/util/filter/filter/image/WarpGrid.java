@@ -162,8 +162,8 @@ int j = 0;
 		int index = 0;
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < cols; col++) {
-				intermediate.xGrid[index] = (float)ImageMath.lerp(t, xGrid[index], destination.xGrid[index]);
-				intermediate.yGrid[index] = (float)ImageMath.lerp(t, yGrid[index], destination.yGrid[index]);
+				intermediate.xGrid[index] = ImageMath.lerp(t, xGrid[index], destination.xGrid[index]);
+				intermediate.yGrid[index] = ImageMath.lerp(t, yGrid[index], destination.yGrid[index]);
 				index++;
 			}
 		}
@@ -263,8 +263,8 @@ try {
 			int i = x;
 			
 			for (v = 0; v < gridRows; v++) {
-				xrow[v] = splines.xGrid[i];;
-				yrow[v] = splines.yGrid[i];;
+				xrow[v] = splines.xGrid[i];
+				yrow[v] = splines.yGrid[i];
 				i += cols;
 			}
 

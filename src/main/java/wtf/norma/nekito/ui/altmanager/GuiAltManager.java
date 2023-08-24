@@ -1,7 +1,5 @@
 package wtf.norma.nekito.ui.altmanager;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
@@ -9,13 +7,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.util.player.NameUtil;
 import wtf.norma.nekito.util.shader.GLSL;
 
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
-import java.net.URI;
 
 public final class GuiAltManager extends GuiScreen {
     private GuiTextField password;
@@ -46,7 +40,7 @@ public final class GuiAltManager extends GuiScreen {
 
                 case 3:
                     thread = null;
-                    thread = new AltLoginThread(RandomStringUtils.random(14, true, true), "");
+                    thread = new AltLoginThread("nt_" + RandomStringUtils.random(8, true, true)              , "");
                     thread.start();
                     break;
 
@@ -54,11 +48,6 @@ public final class GuiAltManager extends GuiScreen {
                     break;
 
                 case 5:
-                    break;
-                case 6:
-                    thread = null;
-                    thread = new AltLoginThread(NameUtil.generateName(), "");
-                    thread.start();
                     break;
 
                 default:
@@ -79,8 +68,8 @@ public final class GuiAltManager extends GuiScreen {
         username.drawTextBox();
         password.drawTextBox();
         
-        this.drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
-        this.drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(), (int) (width / 2f), 29, -1);
+        drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
+        drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(), (int) (width / 2f), 29, -1);
         if (username.getText().isEmpty()) {
             font.drawStringWithShadow("Username", width / 2F - 96, 66, -7829368);
         }

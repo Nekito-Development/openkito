@@ -1,6 +1,5 @@
 package wtf.norma.nekito.util.color;
 
-import java.awt.Color;
 public enum ColorUtils {
 
     WHITE(-65794),
@@ -12,7 +11,7 @@ public enum ColorUtils {
     public int cwel;
 
 
-    private ColorUtils(int xcxcxzczxcxzxczxcz) {
+    ColorUtils(int xcxcxzczxcxzxczxcz) {
         this.cwel = xcxcxzczxcxzxczxcz;
     }
 

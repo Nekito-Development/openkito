@@ -23,11 +23,7 @@ public class MovementUtil {
 
     public static boolean isOnGround(double height) {
         // jestes cwelem i chuj
-        if (!mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0.0D, -height, 0.0D)).isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return !mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0.0D, -height, 0.0D)).isEmpty();
     }
 
 
@@ -65,12 +61,12 @@ public class MovementUtil {
     }
     public static void setMotion(double speed) {
         EntityLivingBase entity = KillAura.target;
-        TargetStrafe ddospolska = (TargetStrafe) nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class);
+        TargetStrafe ddospolska = nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class);
         // credits: jakis gosciu z forum
         boolean targetStrafe = MovementUtil.mozeStrafe();
         MovementInput movementInput = mc.thePlayer.movementInput;
         float yaw = targetStrafe ? HeadUtility.getRotationsRandom(entity).getRotationYaw() : mc.thePlayer.rotationYaw;
-        double forward = targetStrafe ? mc.thePlayer.getDistanceToEntity(entity) <= (float)ddospolska.range.getValue() ? 0 : 1 : movementInput.moveForward;
+        double forward = targetStrafe ? mc.thePlayer.getDistanceToEntity(entity) <= TargetStrafe.range.getValue() ? 0 : 1 : movementInput.moveForward;
         double strafe = targetStrafe ? -1 : movementInput.moveStrafe;
         if ((forward == 0.0D) && (strafe == 0.0D)) {
             mc.thePlayer.motionX = 0;

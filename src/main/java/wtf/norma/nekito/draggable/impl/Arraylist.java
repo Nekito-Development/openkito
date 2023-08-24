@@ -11,7 +11,6 @@ import wtf.norma.nekito.util.font.FontRenderer;
 import wtf.norma.nekito.util.font.Fonts;
 
 import java.awt.*;
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class Arraylist extends AbstractDraggable {

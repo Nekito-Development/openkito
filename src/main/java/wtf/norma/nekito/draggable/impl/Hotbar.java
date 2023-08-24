@@ -1,8 +1,5 @@
 package wtf.norma.nekito.draggable.impl;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -14,9 +11,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
-import net.minecraft.scoreboard.Score;
-import net.minecraft.scoreboard.ScoreObjective;
-import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.MathHelper;
@@ -24,8 +18,6 @@ import optifine.Config;
 import optifine.CustomColors;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.AbstractDraggable;
-import wtf.norma.nekito.helper.OpenGlHelper;
-import wtf.norma.nekito.module.impl.CustomHotbar;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -61,17 +53,17 @@ public class Hotbar extends AbstractDraggable {
             GlStateManager.tryBlendFuncSeparate(775, 769, 1, 0);
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 
-            if (this.mc.getRenderViewEntity() instanceof EntityPlayer) {
-                EntityPlayer entityplayer = (EntityPlayer) this.mc.getRenderViewEntity();
+            if (Minecraft.getRenderViewEntity() instanceof EntityPlayer) {
+                EntityPlayer entityplayer = (EntityPlayer) Minecraft.getRenderViewEntity();
                 int i = MathHelper.ceiling_float_int(entityplayer.getHealth());
                 boolean flag = mc.ingameGUI.healthUpdateCounter > (long) mc.ingameGUI.updateCounter && (mc.ingameGUI.healthUpdateCounter - (long) mc.ingameGUI.updateCounter) / 3L % 2L == 1L;
 
                 if (i < mc.ingameGUI.playerHealth && entityplayer.hurtResistantTime > 0) {
                     mc.ingameGUI.lastSystemTime = Minecraft.getSystemTime();
-                    mc.ingameGUI.healthUpdateCounter = (long) (mc.ingameGUI.updateCounter + 20);
+                    mc.ingameGUI.healthUpdateCounter = mc.ingameGUI.updateCounter + 20;
                 } else if (i > mc.ingameGUI.playerHealth && entityplayer.hurtResistantTime > 0) {
                     mc.ingameGUI.lastSystemTime = Minecraft.getSystemTime();
-                    mc.ingameGUI.healthUpdateCounter = (long) (mc.ingameGUI.updateCounter + 10);
+                    mc.ingameGUI.healthUpdateCounter = mc.ingameGUI.updateCounter + 10;
                 }
 
                 if (Minecraft.getSystemTime() - mc.ingameGUI.lastSystemTime > 1000L) {
@@ -82,7 +74,7 @@ public class Hotbar extends AbstractDraggable {
 
                 mc.ingameGUI.playerHealth = i;
                 int j = mc.ingameGUI.lastPlayerHealth;
-                mc.ingameGUI.rand.setSeed((long) (mc.ingameGUI.updateCounter * 312871));
+                mc.ingameGUI.rand.setSeed(mc.ingameGUI.updateCounter * 312871L);
                 boolean flag1 = false;
                 FoodStats foodstats = entityplayer.getFoodStats();
                 int k = foodstats.getFoodLevel();
@@ -191,7 +183,7 @@ public class Hotbar extends AbstractDraggable {
                     }
                 }
 
-                Entity entity = entityplayer.ridingEntity;
+                Entity entity = Entity.ridingEntity;
 
                 if (entity == null) {
                     this.mc.mcProfiler.endStartSection("food");
@@ -239,8 +231,8 @@ public class Hotbar extends AbstractDraggable {
                 } else if (entity instanceof EntityLivingBase) {
                     this.mc.mcProfiler.endStartSection("mountHealth");
                     EntityLivingBase entitylivingbase = (EntityLivingBase) entity;
-                    int l7 = (int) Math.ceil((double) entitylivingbase.getHealth());
-                    float f3 = (float) entitylivingbase.getMaxHealth();
+                    int l7 = (int) Math.ceil(entitylivingbase.getHealth());
+                    float f3 = entitylivingbase.getMaxHealth();
                     int l6 = (int) (f3 + 0.5F) / 2;
 
                     if (l6 > 30) {
@@ -322,7 +314,7 @@ public class Hotbar extends AbstractDraggable {
                     j1 = CustomColors.getExpBarTextColor(j1);
                 }
 
-                String s = "" + this.mc.thePlayer.experienceLevel;
+                String s = String.valueOf(this.mc.thePlayer.experienceLevel);
                 Fonts.SEMI_BOLD_18.drawCenteredString(s, 90, -16, -1);
                 this.mc.mcProfiler.endSection();
             }

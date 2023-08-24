@@ -2,16 +2,9 @@ package wtf.norma.nekito.ui.botting;
 
 import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.ui.altmanager.AltLoginThread;
-import wtf.norma.nekito.util.player.NameUtil;
 
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
-import java.net.URI;
 
 
 
@@ -64,7 +57,7 @@ import java.net.URI;
             drawDefaultBackground();
             ip.drawTextBox();
             PORT.drawTextBox();
-            this.drawCenteredString(font, "Botter", (int) (width / 2F), 20, -1);
+            drawCenteredString(font, "Botter", (int) (width / 2F), 20, -1);
             if (ip.getText().isEmpty()) {
                 font.drawStringWithShadow("IP", width / 2F - 96, 66, -7829368);
             }

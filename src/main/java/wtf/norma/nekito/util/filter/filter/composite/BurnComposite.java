@@ -49,15 +49,15 @@ public final class BurnComposite extends RGBComposite {
                 int dor, dog, dob;
 
                 if (dir != 255)
-                    dor = clamp(255-(((int)(255-sr) << 8) / (dir+1)));
+                    dor = clamp(255-(((255-sr) << 8) / (dir+1)));
                 else
                     dor = sr;
                 if (dig != 255)
-                    dog = clamp(255-(((int)(255-sg) << 8) / (dig+1)));
+                    dog = clamp(255-(((255-sg) << 8) / (dig+1)));
                 else
                     dog = sg;
                 if (dib != 255)
-                    dob = clamp(255-(((int)(255-sb) << 8) / (dib+1)));
+                    dob = clamp(255-(((255-sb) << 8) / (dib+1)));
                 else
                     dob = sb;
 

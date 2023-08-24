@@ -2,16 +2,11 @@ package wtf.norma.nekito.module.impl;
 
 
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender3D;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.settings.impl.ModeSetting;
-import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 

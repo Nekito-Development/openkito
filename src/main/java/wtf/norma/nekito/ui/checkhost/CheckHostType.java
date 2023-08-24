@@ -9,7 +9,7 @@ public enum CheckHostType {
 
     private final String value;
 
-    private CheckHostType(String value) {
+    CheckHostType(String value) {
         this.value = value;
     }
 

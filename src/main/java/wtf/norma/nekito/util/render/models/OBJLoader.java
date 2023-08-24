@@ -1,8 +1,14 @@
 package wtf.norma.nekito.util.render.models;
 
-import javax.vecmath.*;
-import java.io.*;
-import java.util.*;
+import javax.vecmath.Vector2f;
+import javax.vecmath.Vector3f;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class OBJLoader {
 
@@ -101,7 +107,7 @@ public class OBJLoader {
                         return map;
                     }
 
-                    ObjObject object = (ObjObject) it.next();
+                    ObjObject object = it.next();
                     result = ((IndexedModel[]) objects.get(object))[0];
                     normalModel = ((IndexedModel[]) objects.get(object))[1];
                     indices = result.getObjIndices();
@@ -109,11 +115,11 @@ public class OBJLoader {
                     object.center = result.computeCenter();
 
                     for (i = 0; i < indices.size(); ++i) {
-                        OBJIndex current = (OBJIndex) indices.get(i);
-                        Vector3f pos = (Vector3f) positions.get(current.positionIndex);
+                        OBJIndex current = indices.get(i);
+                        Vector3f pos = positions.get(current.positionIndex);
                         Vector2f texCoord;
                         if (this.hasTexCoords) {
-                            texCoord = (Vector2f) texCoords.get(current.texCoordsIndex);
+                            texCoord = texCoords.get(current.texCoordsIndex);
                         } else {
                             texCoord = new Vector2f();
                         }
@@ -121,7 +127,7 @@ public class OBJLoader {
                         Vector3f normal;
                         if (this.hasNormals) {
                             try {
-                                normal = (Vector3f) normals.get(current.normalIndex);
+                                normal = normals.get(current.normalIndex);
                             } catch (Exception var30) {
                                 normal = new Vector3f();
                             }
@@ -129,7 +135,7 @@ public class OBJLoader {
                             normal = new Vector3f();
                         }
 
-                        int modelVertexIndex = (Integer) resultIndexMap.get(current);
+                        int modelVertexIndex = resultIndexMap.get(current);
                         if (modelVertexIndex == -1) {
                             resultIndexMap.put(current, result.getPositions().size());
                             modelVertexIndex = result.getPositions().size();
@@ -142,7 +148,7 @@ public class OBJLoader {
                             result.getTangents().add(new Vector3f());
                         }
 
-                        int normalModelIndex = (Integer) normalIndexMap.get(current.positionIndex);
+                        int normalModelIndex = normalIndexMap.get(current.positionIndex);
                         if (normalModelIndex == -1) {
                             normalModelIndex = normalModel.getPositions().size();
                             normalIndexMap.put(current.positionIndex, normalModelIndex);
@@ -161,7 +167,7 @@ public class OBJLoader {
                 normalModel.computeNormals();
 
                 for (i = 0; i < result.getNormals().size(); ++i) {
-                    result.getNormals().add(normalModel.getNormals().get((Integer) indexMap.get(i)));
+                    result.getNormals().add(normalModel.getNormals().get(indexMap.get(i)));
                 }
             }
         } catch (Exception var31) {
@@ -195,7 +201,7 @@ public class OBJLoader {
 
         out.flush();
         out.close();
-        return new String(out.toByteArray(), "UTF-8");
+        return out.toString(String.valueOf(StandardCharsets.UTF_8));
     }
 
     public OBJIndex parseOBJIndex(String token, int posOffset, int texCoordsOffset, int normalOffset) {
@@ -229,7 +235,7 @@ public class OBJLoader {
             }
         }
 
-        return (String[]) strings.toArray(new String[0]);
+        return strings.toArray(new String[0]);
     }
 
     public static final class OBJIndex {

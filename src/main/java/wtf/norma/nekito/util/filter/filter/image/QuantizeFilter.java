@@ -37,7 +37,7 @@ public class QuantizeFilter extends WholeImageFilter {
 	 	 0, 0, 7,
 	 	 3, 5, 1,
 	};
-	private int sum = 3+5+7+1;
+	private final int sum = 3+5+7+1;
 
 	private boolean dither;
 	private int numColors = 256;

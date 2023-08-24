@@ -1,5 +1,7 @@
 package wtf.norma.nekito.util.render.models;
-import javax.vecmath.*;
+
+import javax.vecmath.Vector2f;
+import javax.vecmath.Vector3f;
 
 // author: saph
 // thanks for it
@@ -7,10 +9,10 @@ import javax.vecmath.*;
 
 public class Vertex {
 
-    private Vector3f pos;
-    private Vector2f texCoords;
-    private Vector3f normal;
-    private Vector3f tangent;
+    private final Vector3f pos;
+    private final Vector2f texCoords;
+    private final Vector3f normal;
+    private final Vector3f tangent;
 
     public Vertex(Vector3f pos, Vector2f texCoords, Vector3f normal, Vector3f tangent) {
         this.pos = pos;

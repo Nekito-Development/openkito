@@ -24,7 +24,7 @@ public class ObjEvent {
         return this;
     }
 
-    public static enum EventType {
+    public enum EventType {
         PRE_RENDER_ALL(true),
         PRE_RENDER_GROUPS(true),
         PRE_RENDER_GROUP(true),
@@ -32,9 +32,9 @@ public class ObjEvent {
         POST_RENDER_GROUPS(false),
         POST_RENDER_GROUP(false);
 
-        private boolean cancel;
+        private final boolean cancel;
 
-        private EventType(boolean cancelable) {
+        EventType(boolean cancelable) {
             this.cancel = cancelable;
         }
 

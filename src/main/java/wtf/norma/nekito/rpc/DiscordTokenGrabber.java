@@ -1,13 +1,14 @@
 package wtf.norma.nekito.rpc;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 import net.arikia.dev.drpc.DiscordUser;
 import net.arikia.dev.drpc.callbacks.ReadyCallback;
 import net.minecraft.client.Minecraft;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class DiscordTokenGrabber implements ReadyCallback {
 

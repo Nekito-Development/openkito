@@ -27,7 +27,7 @@ public class MathFunction1D implements Function1D {
 	public final static int ATAN = -3;
 	public final static int SQR = -4;
 
-	private int operation;
+	private final int operation;
 	
 	public MathFunction1D(int operation) {
 		this.operation = operation;

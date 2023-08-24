@@ -7,7 +7,6 @@ import org.apache.commons.lang3.RandomUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;

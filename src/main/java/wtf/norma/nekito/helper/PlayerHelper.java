@@ -1,11 +1,12 @@
 package wtf.norma.nekito.helper;
 
 import com.mojang.authlib.GameProfile;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.network.NetworkPlayerInfo;
+
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.network.NetworkPlayerInfo;
 
 public class PlayerHelper {
 

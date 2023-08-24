@@ -1,13 +1,15 @@
 package wtf.norma.nekito.util.render.models;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.Vec3;
 
-
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Set;
 
 // author: saph
 // thanks for it
@@ -40,7 +42,7 @@ public class TessellatorModel extends ObjModel {
 
     public void renderImpl() {
         this.objObjects.sort((a, b) -> {
-            Vec3 v = Minecraft.getMinecraft().getRenderViewEntity().getPositionVector();
+            Vec3 v = Minecraft.getRenderViewEntity().getPositionVector();
             double aDist = v.distanceTo(new Vec3(a.center.x, a.center.y, a.center.z));
             double bDist = v.distanceTo(new Vec3(b.center.x, b.center.y, b.center.z));
             return Double.compare(aDist, bDist);

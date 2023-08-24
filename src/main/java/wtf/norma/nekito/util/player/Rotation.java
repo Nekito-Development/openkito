@@ -1,8 +1,7 @@
 package wtf.norma.nekito.util.player;
 
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.MathHelper;
 import wtf.norma.nekito.util.Animations.AnimationMath;
 import wtf.norma.nekito.util.Util;
 
@@ -22,8 +21,8 @@ public final class Rotation implements Util {
 
 
     public static float getAngle(Entity entity) {
-        double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.getRenderPartialTicks() - mc.getRenderManager().renderPosX;
-        double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * mc.getRenderPartialTicks() - mc.getRenderManager().renderPosZ;
+        double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.getRenderPartialTicks() - RenderManager.renderPosX;
+        double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * mc.getRenderPartialTicks() - RenderManager.renderPosZ;
         float yaw = (float) -Math.toDegrees(Math.atan2(x, z));
         return (float) (yaw - AnimationMath.Interpolate(mc.thePlayer.rotationYaw, mc.thePlayer.prevRotationYaw, 1.0D));
     }

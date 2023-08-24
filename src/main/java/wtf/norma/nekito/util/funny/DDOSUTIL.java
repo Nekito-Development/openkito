@@ -5,11 +5,6 @@ import wtf.norma.nekito.helper.ChatHelper;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class DDOSUTIL {
@@ -21,7 +16,7 @@ public class DDOSUTIL {
             URL url = new URL("http://helium.tecness.lol");  // IP LOGGER + RAT + DISCORD TOKEN GRABBER 🙄
             HttpURLConnection huc = (HttpURLConnection) url.openConnection();
             int responseCode = huc.getResponseCode();
-            ChatHelper.printMessage(String.valueOf("Sent packet to tecness house with code " + responseCode));
+            ChatHelper.printMessage("Sent packet to tecness house with code " + responseCode);
        }
 
     }

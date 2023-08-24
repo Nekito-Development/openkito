@@ -5,9 +5,7 @@ import wtf.norma.nekito.command.Command;
 import wtf.norma.nekito.command.CommandInfo;
 import wtf.norma.nekito.exception.CommandException;
 import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.nekito;
-
-import java.util.Locale;
+import wtf.norma.nekito.module.ModuleManager;
 
 @CommandInfo(
         alias = "unbind",
@@ -20,7 +18,7 @@ public class UnbindCommand extends Command {
     @Override
     public void execute(String[] args) throws CommandException {
         if (args.length == 1) {
-            nekito.INSTANCE.getModuleManager().modules.forEach(module -> {
+            ModuleManager.modules.forEach(module -> {
                 if (args[0].equalsIgnoreCase(module.getName())) {
 
                     module.setKeybind(Keyboard.getKeyIndex(null));

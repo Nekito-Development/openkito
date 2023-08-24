@@ -1,6 +1,5 @@
 package wtf.norma.nekito.draggable;
 
-import net.minecraft.client.gui.Gui;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.impl.*;
 

@@ -27,7 +27,7 @@ import java.awt.image.WritableRaster;
  */
 public final class ContourComposite implements Composite {
 
-	private int offset;
+	private final int offset;
 
 	public ContourComposite( int offset ) {
 		this.offset = offset;
@@ -42,16 +42,14 @@ public final class ContourComposite implements Composite {
 	}
 
 	public boolean equals(Object o) {
-		if (!(o instanceof ContourComposite))
-			return false;
-		return true;
-	}
+        return o instanceof ContourComposite;
+    }
 
 }
 
 class ContourCompositeContext implements CompositeContext {
 
-	private int offset;
+	private final int offset;
 
 	public ContourCompositeContext( int offset, ColorModel srcColorModel, ColorModel dstColorModel ) {
 		this.offset = offset;

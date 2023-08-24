@@ -1,11 +1,14 @@
 package wtf.norma.nekito.settings;
 
-public class Setting {
+
+public  class Setting {
     public String name;
 
     public Setting() {
 
     }
+
+
 
     public String getName() {
         return name;

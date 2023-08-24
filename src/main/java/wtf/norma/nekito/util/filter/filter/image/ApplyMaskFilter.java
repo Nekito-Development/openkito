@@ -92,9 +92,9 @@ public class ApplyMaskFilter extends AbstractBufferedImageOp {
 		int w = src.getWidth();
 		int h = src.getHeight();
 
-		int srcRGB[] = null;
-		int selRGB[] = null;
-		int dstRGB[] = null;
+		int[] srcRGB = null;
+		int[] selRGB = null;
+		int[] dstRGB = null;
 
 		for ( int i = 0; i < h; i++ ) {
 			srcRGB = src.getPixels(x, y, w, 1, srcRGB);

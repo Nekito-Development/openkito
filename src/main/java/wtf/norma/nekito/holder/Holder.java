@@ -1,8 +1,9 @@
 package wtf.norma.nekito.holder;
 
+import wtf.norma.nekito.helper.TimeHelper;
+
 import java.util.ArrayList;
 import java.util.List;
-import wtf.norma.nekito.helper.TimeHelper;
 
 public class Holder {
 

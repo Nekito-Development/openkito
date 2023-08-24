@@ -4,9 +4,6 @@ package wtf.norma.nekito.util.render;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.shader.Framebuffer;
-import net.minecraft.client.shader.ShaderGroup;
-import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.util.Util;
 import wtf.norma.nekito.util.shader.ShaderUtility;
 
@@ -21,7 +18,7 @@ public class BlurUtility implements Util {
         bloomFramebuffer.bindFramebuffer(true);
         data.run();
         bloomFramebuffer.unbindFramebuffer();
-        BloomUtil.renderBlur(bloomFramebuffer.framebufferTexture, (int) radius, (int) 1, c, des, true);
+        BloomUtil.renderBlur(bloomFramebuffer.framebufferTexture, (int) radius, 1, c, des, true);
 
     }
 }

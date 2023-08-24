@@ -1,7 +1,6 @@
 package wtf.norma.nekito.module.impl;
 
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 

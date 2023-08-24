@@ -30,8 +30,8 @@ public final class ColorComposite extends RGBComposite {
 	}
 
     static class Context extends RGBCompositeContext {
-		private float[] sHSB = new float[3];
-        private float[] dHSB = new float[3];
+		private final float[] sHSB = new float[3];
+        private final float[] dHSB = new float[3];
 
         public Context( float alpha, ColorModel srcColorModel, ColorModel dstColorModel ) {
             super( alpha, srcColorModel, dstColorModel );

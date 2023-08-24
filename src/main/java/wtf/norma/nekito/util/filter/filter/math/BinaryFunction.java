@@ -17,6 +17,6 @@ limitations under the License.
 package wtf.norma.nekito.util.filter.filter.math;
 
 public interface BinaryFunction {
-	public boolean isBlack(int rgb);
+	boolean isBlack(int rgb);
 }
 

@@ -1,8 +1,8 @@
 package wtf.norma.nekito.ui.clickgui.item.impl;
 
 import net.minecraft.client.gui.Gui;
-import wtf.norma.nekito.ui.clickgui.item.Item;
 import wtf.norma.nekito.settings.impl.NumberSetting;
+import wtf.norma.nekito.ui.clickgui.item.Item;
 import wtf.norma.nekito.util.font.Fonts;
 
 import java.math.BigDecimal;
@@ -45,7 +45,7 @@ public class ItemSlider extends Item<NumberSetting> {
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-        if (bounding((int) (mouseX), mouseY)) {
+        if (bounding(mouseX, mouseY)) {
             sliding = true;
         }
     }

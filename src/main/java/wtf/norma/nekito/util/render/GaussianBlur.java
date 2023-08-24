@@ -3,7 +3,6 @@ package wtf.norma.nekito.util.render;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.shader.Framebuffer;
-import net.minecraft.util.MathHelper;
 import org.lwjgl.BufferUtils;
 import wtf.norma.nekito.util.Util;
 import wtf.norma.nekito.util.math.MathUtility;

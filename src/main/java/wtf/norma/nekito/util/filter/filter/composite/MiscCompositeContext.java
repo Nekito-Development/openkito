@@ -24,12 +24,12 @@ import java.awt.image.WritableRaster;
 
 public class MiscCompositeContext implements CompositeContext {
 
-	private int rule;
-	private float alpha;
-	private ColorModel srcColorModel;
-	private ColorModel dstColorModel;
-	private ColorSpace srcColorSpace;
-	private ColorSpace dstColorSpace;
+	private final int rule;
+	private final float alpha;
+	private final ColorModel srcColorModel;
+	private final ColorModel dstColorModel;
+	private final ColorSpace srcColorSpace;
+	private final ColorSpace dstColorSpace;
 	private boolean srcNeedsConverting;
 	private boolean dstNeedsConverting;
 
@@ -240,30 +240,30 @@ public class MiscCompositeContext implements CompositeContext {
 
 				case MiscComposite.BURN:
 					if (dir != 255)
-						dor = clamp(255-(((int)(255-sr) << 8) / (dir+1)));
+						dor = clamp(255-(((255-sr) << 8) / (dir+1)));
 					else
 						dor = sr;
 					if (dig != 255)
-						dog = clamp(255-(((int)(255-sg) << 8) / (dig+1)));
+						dog = clamp(255-(((255-sg) << 8) / (dig+1)));
 					else
 						dog = sg;
 					if (dib != 255)
-						dob = clamp(255-(((int)(255-sb) << 8) / (dib+1)));
+						dob = clamp(255-(((255-sb) << 8) / (dib+1)));
 					else
 						dob = sb;
 					break;
 
 				case MiscComposite.COLOR_BURN:
 					if (sr != 0)
-						dor = Math.max(255 - (((int)(255-dir) << 8) / sr), 0);
+						dor = Math.max(255 - (((255-dir) << 8) / sr), 0);
 					else
 						dor = sr;
 					if (sg != 0)
-						dog = Math.max(255 - (((int)(255-dig) << 8) / sg), 0);
+						dog = Math.max(255 - (((255-dig) << 8) / sg), 0);
 					else
 						dog = sg;
 					if (sb != 0)
-						dob = Math.max(255 - (((int)(255-dib) << 8) / sb), 0);
+						dob = Math.max(255 - (((255-dib) << 8) / sb), 0);
 					else
 						dob = sb;
 					break;

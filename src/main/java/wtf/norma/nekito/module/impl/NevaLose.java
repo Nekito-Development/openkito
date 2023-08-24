@@ -3,7 +3,6 @@ package wtf.norma.nekito.module.impl;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.util.render.RenderUtility;
 
 
 public class NevaLose extends Module {

@@ -6,7 +6,6 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.util.render.RenderUtility;
 
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +29,10 @@ public class FontRenderer
 
     public void drawStringWithDropShadow(String text, float x, float y, int color) {
         for (int i = 0; i < 5; i++) {
-            this.drawString(text, (float) x + 0.5f * i, (float) y + 0.5f * i, new Color(0, 0, 0, 100 - i * 20).hashCode());
+            this.drawString(text, x + 0.5f * i, y + 0.5f * i, new Color(0, 0, 0, 100 - i * 20).hashCode());
 
         }
-        this.drawString(text, (float) x, (float) y, color);
+        this.drawString(text, x, y, color);
     }
 
     public float drawString(String text, float x, float y, int color) {
@@ -403,11 +402,11 @@ public class FontRenderer
                     continue;
                 }
                 finalWords.add(currentWord);
-                currentWord = "" + lastColorCode + word + " ";
+                currentWord = lastColorCode + word + " ";
             }
             if (currentWord.length() > 0) {
                 if ((double) this.getStringWidth(currentWord) < width) {
-                    finalWords.add("" + lastColorCode + currentWord + " ");
+                    finalWords.add(lastColorCode + currentWord + " ");
                     currentWord = "";
                 } else {
                     for (Object s : this.formatString(currentWord, width)) {
@@ -437,7 +436,7 @@ public class FontRenderer
                 continue;
             }
             finalWords.add(currentWord);
-            currentWord = "" + lastColorCode + c;
+            currentWord = String.valueOf(lastColorCode) + c;
         }
         if (currentWord.length() > 0) {
             finalWords.add(currentWord);

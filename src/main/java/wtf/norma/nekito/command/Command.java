@@ -1,10 +1,11 @@
 package wtf.norma.nekito.command;
 
-import java.util.Arrays;
-import java.util.List;
 import net.minecraft.client.Minecraft;
 import org.apache.commons.lang3.Validate;
 import wtf.norma.nekito.exception.CommandException;
+
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class Command {
 

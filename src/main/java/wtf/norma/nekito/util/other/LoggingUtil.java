@@ -1,7 +1,5 @@
 package wtf.norma.nekito.util.other;
 
-import wtf.norma.nekito.util.color.ColorUtility;
-
 import java.awt.*;
 
 public class LoggingUtil {

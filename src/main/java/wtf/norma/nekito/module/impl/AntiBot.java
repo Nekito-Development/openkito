@@ -5,7 +5,6 @@ import net.minecraft.entity.Entity;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventPreMotion;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
 

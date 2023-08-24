@@ -2,11 +2,8 @@ package wtf.norma.nekito.util.color;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.module.impl.UiSettings;
-import wtf.norma.nekito.module.impl.Watermark;
 
 import java.awt.*;
 

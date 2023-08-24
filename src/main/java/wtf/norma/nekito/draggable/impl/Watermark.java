@@ -5,8 +5,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.AbstractDraggable;
-import wtf.norma.nekito.event.impl.EventRender2D;
-import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 

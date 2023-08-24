@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.AbstractDraggable;
-import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -49,7 +48,7 @@ public class NevaLoseinfo extends AbstractDraggable {
         String jewswrld = "Ping: " + calculatePing() + "ms" + " | " +  Minecraft.getDebugFPS() + " fps"  + " | "    + new SimpleDateFormat("hh:mm a").format(new Date());
 
 
-        int pizduch = 104;
+        int pizduch = 106;
         RenderUtility.drawGlow(4.0F, 4.0F, (float) pizduch + jewswrld.length(), 12.0F, 12, new Color(10, 10, 10, 200));
         RenderUtility.drawRound(4.0F, 4.0F, (float)  pizduch + jewswrld.length(), 12.0F, 3, new Color(10, 10, 10, 200));
        // Fonts.MONTSERRAT16.drawString(jewswrld, 6.5F, 8.0F, ColorUtility.getColor(0));

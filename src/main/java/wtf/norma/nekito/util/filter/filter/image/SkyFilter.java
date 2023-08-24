@@ -51,7 +51,7 @@ public class SkyFilter extends PointFilter {
 	private float glowFalloff = 0.5f;
 	private float haziness = 0.96f;
 	private float t = 0.0f;
-	private float sunRadius = 10f;
+	private final float sunRadius = 10f;
 	private int sunColor = 0xffffffff;
 	private float sunR, sunG, sunB;
 	private float sunAzimuth = 0.5f;

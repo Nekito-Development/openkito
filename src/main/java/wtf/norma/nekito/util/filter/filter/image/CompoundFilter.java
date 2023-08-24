@@ -23,8 +23,8 @@ import java.awt.image.BufferedImageOp;
  * A BufferedImageOp which combines two other BufferedImageOps, one after the other.
  */
 public class CompoundFilter extends AbstractBufferedImageOp {
-	private BufferedImageOp filter1;
-	private BufferedImageOp filter2;
+	private final BufferedImageOp filter1;
+	private final BufferedImageOp filter2;
 	
 	/**
      * Construct a CompoundFilter.

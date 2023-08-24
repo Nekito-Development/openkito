@@ -1,19 +1,21 @@
 package wtf.norma.nekito.util.render.models;
 
 
-import javax.vecmath.*;
-import java.util.*;
+import javax.vecmath.Vector2f;
+import javax.vecmath.Vector3f;
+import java.util.ArrayList;
+import java.util.Iterator;
 // author: saph
 // thanks for it
 
 public class IndexedModel {
 
-    private ArrayList<Vector3f> vertices = new ArrayList();
-    private ArrayList<Vector2f> texCoords = new ArrayList();
-    private ArrayList<Vector3f> normals = new ArrayList();
-    private ArrayList<Vector3f> tangents = new ArrayList();
-    private ArrayList<Integer> indices = new ArrayList();
-    private ArrayList<OBJLoader.OBJIndex> objindices = new ArrayList();
+    private final ArrayList<Vector3f> vertices = new ArrayList();
+    private final ArrayList<Vector2f> texCoords = new ArrayList();
+    private final ArrayList<Vector3f> normals = new ArrayList();
+    private final ArrayList<Vector3f> tangents = new ArrayList();
+    private final ArrayList<Integer> indices = new ArrayList();
+    private final ArrayList<OBJLoader.OBJIndex> objindices = new ArrayList();
 
     public IndexedModel() {
     }
@@ -43,12 +45,12 @@ public class IndexedModel {
         int n = Math.min(this.vertices.size(), Math.min(this.texCoords.size(), this.normals.size()));
 
         for (int i = 0; i < n; ++i) {
-            Vertex vertex = new Vertex((Vector3f) this.vertices.get(i), (Vector2f) this.texCoords.get(i), (Vector3f) this.normals.get(i), new Vector3f());
+            Vertex vertex = new Vertex(this.vertices.get(i), this.texCoords.get(i), this.normals.get(i), new Vector3f());
             verticesList.add(vertex);
         }
 
-        Integer[] indicesArray = (Integer[]) this.indices.toArray(new Integer[0]);
-        Vertex[] verticesArray = (Vertex[]) verticesList.toArray(new Vertex[0]);
+        Integer[] indicesArray = this.indices.toArray(new Integer[0]);
+        Vertex[] verticesArray = verticesList.toArray(new Vertex[0]);
         int[] indicesArrayInt = new int[indicesArray.length];
 
         for (int i = 0; i < indicesArray.length; ++i) {
@@ -62,31 +64,31 @@ public class IndexedModel {
     public void computeNormals() {
         int i;
         for (i = 0; i < this.indices.size(); i += 3) {
-            int i0 = (Integer) this.indices.get(i);
-            int i1 = (Integer) this.indices.get(i + 1);
-            int i2 = (Integer) this.indices.get(i + 2);
-            Vector3f v = (Vector3f) ((Vector3f) this.vertices.get(i1)).clone();
-            v.sub((Tuple3f) this.vertices.get(i0));
+            int i0 = this.indices.get(i);
+            int i1 = this.indices.get(i + 1);
+            int i2 = this.indices.get(i + 2);
+            Vector3f v = (Vector3f) this.vertices.get(i1).clone();
+            v.sub(this.vertices.get(i0));
             Vector3f l0 = v;
-            v = (Vector3f) ((Vector3f) this.vertices.get(i2)).clone();
-            v.sub((Tuple3f) this.vertices.get(i0));
+            v = (Vector3f) this.vertices.get(i2).clone();
+            v.sub(this.vertices.get(i0));
             Vector3f l1 = v;
             v = (Vector3f) l0.clone();
             v.cross(l0, l1);
             Vector3f normal = v;
-            v = (Vector3f) ((Vector3f) this.normals.get(i0)).clone();
+            v = (Vector3f) this.normals.get(i0).clone();
             v.add(normal);
             this.normals.set(i0, v);
-            v = (Vector3f) ((Vector3f) this.normals.get(i1)).clone();
+            v = (Vector3f) this.normals.get(i1).clone();
             v.add(normal);
             this.normals.set(i1, v);
-            v = (Vector3f) ((Vector3f) this.normals.get(i2)).clone();
+            v = (Vector3f) this.normals.get(i2).clone();
             v.add(normal);
             this.normals.set(i2, v);
         }
 
         for (i = 0; i < this.normals.size(); ++i) {
-            ((Vector3f) this.normals.get(i)).normalize();
+            this.normals.get(i).normalize();
         }
 
     }
@@ -100,34 +102,34 @@ public class IndexedModel {
         }
 
         for (i = 0; i < this.indices.size(); i += 3) {
-            int i0 = (Integer) this.indices.get(i);
-            int i1 = (Integer) this.indices.get(i + 1);
-            int i2 = (Integer) this.indices.get(i + 2);
-            Vector3f v = (Vector3f) ((Vector3f) this.vertices.get(i1)).clone();
-            v.sub((Tuple3f) this.vertices.get(i0));
+            int i0 = this.indices.get(i);
+            int i1 = this.indices.get(i + 1);
+            int i2 = this.indices.get(i + 2);
+            Vector3f v = (Vector3f) this.vertices.get(i1).clone();
+            v.sub(this.vertices.get(i0));
             Vector3f edge1 = v;
-            v = (Vector3f) ((Vector3f) this.vertices.get(i2)).clone();
-            v.sub((Tuple3f) this.vertices.get(i0));
-            double deltaU1 = (double) (((Vector2f) this.texCoords.get(i1)).x - ((Vector2f) this.texCoords.get(i0)).x);
-            double deltaU2 = (double) (((Vector2f) this.texCoords.get(i2)).x - ((Vector2f) this.texCoords.get(i0)).x);
-            double deltaV1 = (double) (((Vector2f) this.texCoords.get(i1)).y - ((Vector2f) this.texCoords.get(i0)).y);
-            double deltaV2 = (double) (((Vector2f) this.texCoords.get(i2)).y - ((Vector2f) this.texCoords.get(i0)).y);
+            v = (Vector3f) this.vertices.get(i2).clone();
+            v.sub(this.vertices.get(i0));
+            double deltaU1 = this.texCoords.get(i1).x - this.texCoords.get(i0).x;
+            double deltaU2 = this.texCoords.get(i2).x - this.texCoords.get(i0).x;
+            double deltaV1 = this.texCoords.get(i1).y - this.texCoords.get(i0).y;
+            double deltaV2 = this.texCoords.get(i2).y - this.texCoords.get(i0).y;
             double dividend = deltaU1 * deltaV2 - deltaU2 * deltaV1;
             double f = dividend == 0.0 ? 0.0 : 1.0 / dividend;
             Vector3f tangent = new Vector3f((float) (f * (deltaV2 * (double) edge1.x - deltaV1 * (double) v.x)), (float) (f * (deltaV2 * (double) edge1.y - deltaV1 * (double) v.y)), (float) (f * (deltaV2 * (double) edge1.z - deltaV1 * (double) v.z)));
-            v = (Vector3f) ((Vector3f) this.tangents.get(i0)).clone();
+            v = (Vector3f) this.tangents.get(i0).clone();
             v.add(tangent);
             this.tangents.set(i0, v);
-            v = (Vector3f) ((Vector3f) this.tangents.get(i1)).clone();
+            v = (Vector3f) this.tangents.get(i1).clone();
             v.add(tangent);
             this.tangents.set(i1, v);
-            v = (Vector3f) ((Vector3f) this.tangents.get(i2)).clone();
+            v = (Vector3f) this.tangents.get(i2).clone();
             v.add(tangent);
             this.tangents.set(i2, v);
         }
 
         for (i = 0; i < this.tangents.size(); ++i) {
-            ((Vector3f) this.tangents.get(i)).normalize();
+            this.tangents.get(i).normalize();
         }
 
     }

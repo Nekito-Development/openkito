@@ -21,7 +21,7 @@ package wtf.norma.nekito.util.filter.filter.image;
  */
 public class SharpenFilter extends ConvolveFilter {
 	
-	private static float[] sharpenMatrix = {
+	private static final float[] sharpenMatrix = {
 		 0.0f, -0.2f,  0.0f,
 		-0.2f,  1.8f, -0.2f,
 		 0.0f, -0.2f,  0.0f

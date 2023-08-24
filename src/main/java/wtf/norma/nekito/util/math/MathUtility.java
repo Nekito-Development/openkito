@@ -58,11 +58,11 @@ public class MathUtility {
     }
 
     public static float interpolate(float current, float old, double scale) {
-        return (float) interpolate((double) current, (double) old, scale);
+        return (float) interpolate(current, (double) old, scale);
     }
 
     public static int interpolate(int current, int old, double scale) {
-        return (int) interpolate((double) current, (double) old, scale);
+        return (int) interpolate(current, (double) old, scale);
     }
 
     public static int getCenter(int width, int rectWidth) {

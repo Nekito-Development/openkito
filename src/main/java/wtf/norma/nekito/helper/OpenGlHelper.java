@@ -2,12 +2,13 @@ package wtf.norma.nekito.helper;
 
 import de.matthiasmann.twl.utils.PNGDecoder;
 import de.matthiasmann.twl.utils.PNGDecoder.Format;
-import java.awt.Color;
+import org.lwjgl.opengl.Display;
+
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.ByteBuffer;
-import org.lwjgl.opengl.Display;
 
 public final class OpenGlHelper {
 

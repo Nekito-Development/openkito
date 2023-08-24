@@ -23,8 +23,8 @@ public class CellularFunction2D implements Function2D {
 	public float distancePower = 2;
 	public boolean cells = false;
 	public boolean angular = false;
-	private float[] coefficients = { 1, 0, 0, 0 };
-	private Random random = new Random();
+	private final float[] coefficients = { 1, 0, 0, 0 };
+	private final Random random = new Random();
 	private Point[] results = null;
 	
 	public CellularFunction2D() {
@@ -48,7 +48,7 @@ public class CellularFunction2D implements Function2D {
 	}
 	
 	private float checkCube(float x, float y, int cubeX, int cubeY, Point[] results) {
-		random.setSeed(571*cubeX + 23*cubeY);
+		random.setSeed(571L *cubeX + 23L *cubeY);
 		int numPoints = 3 + random.nextInt() % 4;
 		numPoints = 4;
 

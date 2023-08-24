@@ -1,20 +1,13 @@
 package wtf.norma.nekito.util.other;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.json.JSONObject;
 
 //author bettercraft
 

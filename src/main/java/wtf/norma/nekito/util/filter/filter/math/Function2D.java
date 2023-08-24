@@ -17,6 +17,6 @@ limitations under the License.
 package wtf.norma.nekito.util.filter.filter.math;
 
 public interface Function2D {
-	public float evaluate(float x, float y);
+	float evaluate(float x, float y);
 }
 

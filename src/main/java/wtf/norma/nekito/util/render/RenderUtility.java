@@ -6,10 +6,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.culling.Frustum;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.shader.Framebuffer;
-import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
@@ -17,11 +17,9 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
-import wtf.norma.nekito.module.impl.TargetStrafe;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.color.ColorUtils;
 import wtf.norma.nekito.util.filter.filter.image.GaussianFilter;
-import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.shader.ShaderUtility;
 
 import javax.vecmath.Vector3d;
@@ -174,12 +172,12 @@ public class RenderUtility {
         GL11.glColor4f(red_1 / 255f, green_1 / 255f, blue_1 / 255f, alpha / 255f);
         glVertex2d(0, 0 - height);
         glVertex2d(0 - width, 0);
-        glVertex2d(0, 0 - 3);
+        glVertex2d(0, -3);
         GL11.glEnd();
         GL11.glBegin(GL11.GL_POLYGON);
         GL11.glColor4f(red_2 / 255f, green_2 / 255f, blue_2 / 255f, alpha / 255f);
         glVertex2d(0, 0 - height);
-        glVertex2d(0, 0 - 3);
+        glVertex2d(0, -3);
         glVertex2d(0 + width, 0);
         GL11.glEnd();
         GL11.glShadeModel(GL11.GL_FLAT);
@@ -350,9 +348,9 @@ public class RenderUtility {
         GlStateManager.disableTexture2D();
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GlStateManager.depthMask(false);
-        double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.timer.renderPartialTicks - mc.getRenderManager().renderPosX;
-        double y = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * mc.timer.renderPartialTicks - mc.getRenderManager().renderPosY;
-        double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * mc.timer.renderPartialTicks - mc.getRenderManager().renderPosZ;
+        double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.timer.renderPartialTicks - RenderManager.renderPosX;
+        double y = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * mc.timer.renderPartialTicks - RenderManager.renderPosY;
+        double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * mc.timer.renderPartialTicks - RenderManager.renderPosZ;
         AxisAlignedBB axisAlignedBB = entity.getEntityBoundingBox();
         AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + x - 0.05, axisAlignedBB.minY - entity.posY + y, axisAlignedBB.minZ - entity.posZ + z - 0.05, axisAlignedBB.maxX - entity.posX + x + 0.05, axisAlignedBB.maxY - entity.posY + y + 0.15, axisAlignedBB.maxZ - entity.posZ + z + 0.05);
         GlStateManager.glLineWidth(2.0F);
@@ -529,7 +527,7 @@ public class RenderUtility {
             if (op == null) {
                 op = new GaussianFilter((float)blurRadius);
             }
-            final BufferedImage blurred = op.filter(original, (BufferedImage)null);
+            final BufferedImage blurred = op.filter(original, null);
             texId = TextureUtil.uploadTextureImageAllocate(TextureUtil.glGenTextures(), blurred, true, false);
             shadowCache.put(identifier, texId);
         }
@@ -667,7 +665,7 @@ public class RenderUtility {
         GL11.glBegin(6);
         float centerX = x + edgeRadius;
         float centerY = y + edgeRadius;
-        GL11.glVertex2d((double) centerX, (double) centerY);
+        GL11.glVertex2d(centerX, centerY);
         int vertices = (int) Math.min(Math.max(edgeRadius, 10.0F), 90.0F);
 
         int i;
@@ -681,7 +679,7 @@ public class RenderUtility {
         GL11.glBegin(6);
         centerX = x + width - edgeRadius;
         centerY = y + edgeRadius;
-        GL11.glVertex2d((double) centerX, (double) centerY);
+        GL11.glVertex2d(centerX, centerY);
         vertices = (int) Math.min(Math.max(edgeRadius, 10.0F), 90.0F);
 
         for (i = 0; i < vertices + 1; ++i) {
@@ -693,7 +691,7 @@ public class RenderUtility {
         GL11.glBegin(6);
         centerX = x + edgeRadius;
         centerY = y + height - edgeRadius;
-        GL11.glVertex2d((double) centerX, (double) centerY);
+        GL11.glVertex2d(centerX, centerY);
         vertices = (int) Math.min(Math.max(edgeRadius, 10.0F), 90.0F);
 
         for (i = 0; i < vertices + 1; ++i) {
@@ -705,7 +703,7 @@ public class RenderUtility {
         GL11.glBegin(6);
         centerX = x + width - edgeRadius;
         centerY = y + height - edgeRadius;
-        GL11.glVertex2d((double) centerX, (double) centerY);
+        GL11.glVertex2d(centerX, centerY);
         vertices = (int) Math.min(Math.max(edgeRadius, 10.0F), 90.0F);
 
         for (i = 0; i < vertices + 1; ++i) {
@@ -726,8 +724,8 @@ public class RenderUtility {
             GL11.glVertex2d((double) centerX + Math.sin(angleRadians) * (double) edgeRadius, (double) centerY + Math.cos(angleRadians) * (double) edgeRadius);
         }
 
-        GL11.glVertex2d((double) (x + edgeRadius), (double) y);
-        GL11.glVertex2d((double) (x + width - edgeRadius), (double) y);
+        GL11.glVertex2d(x + edgeRadius, y);
+        GL11.glVertex2d(x + width - edgeRadius, y);
         centerX = x + width - edgeRadius;
         centerY = y + edgeRadius;
 
@@ -736,8 +734,8 @@ public class RenderUtility {
             GL11.glVertex2d((double) centerX + Math.sin(angleRadians) * (double) edgeRadius, (double) centerY + Math.cos(angleRadians) * (double) edgeRadius);
         }
 
-        GL11.glVertex2d((double) (x + width), (double) (y + edgeRadius));
-        GL11.glVertex2d((double) (x + width), (double) (y + height - edgeRadius));
+        GL11.glVertex2d(x + width, y + edgeRadius);
+        GL11.glVertex2d(x + width, y + height - edgeRadius);
         centerX = x + width - edgeRadius;
         centerY = y + height - edgeRadius;
 
@@ -746,8 +744,8 @@ public class RenderUtility {
             GL11.glVertex2d((double) centerX + Math.sin(angleRadians) * (double) edgeRadius, (double) centerY + Math.cos(angleRadians) * (double) edgeRadius);
         }
 
-        GL11.glVertex2d((double) (x + width - edgeRadius), (double) (y + height));
-        GL11.glVertex2d((double) (x + edgeRadius), (double) (y + height));
+        GL11.glVertex2d(x + width - edgeRadius, y + height);
+        GL11.glVertex2d(x + edgeRadius, y + height);
         centerX = x + edgeRadius;
         centerY = y + height - edgeRadius;
 
@@ -756,8 +754,8 @@ public class RenderUtility {
             GL11.glVertex2d((double) centerX + Math.sin(angleRadians) * (double) edgeRadius, (double) centerY + Math.cos(angleRadians) * (double) edgeRadius);
         }
 
-        GL11.glVertex2d((double) x, (double) (y + height - edgeRadius));
-        GL11.glVertex2d((double) x, (double) (y + edgeRadius));
+        GL11.glVertex2d(x, y + height - edgeRadius);
+        GL11.glVertex2d(x, y + edgeRadius);
         GL11.glEnd();
         disableRender2D();
     }
@@ -817,7 +815,7 @@ public class RenderUtility {
         float f1 = (float) (color >> 16 & 255) / 255.0f;
         float f2 = (float) (color >> 8 & 255) / 255.0f;
         float f3 = (float) (color & 255) / 255.0f;
-        GL11.glColor4f((float) f1, (float) f2, (float) f3, (float) f);
+        GL11.glColor4f(f1, f2, f3, f);
     }
     public static void enableRender2D() {
         GL11.glEnable(3042);
@@ -844,7 +842,7 @@ public class RenderUtility {
 
     private static boolean isInViewFrustum(AxisAlignedBB bb) {
         // gowno polska
-        Entity current = mc.getRenderViewEntity();
+        Entity current = Minecraft.getRenderViewEntity();
         if (current != null) {
             frustum.setPosition(current.posX, current.posY, current.posZ);
         }

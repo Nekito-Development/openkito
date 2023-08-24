@@ -225,7 +225,7 @@ public final class CheckHostAPI {
             JsonObject obj = ja.get(0).getAsJsonObject();
             HashMap<String, String[]> domainInfos = new HashMap<String, String[]>();
             for (Map.Entry entry : obj.entrySet()) {
-                if (((String)entry.getKey()).equals("TTL") || !((JsonElement)entry.getValue()).isJsonArray()) continue;
+                if (entry.getKey().equals("TTL") || !((JsonElement)entry.getValue()).isJsonArray()) continue;
                 JsonArray ja2 = ((JsonElement)entry.getValue()).getAsJsonArray();
                 String[] values = new String[ja2.size()];
                 for (int k = 0; k < ja2.size(); ++k) {

@@ -5,20 +5,14 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import wtf.norma.nekito.ui.checkhost.GuiCheckHost;
-import wtf.norma.nekito.util.color.ColorUtility;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.RenderUtility;
 
-import java.awt.*;
 import java.io.IOException;
-
-import static wtf.norma.nekito.util.color.ColorUtility.rainbowEffect;
 
 
 public class UiTools extends GuiScreen {
-    private Minecraft mc = Minecraft.getMinecraft();
+    private final Minecraft mc = Minecraft.getMinecraft();
 
-    private GuiScreen before;
+    private final GuiScreen before;
 
     public UiTools(GuiScreen before) {
         this.before = before;

@@ -67,7 +67,7 @@ public class LightFilter extends WholeImageFilter {
 	private int bumpShape;
 	private float viewDistance = 10000.0f;
 	Material material;
-	private Vector lights;
+	private final Vector lights;
 	private int colorSource = COLORS_FROM_IMAGE;
 	private int bumpSource = BUMPS_FROM_IMAGE;
 	private Function2D bumpFunction;
@@ -76,13 +76,14 @@ public class LightFilter extends WholeImageFilter {
 	private int envWidth = 1, envHeight = 1;
 
 	// Temporary variables used to avoid per-pixel memory allocation while filtering
-	private Vector3f l;
-	private Vector3f v;
-	private Vector3f n;
-	private Color4f shadedColor;
-	private Color4f diffuse_color;
-	private Color4f specular_color;
-	private Vector3f tmpv, tmpv2;
+	private final Vector3f l;
+	private final Vector3f v;
+	private final Vector3f n;
+	private final Color4f shadedColor;
+	private final Color4f diffuse_color;
+	private final Color4f specular_color;
+	private final Vector3f tmpv;
+	private final Vector3f tmpv2;
 
 	public LightFilter() {
 		lights = new Vector();
@@ -247,7 +248,7 @@ public class LightFilter extends WholeImageFilter {
 final Function2D bbump = bump;
 if ( bumpShape != 0 ) {
 	bump = new Function2D() {
-		private Function2D original = bbump;
+		private final Function2D original = bbump;
 
 		public float evaluate(float x, float y) {
 			float v = original.evaluate( x, y );

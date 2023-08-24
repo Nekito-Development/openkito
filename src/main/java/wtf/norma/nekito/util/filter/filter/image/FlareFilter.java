@@ -26,7 +26,7 @@ import java.awt.geom.Point2D;
  */
 public class FlareFilter extends PointFilter {
 
-	private int rays = 50;
+	private final int rays = 50;
 	private float radius;
 	private float baseAmount = 1.0f;
 	private float ringAmount = 0.2f;
@@ -36,10 +36,10 @@ public class FlareFilter extends PointFilter {
 	private float centreX = 0.5f, centreY = 0.5f;
 	private float ringWidth = 1.6f;
 	
-	private float linear = 0.03f;
-	private float gauss = 0.006f;
-	private float mix = 0.50f;
-	private float falloff = 6.0f;
+	private final float linear = 0.03f;
+	private final float gauss = 0.006f;
+	private final float mix = 0.50f;
+	private final float falloff = 6.0f;
 	private float sigma;
 
 	private float icentreX, icentreY;

@@ -25,8 +25,8 @@ import java.awt.image.ColorModel;
  */
 public class ScaleFilter extends AbstractBufferedImageOp {
 
-	private int width;
-	private int height;
+	private final int width;
+	private final int height;
 
     /**
      * Construct a ScaleFilter.

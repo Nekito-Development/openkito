@@ -1,12 +1,12 @@
 package wtf.norma.nekito.command;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 import wtf.norma.nekito.command.impl.*;
 import wtf.norma.nekito.exception.CommandException;
 import wtf.norma.nekito.helper.ChatHelper;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public class CommandManager {
 
@@ -23,7 +23,6 @@ public class CommandManager {
                 new FakeGamemodeCommand(),
                 new BindCommand(),
                 new HclipCommand(),
-              //  new ConfigCommand(),
                 new VclipCommand());
     }
 

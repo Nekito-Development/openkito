@@ -1,7 +1,5 @@
 package wtf.norma.nekito.ui;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -9,8 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.util.ResourceLocation;
-
-import java.awt.*;
+import org.lwjgl.opengl.GL11;
 
 public class MainMenuLoadingScreen {
 
@@ -20,7 +17,7 @@ public class MainMenuLoadingScreen {
     // Current progress
     private static int PROGRESS;
     // Currently displayed progress text
-    private static String CURRENT = "";
+    private static final String CURRENT = "";
     // Background texture
     // Texture manager
     private static TextureManager ctm;

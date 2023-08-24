@@ -6,7 +6,7 @@ public class Material {
 // author: saph
 // thanks for it
 
-    private String name;
+    private final String name;
     public Vector3f diffuseColor;
     public Vector3f ambientColor;
     public int ambientTexture;

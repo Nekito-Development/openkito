@@ -38,7 +38,7 @@ public class OctTreeQuantizer implements Quantizer {
 		int children;
 		int level;
 		OctTreeNode parent;
-		OctTreeNode leaf[] = new OctTreeNode[8];
+		OctTreeNode[] leaf = new OctTreeNode[8];
 		boolean isLeaf;
 		int count;
 		int	totalRed;
@@ -63,11 +63,11 @@ public class OctTreeQuantizer implements Quantizer {
 	}
 
 	private int nodes = 0;
-	private OctTreeNode root;
+	private final OctTreeNode root;
 	private int reduceColors;
 	private int maximumColors;
 	private int colors = 0;
-	private Vector[] colorList;
+	private final Vector[] colorList;
 	
 	public OctTreeQuantizer() {
 		setup(256);

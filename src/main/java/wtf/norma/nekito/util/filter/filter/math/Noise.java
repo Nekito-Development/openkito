@@ -23,7 +23,7 @@ import java.util.Random;
  */
 public class Noise implements Function1D, Function2D, Function3D {
 
-	private static Random randomGenerator = new Random();
+	private static final Random randomGenerator = new Random();
 	
 	public float evaluate(float x) {
 		return noise1(x);
@@ -116,7 +116,18 @@ public class Noise implements Function1D, Function2D, Function3D {
 	 */
 	public static float noise2(float x, float y) {
 		int bx0, bx1, by0, by1, b00, b10, b01, b11;
-		float rx0, rx1, ry0, ry1, q[], sx, sy, a, b, t, u, v;
+		float rx0;
+		float rx1;
+		float ry0;
+		float ry1;
+		float[] q;
+		float sx;
+		float sy;
+		float a;
+		float b;
+		float t;
+		float u;
+		float v;
 		int i, j;
 
 		if (start) {
@@ -167,7 +178,22 @@ public class Noise implements Function1D, Function2D, Function3D {
 	 */
 	public static float noise3(float x, float y, float z) {
 		int bx0, bx1, by0, by1, bz0, bz1, b00, b10, b01, b11;
-		float rx0, rx1, ry0, ry1, rz0, rz1, q[], sy, sz, a, b, c, d, t, u, v;
+		float rx0;
+		float rx1;
+		float ry0;
+		float ry1;
+		float rz0;
+		float rz1;
+		float[] q;
+		float sy;
+		float sz;
+		float a;
+		float b;
+		float c;
+		float d;
+		float t;
+		float u;
+		float v;
 		int i, j;
 
 		if (start) {
@@ -232,13 +258,13 @@ public class Noise implements Function1D, Function2D, Function3D {
 		return a + t * (b - a);
 	}
 
-	private static void normalize2(float v[]) {
+	private static void normalize2(float[] v) {
 		float s = (float)Math.sqrt(v[0] * v[0] + v[1] * v[1]);
 		v[0] = v[0] / s;
 		v[1] = v[1] / s;
 	}
 
-	static void normalize3(float v[]) {
+	static void normalize3(float[] v) {
 		float s = (float)Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
 		v[0] = v[0] / s;
 		v[1] = v[1] / s;

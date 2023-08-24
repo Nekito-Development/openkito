@@ -48,16 +48,14 @@ public abstract class RGBComposite implements Composite {
 			return false;
 		RGBComposite c = (RGBComposite)o;
 
-		if ( extraAlpha != c.extraAlpha )
-			return false;
-		return true;
-	}
+        return extraAlpha == c.extraAlpha;
+    }
 
     public abstract static class RGBCompositeContext implements CompositeContext {
 
-        private float alpha;
-        private ColorModel srcColorModel;
-        private ColorModel dstColorModel;
+        private final float alpha;
+        private final ColorModel srcColorModel;
+        private final ColorModel dstColorModel;
 
         public RGBCompositeContext( float alpha, ColorModel srcColorModel, ColorModel dstColorModel ) {
             this.alpha = alpha;

@@ -1,25 +1,14 @@
 package wtf.norma.nekito.draggable.impl;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.AbstractDraggable;
 import wtf.norma.nekito.helper.ChatHelper;
-import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
-import wtf.norma.nekito.module.impl.TargetHUD;
 import wtf.norma.nekito.module.impl.eleczkamode;
 import wtf.norma.nekito.nekito;
-import wtf.norma.nekito.util.color.ColorUtility;
-import wtf.norma.nekito.util.color.ColorUtils;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.render.BlurUtility;
-import wtf.norma.nekito.util.render.RenderUtil;
-import wtf.norma.nekito.util.render.RenderUtility;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /*

@@ -1,20 +1,13 @@
 package wtf.norma.nekito.draggable.impl;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.AbstractDraggable;
-import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.util.color.ColorUtility;
-import wtf.norma.nekito.util.color.ColorUtils;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class NevaLose extends AbstractDraggable {

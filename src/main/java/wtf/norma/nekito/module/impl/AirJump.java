@@ -1,6 +1,5 @@
 package wtf.norma.nekito.module.impl;
 
-import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventPreMotion;

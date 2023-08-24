@@ -119,7 +119,7 @@ public class ColorHalftoneFilter extends AbstractBufferedImageOp {
         float[] angles = { cyanScreenAngle, magentaScreenAngle, yellowScreenAngle };
         float[] mx = new float[] { 0, -1, 1,  0, 0 };
         float[] my = new float[] { 0, 0, 0, -1, 1 };
-        float halfGridSize = (float)gridSize/2;
+        float halfGridSize = gridSize /2;
         int[] outPixels = new int[width];
         int[] inPixels = getRGB( src, 0, 0, width, height, null );
         for ( int y = 0; y < height; y++ ) {

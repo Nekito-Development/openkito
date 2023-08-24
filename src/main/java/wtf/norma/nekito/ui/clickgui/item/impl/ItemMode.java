@@ -1,8 +1,8 @@
 package wtf.norma.nekito.ui.clickgui.item.impl;
 
 import net.minecraft.client.gui.Gui;
-import wtf.norma.nekito.ui.clickgui.item.Item;
 import wtf.norma.nekito.settings.impl.ModeSetting;
+import wtf.norma.nekito.ui.clickgui.item.Item;
 import wtf.norma.nekito.util.font.Fonts;
 
 public class ItemMode extends Item<ModeSetting> {

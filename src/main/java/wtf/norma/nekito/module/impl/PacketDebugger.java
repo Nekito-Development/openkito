@@ -3,18 +3,13 @@ package wtf.norma.nekito.module.impl;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C00PacketKeepAlive;
 import net.minecraft.network.play.server.*;
-import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.EventType;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
-import wtf.norma.nekito.util.player.MovementUtil;
-
-import java.awt.*;
 
 
 public class PacketDebugger extends Module {
@@ -80,18 +75,18 @@ public class PacketDebugger extends Module {
 
              // TRANSACTION PACKET
                 if (dupa instanceof S32PacketConfirmTransaction && transaction.isEnabled()) {
-                    ChatHelper.printMessage("Transaction Packet : " + ((S32PacketConfirmTransaction) dupa));
+                    ChatHelper.printMessage("Transaction Packet : " + dupa);
                 }
 
 
                 //VELOCITY PACKET (also prints out id, x,y and z which probably dont work XD)
                 if(dupa instanceof S12PacketEntityVelocity && velo.isEnabled()){
-                    ChatHelper.printMessage("Velocity Packet : " + ((S12PacketEntityVelocity) dupa) + "ID: " + ((S12PacketEntityVelocity) dupa).getEntityID() + "X: " + ((S12PacketEntityVelocity) dupa).getMotionX() + "Y: " + ((S12PacketEntityVelocity) dupa).getMotionY() + "Z: " + ((S12PacketEntityVelocity) dupa).getMotionZ());
+                    ChatHelper.printMessage("Velocity Packet : " + dupa + "ID: " + ((S12PacketEntityVelocity) dupa).getEntityID() + "X: " + ((S12PacketEntityVelocity) dupa).getMotionX() + "Y: " + ((S12PacketEntityVelocity) dupa).getMotionY() + "Z: " + ((S12PacketEntityVelocity) dupa).getMotionZ());
                 }
 
                 // Abilities packet
                 if(dupa instanceof S39PacketPlayerAbilities && velo.isEnabled()){
-                    ChatHelper.printMessage("Abilities Packet : " + ((S39PacketPlayerAbilities) dupa));
+                    ChatHelper.printMessage("Abilities Packet : " + dupa);
                 }
 
                 // explosion packet (decided to add it to velo)

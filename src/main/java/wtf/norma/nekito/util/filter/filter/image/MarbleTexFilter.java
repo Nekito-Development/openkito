@@ -119,7 +119,7 @@ public class MarbleTexFilter extends PointFilter {
 			greenLayer = brownLayer = Math.abs(t);
 
 			perturb = (float)Math.sin(40.*chaos);
-			perturb = (float)Math.abs(perturb);
+			perturb = Math.abs(perturb);
 
 			brownPerturb = .6f*perturb + 0.3f;
 			greenPerturb = .2f*perturb + 0.8f;

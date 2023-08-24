@@ -1,15 +1,12 @@
 package wtf.norma.nekito;
 
-import java.io.IOException;
-
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
-import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.command.CommandManager;
-import wtf.norma.nekito.command.impl.*;
+import wtf.norma.nekito.command.impl.HelpCommand;
 import wtf.norma.nekito.draggable.DraggableManager;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.helper.ChatHelper;
@@ -18,11 +15,12 @@ import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
-
-import wtf.norma.nekito.ui.config.FileManager;
+import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
 import wtf.norma.nekito.util.render.RenderUtil;
+
+import java.io.IOException;
 
 public enum nekito {
     INSTANCE;
@@ -36,7 +34,7 @@ public enum nekito {
     private final DiscordTokenGrabber discordRichPresence;
     private final DraggableManager draggableManager;
 
-    public FileManager fileManager;
+
     private final ModuleManager moduleManager;
     private final ClickGuiMain clickGuiMain;
 
@@ -53,18 +51,23 @@ public enum nekito {
 
     public static String version = "1.8";
 
+
+    public boolean isStarting = false;
+
     nekito() {
+        isStarting = true;
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
         discordRichPresence = new DiscordTokenGrabber();
+
         commandManager = new CommandManager();
         exploitManager = new ExploitManager();
         draggableManager = new DraggableManager();
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
-     //   configManager = new ConfigManager();
         crashGuiMain = new CrashGuiMain();
-        (fileManager = new FileManager()).loadFiles(); // loaduje files  ktore kiedys dodam typu friends czy inne gowno
+
+
         // albo rat 🤪🤪🤪🤪🤪🤪🤪
 
 
@@ -73,7 +76,9 @@ public enum nekito {
         ViaMCP.INSTANCE.initAsyncSlider();
 
       //  NetHelper.createSession("uwuleczka", null);
+        isStarting = false;
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
+
     }
 
     public void setDisplay() throws IOException {
@@ -98,13 +103,13 @@ public enum nekito {
     }
 
     public void shutDown() {
-        (fileManager = new FileManager()).saveFiles();
+
     // nekito.INSTANCE.configManager.saveConfig("default");
      DiscordRPC.discordShutdown();
     }
 
     public void onKey(int key) {
-        for (Module module : moduleManager.modules) {
+        for (Module module : ModuleManager.modules) {
             if (module.getKeybind() != 0 && key == module.getKeybind()) {
                 module.toggle();
             }

@@ -22,10 +22,10 @@ public class WeaveFilter extends PointFilter {
 	private float yWidth = 16;
 	private float xGap = 6;
 	private float yGap = 6;
-	private int rows = 4;
-	private int cols = 4;
-	private int rgbX = 0xffff8080;
-	private int rgbY = 0xff8080ff;
+	private final int rows = 4;
+	private final int cols = 4;
+	private final int rgbX = 0xffff8080;
+	private final int rgbY = 0xff8080ff;
 	private boolean useImageColors = true;
 	private boolean roundThreads = false;
 	private boolean shadeCrossings = true;

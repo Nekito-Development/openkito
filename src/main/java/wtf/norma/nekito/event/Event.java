@@ -1,10 +1,7 @@
 package wtf.norma.nekito.event;
 
-import sun.security.krb5.internal.MethodData;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.nekito;
-
-import java.util.List;
 
 public class Event {
 

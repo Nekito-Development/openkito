@@ -23,8 +23,8 @@ import java.awt.image.BufferedImageOp;
  * A BufferedImageOp which iterates another BufferedImageOp.
  */
 public class IteratedFilter extends AbstractBufferedImageOp {
-	private BufferedImageOp filter;
-	private int iterations;
+	private final BufferedImageOp filter;
+	private final int iterations;
 	
     /**
      * Construct an IteratedFilter.

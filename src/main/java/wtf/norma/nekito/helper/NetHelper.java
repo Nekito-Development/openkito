@@ -4,10 +4,11 @@ import com.mojang.authlib.Agent;
 import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
-import java.net.Proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.Packet;
 import net.minecraft.util.Session;
+
+import java.net.Proxy;
 
 public final class NetHelper {
 

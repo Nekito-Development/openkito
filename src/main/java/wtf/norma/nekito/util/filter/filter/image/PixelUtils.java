@@ -47,7 +47,7 @@ public class PixelUtils {
 	public final static int ALPHA = 19;
 	public final static int ALPHA_TO_GRAY = 20;
 
-	private static Random randomGenerator = new Random();
+	private static final Random randomGenerator = new Random();
 
 	/**
 	 * Clamp a value to the range 0..255
@@ -81,8 +81,8 @@ public class PixelUtils {
 		return Math.abs(r1-r2) <= tolerance && Math.abs(g1-g2) <= tolerance && Math.abs(b1-b2) <= tolerance;
 	}
 	
-	private final static float hsb1[] = new float[3];//FIXME-not thread safe
-	private final static float hsb2[] = new float[3];//FIXME-not thread safe
+	private final static float[] hsb1 = new float[3];//FIXME-not thread safe
+	private final static float[] hsb2 = new float[3];//FIXME-not thread safe
 	
 	// Return rgb1 painted onto rgb2
 	public static int combinePixels(int rgb1, int rgb2, int op) {

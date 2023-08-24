@@ -3,6 +3,7 @@ package wtf.norma.nekito.settings.impl;
 import wtf.norma.nekito.settings.Setting;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ModeSetting extends Setting {
 	public ArrayList<String> modes = new ArrayList<>();
@@ -10,9 +11,7 @@ public class ModeSetting extends Setting {
 
 	public ModeSetting(String name, String value, String... modes) {
 		this.name = name;
-		for (String s : modes) {
-			this.modes.add(s);
-		}
+        Collections.addAll(this.modes, modes);
 		index = this.modes.indexOf(value);
 	}
 
@@ -20,7 +19,7 @@ public class ModeSetting extends Setting {
 		if (index >= modes.size()) {
 			index = 0;
 		}
-		return modes.get(index).toLowerCase().equals(name.toLowerCase());
+		return modes.get(index).equalsIgnoreCase(name);
 	}
 
 	public String getMode() {

@@ -28,7 +28,7 @@ import java.util.Random;
 public class CausticsFilter extends WholeImageFilter {
 
 	private float scale = 32;
-	private float angle = 0.0f;
+	private final float angle = 0.0f;
 	private int brightness = 10;
 	private float amount = 1.0f;
 	private float turbulence = 1.0f;

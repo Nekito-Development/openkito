@@ -49,7 +49,6 @@ public class AltLoginThread extends Thread {
         if (password.equals("")) {
             mc.session = new Session(username.replace("&", "\u00a7"), "", "", "mojang");
             status = EnumChatFormatting.GREEN + "Set username to " + username;
-            return;
         } else {
             MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
             MicrosoftAuthResult result = null;
@@ -61,7 +60,6 @@ public class AltLoginThread extends Thread {
             }
             assert result != null;
             mc.session = new Session(result.getProfile().getName(), result.getProfile().getId(), result.getAccessToken(), "legacy");
-            return;
         }
 //        status = EnumChatFormatting.AQUA + "Authenticating...";
 //        Session auth = createSession(username, password);

@@ -90,8 +90,8 @@ public final class MiscComposite implements Composite {
 		"Silhouette",
 	};
 
-	protected float extraAlpha;
-	protected int rule;
+	private float extraAlpha;
+	private int rule;
 
 	private MiscComposite(int rule) {
 		this(rule, 1.0f);
@@ -185,9 +185,7 @@ public final class MiscComposite implements Composite {
 
 		if (rule != c.rule)
 			return false;
-		if (extraAlpha != c.extraAlpha)
-			return false;
-		return true;
+		return extraAlpha == c.extraAlpha;
 	}
 			
 }
