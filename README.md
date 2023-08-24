@@ -37,7 +37,7 @@ Known bugs:
 > ~~open on lan button (ill just remove it useless)~~ (fixed)
 
 
-# ClickGui (09.08.2023)
+# Stats
 
 
 ![Alt](https://repobeats.axiom.co/api/embed/4636a9040c48dbdddcbcb1fd6cca05e71a06e88e.svg "Repobeats analytics image")
