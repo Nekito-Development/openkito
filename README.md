@@ -40,8 +40,7 @@ Known bugs:
 # ClickGui (09.08.2023)
 
 
-<img src="https://raw.githubusercontent.com/intexpression/intexpression/master/java_wasv1Ncy1z.jpg" alt="banner">
-
+![Alt](https://repobeats.axiom.co/api/embed/4636a9040c48dbdddcbcb1fd6cca05e71a06e88e.svg "Repobeats analytics image")
 
 
 
