@@ -602,7 +602,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         }
 
 
+
+
         //Post-Init hook by tecness
+        // 💀 lmao  ^^^^^^^^^^^^^^
         nekito.INSTANCE.postInit();
 
         this.renderGlobal.makeEntityOutlineShader();

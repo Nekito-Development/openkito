@@ -327,7 +327,13 @@ public class RenderUtility {
     }
 
 
+    public static void glColor(final int hex, final float alpha) {
+        final float red = (hex >> 16 & 0xFF) / 255F;
+        final float green = (hex >> 8 & 0xFF) / 255F;
+        final float blue = (hex & 0xFF) / 255F;
 
+        GlStateManager.color(red, green, blue, alpha);
+    }
     public static void glColor(final Color color, final int alpha) {
         glColor(color, alpha / 255F);
     }

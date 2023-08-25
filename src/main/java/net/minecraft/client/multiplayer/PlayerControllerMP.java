@@ -28,6 +28,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.EventAttack;
 
 public class PlayerControllerMP
 {
@@ -490,6 +492,14 @@ public class PlayerControllerMP
      */
     public void attackEntity(EntityPlayer playerIn, Entity targetEntity)
     {
+
+
+        EventAttack attack = new EventAttack(targetEntity);
+        Event.dispatch(attack);
+
+        if (attack.isCanceled()) {
+            return;
+        }
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new C02PacketUseEntity(targetEntity, C02PacketUseEntity.Action.ATTACK));
 

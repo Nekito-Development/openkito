@@ -16,6 +16,11 @@ public class EventPreMotion extends Event {
         this.posZ = posZ;
         this.onGround = onGround;
     }
+    public void setRotation(float yaw, float pitch) {
+        this.yaw = yaw;
+        this.pitch = pitch;
+    }
+
 
     public float getYaw() {
         return yaw;

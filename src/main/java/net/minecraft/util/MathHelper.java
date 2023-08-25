@@ -114,7 +114,33 @@ public class MathHelper
             return num > max ? max : num;
         }
     }
+    public static float wrapDegrees(float value)
+    {
+        value = value % 360.0F;
 
+        if (value >= 180.0F)
+        {
+            value -= 360.0F;
+        }
+
+        if (value < -180.0F)
+        {
+            value += 360.0F;
+        }
+
+        return value;
+    }
+
+    public static float checkAngle(float oneVar, float twoVar, float threeVar) {
+        float f = MathHelper.wrapDegrees((float)(oneVar - twoVar));
+        if (f < -threeVar) {
+            f = -threeVar;
+        }
+        if (f >= threeVar) {
+            f = threeVar;
+        }
+        return oneVar - f;
+    }
 
     public static double atan2(double p_181159_0_, double p_181159_2_)
     {
