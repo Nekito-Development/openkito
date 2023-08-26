@@ -50,7 +50,6 @@ public class AntiCrash extends Module {
 
             if (memorywyczyszczenie.isEnabled()){
                 System.gc(); // ok ok ok?
-                LoggingUtil.log("Cleaned Memory");
             }
 
 

@@ -18,6 +18,8 @@ import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
+import wtf.norma.nekito.util.font.FontRenderer;
+import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.math.ScaleMath;
 import wtf.norma.nekito.util.other.LoggingUtil;
 import wtf.norma.nekito.util.render.RenderUtil;
@@ -42,6 +44,8 @@ public enum nekito {
 
     private final CrashGuiMain crashGuiMain;
 
+
+
   //  public ConfigManager configManager;
 
 
@@ -51,7 +55,7 @@ public enum nekito {
 
     public static String name = "Nekito";
 
-    public static String version = "1.8";
+    public static String version = "2.0";
 
 
     public boolean isStarting = false;
@@ -103,6 +107,7 @@ public enum nekito {
         moduleManager = new ModuleManager();
         clickGuiMain = new ClickGuiMain();
         crashGuiMain = new CrashGuiMain();
+
 
 
         // albo rat 🤪🤪🤪🤪🤪🤪🤪
@@ -187,6 +192,8 @@ public enum nekito {
     public ClickGuiMain getClickGui() {
         return clickGuiMain;
     }
+
+
     public CrashGuiMain getCrashGui() {
         return crashGuiMain;
     }
