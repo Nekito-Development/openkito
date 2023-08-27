@@ -10,7 +10,7 @@ import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 import wtf.norma.nekito.util.color.ColorUtils;
@@ -72,13 +72,13 @@ public class TargetHUD extends Module {
         if (KillAura.target == null) {
             if (mc.thePlayer != null && mc.currentScreen instanceof GuiChat) {
                 curTarget = mc.thePlayer;
-                scale = AnimationHelper.animation((float) scale, (float) 1, (float) (6 * nekito.deltaTime()));
+                scale = AnimationHelper.animation((float) scale, (float) 1, (float) (6 * Nekito.deltaTime()));
             } else {
-                scale = AnimationHelper.animation((float) scale, (float) 0, (float) (6 * nekito.deltaTime()));
+                scale = AnimationHelper.animation((float) scale, (float) 0, (float) (6 * Nekito.deltaTime()));
             }
         } else {
             curTarget = KillAura.target;
-            scale = AnimationHelper.animation((float) scale, (float) 1, (float) (6 * nekito.deltaTime()));
+            scale = AnimationHelper.animation((float) scale, (float) 1, (float) (6 * Nekito.deltaTime()));
         }
 
 

@@ -1,9 +1,14 @@
 package wtf.norma.nekito;
 
 import de.florianmichael.viamcp.ViaMCP;
+import lombok.Getter;
+import me.zero.alpine.bus.EventBus;
+import me.zero.alpine.bus.EventManager;
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
-import org.apache.commons.logging.Log;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.command.CommandManager;
@@ -12,36 +17,45 @@ import wtf.norma.nekito.draggable.DraggableManager;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
-import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.module.ModuleManager;
+import wtf.norma.nekito.newevent.impl.input.EventKey;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
-import wtf.norma.nekito.ui.WelcomeGUI;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
-import wtf.norma.nekito.util.font.FontRenderer;
-import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.math.ScaleMath;
 import wtf.norma.nekito.util.other.LoggingUtil;
 import wtf.norma.nekito.util.render.RenderUtil;
 
 import java.io.IOException;
 
-public enum nekito {
+public enum Nekito implements Subscriber {
     INSTANCE;
+
+    public static final EventBus EVENT_BUS = EventManager.builder()
+            .setName("nekito/root")
+            .setSuperListeners()
+            .build();
+
     Minecraft mc = Minecraft.getMinecraft();
     public double animationSpeed = 0.20;
 
+    @Getter
     private final CommandManager commandManager;
+    @Getter
     private final ExploitManager exploitManager;
 
     public ScaleMath scaleMath = new ScaleMath(2);
+    @Getter
     private final DiscordTokenGrabber discordRichPresence;
+    @Getter
     private final DraggableManager draggableManager;
 
 
+    @Getter
     private final ModuleManager moduleManager;
+    @Getter
     private final ClickGuiMain clickGuiMain;
-
+    @Getter
     private final CrashGuiMain crashGuiMain;
 
 
@@ -60,7 +74,7 @@ public enum nekito {
 
     public boolean isStarting = false;
 
-    nekito() {
+    Nekito() {
         isStarting = true;
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "false");
 
@@ -94,11 +108,6 @@ public enum nekito {
 
 
 
-
-
-
-
-
         discordRichPresence = new DiscordTokenGrabber();
 
         commandManager = new CommandManager();
@@ -119,8 +128,8 @@ public enum nekito {
 
       //  NetHelper.createSession("uwuleczka", null);
         isStarting = false;
-        Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
 
+        Runtime.getRuntime().addShutdownHook(new Thread(this::shutDown));
     }
 
     public void setDisplay() throws IOException {
@@ -131,7 +140,7 @@ public enum nekito {
 
     public void onWelcomeUI() {
       //  mc.displayGuiScreen(new WelcomeGUI());
-        nekito.INSTANCE.getCommandManager().getCommands().stream()
+        Nekito.INSTANCE.getCommandManager().getCommands().stream()
                 .filter(command -> !(command instanceof HelpCommand))
                 .forEach(command -> ChatHelper.printMessage(
                         String.format("&5%s &f- &d%s", command.getAlias(), command.getDescription())));
@@ -140,23 +149,33 @@ public enum nekito {
 
 
     public void postInit() {
+//        Me being a fucking retard forgot to subscribe
+        EVENT_BUS.subscribe(this);
         RenderUtil.Instance = new RenderUtil(true);
         draggableManager.Init();
     }
 
     public void shutDown() {
-
+        EVENT_BUS.unsubscribe(this);
     // nekito.INSTANCE.configManager.saveConfig("default");
      DiscordRPC.discordShutdown();
     }
 
-    public void onKey(int key) {
-        for (Module module : ModuleManager.modules) {
-            if (module.getKeybind() != 0 && key == module.getKeybind()) {
-                module.toggle();
-            }
-        }
-    }
+    //OLD ASS PIECE OF CODE
+//    public void onKey(int key) {
+//        for (Module module : ModuleManager.modules) {
+//            if (module.getKeybind() != 0 && key == module.getKeybind()) {
+//                module.toggle();
+//            }
+//        }
+//    }
+
+    @Subscribe
+    private final Listener<EventKey> keyListener = new Listener<>(eventKey -> {
+        ModuleManager.modules.stream().forEach(module -> {
+            if (module.getKeybind() != 0 && eventKey.getKey() == module.getKeybind()) module.toggle();
+        });
+    });
 
 
     public double createAnimation(double value) {
@@ -167,35 +186,6 @@ public enum nekito {
         double c1 = 1.70158;
         double c3 = c1 + 1;
         return 1 + c3 * Math.pow(value - 1, 3) + c1 * Math.pow(value - 1, 2);
-    }
-
-    public DraggableManager getDraggableManager() {
-        return draggableManager;
-    }
-
-    public ModuleManager getModuleManager() {
-        return moduleManager;
-    }
-
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
-
-    public ExploitManager getExploitManager() {
-        return exploitManager;
-    }
-
-    public DiscordTokenGrabber getDiscordRichPresence() {
-        return discordRichPresence;
-    }
-
-    public ClickGuiMain getClickGui() {
-        return clickGuiMain;
-    }
-
-
-    public CrashGuiMain getCrashGui() {
-        return crashGuiMain;
     }
 
 

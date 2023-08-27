@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -51,9 +52,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.EventType;
 import wtf.norma.nekito.event.impl.EventJump;
-import wtf.norma.nekito.event.impl.EventMotion;
 
 public abstract class EntityLivingBase extends Entity
 {

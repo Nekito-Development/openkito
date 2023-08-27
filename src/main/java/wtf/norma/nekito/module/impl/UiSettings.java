@@ -5,7 +5,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.color.ColorUtility;
@@ -13,8 +13,6 @@ import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.player.MovementUtil;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class UiSettings extends Module {
@@ -59,7 +57,7 @@ public class UiSettings extends Module {
 
 
             //watermark
-            mc.fontRendererObj.drawStringWithShadow("N" + EnumChatFormatting.GRAY + "ekito" + " "  + EnumChatFormatting.GOLD + "[" + nekito.version + "]", 3, 3, ColorUtility.getColor(0));
+            mc.fontRendererObj.drawStringWithShadow("N" + EnumChatFormatting.GRAY + "ekito" + " "  + EnumChatFormatting.GOLD + "[" + Nekito.version + "]", 3, 3, ColorUtility.getColor(0));
 
 
             // xyz
@@ -77,7 +75,7 @@ public class UiSettings extends Module {
             int y = 13;
 
 
-            for (final Module mod : nekito.INSTANCE.getModuleManager().getModules()) {
+            for (final Module mod : Nekito.INSTANCE.getModuleManager().getModules()) {
                 if (mod.isToggled()) {
                     mc.fontRendererObj.drawStringWithShadow(mod.getName(), 3, y, ColorUtility.getColor(0));
                     y += mc.fontRendererObj.FONT_HEIGHT;

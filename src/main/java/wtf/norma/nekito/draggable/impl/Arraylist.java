@@ -5,7 +5,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.util.vector.Vector2f;
 import wtf.norma.nekito.draggable.AbstractDraggable;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.font.FontRenderer;
 import wtf.norma.nekito.util.font.Fonts;
@@ -58,7 +58,7 @@ public class Arraylist extends AbstractDraggable {
 
 
 
-        for(Module m : nekito.INSTANCE.getModuleManager().getModules())
+        for(Module m : Nekito.INSTANCE.getModuleManager().getModules())
             if(m.isToggled())
                 enabledMods.add(m);
 

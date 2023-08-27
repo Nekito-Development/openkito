@@ -2,7 +2,7 @@ package wtf.norma.nekito.module.impl;
 
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 public class CustomHotbar extends Module {
     public CustomHotbar() {
@@ -12,12 +12,12 @@ public class CustomHotbar extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender = true;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender = true;
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender = false;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Hotbar>Get("Hotbar").AllowRender = false;
     }
 }

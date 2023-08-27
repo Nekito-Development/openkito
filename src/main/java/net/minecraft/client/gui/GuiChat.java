@@ -16,7 +16,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.draggable.AbstractDraggable;
 import wtf.norma.nekito.draggable.impl.Arraylist;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 
 
@@ -187,7 +187,7 @@ public class GuiChat extends GuiScreen
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
         ScaledResolution sr = new ScaledResolution(mc);
-        for(AbstractDraggable draggable : nekito.INSTANCE.getDraggableManager().DraggableList) {
+        for(AbstractDraggable draggable : Nekito.INSTANCE.getDraggableManager().DraggableList) {
 
             if(draggable.X > sr.getScaledWidth()/2.0f && draggable.getClass().getSimpleName().equalsIgnoreCase("Arraylist")) {
                 int tempX = 0;

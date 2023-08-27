@@ -34,7 +34,7 @@ of.message.shaders.fr2=Please set Performance -> Fast Render to OFF.
 of.message.shaders.an1=Shaders are not compatible with 3D Anaglyph.
 of.message.shaders.an2=Please set Other -> 3D Anaglyph to OFF.
 
-of.message.newVersion=A new §eOptiFine§f version is available: §e%s§f
+#of.message.newVersion=A new §eOptiFine§f version is available: §e%s§f
 of.message.java64Bit=You can install §e64-bit Java§f to increase performance.
 of.message.openglError=§eOpenGL Error§f: %s (%s)
 

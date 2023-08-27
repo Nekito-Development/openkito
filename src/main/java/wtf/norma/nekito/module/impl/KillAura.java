@@ -10,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventMotion;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
@@ -75,7 +75,7 @@ public class KillAura extends Module {
                         if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
                         }
                         if (t.hasReached((long) (1000 / discord.getValue()))) {
-                            if (nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
+                            if (Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
                                 PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
                                 PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
                             }

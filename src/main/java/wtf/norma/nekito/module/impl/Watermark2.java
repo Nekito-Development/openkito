@@ -3,7 +3,7 @@ package wtf.norma.nekito.module.impl;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 
 public class Watermark2 extends Module {
@@ -20,12 +20,12 @@ public class Watermark2 extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark2>Get("Watermark2").AllowRender = true;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark2>Get("Watermark2").AllowRender = true;
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark2>Get("Watermark2").AllowRender = false;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark2>Get("Watermark2").AllowRender = false;
     }
 }

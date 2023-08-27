@@ -848,23 +848,23 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         }
     }
 
-    public void addToSendQueue(Packet p_147297_1_)
+    public void addToSendQueue(Packet packet)
     {
-        if(p_147297_1_ instanceof C03PacketPlayer && Minecraft.getMinecraft() != null) {
+        if(packet instanceof C03PacketPlayer && Minecraft.getMinecraft() != null) {
             Minecraft mc = Minecraft.getMinecraft();
-            C03PacketPlayer c03 = (C03PacketPlayer) p_147297_1_;
+            C03PacketPlayer c03 = (C03PacketPlayer) packet;
             mc.thePlayer.lastPosX = c03.getPositionX();
             mc.thePlayer.lastPosY = c03.getPositionY();
             mc.thePlayer.lastPosZ = c03.getPositionZ();
         }
         try {
-            PacketEvent e = new PacketEvent(p_147297_1_);
-            e.setType(EventType.Outgoing);
-            Event.dispatch(e);
+            PacketEvent packetEvent = new PacketEvent(packet);
+            packetEvent.setType(EventType.Outgoing);
+            Event.dispatch(packetEvent);
             //PacketEvent.setType(EventType.POST);
 
-            if (!e.isCanceled()) {
-                this.netManager.sendPacket(e.getPacket());
+            if (!packetEvent.isCanceled()) {
+                this.netManager.sendPacket(packetEvent.getPacket());
             }
         } catch (Exception e) {
             e.printStackTrace();

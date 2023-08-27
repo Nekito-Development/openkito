@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 
 /**
@@ -28,53 +28,53 @@ public class eleczkamode extends Module {
 
         //   ChatHelper.printMessage("this module is in beta(you can have issues with it)");
         // modules
-        nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "onichan supido";
-        nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillUwUra";
-        nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).name = "Tauwued strowow";
-        nekito.INSTANCE.getModuleManager().getModule(Velocity.class).name = "Vewocity";
-        nekito.INSTANCE.getModuleManager().getModule(HitBox.class).name = "Hitbowox";
-        nekito.INSTANCE.getModuleManager().getModule(AutoClicker.class).name = "AuwutoCiker";
-        nekito.INSTANCE.getModuleManager().getModule(AimBot.class).name = "AuwBiot";
-        nekito.INSTANCE.getModuleManager().getModule(Reach.class).name = "Rewch";
-        nekito.INSTANCE.getModuleManager().getModule(Sprint.class).name = "Spwint";
-        nekito.INSTANCE.getModuleManager().getModule(Fly.class).name = "Fluwt";
-        nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).name = "NOwOsluwDown";
-        nekito.INSTANCE.getModuleManager().getModule(AirJump.class).name = "AirUwUmp";
-        nekito.INSTANCE.getModuleManager().getModule(Stealer.class).name = "Steuwuer";
-        nekito.INSTANCE.getModuleManager().getModule(ClickGUI.class).name = "ClickUwUi";
-        nekito.INSTANCE.getModuleManager().getModule(Cape.class).name = "Cauwpe";
-        nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).name = "IwtemPhysic";
-        nekito.INSTANCE.getModuleManager().getModule(FullBright.class).name = "Fuwbrit";
-        nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CuwustomBuwttons";
-        nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CuwstommOwOdel";
-        nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "SeuwuerInfu";
-        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gwui setuwnii";
-        nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "gorocamuwera";
-        nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WourdCowolowr";
+        Nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "onichan supido";
+        Nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillUwUra";
+        Nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).name = "Tauwued strowow";
+        Nekito.INSTANCE.getModuleManager().getModule(Velocity.class).name = "Vewocity";
+        Nekito.INSTANCE.getModuleManager().getModule(HitBox.class).name = "Hitbowox";
+        Nekito.INSTANCE.getModuleManager().getModule(AutoClicker.class).name = "AuwutoCiker";
+        Nekito.INSTANCE.getModuleManager().getModule(AimBot.class).name = "AuwBiot";
+        Nekito.INSTANCE.getModuleManager().getModule(Reach.class).name = "Rewch";
+        Nekito.INSTANCE.getModuleManager().getModule(Sprint.class).name = "Spwint";
+        Nekito.INSTANCE.getModuleManager().getModule(Fly.class).name = "Fluwt";
+        Nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).name = "NOwOsluwDown";
+        Nekito.INSTANCE.getModuleManager().getModule(AirJump.class).name = "AirUwUmp";
+        Nekito.INSTANCE.getModuleManager().getModule(Stealer.class).name = "Steuwuer";
+        Nekito.INSTANCE.getModuleManager().getModule(ClickGUI.class).name = "ClickUwUi";
+        Nekito.INSTANCE.getModuleManager().getModule(Cape.class).name = "Cauwpe";
+        Nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).name = "IwtemPhysic";
+        Nekito.INSTANCE.getModuleManager().getModule(FullBright.class).name = "Fuwbrit";
+        Nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CuwustomBuwttons";
+        Nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CuwstommOwOdel";
+        Nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "SeuwuerInfu";
+        Nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gwui setuwnii";
+        Nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "gorocamuwera";
+        Nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WourdCowolowr";
 
-        nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "WauterMaurk";
-        nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "XauwuesWauterMaurk";
-        nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "AuwrList";
-        nekito.INSTANCE.getModuleManager().getModule(TargetHUD.class).name = "Tawwget HUD";
-        nekito.INSTANCE.getModuleManager().getModule(NoWeather.class).name = "No Wauther";
-        nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).name = "CuwustomHoutbar";
-        nekito.INSTANCE.getModuleManager().getModule(TimeChanger.class).name = "TimeChawwger";
-        nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Awwings";
-        nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ewars";
-        nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Awti Vowoit";
-        nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "ekkore oni chan uwu";
-        nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eweczka mowt";
-        nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "NowCliwp";
-        nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timwmer";
-        nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criwtakals";
-        nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fowo Colowwr";
-        nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "TiwwBawse";
-        nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fawll";
-        nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
-        nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
-        nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
-        nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "LagoDetectoro";
-        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TiwwerBowt";
+        Nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "WauterMaurk";
+        Nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "XauwuesWauterMaurk";
+        Nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "AuwrList";
+        Nekito.INSTANCE.getModuleManager().getModule(TargetHUD.class).name = "Tawwget HUD";
+        Nekito.INSTANCE.getModuleManager().getModule(NoWeather.class).name = "No Wauther";
+        Nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).name = "CuwustomHoutbar";
+        Nekito.INSTANCE.getModuleManager().getModule(TimeChanger.class).name = "TimeChawwger";
+        Nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Awwings";
+        Nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ewars";
+        Nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Awti Vowoit";
+        Nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "ekkore oni chan uwu";
+        Nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eweczka mowt";
+        Nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "NowCliwp";
+        Nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timwmer";
+        Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criwtakals";
+        Nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fowo Colowwr";
+        Nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "TiwwBawse";
+        Nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fawll";
+        Nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
+        Nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
+        Nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
+        Nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "LagoDetectoro";
+        Nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TiwwerBowt";
 
 
         //categories
@@ -93,52 +93,52 @@ public class eleczkamode extends Module {
 
     @Override
     public void onDisable() {  // insane shitcode polska.pl cry abt it
-        nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "Player Speed"; // insane
-        nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillAura"; // insane
-        nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criticals";
-        nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).name = "Target Strafe";
-        nekito.INSTANCE.getModuleManager().getModule(Velocity.class).name = "Velocity";
-        nekito.INSTANCE.getModuleManager().getModule(HitBox.class).name = "HitBox";
-        nekito.INSTANCE.getModuleManager().getModule(AutoClicker.class).name = "AutoClicker";
-        nekito.INSTANCE.getModuleManager().getModule(AimBot.class).name = "AimBot";
-        nekito.INSTANCE.getModuleManager().getModule(Reach.class).name = "Reach";
-        nekito.INSTANCE.getModuleManager().getModule(Sprint.class).name = "Sprint";
-        nekito.INSTANCE.getModuleManager().getModule(Fly.class).name = "Fly";
-        nekito.INSTANCE.getModuleManager().getModule(TargetHUD.class).name = "Target HUD";
-        nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).name = "No Slow Down";
-        nekito.INSTANCE.getModuleManager().getModule(AirJump.class).name = "AirJump";
-        nekito.INSTANCE.getModuleManager().getModule(Stealer.class).name = "romanian simulator";
-        nekito.INSTANCE.getModuleManager().getModule(ClickGUI.class).name = "ClickGUI";
-        nekito.INSTANCE.getModuleManager().getModule(Cape.class).name = "Cape";
-        nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).name = "ItemPhysics";
-        nekito.INSTANCE.getModuleManager().getModule(FullBright.class).name = "FullBright";
-        nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CustomButtons";
-        nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CustomModel";
-        nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "ServerInfo";
-        nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gui Settings";
-        nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "bandytakamera";
-        nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WorldColor";
-        nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "Watermark";
-        nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "cfx watermark ";
-        nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "Arraylist";
-        nekito.INSTANCE.getModuleManager().getModule(NoWeather.class).name = "No Weather";
-        nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).name = "CustomHotbar";
-        nekito.INSTANCE.getModuleManager().getModule(TimeChanger.class).name = "Time Changer";
-        nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Wings";
-        nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ears";
-        nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Anti Void";
-        nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "helium auth disabler";
-        nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eleczkamode";
-        nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "No Clip";
-        nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";
-        nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
-        nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "Tickbase";
-        nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
-        nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
-        nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
-        nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "Lag Detector";
-        nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TriggerBot";
-        nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Strafe";
+        Nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "Player Speed"; // insane
+        Nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillAura"; // insane
+        Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criticals";
+        Nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).name = "Target Strafe";
+        Nekito.INSTANCE.getModuleManager().getModule(Velocity.class).name = "Velocity";
+        Nekito.INSTANCE.getModuleManager().getModule(HitBox.class).name = "HitBox";
+        Nekito.INSTANCE.getModuleManager().getModule(AutoClicker.class).name = "AutoClicker";
+        Nekito.INSTANCE.getModuleManager().getModule(AimBot.class).name = "AimBot";
+        Nekito.INSTANCE.getModuleManager().getModule(Reach.class).name = "Reach";
+        Nekito.INSTANCE.getModuleManager().getModule(Sprint.class).name = "Sprint";
+        Nekito.INSTANCE.getModuleManager().getModule(Fly.class).name = "Fly";
+        Nekito.INSTANCE.getModuleManager().getModule(TargetHUD.class).name = "Target HUD";
+        Nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).name = "No Slow Down";
+        Nekito.INSTANCE.getModuleManager().getModule(AirJump.class).name = "AirJump";
+        Nekito.INSTANCE.getModuleManager().getModule(Stealer.class).name = "romanian simulator";
+        Nekito.INSTANCE.getModuleManager().getModule(ClickGUI.class).name = "ClickGUI";
+        Nekito.INSTANCE.getModuleManager().getModule(Cape.class).name = "Cape";
+        Nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).name = "ItemPhysics";
+        Nekito.INSTANCE.getModuleManager().getModule(FullBright.class).name = "FullBright";
+        Nekito.INSTANCE.getModuleManager().getModule(CustomButtons.class).name = "CustomButtons";
+        Nekito.INSTANCE.getModuleManager().getModule(CustomModel.class).name = "CustomModel";
+        Nekito.INSTANCE.getModuleManager().getModule(ServerInfo.class).name = "ServerInfo";
+        Nekito.INSTANCE.getModuleManager().getModule(InventorySettings.class).name = "Gui Settings";
+        Nekito.INSTANCE.getModuleManager().getModule(bandytakamera.class).name = "bandytakamera";
+        Nekito.INSTANCE.getModuleManager().getModule(WorldColor.class).name = "WorldColor";
+        Nekito.INSTANCE.getModuleManager().getModule(Watermark.class).name = "Watermark";
+        Nekito.INSTANCE.getModuleManager().getModule(Watermark2.class).name = "cfx watermark ";
+        Nekito.INSTANCE.getModuleManager().getModule(Arraylist.class).name = "Arraylist";
+        Nekito.INSTANCE.getModuleManager().getModule(NoWeather.class).name = "No Weather";
+        Nekito.INSTANCE.getModuleManager().getModule(CustomHotbar.class).name = "CustomHotbar";
+        Nekito.INSTANCE.getModuleManager().getModule(TimeChanger.class).name = "Time Changer";
+        Nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Wings";
+        Nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ears";
+        Nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Anti Void";
+        Nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "helium auth disabler";
+        Nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eleczkamode";
+        Nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "No Clip";
+        Nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";
+        Nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
+        Nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "Tickbase";
+        Nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
+        Nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
+        Nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
+        Nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "Lag Detector";
+        Nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TriggerBot";
+        Nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Strafe";
 
 
         Category.COMBAT.name = "Combat";

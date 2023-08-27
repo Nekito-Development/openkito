@@ -24,8 +24,6 @@ import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.particle.EffectRenderer;
-import net.minecraft.client.renderer.EntityRenderer1;
-import net.minecraft.client.renderer.EntityRenderer2;
 import net.minecraft.client.renderer.culling.ClippingHelperImpl;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -93,10 +91,9 @@ import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventFogColor;
 import wtf.norma.nekito.event.impl.EventRender3D;
-import wtf.norma.nekito.module.impl.HitBox;
 import wtf.norma.nekito.module.impl.Reach;
 import wtf.norma.nekito.module.impl.WorldColor;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 import wtf.norma.nekito.util.color.ColorUtility;
 
@@ -477,7 +474,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
             Vec3 vec3 = entity.getPositionEyes(partialTicks);
             boolean flag = false;
             boolean flag1 = true;
-            double d = reachValue = nekito.INSTANCE.getModuleManager().getModule(Reach.class).isToggled() ? (double) Reach.reachValue.getValue() : 3.0;
+            double d = reachValue = Nekito.INSTANCE.getModuleManager().getModule(Reach.class).isToggled() ? (double) Reach.reachValue.getValue() : 3.0;
             if (this.mc.playerController.extendedReach()) {
                 d0 = d1 = 6.0;
             } else if (d0 > reachValue) {
@@ -1235,7 +1232,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
                     int k = (int)(f9 * 255.0F);
                     int l = (int)(f10 * 255.0F);
                     // ASZALAMULAJCHUM WIDZOWIE DZIS BEDZIEMY PASTOWAC OPEN SOURCE CLIENT SPOKO?
-                    WorldColor RAT = (WorldColor) nekito.INSTANCE.getModuleManager().getModule(WorldColor.class);
+                    WorldColor RAT = (WorldColor) Nekito.INSTANCE.getModuleManager().getModule(WorldColor.class);
                     if (RAT.isToggled()) {
                             this.lightmapColors[i] = new Color(ColorUtility.getColor(3000)).getRGB();
                     } else {
@@ -2722,14 +2719,15 @@ public class EntityRenderer implements IResourceManagerReloadListener
 
         if (world != null)
         {
-            if (Config.getNewRelease() != null)
-            {
-                String s = "HD_U".replace("HD_U", "HD Ultra").replace("L", "Light");
-                String s1 = s + " " + Config.getNewRelease();
-                ChatComponentText chatcomponenttext = new ChatComponentText(I18n.format("of.message.newVersion", new Object[] {s1}));
-                this.mc.ingameGUI.getChatGUI().printChatMessage(chatcomponenttext);
-                Config.setNewRelease((String)null);
-            }
+            //Removed annoying ass optifine notification
+//            if (Config.getNewRelease() != null)
+//            {
+//                String s = "HD_U".replace("HD_U", "HD Ultra").replace("L", "Light");
+//                String s1 = s + " " + Config.getNewRelease();
+//                ChatComponentText chatcomponenttext = new ChatComponentText(I18n.format("of.message.newVersion", new Object[] {s1}));
+//                this.mc.ingameGUI.getChatGUI().printChatMessage(chatcomponenttext);
+//                Config.setNewRelease((String)null);
+//            }
 
             if (Config.isNotify64BitJava())
             {

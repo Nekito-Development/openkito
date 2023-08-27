@@ -2,7 +2,7 @@ package wtf.norma.nekito.module.impl;
 
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 
 public class NevaLoseinfo extends Module {
@@ -13,13 +13,13 @@ public class NevaLoseinfo extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.NevaLoseinfo>Get("NevaLoseinfo").AllowRender = true;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.NevaLoseinfo>Get("NevaLoseinfo").AllowRender = true;
     }
 
 
     @Override
     public void onDisable() {
         super.onDisable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.NevaLoseinfo>Get("NevaLoseinfo").AllowRender = false;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.NevaLoseinfo>Get("NevaLoseinfo").AllowRender = false;
     }
 }

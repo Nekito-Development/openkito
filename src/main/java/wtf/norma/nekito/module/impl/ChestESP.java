@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -57,7 +57,7 @@ public class ChestESP extends Module {
         mc.entityRenderer.setupCameraTransform(mc.timer.renderPartialTicks, 2);
         if (chest.getChestType() == 1) {
             GL11.glColor4d(0.7, 0.1, 0.1, 0.5);
-        } else if (chest.isEmpty && nekito.INSTANCE.getModuleManager().getModule(Stealer.class).isToggled()) {
+        } else if (chest.isEmpty && Nekito.INSTANCE.getModuleManager().getModule(Stealer.class).isToggled()) {
             GL11.glColor4d(0.4, 0.2, 0.2, 0.5);
         }
         RenderUtility.drawSelectionBoundingBox(new AxisAlignedBB(vec.xCoord - RenderManager.renderPosX, vec.yCoord - RenderManager.renderPosY, vec.zCoord - RenderManager.renderPosZ, vec2.xCoord - RenderManager.renderPosX, vec2.yCoord - RenderManager.renderPosY, vec2.zCoord - RenderManager.renderPosZ));

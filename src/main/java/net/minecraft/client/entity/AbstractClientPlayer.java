@@ -22,7 +22,7 @@ import optifine.Config;
 import optifine.PlayerConfigurations;
 import optifine.Reflector;
 import wtf.norma.nekito.module.impl.Cape;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 public abstract class AbstractClientPlayer extends EntityPlayer
 {
@@ -92,7 +92,7 @@ public abstract class AbstractClientPlayer extends EntityPlayer
 
     public ResourceLocation getLocationCape()
     {
-        Cape capes = (Cape) nekito.INSTANCE.getModuleManager().getModule(Cape.class);
+        Cape capes = (Cape) Nekito.INSTANCE.getModuleManager().getModule(Cape.class);
 
         if (!Config.isShowCapes())
         {

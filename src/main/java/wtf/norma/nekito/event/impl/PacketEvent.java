@@ -7,7 +7,6 @@ public class PacketEvent extends Event {
     private Packet packet;
 
 
-
     public PacketEvent(Packet packet){
         this.packet = packet;
 

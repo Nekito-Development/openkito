@@ -3,7 +3,7 @@ package wtf.norma.nekito.module.impl;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 
 public class ServerInfo extends Module {
@@ -19,13 +19,13 @@ public class ServerInfo extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.ServerInfo>Get("ServerInfo").AllowRender = true;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.ServerInfo>Get("ServerInfo").AllowRender = true;
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.ServerInfo>Get("ServerInfo").AllowRender = false;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.ServerInfo>Get("ServerInfo").AllowRender = false;
     }
 }
 

@@ -1,7 +1,7 @@
 package wtf.norma.nekito.event;
 
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 public class Event {
 
@@ -9,7 +9,7 @@ public class Event {
     private boolean canceled;
 
     public static void dispatch(Event e) {
-        nekito.INSTANCE.getModuleManager().getModules().stream().filter(Module::isToggled).forEach(m -> m.onEvent(e));
+        Nekito.INSTANCE.getModuleManager().getModules().stream().filter(Module::isToggled).forEach(m -> m.onEvent(e));
     }
 
     public boolean isPre() {

@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import wtf.norma.nekito.module.impl.ItemPhysics;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 import wtf.norma.nekito.util.Time.TimerUtility;
 
@@ -38,7 +38,7 @@ public class RenderEntityItem extends Render<EntityItem>
         if (item == null) {
             return 0;
         } else {
-            if (nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).isToggled()) {
+            if (Nekito.INSTANCE.getModuleManager().getModule(ItemPhysics.class).isToggled()) {
 
                 boolean var12 = p_177077_9_.isAmbientOcclusion();
                 int var13 = this.func_177078_a(itemstack);

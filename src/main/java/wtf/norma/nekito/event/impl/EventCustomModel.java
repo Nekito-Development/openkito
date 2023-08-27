@@ -3,7 +3,7 @@ package wtf.norma.nekito.event.impl;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import wtf.norma.nekito.event.Event;
 
-public class EventCustomModel  extends Event {
+public class EventCustomModel extends Event {
     private AbstractClientPlayer player;
 
     public EventCustomModel(AbstractClientPlayer player) {

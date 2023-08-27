@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import wtf.norma.nekito.exploit.Exploit;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
@@ -36,12 +36,12 @@ public class CategoryPanel {
         this.mc = mc;
 
         if (category == Module.Category.CRASHERS) {
-            ExploitManager exploitManager = nekito.INSTANCE.getExploitManager();
+            ExploitManager exploitManager = Nekito.INSTANCE.getExploitManager();
             for (Exploit<?> exploit : exploitManager.getExploits()) {
                 exploitButtons.add(new ExploitButton(exploit, x, y, width, height, mc));
             }
         } else {
-            for (Module module : nekito.INSTANCE.getModuleManager().getModules()) {
+            for (Module module : Nekito.INSTANCE.getModuleManager().getModules()) {
                 if (module.category == this.category) {
                     moduleButtons.add(new ModuleButton(module, x, y, width, height, mc));
                 }

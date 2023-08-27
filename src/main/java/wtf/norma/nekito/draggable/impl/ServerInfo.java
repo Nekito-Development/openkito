@@ -7,7 +7,7 @@ import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
 import wtf.norma.nekito.module.impl.eleczkamode;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class ServerInfo extends AbstractDraggable {
 
 
 
-        if (nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).isToggled()){
+        if (Nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).isToggled()){
 
             info.add(ChatHelper.fix("&fSuwussion: &d" + mc.session.getUsername()));
             if (!mc.isSingleplayer()) {

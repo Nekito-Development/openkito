@@ -2,7 +2,7 @@ package wtf.norma.nekito.module.impl;
 
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 
@@ -28,13 +28,13 @@ public class Arraylist extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = true;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = true;
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-        nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = false;
+        Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = false;
     }
 
 
