@@ -8,7 +8,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.realms.RealmsBridge;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.module.impl.InventorySettings;
+import wtf.norma.nekito.module.impl.hud.InventorySettings;
 import wtf.norma.nekito.ui.Tools.UiTools;
 import wtf.norma.nekito.util.shader.GLSL;
 

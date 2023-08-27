@@ -1,15 +1,10 @@
 package net.minecraft.client.entity;
 
+import me.zero.alpine.event.EventPhase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiCommandBlock;
-import net.minecraft.client.gui.GuiEnchantment;
-import net.minecraft.client.gui.GuiHopper;
-import net.minecraft.client.gui.GuiMerchant;
-import net.minecraft.client.gui.GuiRepair;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiScreenBook;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.gui.inventory.*;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.command.server.CommandBlockLogic;
@@ -21,19 +16,8 @@ import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.client.C01PacketChatMessage;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C07PacketPlayerDigging;
-import net.minecraft.network.play.client.C0APacketAnimation;
-import net.minecraft.network.play.client.C0BPacketEntityAction;
-import net.minecraft.network.play.client.C0CPacketInput;
-import net.minecraft.network.play.client.C0DPacketCloseWindow;
-import net.minecraft.network.play.client.C13PacketPlayerAbilities;
-import net.minecraft.network.play.client.C16PacketClientStatus;
+import net.minecraft.network.play.client.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatFileWriter;
@@ -41,18 +25,13 @@ import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.*;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.EventType;
-import wtf.norma.nekito.event.impl.EventMotion;
-import wtf.norma.nekito.event.impl.EventPreMotion;
-import wtf.norma.nekito.event.impl.EventRender2D;
-import wtf.norma.nekito.event.impl.EventUpdate;
-
-import wtf.norma.nekito.module.impl.NoSlowDown;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.impl.movement.NoSlowDown;
+import wtf.norma.nekito.event.impl.movement.EventMotion;
+import wtf.norma.nekito.event.impl.movement.EventPreMotion;
+import wtf.norma.nekito.event.impl.update.EventPreUpdate;
+import wtf.norma.nekito.event.impl.update.EventUpdate;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
-
-import javax.xml.stream.Location;
 
 public class EntityPlayerSP extends AbstractClientPlayer {
     public final NetHandlerPlayClient sendQueue;
@@ -176,6 +155,9 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
     public void onUpdate() {
 
+//        @formatter:off
+        Nekito.EVENT_BUS.post(new EventPreUpdate());
+//        @formatter:on
 
         GuiInventory.phase = this.mc.currentScreen instanceof GuiInventory || this.mc.currentScreen instanceof GuiInventory ? AnimationHelper.animation(GuiInventory.phase, 1.0, (double) 0.05f) : AnimationHelper.animation(GuiInventory.phase, 0.0, (double) 0.1f);
         GuiInventory.phase = MathHelper.clamp(GuiInventory.phase, 0.0, 1.0);
@@ -188,14 +170,17 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
             super.onUpdate();
+//            EventUpdate eventUpdate = new EventUpdate();
             EventUpdate eventUpdate = new EventUpdate();
             if (this.isRiding()) {
                 this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(this.rotationYaw, this.rotationPitch, this.onGround));
                 this.sendQueue.addToSendQueue(new C0CPacketInput(this.moveStrafing, this.moveForward, this.movementInput.jump, this.movementInput.sneak));
             } else {
                 this.onUpdateWalkingPlayer();
-                eventUpdate.setType(EventType.POST);
-                Event.dispatch(eventUpdate);
+                eventUpdate.setEventPhase(EventPhase.POST);
+                Nekito.EVENT_BUS.post(eventUpdate);
+//                eventUpdate.setType(EventType.POST);
+//                Event.dispatch(eventUpdate);
             }
         }
     }
@@ -209,23 +194,29 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      */
     public void onUpdateWalkingPlayer() {
         boolean flag = this.isSprinting();
+//        EventMotion event = new EventMotion(posX, getEntityBoundingBox().minY, posZ, rotationYaw, rotationPitch, onGround);
+//        event.setType(EventType.PRE);
+//        Event.dispatch(event);
         EventMotion event = new EventMotion(posX, getEntityBoundingBox().minY, posZ, rotationYaw, rotationPitch, onGround);
-        event.setType(EventType.PRE);
-        Event.dispatch(event);
-
+        event.setEventPhase(EventPhase.PRE);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(event);
+//        @formatter:on
 
         EventPreMotion eventPre = new EventPreMotion(rotationYaw, rotationPitch, posX, posY, posZ, onGround);
-        Event.dispatch(eventPre);
-
-        if (event.isCanceled()) return;
-
+//        @formatter:off
+        Nekito.EVENT_BUS.post(eventPre);
+//        @formatter:on
+//        EventPreMotion eventPre = new EventPreMotion(rotationYaw, rotationPitch, posX, posY, posZ, onGround);
+//        Event.dispatch(eventPre);
+//
+//        if (event.isCanceled()) return;
+        if (event.isCancelled()) return;
 
 
         this.rotationYaw = eventPre.getYaw();
         this.rotationPitch = eventPre.getPitch();
-        if (eventPre.isCanceled()) {
-            return;
-        }
+        if (eventPre.isCancelled()) return;
         if (flag != this.serverSprintState) {
             if (flag) {
                 this.sendQueue.addToSendQueue(new C0BPacketEntityAction(this, C0BPacketEntityAction.Action.START_SPRINTING));
@@ -290,8 +281,12 @@ public class EntityPlayerSP extends AbstractClientPlayer {
             this.prevOnGround = eventPre.isOnGround();
 
         }
-        event.setType(EventType.POST);
-        Event.dispatch(event);
+        event.setEventPhase(EventPhase.POST);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(event);
+//        @formatter:on
+//        event.setType(EventType.POST);
+//        Event.dispatch(event);
     }
 
     /**
@@ -708,7 +703,7 @@ public class EntityPlayerSP extends AbstractClientPlayer {
         this.movementInput.updatePlayerMoveState();
 
         if (this.isUsingItem() && !this.isRiding()) {
-            if(!nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).isToggled()){
+            if(!Nekito.INSTANCE.getModuleManager().getModule(NoSlowDown.class).isToggled()){
                 this.movementInput.moveStrafe *= 0.2F;
                 this.movementInput.moveForward *= 0.2F;
                 this.sprintToggleTimer = 0;

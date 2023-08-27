@@ -2,16 +2,6 @@ package net.minecraft.client.renderer;
 
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
-
-import java.awt.*;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.nio.FloatBuffer;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.Callable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -24,8 +14,6 @@ import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.particle.EffectRenderer;
-import net.minecraft.client.renderer.EntityRenderer1;
-import net.minecraft.client.renderer.EntityRenderer2;
 import net.minecraft.client.renderer.culling.ClippingHelperImpl;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -55,31 +43,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.server.integrated.IntegratedServer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EntitySelectors;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MouseFilter;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ReportedException;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.biome.BiomeGenBase;
-import optifine.Config;
-import optifine.CustomColors;
-import optifine.Lagometer;
-import optifine.RandomMobs;
-import optifine.Reflector;
-import optifine.ReflectorForge;
-import optifine.TextureUtils;
-
+import optifine.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Mouse;
@@ -90,15 +59,22 @@ import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Project;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventFogColor;
-import wtf.norma.nekito.event.impl.EventRender3D;
-import wtf.norma.nekito.module.impl.HitBox;
-import wtf.norma.nekito.module.impl.Reach;
-import wtf.norma.nekito.module.impl.WorldColor;
-import wtf.norma.nekito.nekito;
-
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.impl.legit.Reach;
+import wtf.norma.nekito.module.impl.visuals.WorldColor;
+import wtf.norma.nekito.event.impl.render.EventFogColor;
+import wtf.norma.nekito.event.impl.render.EventRender3D;
 import wtf.norma.nekito.util.color.ColorUtility;
+
+import java.awt.*;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.nio.FloatBuffer;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Callable;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {
@@ -477,7 +453,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
             Vec3 vec3 = entity.getPositionEyes(partialTicks);
             boolean flag = false;
             boolean flag1 = true;
-            double d = reachValue = nekito.INSTANCE.getModuleManager().getModule(Reach.class).isToggled() ? (double) Reach.reachValue.getValue() : 3.0;
+            double d = reachValue = Nekito.INSTANCE.getModuleManager().getModule(Reach.class).isToggled() ? (double) Reach.reachValue.getValue() : 3.0;
             if (this.mc.playerController.extendedReach()) {
                 d0 = d1 = 6.0;
             } else if (d0 > reachValue) {
@@ -1235,7 +1211,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
                     int k = (int)(f9 * 255.0F);
                     int l = (int)(f10 * 255.0F);
                     // ASZALAMULAJCHUM WIDZOWIE DZIS BEDZIEMY PASTOWAC OPEN SOURCE CLIENT SPOKO?
-                    WorldColor RAT = (WorldColor) nekito.INSTANCE.getModuleManager().getModule(WorldColor.class);
+                    WorldColor RAT = (WorldColor) Nekito.INSTANCE.getModuleManager().getModule(WorldColor.class);
                     if (RAT.isToggled()) {
                             this.lightmapColors[i] = new Color(ColorUtility.getColor(3000)).getRGB();
                     } else {
@@ -1887,8 +1863,10 @@ public class EntityRenderer implements IResourceManagerReloadListener
             this.mc.mcProfiler.endStartSection("forge_render_last");
             Reflector.callVoid(Reflector.ForgeHooksClient_dispatchRenderLast, new Object[] {renderglobal, Float.valueOf(partialTicks)});
         }
-
-        Event.dispatch(new EventRender3D(partialTicks));
+//        @formatter:off
+        Nekito.EVENT_BUS.post(new EventRender3D(partialTicks));
+//        @formatter:on
+//        Event.dispatch(new EventRender3D(partialTicks));
 
         this.mc.mcProfiler.endStartSection("hand");
         boolean flag2 = ReflectorForge.renderFirstPersonHand(this.mc.renderGlobal, partialTicks, pass);
@@ -2582,7 +2560,11 @@ public class EntityRenderer implements IResourceManagerReloadListener
             }
         }
         EventFogColor event = new EventFogColor(fogColorRed, fogColorGreen, fogColorBlue, 0);
-        Event.dispatch(event);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(event);
+//        @formatter:on
+//        EventFogColor event = new EventFogColor(fogColorRed, fogColorGreen, fogColorBlue, 0);
+//        Event.dispatch(event);
 
         fogColorRed = event.red / 255F;
         fogColorGreen = event.green / 255F;
@@ -2722,14 +2704,15 @@ public class EntityRenderer implements IResourceManagerReloadListener
 
         if (world != null)
         {
-            if (Config.getNewRelease() != null)
-            {
-                String s = "HD_U".replace("HD_U", "HD Ultra").replace("L", "Light");
-                String s1 = s + " " + Config.getNewRelease();
-                ChatComponentText chatcomponenttext = new ChatComponentText(I18n.format("of.message.newVersion", new Object[] {s1}));
-                this.mc.ingameGUI.getChatGUI().printChatMessage(chatcomponenttext);
-                Config.setNewRelease((String)null);
-            }
+            //Removed annoying ass optifine notification
+//            if (Config.getNewRelease() != null)
+//            {
+//                String s = "HD_U".replace("HD_U", "HD Ultra").replace("L", "Light");
+//                String s1 = s + " " + Config.getNewRelease();
+//                ChatComponentText chatcomponenttext = new ChatComponentText(I18n.format("of.message.newVersion", new Object[] {s1}));
+//                this.mc.ingameGUI.getChatGUI().printChatMessage(chatcomponenttext);
+//                Config.setNewRelease((String)null);
+//            }
 
             if (Config.isNotify64BitJava())
             {

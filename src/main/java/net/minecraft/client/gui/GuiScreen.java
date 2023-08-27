@@ -41,7 +41,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.command.CommandManager;
 
 public class GuiScreen extends Gui implements GuiYesNoCallback
@@ -480,7 +480,7 @@ public class GuiScreen extends Gui implements GuiYesNoCallback
             this.mc.ingameGUI.getChatGUI().addToSentMessages(msg);
         }
 
-        if (msg.startsWith(CommandManager.getPrefix()) && nekito.INSTANCE.getCommandManager().handleCommand(msg)) {
+        if (msg.startsWith(CommandManager.getPrefix()) && Nekito.INSTANCE.getCommandManager().handleCommand(msg)) {
             return;
         }
 

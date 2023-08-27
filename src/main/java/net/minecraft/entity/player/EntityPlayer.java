@@ -74,9 +74,9 @@ import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.LockCode;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
-import wtf.norma.nekito.module.impl.FastMine;
-import wtf.norma.nekito.module.impl.KeepSprint;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.impl.other.FastMine;
+import wtf.norma.nekito.module.impl.legit.KeepSprint;
+import wtf.norma.nekito.Nekito;
 
 @SuppressWarnings("incomplete-switch")
 public abstract class EntityPlayer extends EntityLivingBase
@@ -907,8 +907,8 @@ public abstract class EntityPlayer extends EntityLivingBase
 
         float f = this.inventory.getStrVsBlock(p_180471_1_);
 
-        if (nekito.INSTANCE.getModuleManager().getModule(FastMine.class).isToggled()){
-            f *= FastMine.speed();
+        if (Nekito.INSTANCE.getModuleManager().getModule(FastMine.class).isToggled()){
+            f = FastMine.speed();
         }
 
         if (f > 1.0F)
@@ -1367,7 +1367,7 @@ public abstract class EntityPlayer extends EntityLivingBase
                         if (i > 0)
                         {
                             targetEntity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
-                            if(nekito.INSTANCE.getModuleManager().getModule(KeepSprint.class).isToggled()) {
+                            if(Nekito.INSTANCE.getModuleManager().getModule(KeepSprint.class).isToggled()) {
                                 this.motionX *= KeepSprint.motionX.getValue();
                                 this.motionZ *= KeepSprint.motionZ.getValue();
                                 this.setSprinting(KeepSprint.setSprinting.value); //cryabtit

@@ -10,9 +10,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
-import wtf.norma.nekito.module.impl.KillAura;
-import wtf.norma.nekito.module.impl.TargetStrafe;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.impl.combat.KillAura;
+import wtf.norma.nekito.module.impl.combat.TargetStrafe;
+import wtf.norma.nekito.Nekito;
 
 import static java.lang.Math.toRadians;
 
@@ -61,7 +61,7 @@ public class MovementUtil {
     }
     public static void setMotion(double speed) {
         EntityLivingBase entity = KillAura.target;
-        TargetStrafe ddospolska = nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class);
+        TargetStrafe ddospolska = Nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class);
         // credits: jakis gosciu z forum
         boolean targetStrafe = MovementUtil.mozeStrafe();
         MovementInput movementInput = mc.thePlayer.movementInput;
@@ -118,10 +118,10 @@ public class MovementUtil {
 
     public static boolean mozeStrafe() {
 
-        if (!nekito.INSTANCE.getModuleManager().getModule(KillAura.class).isToggled()) {
+        if (!Nekito.INSTANCE.getModuleManager().getModule(KillAura.class).isToggled()) {
             return false;
         }
-        if (!nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).isToggled()) {
+        if (!Nekito.INSTANCE.getModuleManager().getModule(TargetStrafe.class).isToggled()) {
             return false;
         }
         if (TargetStrafe.jump.isEnabled()) {

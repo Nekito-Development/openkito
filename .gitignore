@@ -6,6 +6,7 @@
 target
 
 # Client work dir
+/run/*
 work/assets/skins
 work/assets/objects
 out/*.*

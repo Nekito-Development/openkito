@@ -2,11 +2,9 @@ package net.minecraft.client.gui.inventory;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
@@ -18,22 +16,15 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.module.impl.CustomModel;
-import wtf.norma.nekito.module.impl.InventorySettings;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.impl.hud.InventorySettings;
 import wtf.norma.nekito.util.Animations.EasingHelper;
-import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.render.RenderUtility;
 import wtf.norma.nekito.util.shader.GLSL;
-import wtf.norma.nekito.util.shader.ShaderUtility;
 
-import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11C.*;
 
 public class GuiInventory extends InventoryEffectRenderer

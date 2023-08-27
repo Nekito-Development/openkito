@@ -4,8 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import wtf.norma.nekito.cosmetics.model.WingsModel;
-import wtf.norma.nekito.module.impl.Wings;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.impl.visuals.Wings;
+import wtf.norma.nekito.Nekito;
 
 public class ModelPlayer extends ModelBiped
 {
@@ -104,7 +104,7 @@ public class ModelPlayer extends ModelBiped
             this.bipedRightArmwear.render(scale);
             this.bipedBodyWear.render(scale);
         }
-        if (entityIn.getName().equals((Minecraft.getMinecraft()).thePlayer.getName()) && nekito.INSTANCE.getModuleManager().getModule(Wings.class).enabled)
+        if (entityIn.getName().equals((Minecraft.getMinecraft()).thePlayer.getName()) && Nekito.INSTANCE.getModuleManager().getModule(Wings.class).enabled)
             this.wingsModel.RenderWings((Minecraft.getMinecraft()).thePlayer, entityIn.isSneaking(), entityIn.isAirBorne, entityIn.onGround, entityIn.isSprinting());
         GlStateManager.popMatrix();
     }

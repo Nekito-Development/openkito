@@ -1,6 +1,11 @@
 package wtf.norma.nekito.module;
 
-import wtf.norma.nekito.module.impl.*;
+import wtf.norma.nekito.module.impl.combat.*;
+import wtf.norma.nekito.module.impl.hud.*;
+import wtf.norma.nekito.module.impl.legit.*;
+import wtf.norma.nekito.module.impl.movement.*;
+import wtf.norma.nekito.module.impl.other.*;
+import wtf.norma.nekito.module.impl.visuals.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,14 +67,14 @@ public class ModuleManager {
                 new Reach(),
                 new CustomHotbar(),
                 new UiSettings(),
-                new Criticals(),
+                new Criticals(),     //TODO: Implement it with some type of event
                 new PacketDebugger(),
                 new TimeChanger(),
                 new Speed(),
                 new Stealer(),
                 new Wings(),
                 new Ears(),
-                new LagDetector(),
+//                new LagDetector(), TODO:Fix this shit it's fucking broken
                 new TriggerBot(),
                 new KillAura()
         );

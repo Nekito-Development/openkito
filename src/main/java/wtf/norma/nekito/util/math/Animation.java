@@ -2,7 +2,7 @@ package wtf.norma.nekito.util.math;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.MathHelper;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.Nekito;
 
 public class Animation {
     private final double animationSpeed;
@@ -13,7 +13,7 @@ public class Animation {
     }
 
     public Animation(double animationSpeed) {
-        this.animationSpeed =        nekito.INSTANCE.animationSpeed + animationSpeed;
+        this.animationSpeed =        Nekito.INSTANCE.animationSpeed + animationSpeed;
 
     }
 
@@ -28,12 +28,12 @@ public class Animation {
     }
 
     public double get() {
-        return nekito.INSTANCE.createAnimation(this.prevAnimationState
+        return Nekito.INSTANCE.createAnimation(this.prevAnimationState
                 + (this.animationState - this.prevAnimationState) * Minecraft.getMinecraft().getRenderPartialTicks());
     }
 
     public double getDrop() {
-        return nekito.INSTANCE.dropAnimation(this.prevAnimationState
+        return Nekito.INSTANCE.dropAnimation(this.prevAnimationState
                 + (this.animationState - this.prevAnimationState) * Minecraft.getMinecraft().getRenderPartialTicks());
     }
 

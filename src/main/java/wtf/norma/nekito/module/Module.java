@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Module {
+public abstract class Module {
     public final static Minecraft mc = Minecraft.getMinecraft();
     public String name;
     public int keybind;
@@ -72,9 +72,6 @@ public class Module {
     public void onDisable() {
     }
 
-    public void onEvent(Event e) {
-
-    }
 
     public void toggle() {
         toggled = !toggled;
@@ -143,6 +140,7 @@ public class Module {
     public void addSettings(Setting... settings) {
         this.settings.addAll(Arrays.asList(settings));
     }
+
 
     public enum Category {
         COMBAT("Combat"), LEGIT("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"), OTHER("Other"),HUD("Hud"), CRASHERS("Crashers List");

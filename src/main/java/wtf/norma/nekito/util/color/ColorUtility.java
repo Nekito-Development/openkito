@@ -3,7 +3,7 @@ package wtf.norma.nekito.util.color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
-import wtf.norma.nekito.module.impl.UiSettings;
+import wtf.norma.nekito.module.impl.hud.UiSettings;
 
 import java.awt.*;
 

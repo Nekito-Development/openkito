@@ -22,8 +22,8 @@ import optifine.Config;
 
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
-import wtf.norma.nekito.module.impl.Ears;
-import wtf.norma.nekito.nekito;
+import wtf.norma.nekito.module.impl.visuals.Ears;
+import wtf.norma.nekito.Nekito;
 
 public abstract class Render<T extends Entity>
 {
@@ -365,7 +365,7 @@ public abstract class Render<T extends Entity>
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
             byte b0 = 0;
 
-            if (nekito.INSTANCE.getModuleManager().getModule(Ears.class).enabled)
+            if (Nekito.INSTANCE.getModuleManager().getModule(Ears.class).enabled)
             {
                 b0 = -10;
             }

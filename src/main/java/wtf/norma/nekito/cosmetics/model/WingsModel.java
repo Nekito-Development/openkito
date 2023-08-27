@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.cosmetics.Animation;
-import wtf.norma.nekito.module.impl.Wings;
+import wtf.norma.nekito.module.impl.visuals.Wings;
 
 public class WingsModel  extends ModelBase {
     private final Animation timer = new Animation();

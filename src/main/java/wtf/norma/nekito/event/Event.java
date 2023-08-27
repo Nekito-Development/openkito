@@ -1,41 +1,44 @@
 package wtf.norma.nekito.event;
 
-import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.nekito;
+import lombok.Getter;
+import lombok.Setter;
+import me.zero.alpine.event.EventPhase;
 
+//Removes ugly boilerplate code
+@Getter
+@Setter
 public class Event {
 
-    public EventType type;
-    private boolean canceled;
+    //Sets if the event is cancelled
+    public boolean cancelled;
+    //previously EventType, now EventPhase. Sets the phase the event is in
+    public EventPhase eventPhase;
+    //Sets the flow of the event. Either inbound or outbound
+    public EventFlow eventFlow;
 
-    public static void dispatch(Event e) {
-        nekito.INSTANCE.getModuleManager().getModules().stream().filter(Module::isToggled).forEach(m -> m.onEvent(e));
-    }
 
     public boolean isPre() {
-        return type != null && type == EventType.PRE;
+        if (eventPhase == null) return false;
+        return eventPhase == EventPhase.PRE;
+    }
+
+    public boolean isOn() {
+        if (eventPhase == null) return false;
+        return eventPhase == EventPhase.ON;
     }
 
     public boolean isPost() {
-        return type != null && type == EventType.POST;
+        if (eventPhase == null) return false;
+        return eventPhase == EventPhase.POST;
     }
 
-    public EventType getType() {
-        return type;
+    public boolean isInbound() {
+        if (eventFlow == null) return false;
+        return eventFlow == EventFlow.INBOUND;
     }
 
-
-
-
-    public void setType(EventType type) {
-        this.type = type;
-    }
-
-    public boolean isCanceled(){
-        return canceled;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        this.canceled = cancelled;
+    public boolean isOutbound() {
+        if (eventFlow == null) return false;
+        return eventFlow == EventFlow.OUTBOUND;
     }
 }

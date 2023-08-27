@@ -13,23 +13,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.network.play.client.C02PacketUseEntity;
-import net.minecraft.network.play.client.C07PacketPlayerDigging;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
-import net.minecraft.network.play.client.C09PacketHeldItemChange;
-import net.minecraft.network.play.client.C0EPacketClickWindow;
-import net.minecraft.network.play.client.C10PacketCreativeInventoryAction;
-import net.minecraft.network.play.client.C11PacketEnchantItem;
+import net.minecraft.network.play.client.*;
 import net.minecraft.stats.StatFileWriter;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventAttack;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.event.impl.action.EventAttack;
 
 public class PlayerControllerMP
 {
@@ -493,13 +483,20 @@ public class PlayerControllerMP
     public void attackEntity(EntityPlayer playerIn, Entity targetEntity)
     {
 
-
+        //New based event system 😎😎😎😎😎😎
         EventAttack attack = new EventAttack(targetEntity);
-        Event.dispatch(attack);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(attack);
+//        @formatter:on
+        if (attack.isCancelled()) return;
 
-        if (attack.isCanceled()) {
-            return;
-        }
+        //Old ass rusty event system kurwa
+//        EventAttack attack = new EventAttack(targetEntity);
+//        Event.dispatch(attack);
+//
+//        if (attack.isCanceled()) {
+//            return;
+//        }
         this.syncCurrentPlayItem();
         this.netClientHandler.addToSendQueue(new C02PacketUseEntity(targetEntity, C02PacketUseEntity.Action.ATTACK));
 
