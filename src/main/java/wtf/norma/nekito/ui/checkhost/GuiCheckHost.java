@@ -59,6 +59,7 @@ public class GuiCheckHost extends GuiScreen {
         this.inputIp.updateCursorCounter();
         this.buttonList.get(1).displayString = ("TCP");
         this.buttonList.get(2).displayString = ("HTTP");
+
     }
 
     @Override
@@ -224,8 +225,7 @@ public class GuiCheckHost extends GuiScreen {
 
                         int heigh1 = 100;
 
-                        //RenderUtils.drawBorderedRect(width - 5, heigh - 50, width * 3.25, 450,
-                        //ColorUtils.rainbowEffect(0L, 1.0f).getRGB(), Integer.MIN_VALUE);
+
                         if (version.equalsIgnoreCase("1.12.2") && sd.pingToServer < 0L) {
                             heigh1 += adder;
                             this.mc.fontRendererObj.drawStringWithShadow("Brand: Pinging...", width, heigh1, -1);
@@ -411,10 +411,7 @@ public class GuiCheckHost extends GuiScreen {
 
                         int heigh1 = 100;
 
-						/*
-						RenderUtils.drawBorderedRect(width - 5, heigh - 50, width * 1.15, 300,
-								ColorUtils.rainbowEffect(0L, 1.0f).getRGB(), Integer.MIN_VALUE);
-								*/
+
                         if (version.equalsIgnoreCase("1.12.2") && sd.pingToServer < 0L) {
                             heigh1 += adder;
                             this.mc.fontRendererObj.drawStringWithShadow("Brand: Pinging...", width, heigh1, -1);
