@@ -42,6 +42,9 @@ public class LagDetector extends Module implements Subscriber {
         super.onDisable();
     }
 
+
+
+
     // images are not mine
     @Subscribe
     private final void onEvent(Event event) {
