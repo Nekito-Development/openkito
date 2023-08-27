@@ -13,7 +13,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-
+    <lwjgl.version>3.3.2</lwjgl.version>
   </properties>
 
 <profiles>
@@ -125,7 +125,24 @@
       <version>20120107</version>
     </dependency>
 
-
+<dependency>
+		<groupId>org.lwjgl</groupId>
+		<artifactId>lwjgl-platform</artifactId>
+		<version>${lwjgl.version}</version>
+		<classifier>natives-windows</classifier>
+	</dependency>
+	<dependency>
+		<groupId>org.lwjgl</groupId>
+		<artifactId>lwjgl-platform</artifactId>
+		<version>${lwjgl.version}</version>
+		<classifier>natives-osx</classifier>
+	</dependency>
+	<dependency>
+		<groupId>org.lwjgl</groupId>
+		<artifactId>lwjgl-platform</artifactId>
+		<version>${lwjgl.version}</version>
+		<classifier>natives-linux</classifier>
+	</dependency>
 
  
     <dependency>
