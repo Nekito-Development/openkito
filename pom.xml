@@ -127,41 +127,7 @@
 
 
 
-    <dependency>
-      <groupId>cwel1</groupId>
-      <artifactId>cwel12</artifactId>
-      <version>cwel13</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-glfw-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-
-    <dependency>
-      <groupId>cweaghl21</groupId>
-      <artifactId>cwge2l12</artifactId>
-      <version>cwelaf213</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>cwesl21</groupId>
-      <artifactId>cwef2l12</artifactId>
-      <version>cwelf213</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-openal-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>cwzel21</groupId>
-      <artifactId>cwe2lz12</artifactId>
-      <version>cwel2z13</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-opengl-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-
-
+ 
     <dependency>
       <groupId>org.lwjgl</groupId>
       <artifactId>lwjgl-openal</artifactId>
