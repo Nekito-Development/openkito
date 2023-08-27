@@ -3,12 +3,6 @@ package net.minecraft.client.gui;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -35,24 +29,21 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.FoodStats;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StringUtils;
+import net.minecraft.util.*;
 import net.minecraft.world.border.WorldBorder;
 import optifine.Config;
 import optifine.CustomColors;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventRender2D;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.impl.CustomHotbar;
 import wtf.norma.nekito.module.impl.UiSettings;
-import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.newevent.impl.render.EventRender2D;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.other.KeyloggerUtil;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class GuiIngame extends Gui {
     private static final ResourceLocation vignetteTexPath = new ResourceLocation("textures/misc/vignette.png");
@@ -350,7 +341,10 @@ public class GuiIngame extends Gui {
             this.overlayPlayerList.renderPlayerlist(i, scoreboard, scoreobjective1);
         }
 
-        Event.dispatch(new EventRender2D(partialTicks));
+//        Event.dispatch(new EventRender2D(partialTicks));
+//        @formatter:off
+        Nekito.EVENT_BUS.post(new EventRender2D(partialTicks));
+//        @formatter:on
         Nekito.INSTANCE.getDraggableManager().Render();
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

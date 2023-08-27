@@ -1,17 +1,20 @@
 package wtf.norma.nekito.module.impl;
 
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventMotion;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.newevent.impl.movement.EventMotion;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 
 import java.util.Comparator;
 
 
-public class AimBot extends Module {
+public class AimBot extends Module implements Subscriber {
 
     public NumberSetting ZASIEGCHUJA = new NumberSetting("Range", 3, 1, 6, 0.5f);
 
@@ -23,11 +26,13 @@ public class AimBot extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+        Nekito.EVENT_BUS.subscribe(this);
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
+        Nekito.EVENT_BUS.unsubscribe(this);
     }
 
     public float[] rotations(EntityPlayer entity) {
@@ -44,16 +49,25 @@ public class AimBot extends Module {
     }
 
 
+     @Subscribe
+    private final Listener<EventMotion> listener = new Listener<>(event -> {
+         EntityPlayer target = mc.theWorld.playerEntities.stream().filter(entityPlayer -> entityPlayer != mc.thePlayer).min(Comparator.comparing(entityPlayer ->
+                 entityPlayer.getDistanceToEntity(mc.thePlayer))).filter(entityPlayer -> entityPlayer.getDistanceToEntity(mc.thePlayer) <= ZASIEGCHUJA.getValue()).orElse(null);
+         if (target != null && !target.isInvisible() && mc.thePlayer.canEntityBeSeen(target)) {
+             mc.thePlayer.rotationYaw = rotations(target)[0];
+             mc.thePlayer.rotationPitch = rotations(target)[1];
+         }
+     });
 
-    @Override
-    public void onEvent(Event e) {
-        if (e instanceof EventMotion) {
-            EntityPlayer target = mc.theWorld.playerEntities.stream().filter(entityPlayer -> entityPlayer != mc.thePlayer).min(Comparator.comparing(entityPlayer ->
-                    entityPlayer.getDistanceToEntity(mc.thePlayer))).filter(entityPlayer -> entityPlayer.getDistanceToEntity(mc.thePlayer) <= ZASIEGCHUJA.getValue()).orElse(null);
-            if (target != null && !target.isInvisible() && mc.thePlayer.canEntityBeSeen(target)) {
-                mc.thePlayer.rotationYaw = rotations(target)[0];
-                mc.thePlayer.rotationPitch = rotations(target)[1];
-            }
-        }
-    }
+//    @Override
+//    public void onEvent(Event e) {
+//        if (e instanceof EventMotion) {
+//            EntityPlayer target = mc.theWorld.playerEntities.stream().filter(entityPlayer -> entityPlayer != mc.thePlayer).min(Comparator.comparing(entityPlayer ->
+//                    entityPlayer.getDistanceToEntity(mc.thePlayer))).filter(entityPlayer -> entityPlayer.getDistanceToEntity(mc.thePlayer) <= ZASIEGCHUJA.getValue()).orElse(null);
+//            if (target != null && !target.isInvisible() && mc.thePlayer.canEntityBeSeen(target)) {
+//                mc.thePlayer.rotationYaw = rotations(target)[0];
+//                mc.thePlayer.rotationPitch = rotations(target)[1];
+//            }
+//        }
+//    }
 }

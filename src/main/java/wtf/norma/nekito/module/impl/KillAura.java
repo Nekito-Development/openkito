@@ -1,5 +1,8 @@
 package wtf.norma.nekito.module.impl;
 
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,10 +10,9 @@ import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventMotion;
-import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.newevent.impl.movement.EventMotion;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;
@@ -22,7 +24,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class KillAura extends Module {
+public class KillAura extends Module implements Subscriber {
 
     public static EntityLivingBase target;
 
@@ -43,12 +45,14 @@ public class KillAura extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+        Nekito.EVENT_BUS.subscribe(this);
         target = null;
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
+        Nekito.EVENT_BUS.unsubscribe(this);
     }
 
     public float[] rotations(EntityLivingBase entity) {
@@ -64,30 +68,52 @@ public class KillAura extends Module {
         return new float[]{u2, u3};
     }
 
-
-    @Override
-    public void onEvent(Event e) {
-        if (e instanceof EventMotion) {
-            if (e.isPre()) {
-                target = getTarget(ZASIEGCHUJA.getValue());
-                if (target != null) {
-                    if (rotate(target, (EventMotion) e)) {
-                        if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
+    @Subscribe
+    private final Listener<EventMotion> listener = new Listener<>(event -> {
+        if (event.isPre()) {
+            target = getTarget(ZASIEGCHUJA.getValue());
+            if (target != null) {
+                if (rotate(target, event)) {
+                    if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
+                    }
+                    if (t.hasReached((long) (1000 / discord.getValue()))) {
+                        if (Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
+                            PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
+                            PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
                         }
-                        if (t.hasReached((long) (1000 / discord.getValue()))) {
-                            if (Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
-                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
-                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
-                            }
-                            mc.thePlayer.swingItem();
-                            mc.getNetHandler().getNetworkManager().sendPacketNoEvent(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
-                            t.reset();
-                        }
+                        mc.thePlayer.swingItem();
+                        mc.getNetHandler().getNetworkManager().sendPacketNoEvent(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+                        t.reset();
                     }
                 }
             }
         }
-    }
+    });
+
+//    @Override
+//    public void onEvent(Event e) {
+//        if (e instanceof EventMotion) {
+//            if (e.isPre()) {
+//                target = getTarget(ZASIEGCHUJA.getValue());
+//                if (target != null) {
+//                    if (rotate(target, (EventMotion) e)) {
+//                        if (mc.getNetHandler().getPlayerInfo(mc.thePlayer.getUniqueID()).getResponseTime() < 70) {
+//                        }
+//                        if (t.hasReached((long) (1000 / discord.getValue()))) {
+//                            if (Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).isToggled()) {
+//                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.0645, mc.thePlayer.posZ, false));
+//                                PacketUtility.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+//                            }
+//                            mc.thePlayer.swingItem();
+//                            mc.getNetHandler().getNetworkManager().sendPacketNoEvent(new C02PacketUseEntity(target, C02PacketUseEntity.Action.ATTACK));
+//                            t.reset();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+
 
     public boolean rotate(EntityLivingBase target, EventMotion event) {
         switch (rotations.getMode()) {
@@ -103,6 +129,20 @@ public class KillAura extends Module {
         }
         return true;
     }
+//    public boolean rotate(EntityLivingBase target, EventMotion event) {
+//        switch (rotations.getMode()) {
+//            case "Basic":
+//                float[] rots = rotations(target);
+//                event.setYaw(rots[0]);
+//                event.setPitch(rots[0]);
+//                mc.thePlayer.rotationYawHead = rots[0];
+//                mc.thePlayer.renderYawOffset = rots[0];
+//                break;
+//            case "None":
+//                break;
+//        }
+//        return true;
+//    }
 
 
     public EntityLivingBase getTarget(double range) {

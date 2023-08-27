@@ -3,22 +3,12 @@ package net.minecraft.entity;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
-
+import me.zero.alpine.event.EventPhase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.BaseAttributeMap;
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.ai.attributes.ServersideAttributeMap;
+import net.minecraft.entity.ai.attributes.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.passive.EntityWolf;
@@ -29,11 +19,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagFloat;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagShort;
+import net.minecraft.nbt.*;
 import net.minecraft.network.play.server.S04PacketEntityEquipment;
 import net.minecraft.network.play.server.S0BPacketAnimation;
 import net.minecraft.network.play.server.S0DPacketCollectItem;
@@ -41,18 +27,13 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionHelper;
 import net.minecraft.scoreboard.Team;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.CombatTracker;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntitySelectors;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventJump;
+import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.newevent.impl.movement.EventJump;
+
+import java.util.*;
 
 public abstract class EntityLivingBase extends Entity
 {
@@ -1565,16 +1546,23 @@ public abstract class EntityLivingBase extends Entity
      * Causes this entity to do an upwards motion (jumping).
      */
     protected void jump() {
-        EventJump DIDOS = new EventJump();
+
+//        EventJump DIDOS = new EventJump();
         double ymot = this.isPotionActive(Potion.jump) ? getJumpUpwardsMotion() + (getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F: getJumpUpwardsMotion();
-        DIDOS.mullvadzlamany(ymot, true);
+        EventJump eventJump = new EventJump(ymot);
+        eventJump.setEventPhase(EventPhase.PRE);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(eventJump);
+//        @formatter:on
+//        DIDOS.mullvadzlamany(ymot, true);
       //  Event.setType(EventType.PRE);
 
-
-        if (DIDOS.isCanceled()) {
-            return;
-        }
-        motionY = DIDOS.getMotionY();
+        if (eventJump.isCancelled()) return;
+        motionY = eventJump.getMotionY();
+//        if (DIDOS.isCanceled()) {
+//            return;
+//        }
+//        motionY = DIDOS.getMotionY();
 
         if (isSprinting()) {
             float f = this.rotationYaw * 0.017453292F;
@@ -1584,9 +1572,14 @@ public abstract class EntityLivingBase extends Entity
 
         isAirBorne = true;
 
-        DIDOS.mullvadzlamany(DIDOS.getMotionY(), false);
+        eventJump.setEventPhase(EventPhase.POST);
+        eventJump.setMotionY(eventJump.getMotionY());
+//        @formatter:off
+        Nekito.EVENT_BUS.post(eventJump);
+//        @formatter:on
+//        DIDOS.mullvadzlamany(DIDOS.getMotionY(), false);
       //  Event.setType(EventType.POST);
-        Event.dispatch(DIDOS);
+//        Event.dispatch(DIDOS);
     }
 
     /**

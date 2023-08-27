@@ -1,5 +1,6 @@
 package net.minecraft.client.entity;
 
+import me.zero.alpine.event.EventPhase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -24,13 +25,13 @@ import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.*;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.event.EventType;
-import wtf.norma.nekito.event.impl.EventMotion;
-import wtf.norma.nekito.event.impl.EventPreMotion;
 import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.impl.NoSlowDown;
-import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.newevent.impl.movement.EventMotion;
+import wtf.norma.nekito.newevent.impl.movement.EventPreMotion;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 
 public class EntityPlayerSP extends AbstractClientPlayer {
@@ -188,23 +189,29 @@ public class EntityPlayerSP extends AbstractClientPlayer {
      */
     public void onUpdateWalkingPlayer() {
         boolean flag = this.isSprinting();
+//        EventMotion event = new EventMotion(posX, getEntityBoundingBox().minY, posZ, rotationYaw, rotationPitch, onGround);
+//        event.setType(EventType.PRE);
+//        Event.dispatch(event);
         EventMotion event = new EventMotion(posX, getEntityBoundingBox().minY, posZ, rotationYaw, rotationPitch, onGround);
-        event.setType(EventType.PRE);
-        Event.dispatch(event);
-
+        event.setEventPhase(EventPhase.PRE);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(event);
+//        @formatter:on
 
         EventPreMotion eventPre = new EventPreMotion(rotationYaw, rotationPitch, posX, posY, posZ, onGround);
-        Event.dispatch(eventPre);
-
-        if (event.isCanceled()) return;
-
+//        @formatter:off
+        Nekito.EVENT_BUS.post(eventPre);
+//        @formatter:on
+//        EventPreMotion eventPre = new EventPreMotion(rotationYaw, rotationPitch, posX, posY, posZ, onGround);
+//        Event.dispatch(eventPre);
+//
+//        if (event.isCanceled()) return;
+        if (event.isCancelled()) return;
 
 
         this.rotationYaw = eventPre.getYaw();
         this.rotationPitch = eventPre.getPitch();
-        if (eventPre.isCanceled()) {
-            return;
-        }
+        if (eventPre.isCancelled()) return;
         if (flag != this.serverSprintState) {
             if (flag) {
                 this.sendQueue.addToSendQueue(new C0BPacketEntityAction(this, C0BPacketEntityAction.Action.START_SPRINTING));
@@ -269,8 +276,12 @@ public class EntityPlayerSP extends AbstractClientPlayer {
             this.prevOnGround = eventPre.isOnGround();
 
         }
-        event.setType(EventType.POST);
-        Event.dispatch(event);
+        event.setEventPhase(EventPhase.POST);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(event);
+//        @formatter:on
+//        event.setType(EventType.POST);
+//        Event.dispatch(event);
     }
 
     /**
