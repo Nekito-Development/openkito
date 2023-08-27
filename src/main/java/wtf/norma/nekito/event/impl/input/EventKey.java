@@ -1,4 +1,4 @@
-package wtf.norma.nekito.newevent.impl.input;
+package wtf.norma.nekito.event.impl.input;
 
 import lombok.Getter;
 

@@ -36,7 +36,7 @@ import optifine.CustomColors;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.impl.CustomHotbar;
 import wtf.norma.nekito.module.impl.UiSettings;
-import wtf.norma.nekito.newevent.impl.render.EventRender2D;
+import wtf.norma.nekito.event.impl.render.EventRender2D;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.other.KeyloggerUtil;
 

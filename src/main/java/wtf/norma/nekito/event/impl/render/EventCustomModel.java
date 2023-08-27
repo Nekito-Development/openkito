@@ -1,6 +1,6 @@
-package wtf.norma.nekito.newevent.impl.render;
+package wtf.norma.nekito.event.impl.render;
 
-import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.event.Event;
 
 public class EventCustomModel extends Event {
 //

@@ -8,7 +8,7 @@ import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.update.EventUpdate;
+import wtf.norma.nekito.event.impl.update.EventUpdate;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 
 public class FullBright extends Module implements Subscriber {

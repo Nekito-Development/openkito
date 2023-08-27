@@ -1,9 +1,9 @@
-package wtf.norma.nekito.newevent.impl.movement;
+package wtf.norma.nekito.event.impl.movement;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.event.Event;
 
 @Getter
 @Setter

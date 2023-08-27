@@ -6,9 +6,8 @@ import me.zero.alpine.listener.Subscriber;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.packet.PacketEvent;
+import wtf.norma.nekito.event.impl.packet.PacketEvent;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 
 

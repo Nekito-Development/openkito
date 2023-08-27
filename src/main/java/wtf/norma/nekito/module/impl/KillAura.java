@@ -12,7 +12,7 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.movement.EventMotion;
+import wtf.norma.nekito.event.impl.movement.EventMotion;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.settings.impl.NumberSetting;

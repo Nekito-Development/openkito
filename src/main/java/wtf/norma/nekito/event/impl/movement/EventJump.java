@@ -1,6 +1,6 @@
-package wtf.norma.nekito.newevent.impl.movement;
+package wtf.norma.nekito.event.impl.movement;
 
-import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.event.Event;
 
 public class EventJump extends Event {
     private double motionY;

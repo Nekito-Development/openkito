@@ -10,8 +10,7 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.packet.PacketEvent;
-import wtf.norma.nekito.newevent.impl.update.EventUpdate;
+import wtf.norma.nekito.event.impl.packet.PacketEvent;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 

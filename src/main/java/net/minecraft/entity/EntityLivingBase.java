@@ -31,7 +31,7 @@ import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.newevent.impl.movement.EventJump;
+import wtf.norma.nekito.event.impl.movement.EventJump;
 
 import java.util.*;
 

@@ -6,7 +6,7 @@ import me.zero.alpine.listener.Subscriber;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.render.EventFogColor;
+import wtf.norma.nekito.event.impl.render.EventFogColor;
 import wtf.norma.nekito.util.color.ColorUtility;
 
 import java.awt.*;

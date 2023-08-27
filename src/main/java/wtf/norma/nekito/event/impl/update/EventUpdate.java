@@ -1,7 +1,7 @@
-package wtf.norma.nekito.newevent.impl.update;
+package wtf.norma.nekito.event.impl.update;
 
 import net.minecraft.network.Packet;
-import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.event.Event;
 
 public class EventUpdate extends Event {
     private Packet<?> packet;

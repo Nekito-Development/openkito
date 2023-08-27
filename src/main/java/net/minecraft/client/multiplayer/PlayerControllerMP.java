@@ -19,7 +19,7 @@ import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.newevent.impl.action.EventAttack;
+import wtf.norma.nekito.event.impl.action.EventAttack;
 
 public class PlayerControllerMP
 {

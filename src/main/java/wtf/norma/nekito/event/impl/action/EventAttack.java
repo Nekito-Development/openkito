@@ -1,7 +1,7 @@
-package wtf.norma.nekito.newevent.impl.action;
+package wtf.norma.nekito.event.impl.action;
 
 import net.minecraft.entity.Entity;
-import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.event.Event;
 
 public class EventAttack extends Event {
     public final Entity targetEntity;

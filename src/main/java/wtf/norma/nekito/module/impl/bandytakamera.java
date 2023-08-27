@@ -8,10 +8,9 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.render.EventRender2D;
+import wtf.norma.nekito.event.impl.render.EventRender2D;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;

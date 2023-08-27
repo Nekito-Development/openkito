@@ -8,7 +8,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.render.EventRender2D;
+import wtf.norma.nekito.event.impl.render.EventRender2D;
 import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.funny.DDOSUTIL;

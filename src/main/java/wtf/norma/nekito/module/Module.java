@@ -72,9 +72,6 @@ public abstract class Module {
     public void onDisable() {
     }
 
-    public void onEvent(Event e) {
-
-    }
 
     public void toggle() {
         toggled = !toggled;

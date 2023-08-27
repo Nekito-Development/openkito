@@ -11,7 +11,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.render.EventCustomModel;
+import wtf.norma.nekito.event.impl.render.EventCustomModel;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.math.MathUtility;
 import wtf.norma.nekito.util.render.models.TessellatorModel;

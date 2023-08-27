@@ -68,8 +68,8 @@ import org.apache.logging.log4j.Logger;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.holder.Holder;
 import wtf.norma.nekito.module.impl.PacketDebugger;
-import wtf.norma.nekito.newevent.EventFlow;
-import wtf.norma.nekito.newevent.impl.packet.PacketEvent;
+import wtf.norma.nekito.event.EventFlow;
+import wtf.norma.nekito.event.impl.packet.PacketEvent;
 
 import java.io.File;
 import java.io.IOException;

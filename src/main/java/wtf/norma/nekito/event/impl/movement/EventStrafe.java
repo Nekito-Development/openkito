@@ -1,6 +1,6 @@
-package wtf.norma.nekito.newevent.impl.movement;
+package wtf.norma.nekito.event.impl.movement;
 
-import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.event.Event;
 
 public class EventStrafe extends Event {
     private final float strafe,  forward, friction;

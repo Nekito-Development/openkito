@@ -18,7 +18,7 @@ import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.ModuleManager;
-import wtf.norma.nekito.newevent.impl.input.EventKey;
+import wtf.norma.nekito.event.impl.input.EventKey;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;

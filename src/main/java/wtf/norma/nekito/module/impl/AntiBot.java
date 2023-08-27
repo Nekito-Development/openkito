@@ -7,10 +7,9 @@ import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.event.Event;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.movement.EventPreMotion;
+import wtf.norma.nekito.event.impl.movement.EventPreMotion;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;

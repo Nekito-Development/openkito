@@ -96,7 +96,7 @@ import org.lwjgl.opengl.*;
 import org.lwjgl.util.glu.GLU;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.impl.FastWorldLoad;
-import wtf.norma.nekito.newevent.impl.input.EventKey;
+import wtf.norma.nekito.event.impl.input.EventKey;
 import wtf.norma.nekito.ui.MainMenuLoadingScreen;
 
 import javax.imageio.ImageIO;

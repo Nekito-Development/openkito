@@ -27,10 +27,10 @@ import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.impl.NoSlowDown;
-import wtf.norma.nekito.newevent.impl.movement.EventMotion;
-import wtf.norma.nekito.newevent.impl.movement.EventPreMotion;
-import wtf.norma.nekito.newevent.impl.update.EventPreUpdate;
-import wtf.norma.nekito.newevent.impl.update.EventUpdate;
+import wtf.norma.nekito.event.impl.movement.EventMotion;
+import wtf.norma.nekito.event.impl.movement.EventPreMotion;
+import wtf.norma.nekito.event.impl.update.EventPreUpdate;
+import wtf.norma.nekito.event.impl.update.EventUpdate;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 
 public class EntityPlayerSP extends AbstractClientPlayer {

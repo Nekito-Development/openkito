@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.impl.update.EventUpdate;
+import wtf.norma.nekito.event.impl.update.EventUpdate;
 
 
 public class NoSlowDown extends Module implements Subscriber {

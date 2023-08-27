@@ -8,13 +8,11 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.newevent.Event;
-import wtf.norma.nekito.newevent.impl.packet.PacketEvent;
-import wtf.norma.nekito.newevent.impl.render.EventRender2D;
-import wtf.norma.nekito.newevent.impl.update.EventUpdate;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.render.EventRender2D;
+import wtf.norma.nekito.event.impl.update.EventUpdate;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.Time.TimerUtility;
-import wtf.norma.nekito.util.font.FontRenderer;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 

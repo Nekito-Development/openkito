@@ -35,8 +35,8 @@ import org.apache.logging.log4j.MarkerManager;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
-import wtf.norma.nekito.newevent.EventFlow;
-import wtf.norma.nekito.newevent.impl.packet.PacketEvent;
+import wtf.norma.nekito.event.EventFlow;
+import wtf.norma.nekito.event.impl.packet.PacketEvent;
 
 import javax.crypto.SecretKey;
 import java.net.InetAddress;

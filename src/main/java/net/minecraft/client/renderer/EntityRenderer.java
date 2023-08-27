@@ -62,8 +62,8 @@ import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.impl.Reach;
 import wtf.norma.nekito.module.impl.WorldColor;
-import wtf.norma.nekito.newevent.impl.render.EventFogColor;
-import wtf.norma.nekito.newevent.impl.render.EventRender3D;
+import wtf.norma.nekito.event.impl.render.EventFogColor;
+import wtf.norma.nekito.event.impl.render.EventRender3D;
 import wtf.norma.nekito.util.color.ColorUtility;
 
 import java.awt.*;
