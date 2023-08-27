@@ -2,6 +2,8 @@ package net.minecraft.client.gui;
 
 import java.io.IOException;
 import java.util.List;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
@@ -60,7 +62,7 @@ public class GuiDisconnected extends GuiScreen
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRendererObj, "Server IP: " + EnumChatFormatting.GOLD + this.mc.getCurrentServerData().serverIP, this.width / 2, 18, -1);
+        this.drawCenteredString(this.fontRendererObj, "Username: " + EnumChatFormatting.GOLD + "" + Minecraft.getMinecraft().getSession().getUsername() + EnumChatFormatting.RESET + "", this.width / 2, 18, -1);
         this.drawCenteredString(this.fontRendererObj, this.reason, this.width / 2, this.height / 2 - this.field_175353_i / 2 - this.fontRendererObj.FONT_HEIGHT * 2, 11184810);
         int i = this.height / 2 - this.field_175353_i / 2;
 
