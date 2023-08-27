@@ -26,7 +26,6 @@ public class ModuleManager {
                 new NoFall(),
                 new KeepSprint(),
                 new Fly(),
-                new FreeCam(),
                 new FastWorldLoad(),
                 new NoSlowDown(),
                 new HitBox(),

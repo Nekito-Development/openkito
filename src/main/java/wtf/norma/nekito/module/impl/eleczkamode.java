@@ -70,7 +70,6 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fowo Colowwr";
         nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "TiwwBawse";
         nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fawll";
-        nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
         nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
         nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "LagoDetectoro";
@@ -134,7 +133,6 @@ public class eleczkamode extends Module {
         nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
         nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "Tickbase";
         nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
-        nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
         nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
         nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "Lag Detector";
         nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TriggerBot";

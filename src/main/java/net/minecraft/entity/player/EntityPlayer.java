@@ -908,7 +908,7 @@ public abstract class EntityPlayer extends EntityLivingBase
         float f = this.inventory.getStrVsBlock(p_180471_1_);
 
         if (nekito.INSTANCE.getModuleManager().getModule(FastMine.class).isToggled()){
-            f = FastMine.speed();
+            f *= FastMine.speed();
         }
 
         if (f > 1.0F)

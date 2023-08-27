@@ -3,12 +3,16 @@ package wtf.norma.nekito;
 import de.florianmichael.viamcp.ViaMCP;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.Packet;
+import net.minecraft.network.status.server.S00PacketServerInfo;
 import org.apache.commons.logging.Log;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.command.CommandManager;
 import wtf.norma.nekito.command.impl.HelpCommand;
 import wtf.norma.nekito.draggable.DraggableManager;
+import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.PacketEvent;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
@@ -168,6 +172,9 @@ public enum nekito {
         double c3 = c1 + 1;
         return 1 + c3 * Math.pow(value - 1, 3) + c1 * Math.pow(value - 1, 2);
     }
+
+
+
 
     public DraggableManager getDraggableManager() {
         return draggableManager;

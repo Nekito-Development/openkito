@@ -42,6 +42,7 @@ import net.minecraft.util.MathHelper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import wtf.norma.nekito.event.impl.PacketEvent;
 
 public class OldServerPinger
 {
@@ -239,6 +240,9 @@ public class OldServerPinger
                         protected void channelRead0(ChannelHandlerContext p_channelRead0_1_, ByteBuf p_channelRead0_2_) throws Exception
                         {
                             short short1 = p_channelRead0_2_.readUnsignedByte();
+
+
+
 
                             if (short1 == 255)
                             {
