@@ -45,7 +45,8 @@ public class Arrows extends Module implements Subscriber {
         mc.theWorld.playerEntities.forEach(entity -> {
             Color col = new Color(255, 255, 255, 80);
 
-            if (isValid(entity)) {
+            if (!isValid(entity)) return;
+
                 GlStateManager.pushMatrix();
                 GlStateManager.disableBlend();
                 double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * mc.timer.renderPartialTicks - RenderManager.renderPosX;
@@ -75,7 +76,7 @@ public class Arrows extends Module implements Subscriber {
                 GlStateManager.enableBlend();
 
                 GlStateManager.popMatrix();
-            }
+
         });
     });
 
