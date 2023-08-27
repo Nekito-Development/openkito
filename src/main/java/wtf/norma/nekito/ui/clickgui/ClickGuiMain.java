@@ -7,8 +7,8 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.module.impl.ClickGUI;
-import wtf.norma.nekito.module.impl.InventorySettings;
+import wtf.norma.nekito.module.impl.hud.ClickGUI;
+import wtf.norma.nekito.module.impl.hud.InventorySettings;
 import wtf.norma.nekito.util.render.RenderUtility;
 import wtf.norma.nekito.util.shader.GLSL;
 

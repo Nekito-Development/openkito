@@ -26,7 +26,7 @@ public class Arraylist extends AbstractDraggable {
     }
 
     public FontRenderer getFont() {
-         switch(wtf.norma.nekito.module.impl.Arraylist.fonts.getMode()){
+         switch(wtf.norma.nekito.module.impl.hud.Arraylist.fonts.getMode()){
              case "SemiBold": return Fonts.SEMI_BOLD_16;
              case"ProductSans": return Fonts.productSansRegular16;
              case "Sans": return Fonts.sans_16;
@@ -54,7 +54,7 @@ public class Arraylist extends AbstractDraggable {
 
 
         boolean lowercase;
-        lowercase = wtf.norma.nekito.module.impl.Arraylist.lowerCase.isEnabled();
+        lowercase = wtf.norma.nekito.module.impl.hud.Arraylist.lowerCase.isEnabled();
 
 
 
@@ -71,7 +71,7 @@ public class Arraylist extends AbstractDraggable {
             for(Module m : enabledMods) {
 
                 String cwel = m.getName();
-                if (wtf.norma.nekito.module.impl.Arraylist.lowerCase.isEnabled()){
+                if (wtf.norma.nekito.module.impl.hud.Arraylist.lowerCase.isEnabled()){
                     cwel = cwel.toLowerCase();
                 }
 
@@ -84,13 +84,13 @@ public class Arraylist extends AbstractDraggable {
                 getFont().drawString(cwel,X,offset+2, ColorUtility.getColor(3000));
                 offset+=10;
             }
-            if (wtf.norma.nekito.module.impl.Arraylist.line.isEnabled()) {
+            if (wtf.norma.nekito.module.impl.hud.Arraylist.line.isEnabled()) {
                 Gui.drawRect(X - 1, Y - 1, X + longest + 2, Y, ColorUtility.getColor(300));
             }
         } else {
             for(Module m : enabledMods) {
                 String cwel = m.getName();
-                if (wtf.norma.nekito.module.impl.Arraylist.lowerCase.isEnabled()){
+                if (wtf.norma.nekito.module.impl.hud.Arraylist.lowerCase.isEnabled()){
                     cwel = cwel.toLowerCase();
                 }
                 if(getFont().getStringWidth(cwel) > longest) {
@@ -100,7 +100,7 @@ public class Arraylist extends AbstractDraggable {
                 getFont().drawString(cwel,X-getFont().getStringWidth(cwel),offset+2, ColorUtility.getColor(3000));
                 offset+=10;
             }
-            if (wtf.norma.nekito.module.impl.Arraylist.line.isEnabled()){
+            if (wtf.norma.nekito.module.impl.hud.Arraylist.line.isEnabled()){
             Gui.drawRect(X-longest-1,Y-1,X+2,Y,ColorUtility.getColor(3000));
             }
         }

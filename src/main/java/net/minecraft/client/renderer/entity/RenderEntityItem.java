@@ -11,7 +11,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-import wtf.norma.nekito.module.impl.ItemPhysics;
+import wtf.norma.nekito.module.impl.visuals.ItemPhysics;
 import wtf.norma.nekito.Nekito;
 
 import wtf.norma.nekito.util.Time.TimerUtility;

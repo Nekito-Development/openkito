@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.module.impl.CustomModel;
+import wtf.norma.nekito.module.impl.visuals.CustomModel;
 import wtf.norma.nekito.event.impl.render.EventCustomModel;
 
 import java.nio.FloatBuffer;

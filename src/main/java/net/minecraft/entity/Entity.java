@@ -47,7 +47,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-import wtf.norma.nekito.module.impl.HitBox;
+import wtf.norma.nekito.module.impl.legit.HitBox;
 import wtf.norma.nekito.Nekito;
 
 public abstract class Entity implements ICommandSender

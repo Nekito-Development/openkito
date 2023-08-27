@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import wtf.norma.nekito.cosmetics.model.WingsModel;
-import wtf.norma.nekito.module.impl.Wings;
+import wtf.norma.nekito.module.impl.visuals.Wings;
 import wtf.norma.nekito.Nekito;
 
 public class ModelPlayer extends ModelBiped

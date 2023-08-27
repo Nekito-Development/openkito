@@ -10,8 +10,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovementInput;
-import wtf.norma.nekito.module.impl.KillAura;
-import wtf.norma.nekito.module.impl.TargetStrafe;
+import wtf.norma.nekito.module.impl.combat.KillAura;
+import wtf.norma.nekito.module.impl.combat.TargetStrafe;
 import wtf.norma.nekito.Nekito;
 
 import static java.lang.Math.toRadians;

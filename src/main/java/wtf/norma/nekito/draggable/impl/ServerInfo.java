@@ -6,7 +6,7 @@ import wtf.norma.nekito.draggable.AbstractDraggable;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.TimeHelper;
 import wtf.norma.nekito.holder.Holder;
-import wtf.norma.nekito.module.impl.eleczkamode;
+import wtf.norma.nekito.module.impl.other.eleczkamode;
 import wtf.norma.nekito.Nekito;
 
 import java.util.ArrayList;

@@ -74,8 +74,8 @@ import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.LockCode;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings;
-import wtf.norma.nekito.module.impl.FastMine;
-import wtf.norma.nekito.module.impl.KeepSprint;
+import wtf.norma.nekito.module.impl.other.FastMine;
+import wtf.norma.nekito.module.impl.legit.KeepSprint;
 import wtf.norma.nekito.Nekito;
 
 @SuppressWarnings("incomplete-switch")

@@ -67,7 +67,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.holder.Holder;
-import wtf.norma.nekito.module.impl.PacketDebugger;
+import wtf.norma.nekito.module.impl.other.PacketDebugger;
 import wtf.norma.nekito.event.EventFlow;
 import wtf.norma.nekito.event.impl.packet.PacketEvent;
 

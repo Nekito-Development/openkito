@@ -3,7 +3,7 @@ package wtf.norma.nekito.ui.crashgui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
-import wtf.norma.nekito.module.impl.CrashGUI;
+import wtf.norma.nekito.module.impl.hud.CrashGUI;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;

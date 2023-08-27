@@ -2,7 +2,6 @@ package net.minecraft.client.gui;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.module.impl.ClickGUI;
 import wtf.norma.nekito.ui.altmanager.GuiAltManager;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.BlurUtility;

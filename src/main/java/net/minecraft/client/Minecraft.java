@@ -95,7 +95,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.*;
 import org.lwjgl.util.glu.GLU;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.module.impl.FastWorldLoad;
+import wtf.norma.nekito.module.impl.visuals.FastWorldLoad;
 import wtf.norma.nekito.event.impl.input.EventKey;
 import wtf.norma.nekito.ui.MainMenuLoadingScreen;
 

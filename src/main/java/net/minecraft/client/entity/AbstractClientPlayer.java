@@ -21,7 +21,7 @@ import optifine.CapeUtils;
 import optifine.Config;
 import optifine.PlayerConfigurations;
 import optifine.Reflector;
-import wtf.norma.nekito.module.impl.Cape;
+import wtf.norma.nekito.module.impl.visuals.Cape;
 import wtf.norma.nekito.Nekito;
 
 public abstract class AbstractClientPlayer extends EntityPlayer

@@ -22,7 +22,7 @@ import optifine.Config;
 
 import org.lwjgl.opengl.GL11;
 import shadersmod.client.Shaders;
-import wtf.norma.nekito.module.impl.Ears;
+import wtf.norma.nekito.module.impl.visuals.Ears;
 import wtf.norma.nekito.Nekito;
 
 public abstract class Render<T extends Entity>

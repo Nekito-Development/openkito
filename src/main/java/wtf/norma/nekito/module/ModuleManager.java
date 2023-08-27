@@ -1,6 +1,11 @@
 package wtf.norma.nekito.module;
 
-import wtf.norma.nekito.module.impl.*;
+import wtf.norma.nekito.module.impl.combat.*;
+import wtf.norma.nekito.module.impl.hud.*;
+import wtf.norma.nekito.module.impl.legit.*;
+import wtf.norma.nekito.module.impl.movement.*;
+import wtf.norma.nekito.module.impl.other.*;
+import wtf.norma.nekito.module.impl.visuals.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
