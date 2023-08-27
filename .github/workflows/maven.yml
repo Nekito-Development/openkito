@@ -26,6 +26,7 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
+        architecture: x64
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
