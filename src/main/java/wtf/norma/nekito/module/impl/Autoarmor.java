@@ -1,19 +1,22 @@
 package wtf.norma.nekito.module.impl;
 
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventUpdate;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.newevent.impl.update.EventUpdate;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.Time.TimerUtility;
 
 
-public class Autoarmor extends Module {
+public class Autoarmor extends Module implements Subscriber {
 
     private final TimerUtility timer = new TimerUtility();
     public NumberSetting delay = new NumberSetting("Delay", 50, 0, 100, 10);
@@ -64,24 +67,35 @@ public class Autoarmor extends Module {
 
     @Override
     public void onEnable() {
+        Nekito.EVENT_BUS.subscribe(this);
         super.onEnable();
     }
 
     @Override
     public void onDisable() {
+        Nekito.EVENT_BUS.unsubscribe(this);
         super.onDisable();
     }
 
-    @Override
-    public void onEvent(Event e) {
-        if (e instanceof EventUpdate) {
-            if (mc.currentScreen instanceof GuiInventory) { // opening only in inventory cuz of many anticheats detections
-                if (timer.hasReached(delay.getValue())) {
-                    getBestArmor();
-                }
-            }
+
+    @Subscribe
+    private final Listener<EventUpdate> listener = new Listener<>(event ->{
+        if (mc.currentScreen instanceof GuiInventory) { // opening only in inventory cuz of many anticheats detections
+            if (timer.hasReached(delay.getValue()))
+                getBestArmor();
         }
-    }
+    });
+
+//    @Override
+//    public void onEvent(Event e) {
+//        if (e instanceof EventUpdate) {
+//            if (mc.currentScreen instanceof GuiInventory) { // opening only in inventory cuz of many anticheats detections
+//                if (timer.hasReached(delay.getValue())) {
+//                    getBestArmor();
+//                }
+//            }
+//        }
+//    }
 
     public void getBestArmor() {
         for (int type = 1; type < 5; type++) {
