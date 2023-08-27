@@ -9,5 +9,5 @@ import wtf.norma.nekito.newevent.Event;
 @Setter
 @AllArgsConstructor
 public class PacketEvent extends Event {
-    private Packet<?> packet;
+    private Packet packet;
 }

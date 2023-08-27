@@ -29,6 +29,7 @@ import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.impl.NoSlowDown;
 import wtf.norma.nekito.newevent.impl.movement.EventMotion;
 import wtf.norma.nekito.newevent.impl.movement.EventPreMotion;
+import wtf.norma.nekito.newevent.impl.update.EventPreUpdate;
 import wtf.norma.nekito.newevent.impl.update.EventUpdate;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 
@@ -154,6 +155,9 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
     public void onUpdate() {
 
+//        @formatter:off
+        Nekito.EVENT_BUS.post(new EventPreUpdate());
+//        @formatter:on
 
         GuiInventory.phase = this.mc.currentScreen instanceof GuiInventory || this.mc.currentScreen instanceof GuiInventory ? AnimationHelper.animation(GuiInventory.phase, 1.0, (double) 0.05f) : AnimationHelper.animation(GuiInventory.phase, 0.0, (double) 0.1f);
         GuiInventory.phase = MathHelper.clamp(GuiInventory.phase, 0.0, 1.0);
