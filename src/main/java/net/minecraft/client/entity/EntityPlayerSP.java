@@ -26,12 +26,10 @@ import net.minecraft.util.*;
 import net.minecraft.world.IInteractionObject;
 import net.minecraft.world.World;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.EventType;
-import wtf.norma.nekito.event.impl.EventUpdate;
 import wtf.norma.nekito.module.impl.NoSlowDown;
 import wtf.norma.nekito.newevent.impl.movement.EventMotion;
 import wtf.norma.nekito.newevent.impl.movement.EventPreMotion;
+import wtf.norma.nekito.newevent.impl.update.EventUpdate;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 
 public class EntityPlayerSP extends AbstractClientPlayer {
@@ -168,14 +166,17 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
             super.onUpdate();
+//            EventUpdate eventUpdate = new EventUpdate();
             EventUpdate eventUpdate = new EventUpdate();
             if (this.isRiding()) {
                 this.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(this.rotationYaw, this.rotationPitch, this.onGround));
                 this.sendQueue.addToSendQueue(new C0CPacketInput(this.moveStrafing, this.moveForward, this.movementInput.jump, this.movementInput.sneak));
             } else {
                 this.onUpdateWalkingPlayer();
-                eventUpdate.setType(EventType.POST);
-                Event.dispatch(eventUpdate);
+                eventUpdate.setEventPhase(EventPhase.POST);
+                Nekito.EVENT_BUS.post(eventUpdate);
+//                eventUpdate.setType(EventType.POST);
+//                Event.dispatch(eventUpdate);
             }
         }
     }

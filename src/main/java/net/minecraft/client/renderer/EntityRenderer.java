@@ -60,11 +60,10 @@ import org.lwjgl.util.glu.Project;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.module.impl.Reach;
 import wtf.norma.nekito.module.impl.WorldColor;
 import wtf.norma.nekito.newevent.impl.render.EventFogColor;
+import wtf.norma.nekito.newevent.impl.render.EventRender3D;
 import wtf.norma.nekito.util.color.ColorUtility;
 
 import java.awt.*;
@@ -1864,8 +1863,10 @@ public class EntityRenderer implements IResourceManagerReloadListener
             this.mc.mcProfiler.endStartSection("forge_render_last");
             Reflector.callVoid(Reflector.ForgeHooksClient_dispatchRenderLast, new Object[] {renderglobal, Float.valueOf(partialTicks)});
         }
-
-        Event.dispatch(new EventRender3D(partialTicks));
+//        @formatter:off
+        Nekito.EVENT_BUS.post(new EventRender3D(partialTicks));
+//        @formatter:on
+//        Event.dispatch(new EventRender3D(partialTicks));
 
         this.mc.mcProfiler.endStartSection("hand");
         boolean flag2 = ReflectorForge.renderFirstPersonHand(this.mc.renderGlobal, partialTicks, pass);

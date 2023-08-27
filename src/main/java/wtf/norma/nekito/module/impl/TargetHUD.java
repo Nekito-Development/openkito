@@ -1,5 +1,8 @@
 package wtf.norma.nekito.module.impl;
 
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,10 +10,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventRender2D;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.newevent.impl.render.EventRender2D;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.util.Animations.AnimationHelper;
 import wtf.norma.nekito.util.color.ColorUtils;
@@ -28,7 +31,7 @@ import java.awt.*;
  */
 
 
-public class TargetHUD extends Module {
+public class TargetHUD extends Module implements Subscriber {
     public static final Color cwel = new Color(250, 247, 250);
     public static BooleanSetting numerfona = new BooleanSetting("Draw Name", true);
     private static EntityLivingBase curTarget = null;
@@ -47,6 +50,7 @@ public class TargetHUD extends Module {
     @Override
     public void onEnable() {
         super.onEnable();
+        Nekito.EVENT_BUS.subscribe(this);
         ChatHelper.printMessage("isnt draggable cuz im too lazy");
         ChatHelper.printMessage("this module is in beta(you can have issues with it)");
         //   nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = true;
@@ -55,17 +59,23 @@ public class TargetHUD extends Module {
     @Override
     public void onDisable() {
         super.onDisable();
+        Nekito.EVENT_BUS.unsubscribe(this);
         //  nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Arraylist>Get("Arraylist").AllowRender = false;
     }
 
-    public void onEvent(Event e) {
-        if (e instanceof EventRender2D) {
-            this.draworangenakarte();
+    @Subscribe
+    private final Listener<EventRender2D> listener = new Listener<>(event -> {
+        this.draworangenakarte();
+    });
 
-
-        }
-
-    }
+//    public void onEvent(Event e) {
+//        if (e instanceof EventRender2D) {
+//            this.draworangenakarte();
+//
+//
+//        }
+//
+//    }
 
     public void draworangenakarte() {
 

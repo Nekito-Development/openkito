@@ -1,5 +1,8 @@
 package wtf.norma.nekito.module.impl;
 
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntityLockable;
@@ -7,15 +10,14 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventRender3D;
-import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.newevent.impl.render.EventRender3D;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 // author: omikron
-public class ChestESP extends Module {
+public class ChestESP extends Module implements Subscriber {
 
     public static BooleanSetting colorMode = new BooleanSetting("Client Color", true);
 
@@ -24,16 +26,38 @@ public class ChestESP extends Module {
         super("ChestESP", Category.VISUALS, Keyboard.KEY_NONE);
     }
 
-    public void onEvent(Event event) {
-        if (event instanceof EventRender3D) {
-            for (final Object o : mc.theWorld.loadedTileEntityList) {
-                if (o instanceof TileEntityChest) {
-                    final TileEntityLockable storage = (TileEntityLockable) o;
-                    this.pierdolnijespnaczest(storage, storage.getPos().getX(), storage.getPos().getY(), storage.getPos().getZ());
-                }
-            }
-        }
+    @Override
+    public void onEnable() {
+        Nekito.EVENT_BUS.subscribe(this);
+        super.onEnable();
     }
+
+    @Override
+    public void onDisable() {
+        Nekito.EVENT_BUS.unsubscribe(this);
+        super.onDisable();
+    }
+
+    @Subscribe
+    private final Listener<EventRender3D> listener = new Listener<>(event -> {
+        mc.theWorld.loadedTileEntityList.stream().forEach(tileEntity -> {
+            if (tileEntity instanceof TileEntityChest) {
+                final TileEntityLockable storage = (TileEntityLockable) tileEntity;
+                this.pierdolnijespnaczest(storage, storage.getPos().getX(), storage.getPos().getY(), storage.getPos().getZ());
+            }
+        });
+    });
+
+//    public void onEvent(Event event) {
+//        if (event instanceof EventRender3D) {
+//            for (final Object o : mc.theWorld.loadedTileEntityList) {
+//                if (o instanceof TileEntityChest) {
+//                    final TileEntityLockable storage = (TileEntityLockable) o;
+//                    this.pierdolnijespnaczest(storage, storage.getPos().getX(), storage.getPos().getY(), storage.getPos().getZ());
+//                }
+//            }
+//        }
+//    }
 
     public void pierdolnijespnaczest(TileEntityLockable storage, double x, double y, double z) {
         assert !storage.isLocked();
