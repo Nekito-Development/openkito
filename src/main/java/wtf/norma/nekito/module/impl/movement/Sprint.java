@@ -3,6 +3,7 @@ package wtf.norma.nekito.module.impl.movement;
 import me.zero.alpine.listener.Listener;
 import me.zero.alpine.listener.Subscribe;
 import me.zero.alpine.listener.Subscriber;
+import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
@@ -30,8 +31,7 @@ public class Sprint extends Module implements Subscriber {
 
     @Subscribe
     private final Listener<EventPreUpdate> listener = new Listener<>(event ->{
-        if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally)
-            mc.thePlayer.setSprinting(true);
+        KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
     });
 
 //    @Override
