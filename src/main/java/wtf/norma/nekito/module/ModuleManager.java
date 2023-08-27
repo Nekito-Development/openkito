@@ -64,7 +64,7 @@ public class ModuleManager {
                 new Reach(),
                 new CustomHotbar(),
                 new UiSettings(),
-                new Criticals(),
+                new Criticals(),     //TODO: Implement it with some type of event
                 new PacketDebugger(),
                 new TimeChanger(),
                 new Speed(),

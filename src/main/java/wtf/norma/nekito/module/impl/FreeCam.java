@@ -77,8 +77,8 @@ public class FreeCam extends Module implements Subscriber {
                 event.setCancelled(true);
     });
 
-    @Override
-    public void onEvent(Event e) {
+//    @Override
+//    public void onEvent(Event e) {
 //        if (e instanceof PacketEvent) {
 //            if (mc.thePlayer == null || mc.theWorld == null || mc.thePlayer.ticksExisted < 1) {
 //                return;
@@ -105,5 +105,5 @@ public class FreeCam extends Module implements Subscriber {
 //
 //
 //        }
-    }
+//    }
 }

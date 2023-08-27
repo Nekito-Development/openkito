@@ -23,12 +23,6 @@ public class InventorySettings extends Module {
         super.onEnable();
     }
 
-
-    @Override
-    public void onEvent(Event e) {
-
-
-    }
 }
 
 

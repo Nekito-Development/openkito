@@ -13,11 +13,6 @@ public class Watermark2 extends Module {
 
 
     @Override
-    public void onEvent(Event e) {
-
-    }
-
-    @Override
     public void onEnable() {
         super.onEnable();
         Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.Watermark2>Get("Watermark2").AllowRender = true;

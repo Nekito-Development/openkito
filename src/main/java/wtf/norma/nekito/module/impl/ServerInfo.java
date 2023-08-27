@@ -12,11 +12,6 @@ public class ServerInfo extends Module {
     }
 
     @Override
-    public void onEvent(Event e) {
-
-    }
-
-    @Override
     public void onEnable() {
         super.onEnable();
         Nekito.INSTANCE.getDraggableManager().<wtf.norma.nekito.draggable.impl.ServerInfo>Get("ServerInfo").AllowRender = true;
