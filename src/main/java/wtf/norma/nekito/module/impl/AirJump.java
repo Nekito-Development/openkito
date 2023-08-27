@@ -31,7 +31,6 @@ public class AirJump extends Module implements Subscriber {
 
     @Subscribe
     private final Listener<EventPreMotion> listener = new Listener<>(event -> {
-        System.out.println("DEBUG");
             // IDK HOW BUT IT BYPASSES VULCAN AND VERUS AND OTHER SHIT LUB
             if (mc.thePlayer.onGround) {
                 mc.thePlayer.jump();
