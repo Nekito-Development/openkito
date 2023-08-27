@@ -8,7 +8,7 @@ Special thanks to narumii for the base
 
 
 # Discord
-Join our discord by clicking [here](https://discord.gg/34BZs4ZPB6)
+<a href="https://discord.gg/34BZs4ZPB6"><img src="https://invidget.switchblade.xyz/34BZs4ZPB6" alt="https://discord.gg/34BZs4ZPB6"/></a>
 
 
 # Website
