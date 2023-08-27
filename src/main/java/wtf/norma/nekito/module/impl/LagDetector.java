@@ -9,10 +9,13 @@ import org.lwjgl.input.Keyboard;
 import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.newevent.Event;
+import wtf.norma.nekito.newevent.impl.packet.PacketEvent;
 import wtf.norma.nekito.newevent.impl.render.EventRender2D;
 import wtf.norma.nekito.newevent.impl.update.EventUpdate;
 import wtf.norma.nekito.settings.impl.NumberSetting;
 import wtf.norma.nekito.util.Time.TimerUtility;
+import wtf.norma.nekito.util.font.FontRenderer;
+import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.awt.*;
@@ -20,7 +23,7 @@ import java.awt.*;
 public class LagDetector extends Module implements Subscriber {
 
     public NumberSetting ping = new NumberSetting("Ping", 80, 50, 1000, 10);
-    TimerUtility timer = new TimerUtility();
+    TimerUtility timer;
 
     public LagDetector() {
         super("Lag Detector", Category.VISUALS, Keyboard.KEY_NONE);
@@ -29,12 +32,14 @@ public class LagDetector extends Module implements Subscriber {
 
     @Override
     public void onEnable() {
+        this.timer = new TimerUtility();
         Nekito.EVENT_BUS.subscribe(this);
         super.onEnable();
     }
 
     @Override
     public void onDisable() {
+        this.timer = null;
         Nekito.EVENT_BUS.unsubscribe(this);
         super.onDisable();
     }
@@ -47,17 +52,18 @@ public class LagDetector extends Module implements Subscriber {
 //            System.out.println("DEBUG2");
             ScaledResolution sr = new ScaledResolution(mc);
             if (timer.hasReached(ping.getValue())) {
+                System.err.println(timer.getLastMS());
                 if (timer.hasReached(ping.getValue() + 10)) {
                     RenderUtility.drawImage(new ResourceLocation("images/cwelowate/lag2.png"), sr.getScaledWidth() / 2 - 20, sr.getScaledHeight() / 2 - 130, 40, 40, new Color(255, 255, 255));
+                    Fonts.simkarta.drawStringWithShadow(String.valueOf(timer.getLastMS()), sr.getScaledHeight() / 2 - 30, sr.getScaledHeight() / 2 - 150, new Color(61, 5, 217, 220).getRGB());
                 } else {
                     RenderUtility.drawImage(new ResourceLocation("images/cwelowate/lag.png"), sr.getScaledWidth() / 2 - 20, sr.getScaledHeight() / 2 - 130, 40, 40, new Color(255, 255, 255));
                 }
             }
         }
         if (event instanceof EventUpdate) {
-            if (!(((EventUpdate) event).getPacket() instanceof S02PacketChat)) {
-                this.timer.reset();
-            }
+//            if (event.isInbound())
+                if (!(((EventUpdate) event).getPacket() instanceof S02PacketChat)) this.timer.reset();
         }
     }
 

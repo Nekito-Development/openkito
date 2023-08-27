@@ -18,6 +18,9 @@ public class TimerUtility implements Util {
         return ((System.currentTimeMillis() - lastTime) >= milliseconds);
     }
 
+    public long getLastMS() {
+        return lastTime;
+    }
 
 
 

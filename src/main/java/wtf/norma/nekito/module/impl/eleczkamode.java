@@ -1,10 +1,12 @@
 package wtf.norma.nekito.module.impl;
 
+import me.zero.alpine.listener.Listener;
+import me.zero.alpine.listener.Subscribe;
+import me.zero.alpine.listener.Subscriber;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventUpdate;
-import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.Nekito;
+import wtf.norma.nekito.module.Module;
+import wtf.norma.nekito.newevent.impl.update.EventUpdate;
 
 
 /**
@@ -13,7 +15,7 @@ import wtf.norma.nekito.Nekito;
  * @prod hackerzy mysliborz S.A
  */
 
-public class eleczkamode extends Module {
+public class eleczkamode extends Module implements Subscriber {
 
 
     // nudzilo mi sie ok?
@@ -24,7 +26,7 @@ public class eleczkamode extends Module {
 
     @Override // insane shitcode polska.pl cry abt it
     public void onEnable() {
-
+        Nekito.EVENT_BUS.subscribe(this);
 
         //   ChatHelper.printMessage("this module is in beta(you can have issues with it)");
         // modules
@@ -93,6 +95,7 @@ public class eleczkamode extends Module {
 
     @Override
     public void onDisable() {  // insane shitcode polska.pl cry abt it
+        Nekito.EVENT_BUS.unsubscribe(this);
         Nekito.INSTANCE.getModuleManager().getModule(Speed.class).name = "Player Speed"; // insane
         Nekito.INSTANCE.getModuleManager().getModule(KillAura.class).name = "KillAura"; // insane
         Nekito.INSTANCE.getModuleManager().getModule(Criticals.class).name = "Criticals";
@@ -151,14 +154,10 @@ public class eleczkamode extends Module {
 
         super.onDisable();
     }
-
-    @Override
-    public void onEvent(Event e) {
-        if (e instanceof EventUpdate) {
-
-        }
-
-    }
+    @Subscribe
+    private final Listener<EventUpdate> listener = new Listener<>(event ->{
+        //TODO: implement shit idk
+    });
 
 
 }

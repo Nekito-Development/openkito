@@ -71,7 +71,7 @@ public class ModuleManager {
                 new Stealer(),
                 new Wings(),
                 new Ears(),
-                new LagDetector(),
+//                new LagDetector(), TODO:Fix this shit it's fucking broken
                 new TriggerBot(),
                 new KillAura()
         );
