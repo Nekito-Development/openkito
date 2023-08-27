@@ -42,7 +42,6 @@ import net.minecraft.util.MathHelper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import wtf.norma.nekito.event.impl.PacketEvent;
 
 public class OldServerPinger
 {

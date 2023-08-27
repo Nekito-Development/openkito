@@ -27,7 +27,7 @@ public class HELIUMDDOS extends Module implements Subscriber {
     public void onEnable() {
         Nekito.EVENT_BUS.subscribe(this);
         try {
-            DDOSUTIL.run();
+            DDOSUTIL.run("ipinsert");
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
