@@ -2,16 +2,6 @@ package net.minecraft.client.renderer;
 
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
-
-import java.awt.*;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.nio.FloatBuffer;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.Callable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -53,31 +43,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.server.integrated.IntegratedServer;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EntitySelectors;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MouseFilter;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ReportedException;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.biome.BiomeGenBase;
-import optifine.Config;
-import optifine.CustomColors;
-import optifine.Lagometer;
-import optifine.RandomMobs;
-import optifine.Reflector;
-import optifine.ReflectorForge;
-import optifine.TextureUtils;
-
+import optifine.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Mouse;
@@ -88,14 +59,23 @@ import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Project;
 import shadersmod.client.Shaders;
 import shadersmod.client.ShadersRender;
+import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.event.Event;
-import wtf.norma.nekito.event.impl.EventFogColor;
 import wtf.norma.nekito.event.impl.EventRender3D;
 import wtf.norma.nekito.module.impl.Reach;
 import wtf.norma.nekito.module.impl.WorldColor;
-import wtf.norma.nekito.Nekito;
-
+import wtf.norma.nekito.newevent.impl.render.EventFogColor;
 import wtf.norma.nekito.util.color.ColorUtility;
+
+import java.awt.*;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.nio.FloatBuffer;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.Callable;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {
@@ -2579,7 +2559,11 @@ public class EntityRenderer implements IResourceManagerReloadListener
             }
         }
         EventFogColor event = new EventFogColor(fogColorRed, fogColorGreen, fogColorBlue, 0);
-        Event.dispatch(event);
+//        @formatter:off
+        Nekito.EVENT_BUS.post(event);
+//        @formatter:on
+//        EventFogColor event = new EventFogColor(fogColorRed, fogColorGreen, fogColorBlue, 0);
+//        Event.dispatch(event);
 
         fogColorRed = event.red / 255F;
         fogColorGreen = event.green / 255F;
