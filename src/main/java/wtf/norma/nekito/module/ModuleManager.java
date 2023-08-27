@@ -39,7 +39,6 @@ public class ModuleManager {
                 new Strafe(),
                 new ServerInfo(),
                 new Tickbase(),
-                new HELIUMDDOS(),
                 new Velocity(),
                 new InventorySettings(),
                 new eleczkamode(),
