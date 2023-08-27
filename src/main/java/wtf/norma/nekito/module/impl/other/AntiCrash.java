@@ -30,11 +30,17 @@ public class AntiCrash extends Module implements Subscriber {
     @Override
     public void onEnable() {
         Nekito.EVENT_BUS.subscribe(this);
+        if (memorywyczyszczenie.isEnabled()){
+            System.gc(); // ok ok ok?
+        }
         super.onEnable();
     }
 
     @Override
     public void onDisable() {
+        if (memorywyczyszczenie.isEnabled()){
+            System.gc(); // ok ok ok?
+        }
         Nekito.EVENT_BUS.unsubscribe(this);
         super.onDisable();
     }
@@ -62,9 +68,7 @@ public class AntiCrash extends Module implements Subscriber {
 
         //clean memory
 
-        if (memorywyczyszczenie.isEnabled()){
-            System.gc(); // ok ok ok?
-        }
+
 
         if (antiparticle.isEnabled()) {
             mc.gameSettings.ofVoidParticles = false;

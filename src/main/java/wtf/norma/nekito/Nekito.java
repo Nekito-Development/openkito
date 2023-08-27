@@ -37,6 +37,9 @@ public enum Nekito implements Subscriber {
             .build();
 
     Minecraft mc = Minecraft.getMinecraft();
+
+
+
     public double animationSpeed = 0.20;
 
     @Getter
@@ -104,7 +107,7 @@ public enum Nekito implements Subscriber {
         LoggingUtil.log("Java version: " + System.getProperty("java.version"));
 
 
-
+    //vvvvvvvvvvvvv    LoggingUtil.log(checkos());
 
 
 
@@ -135,6 +138,17 @@ public enum Nekito implements Subscriber {
     public void setDisplay() throws IOException {
         Display.setTitle(String.format(name + " " + version + " " + "LWJGL " + Sys.getVersion()));
         OpenGlHelper.setWindowIcon("https://i.imgur.com/hNjf4MM.png", "https://i.imgur.com/AcrB9xQ.png");
+    }
+
+    public String checkos() {
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            LoggingUtil.log("You're using linux nekito can be buggy.");
+            return "Linux";
+        } else if (System.getProperty("os.name").toLowerCase().contains("osx")) {
+            LoggingUtil.log("Use -XstartOnFirstThread");
+            return "macos";
+        }
+        return null;
     }
 
 
