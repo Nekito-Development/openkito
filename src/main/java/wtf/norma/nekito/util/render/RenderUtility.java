@@ -13,6 +13,7 @@ import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
@@ -81,6 +82,10 @@ public class RenderUtility {
     }
 
 
+    public static Color glAlpha(Color color, int alpha) {
+        alpha = MathHelper.clamp(alpha, 0, 255);
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
+    }
     private static final HashMap<Integer, Integer> shadowCache = new HashMap<>();
 
 

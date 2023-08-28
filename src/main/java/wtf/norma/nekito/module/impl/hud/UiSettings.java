@@ -18,11 +18,14 @@ import java.awt.*;
 public class UiSettings extends Module {
     public UiSettings() {
         super("Ui Settings", Category.HUD, Keyboard.KEY_NONE);
-        addSettings(colorMode,cwel,normamode);
+        addSettings(colorMode,fpseating,cwel,normamode);
     }
 
 
     public static BooleanSetting cwel = new BooleanSetting("Player Info", false);
+
+
+    public static BooleanSetting fpseating = new BooleanSetting("Render Glow", true);
 
 
     public static ModeSetting colorMode = new ModeSetting("Color", "Nekito", "Nekito", "Rainbow", "Purple", "Pink");

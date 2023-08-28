@@ -12,8 +12,11 @@ import wtf.norma.nekito.ui.clickgui.item.impl.ItemBoolean;
 import wtf.norma.nekito.ui.clickgui.item.impl.ItemKeyBind;
 import wtf.norma.nekito.ui.clickgui.item.impl.ItemMode;
 import wtf.norma.nekito.ui.clickgui.item.impl.ItemSlider;
+import wtf.norma.nekito.util.color.ColorUtility;
 import wtf.norma.nekito.util.font.Fonts;
+import wtf.norma.nekito.util.render.RenderUtility;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,7 @@ public class ModuleButton {
     public int drawScreen(int mouseX, int mouseY, float partialTicks, int offset) {
         this.offset = offset;
         int y = this.y + offset;
+
         Gui.drawRect(x, y, x + width, y + height, 0x80000000);
 
         // CWEL?
@@ -66,7 +70,9 @@ public class ModuleButton {
         int offsets = height;
         if (open) {
             for (Item<?> item : items) {
+
                 offsets += item.drawScreen(mouseX, mouseY, partialTicks, offsets + offset);
+
             }
         }
 

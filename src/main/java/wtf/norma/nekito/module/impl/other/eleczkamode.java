@@ -72,7 +72,7 @@ public class eleczkamode extends Module implements Subscriber {
         Nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Awwings";
         Nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ewars";
         Nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Awti Vowoit";
-        Nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "ekkore oni chan uwu";
+//        Nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "ekkore oni chan uwu";
         Nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eweczka mowt";
         Nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "NowCliwp";
         Nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timwmer";
@@ -138,7 +138,7 @@ public class eleczkamode extends Module implements Subscriber {
         Nekito.INSTANCE.getModuleManager().getModule(Wings.class).name = "Wings";
         Nekito.INSTANCE.getModuleManager().getModule(Ears.class).name = "Ears";
         Nekito.INSTANCE.getModuleManager().getModule(AntiVoid.class).name = "Anti Void";
-        Nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "helium auth disabler";
+   //     Nekito.INSTANCE.getModuleManager().getModule(HELIUMDDOS.class).name = "helium auth disabler";
         Nekito.INSTANCE.getModuleManager().getModule(eleczkamode.class).name = "eleczkamode";
         Nekito.INSTANCE.getModuleManager().getModule(NoClip.class).name = "No Clip";
         Nekito.INSTANCE.getModuleManager().getModule(Timer.class).name = "Timer";

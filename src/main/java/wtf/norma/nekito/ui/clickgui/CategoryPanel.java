@@ -58,6 +58,7 @@ public class CategoryPanel {
             if (category == Module.Category.CRASHERS) {
                 for (ExploitButton exploitButton : this.exploitButtons) {
                     offset += exploitButton.drawScreen(mouseX, mouseY, partialTicks, offset);
+
                 }
             } else {
                 for (ModuleButton moduleButton : this.moduleButtons) {
