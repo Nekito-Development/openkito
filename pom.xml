@@ -8,14 +8,61 @@
   <artifactId>nekito</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-
+    <lwjgl.version>3.3.2</lwjgl.version>
   </properties>
 
+<profiles>
+		<profile>
+			<id>lwjgl-natives-linux></id>
+			<activation>
+				<os>
+					<family>unix</family>
+				</os>
+			</activation>
+			<properties>
+				<lwjgl.natives>natives-linux</lwjgl.natives>
+			</properties>
+		</profile>
+		<profile>
+			<id>lwjgl-natives-macos></id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<lwjgl.natives>natives-osx</lwjgl.natives>
+			</properties>
+		</profile>
+		<profile>
+			<id>lwjgl-natives-windows></id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<lwjgl.natives>natives-windows</lwjgl.natives>
+			</properties>
+		</profile>
+	</profiles>
 
 
 
@@ -92,41 +139,7 @@
 
 
 
-    <dependency>
-      <groupId>cwel1</groupId>
-      <artifactId>cwel12</artifactId>
-      <version>cwel13</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-glfw-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-
-    <dependency>
-      <groupId>cweaghl21</groupId>
-      <artifactId>cwge2l12</artifactId>
-      <version>cwelaf213</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>cwesl21</groupId>
-      <artifactId>cwef2l12</artifactId>
-      <version>cwelf213</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-openal-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>cwzel21</groupId>
-      <artifactId>cwe2lz12</artifactId>
-      <version>cwel2z13</version>
-      <systemPath>${basedir}/libs/windows/lwjgl-opengl-natives-windows.jar</systemPath>
-      <scope>system</scope>
-    </dependency>
-
-
-
+ 
     <dependency>
       <groupId>org.lwjgl</groupId>
       <artifactId>lwjgl-openal</artifactId>
