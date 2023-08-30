@@ -1,29 +1,20 @@
 package wtf.norma.nekito.module.impl.other;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
 import me.zero.alpine.listener.Listener;
 import me.zero.alpine.listener.Subscribe;
 import me.zero.alpine.listener.Subscriber;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C00PacketKeepAlive;
 import net.minecraft.network.play.server.*;
-import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.tileentity.TileEntityLockable;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import wtf.norma.nekito.Nekito;
-import wtf.norma.nekito.event.Event;
+import wtf.norma.nekito.event.impl.packet.PacketEvent;
 import wtf.norma.nekito.event.impl.render.EventRender2D;
-import wtf.norma.nekito.event.impl.render.EventRender3D;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.module.Module;
-import wtf.norma.nekito.event.impl.packet.PacketEvent;
 import wtf.norma.nekito.settings.impl.BooleanSetting;
 import wtf.norma.nekito.settings.impl.ModeSetting;
 import wtf.norma.nekito.util.Time.TimerUtility;
-import wtf.norma.nekito.util.font.Fonts;
-import wtf.norma.nekito.util.other.LoggingUtil;
-import wtf.norma.nekito.util.render.RenderUtility;
 
 import java.util.ArrayList;
 

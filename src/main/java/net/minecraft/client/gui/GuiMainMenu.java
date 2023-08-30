@@ -2,10 +2,11 @@ package net.minecraft.client.gui;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
-import wtf.norma.nekito.ui.altmanager.GuiAltManager;
+import wtf.norma.nekito.ui.altmanager.GuiAltLogin;
 import wtf.norma.nekito.util.font.Fonts;
 import wtf.norma.nekito.util.render.BlurUtility;
 import wtf.norma.nekito.util.shader.GLSL;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -79,7 +80,7 @@ public class GuiMainMenu extends GuiScreen {
                 this.mc.displayGuiScreen(new GuiMultiplayer(this));
                 break;
             case 2:
-                this.mc.displayGuiScreen(new GuiAltManager(this));
+                this.mc.displayGuiScreen(new GuiAltLogin(this));
                 break;
             case 3:
                 this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
