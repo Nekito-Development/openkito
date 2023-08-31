@@ -7,12 +7,14 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
+import wtf.norma.nekito.util.altmanager.GuiPasswordField;
 import wtf.norma.nekito.util.shader.GLSL;
 
 import java.io.IOException;
 
-public final class GuiAltManager extends GuiScreen {
-    private GuiTextField password;
+public final class GuiAltLogin extends GuiScreen {
+//    private GuiTextField password;
+    GuiPasswordField password;
     private final GuiScreen previousScreen;
     private GuiTextField username;
     private AltLoginThread thread;
@@ -21,7 +23,7 @@ public final class GuiAltManager extends GuiScreen {
     public long init;
 
 
-    public GuiAltManager(GuiScreen previousScreen) {
+    public GuiAltLogin(GuiScreen previousScreen) {
         this.previousScreen = previousScreen;
     }
 
@@ -67,7 +69,9 @@ public final class GuiAltManager extends GuiScreen {
         drawBackground();
         username.drawTextBox();
         password.drawTextBox();
-        
+
+
+
         drawCenteredString(font, "Account Login", (int) (width / 2F), 20, -1);
         drawCenteredString(font, thread == null ? (crackedStatus == null ? EnumChatFormatting.GRAY + "Idle" : EnumChatFormatting.GREEN + crackedStatus) : thread.getStatus(), (int) (width / 2f), 29, -1);
         if (username.getText().isEmpty()) {
@@ -88,7 +92,7 @@ public final class GuiAltManager extends GuiScreen {
         buttonList.add(new GuiButton(3, width / 2 - 100, var3 + 72 + 12 + 48 + 24, "Generate Cracked Account"));
         username = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
         username.setFocused(true);
-        password = new GuiTextField(var3, mc.fontRendererObj, width / 2 - 100, 90, 200, 20);
+        password = new GuiPasswordField(mc.fontRendererObj, width / 2 - 100, 90, 200, 20);
         password.setFocused(false);
         init = System.currentTimeMillis();
         Keyboard.enableRepeatEvents(true);
@@ -115,6 +119,8 @@ public final class GuiAltManager extends GuiScreen {
         username.textboxKeyTyped(character, key);
         password.textboxKeyTyped(character, key);
     }
+
+
 
     @Override
     protected void mouseClicked(int x, int y2, int button) {
