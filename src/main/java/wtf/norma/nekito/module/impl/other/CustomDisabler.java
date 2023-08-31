@@ -1,12 +1,9 @@
 package wtf.norma.nekito.module.impl.other;
 
-import com.sun.org.apache.xml.internal.dtm.ref.DTMDefaultBaseIterators;
 import me.zero.alpine.listener.Listener;
 import me.zero.alpine.listener.Subscribe;
 import me.zero.alpine.listener.Subscriber;
-import net.minecraft.network.Packet;
 import org.lwjgl.input.Keyboard;
-import wtf.norma.nekito.Nekito;
 import wtf.norma.nekito.event.impl.packet.PacketEvent;
 import wtf.norma.nekito.module.Module;
 import wtf.norma.nekito.registry.impl.ServerPacketRegistry;
@@ -40,11 +37,10 @@ public class CustomDisabler extends Module implements Subscriber {
     @Subscribe
     private final Listener<PacketEvent> listener = new Listener<>(event -> {
 
-
-        for (BooleanSetting setting : this.settingsList) {
+        this.settingsList.forEach(setting -> {
             if (event.getPacket().equals(ServerPacketRegistry.entries.get(setting.getName())) && setting.isEnabled()) event.setCancelled(true);
-        }
-
+        });
+        
     });
 
 }
