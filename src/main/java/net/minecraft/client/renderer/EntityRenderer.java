@@ -2219,6 +2219,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
         float f3 = (float)vec3.zCoord;
         Vec3 vec31 = worldclient.getFogColor(partialTicks);
         vec31 = CustomColors.getWorldFogColor(vec31, worldclient, this.mc.getRenderViewEntity(), partialTicks);
+
+
         this.fogColorRed = (float)vec31.xCoord;
         this.fogColorGreen = (float)vec31.yCoord;
         this.fogColorBlue = (float)vec31.zCoord;

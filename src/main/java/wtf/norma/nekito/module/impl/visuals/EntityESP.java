@@ -27,6 +27,12 @@ public class EntityESP extends Module implements Subscriber {
     // public static ModeSetting ambatukam = new ModeSetting("Border Mode", "Box",  "Box");
 
 
+
+
+
+
+
+
     public EntityESP() {
         super("Entity ESP", Category.VISUALS, Keyboard.KEY_NONE);
         addSettings(fullBox, cweluch);
