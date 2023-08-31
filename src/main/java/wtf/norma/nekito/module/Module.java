@@ -141,6 +141,10 @@ public abstract class Module {
         this.settings.addAll(Arrays.asList(settings));
     }
 
+    public void addSettings(List<? extends Setting> settings) {
+        this.settings.addAll(settings);
+    }
+
 
     public enum Category {
         COMBAT("Combat"), LEGIT("Legit"), MOVEMENT("Movement"), VISUALS("Visuals"), OTHER("Other"),HUD("Hud"), CRASHERS("Crashers List");

@@ -76,7 +76,8 @@ public class ModuleManager {
                 new Ears(),
 //                new LagDetector(), TODO:Fix this shit it's fucking broken
                 new TriggerBot(),
-                new KillAura()
+                new KillAura(),
+                new CustomDisabler()
         );
     }
 
@@ -89,7 +90,6 @@ public class ModuleManager {
         for (Module m : modules) {
             if (m.getName().equalsIgnoreCase(name)) {
                 return m;
-
             }
         }
         return null;

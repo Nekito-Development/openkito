@@ -45,6 +45,12 @@
 
   <dependencies>
 
+      <dependency>
+          <groupId>org.reflections</groupId>
+          <artifactId>reflections</artifactId>
+          <version>0.10.2</version>
+      </dependency>
+
 <!--    decided to include lombok to remove boilerplate code. performance may suffer a bit but code readability is way better  -->
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -286,12 +292,13 @@
         <artifactId>lwjgl</artifactId>
         <version>3.3.2</version>
       </dependency>
+
       <dependency>
         <groupId>org.lwjgl</groupId>
         <artifactId>lwjgl-glfw</artifactId>
         <version>3.3.2</version>
       </dependency>
-      <!-- https://mvnrepository.com/artifact/org.lwjgl/lwjgl-opengl -->
+
       <dependency>
         <groupId>org.lwjgl</groupId>
         <artifactId>lwjgl-opengl</artifactId>

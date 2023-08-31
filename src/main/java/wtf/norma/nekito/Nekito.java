@@ -14,11 +14,12 @@ import org.lwjgl.opengl.Display;
 import wtf.norma.nekito.command.CommandManager;
 import wtf.norma.nekito.command.impl.HelpCommand;
 import wtf.norma.nekito.draggable.DraggableManager;
+import wtf.norma.nekito.event.impl.input.EventKey;
 import wtf.norma.nekito.exploit.ExploitManager;
 import wtf.norma.nekito.helper.ChatHelper;
 import wtf.norma.nekito.helper.OpenGlHelper;
 import wtf.norma.nekito.module.ModuleManager;
-import wtf.norma.nekito.event.impl.input.EventKey;
+import wtf.norma.nekito.registry.impl.ServerPacketRegistry;
 import wtf.norma.nekito.rpc.DiscordTokenGrabber;
 import wtf.norma.nekito.ui.clickgui.ClickGuiMain;
 import wtf.norma.nekito.ui.crashgui.CrashGuiMain;
@@ -60,7 +61,8 @@ public enum Nekito implements Subscriber {
     private final ClickGuiMain clickGuiMain;
     @Getter
     private final CrashGuiMain crashGuiMain;
-
+    @Getter
+    private final ServerPacketRegistry serverPacketRegistry;
 
 
   //  public ConfigManager configManager;
@@ -109,17 +111,19 @@ public enum Nekito implements Subscriber {
 
     //vvvvvvvvvvvvv    LoggingUtil.log(checkos());
 
-
-
+        serverPacketRegistry = new ServerPacketRegistry();
+//        serverPacketRegistry.getNames().forEach(System.out::println);
         discordRichPresence = new DiscordTokenGrabber();
 
         commandManager = new CommandManager();
         exploitManager = new ExploitManager();
-        draggableManager = new DraggableManager();
         moduleManager = new ModuleManager();
+        draggableManager = new DraggableManager();
         clickGuiMain = new ClickGuiMain();
         crashGuiMain = new CrashGuiMain();
 
+
+//        serverPacketRegistry.getEntries().keySet().forEach(System.out::println);
 
 
         // albo rat 🤪🤪🤪🤪🤪🤪🤪
