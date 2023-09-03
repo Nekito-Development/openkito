@@ -80,10 +80,10 @@ public class eleczkamode extends Module implements Subscriber {
         Nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fowo Colowwr";
         Nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "TiwwBawse";
         Nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fawll";
-        Nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
+//        Nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FrewwCaam";
         Nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FawstWowoldLoaw";
         Nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Straawwfe";
-        Nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "LagoDetectoro";
+//        Nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "LagoDetectoro";
         Nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TiwwerBowt";
 
 
@@ -145,9 +145,9 @@ public class eleczkamode extends Module implements Subscriber {
         Nekito.INSTANCE.getModuleManager().getModule(FogColor.class).name = "Fog Color";
         Nekito.INSTANCE.getModuleManager().getModule(Tickbase.class).name = "Tickbase";
         Nekito.INSTANCE.getModuleManager().getModule(NoFall.class).name = "No Fall";
-        Nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
+     //   Nekito.INSTANCE.getModuleManager().getModule(FreeCam.class).name = "FreeCam";
         Nekito.INSTANCE.getModuleManager().getModule(FastWorldLoad.class).name = "FastWorldLoad";
-        Nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "Lag Detector";
+        //     Nekito.INSTANCE.getModuleManager().getModule(LagDetector.class).name = "Lag Detector";
         Nekito.INSTANCE.getModuleManager().getModule(TriggerBot.class).name = "TriggerBot";
         Nekito.INSTANCE.getModuleManager().getModule(Strafe.class).name = "Strafe";
 
