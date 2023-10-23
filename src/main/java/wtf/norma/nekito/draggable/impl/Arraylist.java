@@ -83,7 +83,7 @@ public class Arraylist extends AbstractDraggable {
                     longest = getFont().getStringWidth(cwel);
                 }
                 if (UiSettings.fpseating.isEnabled()) {
-                    RenderUtility.drawBlurredShadow(X - 2, Y + (float) offset - 3.5f + 2, getFont().getStringWidth(cwel) + 5f, 10, 5, RenderUtility.glAlpha(new Color(ColorUtility.getColor(0)), 150)); // draws that "glow"
+                  //  RenderUtility.drawBlurredShadow(X - 2, Y + (float) offset - 3.5f + 2, getFont().getStringWidth(cwel) + 5f, 10, 5, RenderUtility.glAlpha(new Color(ColorUtility.getColor(0)), 150)); // draws that "glow"
                 }
 
                 Gui.drawRect(X-1,offset,X+getFont().getStringWidth(cwel)+2,offset+10,new Color(0,0,0,153).getRGB()); // draws background
