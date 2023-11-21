@@ -40,7 +40,7 @@ Known bugs:
 # ClickGui
 
 
-<img src="https://github.com/intexpression/intexpression/blob/main/java_wasv1Ncy1z.jpg?raw=true"><
+<img src="https://github.com/intexpression/intexpression/blob/main/java_wasv1Ncy1z.jpg?raw=true">
 
 # Stats
 
