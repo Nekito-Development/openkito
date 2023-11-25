@@ -46,7 +46,7 @@ Known bugs:
 
 
 ![Alt](https://repobeats.axiom.co/api/embed/4636a9040c48dbdddcbcb1fd6cca05e71a06e88e.svg "Repobeats analytics image")
-
+[![Hits](https://hits.sh/github.com/intexpression/nekito.svg)](https://hits.sh/github.com/intexpression/nekito/)
 
 
 
